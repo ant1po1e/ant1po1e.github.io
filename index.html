@@ -9,6 +9,7 @@
     integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
   <link rel="icon" type="image/x-icon" href="img/favicon.ico">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
 
 <body id="home">
@@ -69,15 +70,15 @@
     <div class="container">
       <div class="row text-center mb-3">
         <div class="col">
-          <h2>About Me</h2>
+          <h2 data-aos="fade-up" data-aos-anchor-placement="top-bottom">About Me</h2>
         </div>
       </div>
       <div class="row justify-content-center fs-4 text-center">
-        <div class="col-md-5">
+        <div class="col-md-5" data-aos="fade-right" data-aos-anchor-placement="top-bottom">
           <p>Konrushi~~ My name is Apriansyah Yudha Pratama, you can call me Yudha. A Web Programming & Game Developing
             Student at SMK Muhammadiyah 1 Sukoharjo. I love exploring new stuff especially in technologies.</p>
         </div>
-        <div class="col-md-5">
+        <div class="col-md-5" data-aos="fade-left" data-aos-anchor-placement="top-bottom">
           <p>My hobby is playing a rhythm game (e.g. osu!, Etterna, or Phigros), watching anime, and reading articles. I
             like coding and making a game also.</p>
         </div>
@@ -96,19 +97,21 @@
     <div class="container">
       <div class="row text-center mb-3">
         <div class="col">
-          <h2>Skills</h2>
+          <h2 data-aos="fade-up" data-aos-anchor-placement="top-bottom">Skills</h2>
         </div>
       </div>
       <div class="row justify-content-center fs-3 text-center">
-        <div class="col-md-3">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" width="110"/>
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" width="110"/>   
-          <div class="pt-1 me-3"> 
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" width="115"/>&nbsp;&nbsp;&nbsp;
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" width="90"/>
-        </div> 
+        <div class="col-md-3" data-aos="zoom-in" data-aos-anchor-placement="top-bottom">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" width="110" />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" width="110" />
+          <div class="pt-1 me-3">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg"
+              width="115" />&nbsp;&nbsp;&nbsp;
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+              width="90" />
+          </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-3" data-aos="zoom-in" data-aos-anchor-placement="top-bottom">
           <img src="img/construct.png" width="125">
         </div>
       </div>
@@ -126,22 +129,22 @@
     <div class="container">
       <div class="row text-center mb-3">
         <div class="col">
-          <h2>My Waifu's Gallery</h2>
+          <h2 data-aos="fade-up" data-aos-anchor-placement="top-bottom">My Waifu's Gallery</h2>
         </div>
       </div>
       <div class="row">
         <div class="col-md-4 mb-3">
-          <div class="card">
+          <div class="card" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
             <img src="img/sh1.jpg" class="card-img-top" alt="+ 1" />
           </div>
         </div>
         <div class="col-md-4 mb-3">
-          <div class="card">
+          <div class="card" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
             <img src="img/sh2.jpg" class="card-img-top" alt="Project 2" />
           </div>
         </div>
         <div class="col-md-4 mb-3">
-          <div class="card">
+          <div class="card" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
             <img src="img/sh3.jpg" class="card-img-top" alt="Project 3" />
           </div>
         </div>
@@ -238,6 +241,12 @@
         })
         .catch((error) => console.error("Error!", error.message));
     });
+  </script>
+
+  <!-- AOS Script -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
   </script>
 
   <!-- Bootstrap Icons -->
