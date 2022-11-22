@@ -29,6 +29,16 @@ section {
 }
 
 .nav-link:hover {
-transform:scale(1.2);
-transition:all 0.1s ease 0s;
+    transform: scale(1.07);
+    transition: all 0.1s ease 0s;
+}
+
+#cwh:hover {
+    transform: scale(1.05);
+    transition: all 0.1s ease 0s;
+}
+
+#submit:hover {
+    transform: scale(1.1);
+    transition: all 0.1s ease 0s;
 }
