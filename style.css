@@ -27,3 +27,8 @@
 section {
     padding-top: 5rem;
 }
+
+.nav-link:hover {
+transform:scale(1.2);
+transition:all 0.1s ease 0s;
+}
