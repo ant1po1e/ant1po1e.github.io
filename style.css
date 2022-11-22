@@ -29,7 +29,7 @@ section {
 }
 
 .nav-link:hover {
-    transform: scale(1.07);
+    transform: scale(1.06);
     transition: all 0.1s ease 0s;
 }
 
