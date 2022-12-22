@@ -40,8 +40,13 @@ section {
 }
 
 #cwh:hover {
+    opacity: 1;
     transform: scale(1.05);
     transition: all 0.1s ease 0s;
+}
+
+#cwh {
+    opacity: 0.75;
 }
 
 #submit:hover {
