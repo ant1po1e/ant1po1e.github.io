@@ -1,27 +1,27 @@
 .jumbotron {
     padding-top: 6rem;
-    background-color: #CCDBDC;
+    background-color: #d6f2ff;
     color: rgba(0, 0, 0, 0.9);
 }
 
 #about {
-    background-color: #9AD1D4;
+    background-color: #b5e5ff;
     color: rgba(0, 0, 0, 0.9);
 }
 
 #skill {
-    background-color: #80CED7;
+    background-color: #a3e2ff;
     color: rgba(0, 0, 0, 0.9);
 }
 
 #gallery {
-    background-color: #68cbed;
+    background-color: #91dcff;
     color: rgba(0, 0, 0, 0.9);
 }
 
 
 #contact {
-    background-color: #4dbff4;
+    background-color: #71d3fd;
     color: rgba(0, 0, 0, 0.9);
 }
 
