@@ -4,9 +4,20 @@
     color: rgba(255, 255, 255, 0.9);
 }
 
+.jumbotron.active {
+    padding-top: 6rem;
+    background-color: #d6f2ff;
+    color: rgba(0, 0, 0, 0.9);
+}
+
 #about {
     background-color: #242424;
     color: rgba(255, 255, 255, 0.9);
+}
+
+#about.active {
+    background-color: #b5e5ff;
+    color: rgba(0, 0, 0, 0.9);
 }
 
 #skill {
@@ -14,15 +25,30 @@
     color: rgba(255, 255, 255, 0.9);
 }
 
+#skill.active {
+    background-color: #a3e2ff;
+    color: rgba(0, 0, 0, 0.9);
+}
+
+
 #gallery {
     background-color: #1e1e1e;
     color: rgba(255, 255, 255, 0.9);
 }
 
+#gallery.active {
+    background-color: #91dcff;
+    color: rgba(0, 0, 0, 0.9);
+}
 
 #contact {
     background-color: #151515;
     color: rgba(255, 255, 255, 0.9);
+}
+
+#contact.active {
+    background-color: #71d3fd;
+    color: rgba(0, 0, 0, 0.9);
 }
 
 section {
@@ -53,3 +79,26 @@ section {
     transform: scale(1.1);
     transition: all 0.1s ease 0s;
 }
+
+.btndarkmode {
+    transform: scale(0);
+    transition: transform .5s ease, height .2s ease;
+    display: flex;
+}
+
+.btndarkmode.active {
+    transform: scale(1);
+}
+
+.btnlightmode {
+    transform: scale(1);    
+    transition: transform .5s ease, height .2s ease;
+    display: flex;
+}
+
+.btnlightmode.active {
+    transform: scale(0);
+}
+
+
+
