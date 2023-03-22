@@ -6,13 +6,17 @@ const skill = document.querySelector('#skill');
 const gallery = document.querySelector('#gallery');
 const contact = document.querySelector('#contact');
 const footer = document.querySelector('.footer');
+
 var svghead = document.getElementById("svgheader");
 var svgabt = document.getElementById("svgabout");
 var svgskill = document.getElementById("svgskill");
 var svggal = document.getElementById("svggallery");
 var svgcont = document.getElementById("svgcontact");
+
 var btnin = document.getElementById("btnInner");
+
 var foot = document.getElementById("foot");
+
 var yt = document.getElementById("yt");
 var twt = document.getElementById("twt");
 var ig = document.getElementById("ig");
