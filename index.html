@@ -26,19 +26,19 @@
                     <nav id="nav-menu" class="hidden absolute py-5 bg-white shadow-lg rounded-lg max-w-[250px] w-full right-4 top-full lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded">
                         <ul class="block lg:flex">
                             <li class="group">
-                                <a href="#home" class="text-base text-dark py-2 mx-2 flex group-hover:text-primary">Home</a>
+                                <a href="#home" class="text-base text-dark py-2 mx-2 flex group-hover:text-primary transition duration-300">Home</a>
                             </li>
                             <li class="group">
-                                <a href="#about" class="text-base text-dark py-2 mx-2 flex group-hover:text-primary">About</a>
+                                <a href="#about" class="text-base text-dark py-2 mx-2 flex group-hover:text-primary transition duration-300">About</a>
                             </li>
                             <li class="group">
-                                <a href="#project" class="text-base text-dark py-2 mx-2 flex group-hover:text-primary">Project</a>
+                                <a href="#project" class="text-base text-dark py-2 mx-2 flex group-hover:text-primary transition duration-300">Project</a>
                             </li>
                             <li class="group">
-                                <a href="#skill" class="text-base text-dark py-2 mx-2 flex group-hover:text-primary">Skill</a>
+                                <a href="#skill" class="text-base text-dark py-2 mx-2 flex group-hover:text-primary transition duration-300">Skill</a>
                             </li>
                             <li class="group">
-                                <a href="#contact" class="text-base text-dark py-2 mx-2 flex group-hover:text-primary">Contact</a>
+                                <a href="#contact" class="text-base text-dark py-2 mx-2 flex group-hover:text-primary transition duration-300">Contact</a>
                             </li>
                         </ul>
                     </nav>
@@ -61,12 +61,9 @@
                 </div>
                 <div class="w-full self-end px-4 lg:w-1/2">
                     <div class="relative mt-10 lg:mt-9 lg:right-0"> 
-                        <img src="dist/img/antipole.png" alt="Antipole" class="max-w-full mx-auto">
-                        <span class="absolute -bottom-0 -z-10 left-1/2 -translate-x-1/2 md:scale-100">
-                            <svg width="350" heigth="500" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                                <path fill="#0EA5E9" d="M50,-63.7C61.5,-49.9,65.3,-31,66.9,-13.1C68.5,4.8,67.7,21.7,61.3,37.7C54.8,53.7,42.7,68.8,26.5,76C10.3,83.3,-9.8,82.8,-25.9,75.2C-42,67.6,-54.1,52.9,-63.1,36.7C-72.2,20.5,-78.2,2.8,-77.8,-16.1C-77.3,-35.1,-70.4,-55.4,-56.3,-68.7C-42.3,-82.1,-21.1,-88.5,-1,-87.4C19.2,-86.2,38.4,-77.5,50,-63.7Z" transform="translate(100 100) scale(1.1)" />
-                            </svg>
-                        </span>
+                        <div class="md:float-none lg:ml-24">
+                            <div class="box"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -240,6 +237,13 @@
     <!-- Footer-END -->
 
 
+    <!-- Back-to-Top -->
+    <div class="fixed z-30 bottom-0 right-0 mr-10 mb-10">
+        <a href="#home" id="back2top" class="opacity-0 text-white font-bold text-5xl block bg-primary rounded-full bg-opacity-50 lg:text-7xl md:text-6xl ease-in animate-bounce transition-opacity duration-300">
+            <span class="hidden">Back to Top</span> <i class="bi bi-arrow-up-circle"></i>
+        </a>
+    </div>
+    <!-- Back-to-Top-END -->
     <script src="dist/js/script.js"></script>
 
 </body>

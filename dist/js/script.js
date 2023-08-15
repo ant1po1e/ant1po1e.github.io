@@ -20,21 +20,40 @@ hamburger.addEventListener('click', function() {
 
 
 const scriptURL = "https://script.google.com/macros/s/AKfycbx0eCzzKaKtZ2gIwprnJ-5xtkpoM0kqcLv5uoVVUVZZMgIsJ6Fn6YHJ5OzUIOcpIcJV/exec";
-        const form = document.forms["Ant1po1e-contact-form"];
-        const btnSend = document.querySelector(".btn-send");
-        const alert = document.querySelector(".alert")
-        
-        form.addEventListener("submit", (e) => {
-            e.preventDefault();
-            alert.classList.add('hidden')
-                fetch(scriptURL, {
-                    method: "POST",
-                    body: new FormData(form),
-                })
-            .then((response) => {
-                alert.classList.remove('hidden')
-                form.reset();
-                console.log("Success!", response);
+const form = document.forms["Ant1po1e-contact-form"];
+const btnSend = document.querySelector(".btn-send");
+const alert = document.querySelector(".alert")
+
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        alert.classList.add('hidden')
+        fetch(scriptURL, {
+            method: "POST",
+            body: new FormData(form),
             })
-            .catch((error) => console.error("Error!", error.message));
-        });
+        .then((response) => {
+            alert.classList.remove('hidden')
+            form.reset();
+            console.log("Success!", response);
+            })
+        .catch((error) => console.error("Error!", error.message));
+    });
+
+
+const back2Top = document.querySelector('#back2top');
+
+    window.addEventListener('scroll', () =>{
+        if (window.pageYOffset > 200) {
+            back2Top.classList.remove('opacity-0');
+            back2Top.classList.add('opacity-100');
+        } else {
+            back2Top.classList.add('opacity-0');
+            back2Top.classList.remove('opacity-100');
+        }
+    });
+
+    back2Top.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scroll({top: 0, left: 0, behavior: 'smooth'});
+    });
+
