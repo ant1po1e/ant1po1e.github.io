@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,19 +25,19 @@
                     <nav id="nav-menu" class="hidden absolute py-5 bg-white shadow-lg rounded-lg max-w-[250px] w-full right-4 top-full lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded">
                         <ul class="block lg:flex">
                             <li class="group">
-                                <a href="#home" id="home" class="text-base text-dark py-2 mx-2 flex group-hover:text-primary">Home</a>
+                                <a href="#home" class="text-base text-dark py-2 mx-2 flex group-hover:text-primary">Home</a>
                             </li>
                             <li class="group">
-                                <a href="#about" id="home" class="text-base text-dark py-2 mx-2 flex group-hover:text-primary">About</a>
+                                <a href="#about" class="text-base text-dark py-2 mx-2 flex group-hover:text-primary">About</a>
                             </li>
                             <li class="group">
-                                <a href="#project" id="home" class="text-base text-dark py-2 mx-2 flex group-hover:text-primary">Project</a>
+                                <a href="#project" class="text-base text-dark py-2 mx-2 flex group-hover:text-primary">Project</a>
                             </li>
                             <li class="group">
-                                <a href="#skill" id="home" class="text-base text-dark py-2 mx-2 flex group-hover:text-primary">Skill</a>
+                                <a href="#skill" class="text-base text-dark py-2 mx-2 flex group-hover:text-primary">Skill</a>
                             </li>
                             <li class="group">
-                                <a href="#contact" id="home" class="text-base text-dark py-2 mx-2 flex group-hover:text-primary">Contact</a>
+                                <a href="#contact" class="text-base text-dark py-2 mx-2 flex group-hover:text-primary">Contact</a>
                             </li>
                         </ul>
                     </nav>
@@ -51,7 +51,7 @@
     <!-- Home -->
     <section id="home" class="pt-20">
         <div class="container">
-            <div class="flex flex-wrap">
+            <div class="flex flex-wrap mb-3">
                 <div class="w-full self-center px-4 lg:w-1/2">
                     <h1 class="text-base font-semibold text-primary md:text-xl lg:text-2xl">Hello there 👋, My name is<span class="block font-bold text-dark text-4xl mt-1 lg:text-5xl">Antipole</span></h1>
                     <h2 class="font-medium text-slate-600 text-lg mb-5 lg:text-2xl">I'am a <span class="font-mono">Programmer</span></h2>
@@ -73,12 +73,12 @@
     </section>
     <!-- Home-END -->
 
-
+    <span id="about"></span>
     <hr class="mt-20 mb-20 mx-8 border-t-2 border-primary">
     
     
     <!-- About -->
-    <section id="about">
+    <section>
         <div class="container">
             <div class="flex flex-wrap">
                 <div class="w-full px-4 mb-10 lg:w-1/2">
@@ -93,12 +93,12 @@
     </section>
     <!-- About-END -->
 
-
+    <span id="project"></span>
     <hr class="mt-20 mb-20 mx-8 border-t-2 border-primary">
 
     
     <!-- Project -->
-    <section id="project">
+    <section>
         <div class="container">
             <div class="w-full px-4">
                 <div class="max-w-xl mx-auto text-center">
@@ -196,12 +196,12 @@
     </section>
     <!-- Project-END -->
 
-
+    <span id="skill"></span>
     <hr class="mt-20 mb-20 mx-8 border-t-2 border-primary">
     
     
     <!-- Skill -->
-    <section class="skill">
+    <section>
         <div class="container">
             <div class="w-full px-4">
                 <div class="max-w-xl mx-auto text-center">
@@ -212,34 +212,34 @@
     </section>
     <!-- Skill-END -->
     
-    
+    <span id="contact"></span>
     <hr class="mt-20 mb-20 mx-8 border-t-2 border-primary">
 
 
     <!-- Contact -->
-    <section id="contact" class="pb-20">
+    <section class="pb-20">
         <div class="container">
             <div class="w-full px-4">
                 <div class="max-w-xl mx-auto text-center">
-                    <h4 class="font-bold uppercase text-primary text-lg mb-3 lg:text-xl">Projects</h4>
+                    <h4 class="font-bold uppercase text-primary text-lg mb-3 lg:text-xl">Contact</h4>
                 </div>
-
-                <form>
+                
+                <form name="Ant1po1e-contact-form">
                     <div class="w-full lg:w-3/4 lg:mx-auto">
                         <div class="w-full px-4 mb-8">
-                            <label for="name" class="text-base font-bold text-primary">Nama</label>
-                            <input type="text" id="name" class="w-full bg-slate-200 text-dark p-3 rounded-xl focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary">
+                            <label for="name" class="text-base font-bold text-primary">Name</label>
+                            <input type="text" id="name" name="name" class="w-full bg-slate-200 text-dark p-3 rounded-xl focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary">
                         </div>
                         <div class="w-full px-4 mb-8">
                             <label for="email" class="text-base font-bold text-primary">Email</label>
-                            <input type="email" id="email" class="w-full bg-slate-200 text-dark p-3 rounded-xl focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary">
+                            <input type="email" id="email" name="email" class="w-full bg-slate-200 text-dark p-3 rounded-xl focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary">
                         </div>
                         <div class="w-full px-4 mb-8">
                             <label for="message" class="text-base font-bold text-primary">Message</label>
-                            <textarea type="text" id="message" class="w-full bg-slate-200 text-dark p-3 rounded-xl focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary"></textarea>
+                            <textarea type="text" id="message" name="message" class="w-full bg-slate-200 text-dark p-3 rounded-xl focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary"></textarea>
                         </div>
                         <div class="text-center mx-auto">
-                            <button  class="text-base font-semibold text-primary bg-white py-3 px-20 rounded-full shadow-lg inline-block border-2 border-primary hover:bg-sky-400 hover:text-white hover:scale-110 transition duration-300">Submit</button>
+                            <button id="submit" type="submit" class="btn-send text-base font-semibold text-primary bg-white py-3 px-20 rounded-full shadow-lg inline-block border-2 border-primary hover:bg-sky-400 hover:text-white hover:scale-110 transition duration-300">Submit <span class="alert hidden"><i class="bi bi-check-lg"></i></span></button>
                         </div> 
                     </div>
                 </form>
@@ -257,21 +257,22 @@
                     <h2 class=" font-semibold text-2xl text-primary mb-2">Have something to ask?</h2>
                     <h3>If you have any question, you can contact me on my social media</h3>
                     <div class="pt-2 flex flex-wrap justify-center gap-4 text-xl">
-                        <a href="" target="_blank" class="hover:scale-150 hover:text-primary transition duration-300"><i class="bi bi-instagram"></i></a>
-                        <a href="" target="_blank" class="hover:scale-150 hover:text-primary transition duration-300"><i class="bi bi-twitter"></i></a>
-                        <a href="" target="_blank" class="hover:scale-150 hover:text-primary transition duration-300"><i class="bi bi-linkedin"></i></a>
-                        <a href="" target="_blank" class="hover:scale-150 hover:text-primary transition duration-300"><i class="bi bi-github"></i></a>
+                        <a href="https://www.instagram.com/_ant1po1e" target="_blank" class="hover:scale-150 hover:text-primary transition duration-300"><i class="bi bi-instagram"></i></a>
+                        <a href="https://twitter.com/apolantipole" target="_blank" class="hover:scale-150 hover:text-primary transition duration-300"><i class="bi bi-twitter"></i></a>
+                        <a href="#" target="_blank" class="hover:scale-150 hover:text-primary transition duration-300"><i class="bi bi-linkedin"></i></a>
+                        <a href="https://github.com/ant1po1e" target="_blank" class="hover:scale-150 hover:text-primary transition duration-300"><i class="bi bi-github"></i></a>
                     </div>
                 </div>
             </div>
         </div>
     </footer>
     <div class="text-center w-full px-4 py-4 bg-dark border-t-2 border-t-primary text-white">
-        <p>Made with ♥ by <a href="https://github.com/ant1po1e" class="text-primary">Ant1po1e</a> | Copyright © 2023
-        </p>
+        <p>Made with ♥ by <a href="https://github.com/ant1po1e" class="text-primary">Ant1po1e</a> | Copyright © 2023</p>
     </div>
     <!-- Footer-END -->
 
+
     <script src="dist/js/script.js"></script>
+
 </body>
 </html>
