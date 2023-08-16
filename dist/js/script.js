@@ -57,3 +57,22 @@ const back2Top = document.querySelector('#back2top');
         window.scroll({top: 0, left: 0, behavior: 'smooth'});
     });
 
+
+window.addEventListener('click', function(e) {
+    if(e.target != hamburger && e.target != navMenu) {
+        hamburger.classList.remove('hamburger-active');
+        navMenu.classList.add('hidden');
+    }
+});
+
+
+const darkToggle = document.querySelector('#dark-toggle');
+const html = document.querySelector('html');
+
+darkToggle.addEventListener('click', function() {
+    if (darkToggle.checked) {
+        html.classList.remove('dark');
+    } else {
+        html.classList.add('dark');
+    }
+});
