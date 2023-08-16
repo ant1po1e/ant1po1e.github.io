@@ -63,3 +63,61 @@ window.addEventListener('click', function(e) {
         navMenu.classList.add('hidden');
     }
 });
+
+
+function sleep(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+const phrases = ["Full Stack Developer", "Game Developer", "Photographer"];
+const el = document.getElementById("typewriter");
+
+let sleepTime = 100;
+
+let curPhraseIndex = 0;
+
+const writeLoop = async () => { while (true) {
+    let curWord = phrases[curPhraseIndex];
+
+    for (let i = 0; i < curWord.length; i++) {
+        el.innerText = curWord.substring(0, i + 1);
+        await sleep(sleepTime);
+    }
+
+    await sleep(sleepTime * 10);
+
+    for (let i = curWord.length; i > 0; i--) {
+        el.innerText = curWord.substring(0, i - 1);
+        await sleep(sleepTime);
+    }
+
+    await sleep(sleepTime * 5);
+
+    if (curPhraseIndex === phrases.length - 1) {
+        curPhraseIndex = 0;
+    } else {
+        curPhraseIndex++;
+    }
+    }
+};
+
+writeLoop();
+
+
+const framework = document.querySelector('#framework');
+const engine = document.querySelector('#engine');
+const showBtn = document.querySelector('#show-btn');
+
+showBtn.addEventListener('click', () => {
+    showBtn.classList.toggle('active');
+
+    if (showBtn.classList.contains('active')) {
+        framework.classList.remove('hidden');
+        engine.classList.remove('hidden');
+        showBtn.innerHTML = 'See less..';
+    } else {
+        framework.classList.add('hidden');
+        engine.classList.add('hidden');
+        showBtn.innerHTML = 'See more..';
+    }
+});
