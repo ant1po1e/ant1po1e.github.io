@@ -55,7 +55,8 @@
             <div class="flex flex-wrap mb-3">
                 <div class="w-full self-center px-4 lg:w-1/2">
                     <h1 class="text-base font-semibold text-primary md:text-xl lg:text-2xl">Hello there 👋, My name is<span class="block font-bold text-dark text-4xl mt-1 lg:text-5xl dark:text-white">Antipole</span></h1>
-                    <h2 class="font-medium text-secondary text-lg mb-5 lg:text-2xl">I'am a <span class="font-mono">Programmer</span></h2>
+                    <h2 class="font-medium text-secondary text-lg mb-5 lg:text-2xl">I'am a <span id="typewriter" class="font-mono font-bold"></span><span id="cursor" class="text-primary font-bold">|</span>
+                    </h2>
                     <p class="font-medium text-secondary mb-10 leading-relaxed lg:text-lg">A passionate Game Developer and Full Stack Developer from SMK Muhammadiyah 1 Sukoharjo.</p>
                     <a href="dist/pdf/cv.pdf" target="_blank" class="text-base font-semibold text-primary bg-white py-3 px-8 rounded-full shadow-lg inline-block border-2 border-primary hover:bg-sky-400 hover:text-white hover:scale-110 hover:rotate-6 transition duration-300 dark:bg-dark dark:hover:bg-primary">Download CV</a>
                 </div>
@@ -258,5 +259,40 @@
     <!-- Back-to-Top-END -->
     <script src="dist/js/script.js"></script>
 
+    <script>
+        const phrases = ["Full Stack Developer", "Game Developer", "Photographer"];
+        const el = document.getElementById("typewriter");
+
+        let sleepTime = 100;
+
+        let curPhraseIndex = 0;
+
+        const writeLoop = async () => { while (true) {
+            let curWord = phrases[curPhraseIndex];
+
+            for (let i = 0; i < curWord.length; i++) {
+                el.innerText = curWord.substring(0, i + 1);
+                await sleep(sleepTime);
+            }
+
+            await sleep(sleepTime * 10);
+
+            for (let i = curWord.length; i > 0; i--) {
+                el.innerText = curWord.substring(0, i - 1);
+                await sleep(sleepTime);
+            }
+
+            await sleep(sleepTime * 5);
+
+            if (curPhraseIndex === phrases.length - 1) {
+                curPhraseIndex = 0;
+            } else {
+                curPhraseIndex++;
+            }
+            }
+        };
+
+        writeLoop();
+    </script>
 </body>
 </html>

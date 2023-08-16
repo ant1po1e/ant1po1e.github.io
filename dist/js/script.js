@@ -1,3 +1,5 @@
+const { doc } = require("prettier");
+
 window.onscroll = function() {
     const header = document.querySelector('header');
     const fixedNav = header.offsetTop;
@@ -76,3 +78,8 @@ darkToggle.addEventListener('click', function() {
         html.classList.remove('dark');
     }
 });
+
+
+function sleep(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+}
