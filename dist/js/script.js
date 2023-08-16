@@ -1,5 +1,3 @@
-const { doc } = require("prettier");
-
 window.onscroll = function() {
     const header = document.querySelector('header');
     const fixedNav = header.offsetTop;
@@ -13,7 +11,7 @@ window.onscroll = function() {
 
 
 const hamburger = document.querySelector('#hamburger');
-const navMenu = document.querySelector('#nav-menu')
+const navMenu = document.querySelector('#nav-menu');
 
 hamburger.addEventListener('click', function() {
     hamburger.classList.toggle('hamburger-active');
@@ -22,9 +20,7 @@ hamburger.addEventListener('click', function() {
 
 
 const scriptURL = "https://script.google.com/macros/s/AKfycbx0eCzzKaKtZ2gIwprnJ-5xtkpoM0kqcLv5uoVVUVZZMgIsJ6Fn6YHJ5OzUIOcpIcJV/exec";
-const form = document.forms["Ant1po1e-contact-form"];
-const btnSend = document.querySelector(".btn-send");
-const alert = document.querySelector(".alert")
+const alert = document.querySelector(".alert");
 
     form.addEventListener("submit", (e) => {
         e.preventDefault();
@@ -78,8 +74,3 @@ darkToggle.addEventListener('click', function() {
         html.classList.remove('dark');
     }
 });
-
-
-function sleep(ms) {
-    return new Promise((resolve) => setTimeout(resolve, ms));
-}
