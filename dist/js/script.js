@@ -104,20 +104,33 @@ const writeLoop = async () => { while (true) {
 writeLoop();
 
 
-const framework = document.querySelector('#framework');
-const engine = document.querySelector('#engine');
-const showBtn = document.querySelector('#show-btn');
+const skillHidden = document.querySelector('#skill-hidden');
+const skillBtn = document.querySelector('#skill-show-btn');
 
-showBtn.addEventListener('click', () => {
-    showBtn.classList.toggle('active');
+skillBtn.addEventListener('click', () => {
+    skillBtn.classList.toggle('active');
 
-    if (showBtn.classList.contains('active')) {
-        framework.classList.remove('hidden');
-        engine.classList.remove('hidden');
-        showBtn.innerHTML = 'See less..';
+    if (skillBtn.classList.contains('active')) {
+        skillHidden.classList.remove('hidden');
+        skillBtn.innerHTML = 'See less...';
     } else {
-        framework.classList.add('hidden');
-        engine.classList.add('hidden');
-        showBtn.innerHTML = 'See more..';
+        skillHidden.classList.add('hidden');
+        skillBtn.innerHTML = 'See more...';
+    }
+});
+
+
+const projectHidden = document.querySelector('#project-hidden');
+const projectBtn = document.querySelector('#project-show-btn');
+
+projectBtn.addEventListener('click', () => {
+    projectBtn.classList.toggle('active');
+
+    if (projectBtn.classList.contains('active')) {
+        projectHidden.classList.remove('hidden');
+        projectBtn.innerHTML = 'See less...';
+    } else {
+        projectHidden.classList.add('hidden');
+        projectBtn.innerHTML = 'See more...';
     }
 });
