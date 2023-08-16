@@ -71,7 +71,7 @@ const html = document.querySelector('html');
 
 darkToggle.addEventListener('click', function() {
     if (darkToggle.checked) {
-        html.classList.addd('dark');
+        html.classList.add('dark');
     } else {
         html.classList.remove('dark');
     }
