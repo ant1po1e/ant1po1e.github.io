@@ -69,7 +69,7 @@ function sleep(ms) {
     return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-const phrases = ["Full Stack Developer", "Game Developer", "Photographer"];
+const phrases = ["Full Stack Developer", "Game Developer", "Photographer", "Youtuber"];
 const el = document.getElementById("typewriter");
 
 let sleepTime = 100;

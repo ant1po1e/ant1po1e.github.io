@@ -680,6 +680,10 @@ video {
   margin-top: 5rem;
 }
 
+.mt-5 {
+  margin-top: 1.25rem;
+}
+
 .block {
   display: block;
 }
@@ -1024,6 +1028,10 @@ video {
   padding-top: 1rem;
 }
 
+.pt-5 {
+  padding-top: 1.25rem;
+}
+
 .text-center {
   text-align: center;
 }
@@ -1335,6 +1343,10 @@ body {
 }
 
 @media (min-width: 640px) {
+  .sm\:mt-5 {
+    margin-top: 1.25rem;
+  }
+
   .sm\:flex {
     display: flex;
   }
@@ -1349,6 +1361,10 @@ body {
 
   .sm\:justify-center {
     justify-content: center;
+  }
+
+  .sm\:pt-5 {
+    padding-top: 1.25rem;
   }
 }
 
