@@ -1,20 +1,48 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="dist/output.css">
+    <link rel="stylesheet" href="dist/preloader.css">
     <link rel="icon" type="image/x-icon" href="dist/img/favicon.ico">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <title>Portofolio | Ant1po1e</title>
 </head>
+
+
 <body class="bg-dark selection:bg-slate-100 selection:text-dark">
+    <!-- Pre-loader -->
+    <div id="preloader">
+        <div id="loader" class="justify-center items-center flex h-screen">
+            <div class="loadingio-spinner-double-ring-yvblxc851k">
+                <div class="ldio-hc1lg81h6f6">
+                    <div></div>
+                    <div></div>
+                    <div>
+                        <div></div>
+                    </div>
+                    <div>
+                        <div></div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h4 class="font-bold uppercase text-white text-md mb-3 text-3xl">Loading</h4>
+            </div>
+        </div>
+    </div>
+    <!-- Pre-loader-END -->
+
+
     <!-- Navbar -->
     <header class="bg-transparent absolute top-0 left-0 w-full flex items-center z-10 border-b-2 border-primary">
         <div class="container">
             <div class="flex items-center justify-between relative">
                 <div class="px-4">
-                    <a href="#home" class="text-base font-semibold text-primary bg-dark py-2 px-4 my-3 rounded-tl-lg rounded-br-lg border-2 border-primary inline-block">Ant1po1e</a>
+                    <a href="#home"
+                        class="text-base font-semibold text-primary bg-dark py-2 px-4 my-3 rounded-tl-lg rounded-br-lg border-2 border-primary inline-block">Ant1po1e</a>
                 </div>
                 <div class="flex items-center px-4">
                     <button id="hamburger" name="hamburger" type="button" class="block absolute right-4 lg:hidden">
@@ -23,22 +51,28 @@
                         <span class="hamburger-line origin-bottom-left"></span>
                     </button>
 
-                    <nav id="nav-menu" class="hidden absolute py-5 bg-dark border border-primary md:border-none shadow-lg rounded-lg max-w-[250px] w-full right-4 top-full lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-lg lg:rounded">
+                    <nav id="nav-menu"
+                        class="hidden absolute py-5 bg-dark border border-primary md:border-none shadow-lg rounded-lg max-w-[250px] w-full right-4 top-full lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-lg lg:rounded">
                         <ul class="block lg:flex">
                             <li class="group">
-                                <a href="#home" class="text-base text-white py-2 mx-5 flex group-hover:text-primary transition duration-300">Home</a>
+                                <a href="#home"
+                                    class="text-base text-white py-2 mx-5 flex group-hover:text-primary transition duration-300">Home</a>
                             </li>
                             <li class="group">
-                                <a href="#about" class="text-base text-white py-2 mx-5 flex group-hover:text-primary transition duration-300">About</a>
+                                <a href="#about"
+                                    class="text-base text-white py-2 mx-5 flex group-hover:text-primary transition duration-300">About</a>
                             </li>
                             <li class="group">
-                                <a href="#project" class="text-base text-white py-2 mx-5 flex group-hover:text-primary transition duration-300">Project</a>
+                                <a href="#project"
+                                    class="text-base text-white py-2 mx-5 flex group-hover:text-primary transition duration-300">Project</a>
                             </li>
                             <li class="group">
-                                <a href="#skill" class="text-base text-white py-2 mx-5 flex group-hover:text-primary transition duration-300">Skill</a>
+                                <a href="#skill"
+                                    class="text-base text-white py-2 mx-5 flex group-hover:text-primary transition duration-300">Skill</a>
                             </li>
                             <li class="group">
-                                <a href="#contact" class="text-base text-white py-2 mx-5 flex group-hover:text-primary transition duration-300">Contact</a>
+                                <a href="#contact"
+                                    class="text-base text-white py-2 mx-5 flex group-hover:text-primary transition duration-300">Contact</a>
                             </li>
                         </ul>
                     </nav>
@@ -54,14 +88,20 @@
         <div class="container">
             <div class="flex flex-wrap mb-3">
                 <div class="w-full self-center px-4 lg:w-1/2">
-                    <h1 class="text-base font-semibold text-primary md:text-xl lg:text-2xl pt-5">Hello there 👋, My name is<span class="block font-bold text-white text-4xl mt-1 lg:text-5xl">Antipole</span></h1>
-                    <h2 class="font-medium text-secondary text-lg mb-5 mt-5 lg:text-2xl">I'am a <span id="typewriter" class="font-mono font-bold text-primary"></span><span id="cursor" class="text-primary font-bold">|</span>
+                    <h1 class="text-base font-semibold text-primary md:text-xl lg:text-2xl pt-5">Hello there 👋, My name
+                        is<span class="block font-bold text-white text-4xl mt-1 lg:text-5xl">Antipole</span></h1>
+                    <h2 class="font-medium text-secondary text-lg mb-5 mt-5 lg:text-2xl">I'am a <span id="typewriter"
+                            class="font-mono font-bold text-primary"></span><span id="cursor"
+                            class="text-primary font-bold">|</span>
                     </h2>
-                    <p class="font-medium text-slate-400 mb-10 leading-relaxed lg:text-lg">A passionate Game Developer and Full Stack Developer from SMK Muhammadiyah 1 Sukoharjo.</p>
-                    <a href="dist/pdf/cv.pdf" target="_blank" class="text-base font-semibold text-primary bg-slate-900 py-3 px-8 rounded-full shadow-lg inline-block border-2 border-primary hover:bg-sky-400 hover:text-white hover:scale-110 hover:rotate-6 transition duration-300">Download CV</a>
+                    <p class="font-medium text-slate-400 mb-10 leading-relaxed lg:text-lg">A passionate Game Developer
+                        and Full Stack Developer from SMK Muhammadiyah 1 Sukoharjo.</p>
+                    <a href="dist/pdf/cv.pdf" target="_blank"
+                        class="text-base font-semibold text-primary bg-slate-900 py-3 px-8 rounded-full shadow-lg inline-block border-2 border-primary hover:bg-sky-400 hover:text-white hover:scale-110 hover:rotate-6 transition duration-300">Download
+                        CV</a>
                 </div>
                 <div class="w-full self-end px-4 lg:w-1/2">
-                    <div class="relative mt-10 lg:mt-9 lg:right-0"> 
+                    <div class="relative mt-10 lg:mt-9 lg:right-0">
                         <div class="md:float-none lg:ml-24">
                             <div class="box"></div>
                         </div>
@@ -75,18 +115,22 @@
 
     <span id="about"></span>
     <hr class="mt-20 mb-20 mx-8 border-t-2 border-primary">
-    
-    
+
+
     <!-- About -->
     <section>
         <div class="container pt-10 bg-slate-700 rounded-xl shadow-lg">
             <div class="flex flex-wrap">
                 <div class="w-full px-4 mb-10 lg:w-1/2">
                     <h4 class="font-bold uppercase text-primary text-lg mb-3 lg:text-xl">About Me</h4>
-                    <p class="font-medium text-base text-slate-300 max-w-xl lg:text-lg">Konrushi~ My name is Apriansyah Yudha Pratama, you can call me Yudha. A Web Programming & Game Developing Student at SMK Muhammadiyah 1 Sukoharjo. I love exploring new stuff especially in technologies.</p>
+                    <p class="font-medium text-base text-slate-300 max-w-xl lg:text-lg">Konrushi~ My name is Apriansyah
+                        Yudha Pratama, you can call me Yudha. A Web Programming & Game Developing Student at SMK
+                        Muhammadiyah 1 Sukoharjo. I love exploring new stuff especially in technologies.</p>
                 </div>
                 <div class="w-full px-4 mb-10 lg:w-1/2 lg:pt-10">
-                    <p class="font-medium text-base text-slate-300 max-w-xl lg:text-lg">My hobby is playing a rhythm game (e.g. osu!, Etterna, or Phigros), watching anime, and reading articles. I like coding and making a game also.</p>
+                    <p class="font-medium text-base text-slate-300 max-w-xl lg:text-lg">My hobby is playing a rhythm
+                        game (e.g. osu!, Etterna, or Phigros), watching anime, and reading articles. I like coding and
+                        making a game also.</p>
                 </div>
             </div>
         </div>
@@ -96,84 +140,105 @@
     <span id="project"></span>
     <hr class="mt-20 mb-20 mx-8 border-t-2 border-primary">
 
-    
+
     <!-- Project -->
     <section>
         <div class="container pt-10 pb-10 bg-slate-700 rounded-xl shadow-lg>
-            <div class="w-full px-4">
-                <div class="max-w-xl mx-auto text-center">
-                    <h4 class="font-bold uppercase text-primary text-lg mb-3 lg:text-xl">Projects</h4>
-                </div>
+            <div class=" w-full px-4">
+            <div class="max-w-xl mx-auto text-center">
+                <h4 class="font-bold uppercase text-primary text-lg mb-3 lg:text-xl">Projects</h4>
+            </div>
 
-                <div class="gap-5 sm:flex sm:flex-wrap sm:justify-center">
-                    <div class="rounded-xl bg-slate-400 shadow-lg overflow-hidden hover:scale-105 hover:shadow-dark transition duration-300 mb-10 sm:w-64 md:2-80 lg:w-96">
-                        <img src="dist/img/project1.png" alt="" class="w-full rounded-xl">
-                        <div class="px-6 py-4">
-                            <div class="font-bold text-xl mb-2 text-dark">Guestbook</div>
-                            <p class="font-medium text-dark mb-2 leading-relaxed lg:text-lg">Guestbook with basic CRUD including register & login system.</p>
+            <div class="gap-5 sm:flex sm:flex-wrap sm:justify-center">
+                <div
+                    class="rounded-xl bg-slate-400 shadow-lg overflow-hidden hover:scale-105 hover:shadow-dark transition duration-300 mb-10 sm:w-64 md:2-80 lg:w-96">
+                    <img src="dist/img/project1.png" alt="" class="w-full rounded-xl">
+                    <div class="px-6 py-4">
+                        <div class="font-bold text-xl mb-2 text-dark">Guestbook</div>
+                        <p class="font-medium text-dark mb-2 leading-relaxed lg:text-lg">Guestbook with basic CRUD
+                            including register & login system.</p>
 
-                            <div class="text-base text-white rounded-md bg-primary py-1 px-3 my-3 inline-block">HTML</div>
-                            <div class="text-base text-white rounded-md bg-primary py-1 px-3 my-3 inline-block">CSS</div>
-                            <div class="text-base text-white rounded-md bg-primary py-1 px-3 my-3 inline-block">Bootstrap</div>
-                            <div class="text-base text-white rounded-md bg-primary py-1 px-3 my-3 inline-block">PHP</div>
-
-                            <div class="block">
-                                <a href="https://github.com/ant1po1e/guestbook" target="_blank" class="text-base font-semibold text-primary bg-white py-2 px-3 rounded-md shadow-lg inline-block border-2 border-primary hover:bg-slate-200 transition duration-300">Repository <i class="bi bi-arrow-right"></i></a>
-                            </div>
+                        <div class="text-base text-white rounded-md bg-primary py-1 px-3 my-3 inline-block">HTML</div>
+                        <div class="text-base text-white rounded-md bg-primary py-1 px-3 my-3 inline-block">CSS</div>
+                        <div class="text-base text-white rounded-md bg-primary py-1 px-3 my-3 inline-block">Bootstrap
                         </div>
-                    </div>
+                        <div class="text-base text-white rounded-md bg-primary py-1 px-3 my-3 inline-block">PHP</div>
 
-                    <div class="rounded-xl shadow-lg bg-slate-400 overflow-hidden hover:scale-105 hover:shadow-dark transition duration-300 mb-10 sm:w-64 md:2-80 lg:w-96">
-                        <img src="dist/img/project2.png" alt="" class="w-full rounded-xl">
-                        <div class="px-6 py-4">
-                            <div class="font-bold text-xl mb-2 text-dark">Song Album Galery</div>
-                            <p class="font-medium text-dark mb-2 leading-relaxed lg:text-lg">A website that contains artist/band biodata along with their songs and albums.</p>
-                            
-                            <div class="text-base text-white rounded-md bg-primary py-1 px-3 my-3 inline-block">HTML</div>
-                            <div class="text-base text-white rounded-md bg-primary py-1 px-3 my-3 inline-block">CSS</div>
-                            <div class="text-base text-white rounded-md bg-primary py-1 px-3 my-3 inline-block">Bootstrap</div>
-    
-                            <div class="block">
-                                <a href="https://github.com/ant1po1e/apolitz" target="_blank" class="text-base font-semibold text-primary bg-white py-2 px-3 rounded-md shadow-lg inline-block border-2 border-primary hover:bg-slate-200 transition duration-300">Repository <i class="bi bi-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="rounded-xl shadow-lg bg-slate-400 overflow-hidden hover:scale-105 hover:shadow-dark transition duration-300 mb-10 sm:w-64 md:2-80 lg:w-96">
-                        <img src="dist/img/project3.png" alt="" class="w-full rounded-xl">
-                        <div class="px-6 py-4">
-                            <div class="font-bold text-xl mb-2 text-dark">Gothicvania Platformer Game</div>
-                            <p class="font-medium text-dark mb-2 leading-relaxed lg:text-lg">2D RPG platformer game with gothic genre.</p>
-    
-                            <div class="text-base text-white rounded-md bg-primary py-1 px-3 my-3 inline-block">Unity</div>
-                            <div class="text-base text-white rounded-md bg-primary py-1 px-3 my-3 inline-block">C#</div>
-    
-                            <div class="block">
-                                <a href="https://github.com/ant1po1e/Gothicvania" target="_blank" class="text-base font-semibold text-primary bg-white py-2 px-3 rounded-md shadow-lg inline-block border-2 border-primary hover:bg-slate-200 transition duration-300">Repository <i class="bi bi-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div id="project-hidden" class="hidden">
-                        <div class="rounded-xl bg-slate-400 shadow-lg overflow-hidden hover:scale-105 hover:shadow-dark transition duration-300 mb-10 sm:w-64 md:2-80 lg:w-96">
-                            <img src="dist/img/project4.png" alt="" class="w-full rounded-xl">
-                            <div class="px-6 py-4">
-                                <div class="font-bold text-xl mb-2 text-dark">Find the Key Platformer Game</div>
-                                <p class="font-medium text-dark mb-2 leading-relaxed lg:text-lg">2D Platformer puzzle game.</p>
-        
-                                <div class="text-base text-white rounded-md bg-primary py-1 px-3 my-3 inline-block">Construct 2</div>
-        
-                                <div class="block">
-                                    <a href="https://github.com/ant1po1e/Find-The-Key" target="_blank" class="text-base font-semibold text-primary bg-white py-2 px-3 rounded-md shadow-lg inline-block border-2 border-primary hover:bg-slate-200 transition duration-300">Repository <i class="bi bi-arrow-right"></i></a>
-                                </div>
-                            </div>
+                        <div class="block">
+                            <a href="https://github.com/ant1po1e/guestbook" target="_blank"
+                                class="text-base font-semibold text-primary bg-white py-2 px-3 rounded-md shadow-lg inline-block border-2 border-primary hover:bg-slate-200 transition duration-300">Repository
+                                <i class="bi bi-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
-                <div class="text-center mx-auto">
-                    <button id="project-show-btn" class="text-base font-semibold text-primary bg-slate-900 py-3 px-20 rounded-full shadow-lg inline-block border-2 border-primary hover:bg-sky-400 hover:text-white hover:scale-110 transition duration-300">See more..</button>
-                </div> 
+
+                <div
+                    class="rounded-xl shadow-lg bg-slate-400 overflow-hidden hover:scale-105 hover:shadow-dark transition duration-300 mb-10 sm:w-64 md:2-80 lg:w-96">
+                    <img src="dist/img/project2.png" alt="" class="w-full rounded-xl">
+                    <div class="px-6 py-4">
+                        <div class="font-bold text-xl mb-2 text-dark">Song Album Galery</div>
+                        <p class="font-medium text-dark mb-2 leading-relaxed lg:text-lg">A website that contains
+                            artist/band biodata along with their songs and albums.</p>
+
+                        <div class="text-base text-white rounded-md bg-primary py-1 px-3 my-3 inline-block">HTML</div>
+                        <div class="text-base text-white rounded-md bg-primary py-1 px-3 my-3 inline-block">CSS</div>
+                        <div class="text-base text-white rounded-md bg-primary py-1 px-3 my-3 inline-block">Bootstrap
+                        </div>
+
+                        <div class="block">
+                            <a href="https://github.com/ant1po1e/apolitz" target="_blank"
+                                class="text-base font-semibold text-primary bg-white py-2 px-3 rounded-md shadow-lg inline-block border-2 border-primary hover:bg-slate-200 transition duration-300">Repository
+                                <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="rounded-xl shadow-lg bg-slate-400 overflow-hidden hover:scale-105 hover:shadow-dark transition duration-300 mb-10 sm:w-64 md:2-80 lg:w-96">
+                    <img src="dist/img/project3.png" alt="" class="w-full rounded-xl">
+                    <div class="px-6 py-4">
+                        <div class="font-bold text-xl mb-2 text-dark">Gothicvania Platformer Game</div>
+                        <p class="font-medium text-dark mb-2 leading-relaxed lg:text-lg">2D RPG platformer game with
+                            gothic genre.</p>
+
+                        <div class="text-base text-white rounded-md bg-primary py-1 px-3 my-3 inline-block">Unity</div>
+                        <div class="text-base text-white rounded-md bg-primary py-1 px-3 my-3 inline-block">C#</div>
+
+                        <div class="block">
+                            <a href="https://github.com/ant1po1e/Gothicvania" target="_blank"
+                                class="text-base font-semibold text-primary bg-white py-2 px-3 rounded-md shadow-lg inline-block border-2 border-primary hover:bg-slate-200 transition duration-300">Repository
+                                <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div id="project-hidden" class="hidden">
+                    <div
+                        class="rounded-xl bg-slate-400 shadow-lg overflow-hidden hover:scale-105 hover:shadow-dark transition duration-300 mb-10 sm:w-64 md:2-80 lg:w-96">
+                        <img src="dist/img/project4.png" alt="" class="w-full rounded-xl">
+                        <div class="px-6 py-4">
+                            <div class="font-bold text-xl mb-2 text-dark">Find the Key Platformer Game</div>
+                            <p class="font-medium text-dark mb-2 leading-relaxed lg:text-lg">2D Platformer puzzle game.
+                            </p>
+
+                            <div class="text-base text-white rounded-md bg-primary py-1 px-3 my-3 inline-block">
+                                Construct 2</div>
+
+                            <div class="block">
+                                <a href="https://github.com/ant1po1e/Find-The-Key" target="_blank"
+                                    class="text-base font-semibold text-primary bg-white py-2 px-3 rounded-md shadow-lg inline-block border-2 border-primary hover:bg-slate-200 transition duration-300">Repository
+                                    <i class="bi bi-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mx-auto">
+                <button id="project-show-btn"
+                    class="text-base font-semibold text-primary bg-slate-900 py-3 px-20 rounded-full shadow-lg inline-block border-2 border-primary hover:bg-sky-400 hover:text-white hover:scale-110 transition duration-300">See
+                    more..</button>
+            </div>
         </div>
     </section>
     <!-- Project-END -->
@@ -181,8 +246,8 @@
 
     <span id="skill"></span>
     <hr class="mt-20 mb-20 mx-8 border-t-2 border-primary">
-    
-    
+
+
     <!-- Skill -->
     <section>
         <div class="container pt-10 pb-10 bg-slate-700 rounded-xl shadow-lg">
@@ -202,57 +267,63 @@
                                 <div class="font-bold text-md text-white">HTML</div>
                             </div>
                             <div class="w-full bg-gray-300 rounded-full dark:bg-gray-700 shadow-lg">
-                                <div class="bg-orange-500 text-xs font-bold text-white text-center p-0.5 leading-none rounded-full" style="width: 90%"> 90%</div>
+                                <div class="bg-orange-500 text-xs font-bold text-white text-center p-0.5 leading-none rounded-full"
+                                    style="width: 90%"> 90%</div>
                             </div>
                         </div>
-    
+
                         <div class="mb-10 sm:w-64 md:2-80 lg:w-96">
                             <div class="pt-4 pb-2">
                                 <div class="font-bold text-md text-white">CSS</div>
                             </div>
                             <div class="w-full bg-gray-300 rounded-full dark:bg-gray-700 shadow-lg">
-                                <div class="bg-sky-400 text-xs font-bold text-dark text-center p-0.5 leading-none rounded-full" style="width: 85%"> 85%</div>
+                                <div class="bg-sky-400 text-xs font-bold text-dark text-center p-0.5 leading-none rounded-full"
+                                    style="width: 85%"> 85%</div>
                             </div>
                         </div>
-    
+
                         <div class="mb-10 sm:w-64 md:2-80 lg:w-96">
                             <div class="pt-4 pb-2">
                                 <div class="font-bold text-md text-white">Javascript</div>
                             </div>
                             <div class="w-full bg-gray-300 rounded-full dark:bg-gray-700 shadow-lg">
-                                <div class="bg-amber-300 text-xs font-bold text-dark text-center p-0.5 leading-none rounded-full" style="width: 70%"> 70%</div>
+                                <div class="bg-amber-300 text-xs font-bold text-dark text-center p-0.5 leading-none rounded-full"
+                                    style="width: 70%"> 70%</div>
                             </div>
                         </div>
-    
+
                         <div class="mb-10 sm:w-64 md:2-80 lg:w-96">
                             <div class="pt-4 pb-2">
                                 <div class="font-bold text-md text-white">Go</div>
                             </div>
                             <div class="w-full bg-gray-300 rounded-full dark:bg-gray-700 shadow-lg">
-                                <div class="bg-sky-300 text-xs font-bold text-dark text-center p-0.5 leading-none rounded-full" style="width: 65%"> 65%</div>
+                                <div class="bg-sky-300 text-xs font-bold text-dark text-center p-0.5 leading-none rounded-full"
+                                    style="width: 65%"> 65%</div>
                             </div>
                         </div>
-    
+
                         <div class="mb-10 sm:w-64 md:2-80 lg:w-96">
                             <div class="pt-4 pb-2">
                                 <div class="font-bold text-md text-white">PHP</div>
                             </div>
                             <div class="w-full bg-gray-300 rounded-full dark:bg-gray-700 shadow-lg">
-                                <div class="bg-indigo-300 text-xs font-bold text-dark text-center p-0.5 leading-none rounded-full" style="width: 80%"> 80%</div>
+                                <div class="bg-indigo-300 text-xs font-bold text-dark text-center p-0.5 leading-none rounded-full"
+                                    style="width: 80%"> 80%</div>
                             </div>
                         </div>
-    
+
                         <div class="mb-10 sm:w-64 md:2-80 lg:w-96">
                             <div class="pt-4 pb-2">
                                 <div class="font-bold text-md text-white">C#</div>
                             </div>
                             <div class="w-full bg-gray-300 rounded-full dark:bg-gray-700 shadow-lg">
-                                <div class="bg-fuchsia-700 text-xs font-bold text-white text-center p-0.5 leading-none rounded-full" style="width: 85%"> 85%</div>
+                                <div class="bg-fuchsia-700 text-xs font-bold text-white text-center p-0.5 leading-none rounded-full"
+                                    style="width: 85%"> 85%</div>
                             </div>
                         </div>
                     </div>
                 </div>
-                
+
                 <div id="skill-hidden" class="hidden">
                     <!-- Framework -->
                     <div>
@@ -265,34 +336,38 @@
                                     <div class="font-bold text-md text-white">Laravel</div>
                                 </div>
                                 <div class="w-full bg-gray-300 rounded-full dark:bg-gray-700 shadow-lg">
-                                    <div class="bg-red-500 text-xs font-bold text-white text-center p-0.5 leading-none rounded-full" style="width: 85%"> 85%</div>
+                                    <div class="bg-red-500 text-xs font-bold text-white text-center p-0.5 leading-none rounded-full"
+                                        style="width: 85%"> 85%</div>
                                 </div>
                             </div>
-        
+
                             <div class="mb-10 sm:w-64 md:2-80 lg:w-96">
                                 <div class="pt-4 pb-2">
                                     <div class="font-bold text-md text-white">Bootstrap</div>
                                 </div>
                                 <div class="w-full bg-gray-300 rounded-full dark:bg-gray-700 shadow-lg">
-                                    <div class="bg-violet-600 text-xs font-bold text-white text-center p-0.5 leading-none rounded-full" style="width: 90%"> 90%</div>
+                                    <div class="bg-violet-600 text-xs font-bold text-white text-center p-0.5 leading-none rounded-full"
+                                        style="width: 90%"> 90%</div>
                                 </div>
                             </div>
-        
+
                             <div class="mb-10 sm:w-64 md:2-80 lg:w-96">
                                 <div class="pt-4 pb-2">
                                     <div class="font-bold text-md text-white">TailwindCSS</div>
                                 </div>
                                 <div class="w-full bg-gray-300 rounded-full dark:bg-gray-700 shadow-lg">
-                                    <div class="bg-cyan-400 text-xs font-bold text-dark text-center p-0.5 leading-none rounded-full" style="width: 85%"> 85%</div>
+                                    <div class="bg-cyan-400 text-xs font-bold text-dark text-center p-0.5 leading-none rounded-full"
+                                        style="width: 85%"> 85%</div>
                                 </div>
                             </div>
                         </div>
                     </div>
-    
+
                     <!-- Game Engine -->
                     <div>
                         <div class="max-w-xl mx-auto text-center">
-                            <h4 class="font-bold uppercase text-white text-md mb-3 lg:text-lg border-b-2">Game Engine</h4>
+                            <h4 class="font-bold uppercase text-white text-md mb-3 lg:text-lg border-b-2">Game Engine
+                            </h4>
                         </div>
                         <div class="gap-5 sm:flex sm:flex-wrap sm:justify-center mb-6">
                             <div class="mb-10 sm:w-64 md:2-80 lg:w-96">
@@ -300,16 +375,18 @@
                                     <div class="font-bold text-md text-white">Unity</div>
                                 </div>
                                 <div class="w-full bg-gray-300 rounded-full dark:bg-gray-700 shadow-lg">
-                                    <div class="bg-slate-600 text-xs font-bold text-white text-center p-0.5 leading-none rounded-full" style="width: 80%"> 80%</div>
+                                    <div class="bg-slate-600 text-xs font-bold text-white text-center p-0.5 leading-none rounded-full"
+                                        style="width: 80%"> 80%</div>
                                 </div>
                             </div>
-        
+
                             <div class="mb-10 sm:w-64 md:2-80 lg:w-96">
                                 <div class="pt-4 pb-2">
                                     <div class="font-bold text-md text-white">Construct 2</div>
                                 </div>
                                 <div class="w-full bg-gray-300 rounded-full dark:bg-gray-700 shadow-lg">
-                                    <div class="bg-slate-500 text-xs font-bold text-white text-center p-0.5 leading-none rounded-full" style="width: 95%"> 95%</div>
+                                    <div class="bg-slate-500 text-xs font-bold text-white text-center p-0.5 leading-none rounded-full"
+                                        style="width: 95%"> 95%</div>
                                 </div>
                             </div>
                         </div>
@@ -318,7 +395,8 @@
                     <!-- Design Platform -->
                     <div>
                         <div class="max-w-xl mx-auto text-center">
-                            <h4 class="font-bold uppercase text-white text-md mb-3 lg:text-lg border-b-2">Design Platform</h4>
+                            <h4 class="font-bold uppercase text-white text-md mb-3 lg:text-lg border-b-2">Design
+                                Platform</h4>
                         </div>
                         <div class="gap-5 sm:flex sm:flex-wrap sm:justify-center mb-6">
                             <div class="mb-10 sm:w-64 md:2-80 lg:w-96">
@@ -326,16 +404,18 @@
                                     <div class="font-bold text-md text-white">Canva</div>
                                 </div>
                                 <div class="w-full bg-gray-300 rounded-full dark:bg-gray-700 shadow-lg">
-                                    <div class="bg-purple-500 text-xs font-bold text-white text-center p-0.5 leading-none rounded-full" style="width: 70%">70%</div>
+                                    <div class="bg-purple-500 text-xs font-bold text-white text-center p-0.5 leading-none rounded-full"
+                                        style="width: 70%">70%</div>
                                 </div>
                             </div>
-        
+
                             <div class="mb-10 sm:w-64 md:2-80 lg:w-96">
                                 <div class="pt-4 pb-2">
                                     <div class="font-bold text-md text-white">Figma</div>
                                 </div>
                                 <div class="w-full bg-gray-300 rounded-full dark:bg-gray-700 shadow-lg">
-                                    <div class="bg-red-600 text-xs font-bold text-white text-center p-0.5 leading-none rounded-full" style="width: 50%">50%</div>
+                                    <div class="bg-red-600 text-xs font-bold text-white text-center p-0.5 leading-none rounded-full"
+                                        style="width: 50%">50%</div>
                                 </div>
                             </div>
                         </div>
@@ -344,13 +424,15 @@
 
             </div>
             <div class="text-center mx-auto">
-                <button id="skill-show-btn" class="text-base font-semibold text-primary bg-slate-900 py-3 px-20 rounded-full shadow-lg inline-block border-2 border-primary hover:bg-sky-400 hover:text-white hover:scale-110 transition duration-300">See more..</button>
-            </div> 
+                <button id="skill-show-btn"
+                    class="text-base font-semibold text-primary bg-slate-900 py-3 px-20 rounded-full shadow-lg inline-block border-2 border-primary hover:bg-sky-400 hover:text-white hover:scale-110 transition duration-300">See
+                    more..</button>
+            </div>
         </div>
     </section>
     <!-- Skill-END -->
-    
-    
+
+
     <span id="contact"></span>
     <hr class="mt-20 mb-20 mx-8 border-t-2 border-primary">
 
@@ -362,31 +444,36 @@
                 <div class="max-w-xl mx-auto text-center">
                     <h4 class="font-bold uppercase text-primary text-lg mb-3 lg:text-xl">Contact</h4>
                 </div>
-                
+
                 <form name="Ant1po1e-contact-form">
                     <div class="w-full lg:w-3/4 lg:mx-auto">
                         <div class="w-full px-4 mb-8">
                             <label for="name" class="text-base font-bold text-primary">Name</label>
-                            <input type="text" id="name" name="name" class="w-full bg-slate-500 text-white p-3 rounded-xl focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary">
+                            <input type="text" id="name" name="name"
+                                class="w-full bg-slate-500 text-white p-3 rounded-xl focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary">
                         </div>
                         <div class="w-full px-4 mb-8">
                             <label for="email" class="text-base font-bold text-primary">Email</label>
-                            <input type="email" id="email" name="email" class="w-full bg-slate-500 text-white p-3 rounded-xl focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary">
+                            <input type="email" id="email" name="email"
+                                class="w-full bg-slate-500 text-white p-3 rounded-xl focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary">
                         </div>
                         <div class="w-full px-4 mb-8">
                             <label for="message" class="text-base font-bold text-primary">Message</label>
-                            <textarea type="text" id="message" name="message" class="w-full bg-slate-500 text-white p-3 rounded-xl focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary"></textarea>
+                            <textarea type="text" id="message" name="message"
+                                class="w-full bg-slate-500 text-white p-3 rounded-xl focus:outline-none focus:ring-primary focus:ring-1 focus:border-primary"></textarea>
                         </div>
                         <div class="text-center mx-auto">
-                            <button id="submit" type="submit" class="text-base font-semibold text-primary bg-slate-900 py-3 px-20 rounded-full shadow-lg inline-block border-2 border-primary hover:bg-sky-400 hover:text-white hover:scale-110 transition duration-300">Submit <span class="alert hidden"><i class="bi bi-check-lg"></i></span></button>
-                        </div> 
+                            <button id="submit" type="submit"
+                                class="text-base font-semibold text-primary bg-slate-900 py-3 px-20 rounded-full shadow-lg inline-block border-2 border-primary hover:bg-sky-400 hover:text-white hover:scale-110 transition duration-300">Submit
+                                <span class="alert hidden"><i class="bi bi-check-lg"></i></span></button>
+                        </div>
                     </div>
                 </form>
             </div>
         </div>
     </section>
     <!-- Contact-END -->
-    
+
 
     <!-- Footer -->
     <footer class="bg-slate-900 p-12 border-t-2 border-primary">
@@ -396,25 +483,35 @@
                     <h2 class=" font-semibold text-2xl text-primary mb-2">Have something to ask?</h2>
                     <h3>If you have any question, you can contact me on my social media</h3>
                     <div class="pt-2 flex flex-wrap justify-center gap-4 text-xl">
-                        <a href="https://www.instagram.com/_ant1po1e" target="_blank" class="hover:scale-150 hover:text-primary transition duration-300"><i class="bi bi-instagram"></i></a>
-                        <a href="https://twitter.com/apolantipole" target="_blank" class="hover:scale-150 hover:text-primary transition duration-300"><i class="bi bi-twitter"></i></a>
-                        <a href="#" target="_blank" class="hover:scale-150 hover:text-primary transition duration-300"><i class="bi bi-linkedin"></i></a>
-                        <a href="https://github.com/ant1po1e" target="_blank" class="hover:scale-150 hover:text-primary transition duration-300"><i class="bi bi-github"></i></a>
+                        <a href="https://www.instagram.com/_ant1po1e" target="_blank"
+                            class="hover:scale-150 hover:text-primary transition duration-300"><i
+                                class="bi bi-instagram"></i></a>
+                        <a href="https://twitter.com/apolantipole" target="_blank"
+                            class="hover:scale-150 hover:text-primary transition duration-300"><i
+                                class="bi bi-twitter"></i></a>
+                        <a href="#" target="_blank"
+                            class="hover:scale-150 hover:text-primary transition duration-300"><i
+                                class="bi bi-linkedin"></i></a>
+                        <a href="https://github.com/ant1po1e" target="_blank"
+                            class="hover:scale-150 hover:text-primary transition duration-300"><i
+                                class="bi bi-github"></i></a>
                     </div>
                 </div>
             </div>
         </div>
     </footer>
     <div class="text-center w-full px-4 py-4 bg-slate-900 border-t-2 border-t-primary text-white">
-        <p>Made with ♥ by <a href="https://github.com/ant1po1e" target="_blank" class="text-primary">Ant1po1e</a> | Copyright © 2023</p>
+        <p>Made with ♥ by <a href="https://github.com/ant1po1e" target="_blank" class="text-primary">Ant1po1e</a> |
+            Copyright © 2023</p>
     </div>
     <!-- Footer-END -->
 
 
     <!-- Back-to-Top -->
     <div class="fixed z-30 bottom-0 right-0 mr-10 mb-10">
-        <a href="#home" id="back2top" class="justify-center items-center opacity-0 text-white font-bold text-5xl block bg-primary rounded-full bg-opacity-50 lg:text-7xl md:text-6xl ease-in animate-bounce transition-opacity duration-300">
-            <span><i class="bi bi-arrow-up-circle"></i></span> 
+        <a href="#home" id="back2top"
+            class="justify-center items-center opacity-0 text-white font-bold text-5xl block bg-primary rounded-full bg-opacity-50 lg:text-7xl md:text-6xl ease-in animate-bounce transition-opacity duration-300">
+            <span><i class="bi bi-arrow-up-circle"></i></span>
         </a>
     </div>
     <!-- Back-to-Top-END -->
@@ -422,4 +519,5 @@
 
     <script src="dist/js/script.js"></script>
 </body>
+
 </html>

@@ -1,0 +1,122 @@
+@keyframes ldio-hc1lg81h6f6 {
+                    0% {
+                        transform: rotate(0)
+                    }
+
+                    100% {
+                        transform: rotate(360deg)
+                    }
+                }
+
+                .ldio-hc1lg81h6f6 div {
+                    box-sizing: border-box !important
+                }
+
+                .ldio-hc1lg81h6f6>div {
+                    position: absolute;
+                    width: 144px;
+                    height: 144px;
+                    top: 28px;
+                    left: 28px;
+                    border-radius: 50%;
+                    border: 16px solid #000;
+                    border-color: #ffffff transparent #ffffff transparent;
+                    animation: ldio-hc1lg81h6f6 1s linear infinite;
+                }
+
+                .ldio-hc1lg81h6f6>div:nth-child(2),
+                .ldio-hc1lg81h6f6>div:nth-child(4) {
+                    width: 108px;
+                    height: 108px;
+                    top: 46px;
+                    left: 46px;
+                    animation: ldio-hc1lg81h6f6 1s linear infinite reverse;
+                }
+
+                .ldio-hc1lg81h6f6>div:nth-child(2) {
+                    border-color: transparent #eaeaea transparent #eaeaea
+                }
+
+                .ldio-hc1lg81h6f6>div:nth-child(3) {
+                    border-color: transparent
+                }
+
+                .ldio-hc1lg81h6f6>div:nth-child(3) div {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    transform: rotate(45deg);
+                }
+
+                .ldio-hc1lg81h6f6>div:nth-child(3) div:before,
+                .ldio-hc1lg81h6f6>div:nth-child(3) div:after {
+                    content: "";
+                    display: block;
+                    position: absolute;
+                    width: 16px;
+                    height: 16px;
+                    top: -16px;
+                    left: 48px;
+                    background: #ffffff;
+                    border-radius: 50%;
+                    box-shadow: 0 128px 0 0 #ffffff;
+                }
+
+                .ldio-hc1lg81h6f6>div:nth-child(3) div:after {
+                    left: -16px;
+                    top: 48px;
+                    box-shadow: 128px 0 0 0 #ffffff;
+                }
+
+                .ldio-hc1lg81h6f6>div:nth-child(4) {
+                    border-color: transparent;
+                }
+
+                .ldio-hc1lg81h6f6>div:nth-child(4) div {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    transform: rotate(45deg);
+                }
+
+                .ldio-hc1lg81h6f6>div:nth-child(4) div:before,
+                .ldio-hc1lg81h6f6>div:nth-child(4) div:after {
+                    content: "";
+                    display: block;
+                    position: absolute;
+                    width: 16px;
+                    height: 16px;
+                    top: -16px;
+                    left: 30px;
+                    background: #eaeaea;
+                    border-radius: 50%;
+                    box-shadow: 0 92px 0 0 #eaeaea;
+                }
+
+                .ldio-hc1lg81h6f6>div:nth-child(4) div:after {
+                    left: -16px;
+                    top: 30px;
+                    box-shadow: 92px 0 0 0 #eaeaea;
+                }
+
+                .loadingio-spinner-double-ring-yvblxc851k {
+                    width: 200px;
+                    height: 200px;
+                    display: inline-block;
+                    overflow: hidden;
+                    background: none;
+                }
+
+                .ldio-hc1lg81h6f6 {
+                    width: 100%;
+                    height: 100%;
+                    position: relative;
+                    transform: translateZ(0) scale(1);
+                    backface-visibility: hidden;
+                    transform-origin: 0 0;
+                    /* see note above */
+                }
+
+                .ldio-hc1lg81h6f6 div {
+                    box-sizing: content-box;
+                }

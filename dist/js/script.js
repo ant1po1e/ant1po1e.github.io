@@ -134,3 +134,17 @@ projectBtn.addEventListener('click', () => {
         projectBtn.innerHTML = 'See more...';
     }
 });
+
+
+const loader = document.getElementById("preloader");
+const body = document.body;
+const html = document.documentElement;
+
+body.style.overflow = "hidden";
+html.style.overflow = "hidden";
+
+window.addEventListener("load", function(){
+    body.style.overflow = "auto";
+    html.style.overflow = "auto";
+    loader.style.display = "none";
+});

@@ -59,6 +59,15 @@ body {
 }
 
 
+#preloader {
+    background: #1e293b;
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    z-index: 100;
+}
+
+
 @keyframes blink {
     0% {
         opacity: 100%;
@@ -91,5 +100,4 @@ body {
     width: 300px;
     height: 300px;
 }
-
 }
