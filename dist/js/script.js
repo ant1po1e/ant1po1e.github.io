@@ -1,4 +1,4 @@
-window.onscroll = function() {
+window.onscroll = function () {
     const header = document.querySelector('header');
     const fixedNav = header.offsetTop;
 
@@ -13,7 +13,7 @@ window.onscroll = function() {
 const hamburger = document.querySelector('#hamburger');
 const navMenu = document.querySelector('#nav-menu');
 
-hamburger.addEventListener('click', function() {
+hamburger.addEventListener('click', function () {
     hamburger.classList.toggle('hamburger-active');
     navMenu.classList.toggle('hidden');
 });
@@ -21,44 +21,49 @@ hamburger.addEventListener('click', function() {
 
 const scriptURL = "https://script.google.com/macros/s/AKfycbx0eCzzKaKtZ2gIwprnJ-5xtkpoM0kqcLv5uoVVUVZZMgIsJ6Fn6YHJ5OzUIOcpIcJV/exec";
 const form = document.forms["Ant1po1e-contact-form"];
-const alert = document.querySelector(".alert");
+const success = document.querySelector(".success")
+const formAlert = document.querySelector(".alert");
 
-    form.addEventListener("submit", (e) => {
-        e.preventDefault();
-        alert.classList.add('hidden');
-        fetch(scriptURL, {
-            method: "POST",
-            body: new FormData(form),
-            })
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    formAlert.classList.toggle('hidden');
+    formAlert.classList.toggle('flex');
+    success.classList.toggle('hidden');
+    fetch(scriptURL, {
+        method: "POST",
+        body: new FormData(form),
+    })
         .then((response) => {
-            alert.classList.remove('hidden');
+            formAlert.classList.toggle("hidden");
+            formAlert.classList.toggle("flex");
+            success.classList.add("hidden");
             form.reset();
             console.log("Success!", response);
-            })
+        })
         .catch((error) => console.error("Error!", error.message));
-    });
+});
 
 
 const back2Top = document.querySelector('#back2top');
 
-    window.addEventListener('scroll', () =>{
-        if (window.pageYOffset > 200) {
-            back2Top.classList.remove('opacity-0');
-            back2Top.classList.add('opacity-100');
-        } else {
-            back2Top.classList.add('opacity-0');
-            back2Top.classList.remove('opacity-100');
-        }
-    });
+window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 200) {
+        back2Top.classList.remove('opacity-0');
+        back2Top.classList.add('opacity-100');
+    } else {
+        back2Top.classList.add('opacity-0');
+        back2Top.classList.remove('opacity-100');
+    }
+});
 
-    back2Top.addEventListener('click', (e) => {
-        e.preventDefault();
-        window.scroll({top: 0, left: 0, behavior: 'smooth'});
-    });
+back2Top.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.scroll({ top: 0, left: 0, behavior: 'smooth' });
+});
 
 
-window.addEventListener('click', function(e) {
-    if(e.target != hamburger && e.target != navMenu) {
+window.addEventListener('click', function (e) {
+    if (e.target != hamburger && e.target != navMenu) {
         hamburger.classList.remove('hamburger-active');
         navMenu.classList.add('hidden');
     }
@@ -76,28 +81,29 @@ let sleepTime = 100;
 
 let curPhraseIndex = 0;
 
-const writeLoop = async () => { while (true) {
-    let curWord = phrases[curPhraseIndex];
+const writeLoop = async () => {
+    while (true) {
+        let curWord = phrases[curPhraseIndex];
 
-    for (let i = 0; i < curWord.length; i++) {
-        el.innerText = curWord.substring(0, i + 1);
-        await sleep(sleepTime);
-    }
+        for (let i = 0; i < curWord.length; i++) {
+            el.innerText = curWord.substring(0, i + 1);
+            await sleep(sleepTime);
+        }
 
-    await sleep(sleepTime * 10);
+        await sleep(sleepTime * 10);
 
-    for (let i = curWord.length; i > 0; i--) {
-        el.innerText = curWord.substring(0, i - 1);
-        await sleep(sleepTime);
-    }
+        for (let i = curWord.length; i > 0; i--) {
+            el.innerText = curWord.substring(0, i - 1);
+            await sleep(sleepTime);
+        }
 
-    await sleep(sleepTime * 5);
+        await sleep(sleepTime * 5);
 
-    if (curPhraseIndex === phrases.length - 1) {
-        curPhraseIndex = 0;
-    } else {
-        curPhraseIndex++;
-    }
+        if (curPhraseIndex === phrases.length - 1) {
+            curPhraseIndex = 0;
+        } else {
+            curPhraseIndex++;
+        }
     }
 };
 
@@ -143,7 +149,7 @@ const html = document.documentElement;
 body.style.overflow = "hidden";
 html.style.overflow = "hidden";
 
-window.addEventListener("load", function(){
+window.addEventListener("load", function () {
     body.style.overflow = "auto";
     html.style.overflow = "auto";
     loader.style.display = "none";
