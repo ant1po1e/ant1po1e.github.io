@@ -764,16 +764,6 @@ video {
   animation: bounce 1s infinite;
 }
 
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.animate-spin {
-  animation: spin 1s linear infinite;
-}
-
 .flex-wrap {
   flex-wrap: wrap;
 }
@@ -1484,6 +1474,10 @@ body {
     float: none;
   }
 
+  .md\:mb-0 {
+    margin-bottom: 0px;
+  }
+
   .md\:border-none {
     border-style: none;
   }
@@ -1559,10 +1553,6 @@ body {
 
   .lg\:bg-transparent {
     background-color: transparent;
-  }
-
-  .lg\:pt-10 {
-    padding-top: 2.5rem;
   }
 
   .lg\:text-2xl {
