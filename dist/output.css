@@ -973,6 +973,144 @@ video {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
+.bg-blue-900 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(30 58 138 / var(--tw-bg-opacity));
+}
+
+.bg-orange-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(234 88 12 / var(--tw-bg-opacity));
+}
+
+.bg-\[\] {
+  background-color: ;
+}
+
+.bg-\[\#e34c26\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(227 76 38 / var(--tw-bg-opacity));
+}
+
+.bg-\[e34c26\] {
+  background-color: e34c26;
+}
+
+.bg-\[\#f06529\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(240 101 41 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#2965f1\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(41 101 241 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#563d7c\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(86 61 124 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#777BB3\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(119 123 179 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#484C89\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(72 76 137 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#F0DB4F\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(240 219 79 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#f0DB4F\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(240 219 79 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#f0Db4F\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(240 219 79 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#f0fb4g\] {
+  background-color: #f0fb4g;
+}
+
+.bg-\[\#f0fb4F\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(240 251 79 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#f0fb4f\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(240 251 79 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#f0db4f\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(240 219 79 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#f0dB4F\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(240 219 79 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#00b4b6\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 180 182 / var(--tw-bg-opacity));
+}
+
+.bg-\[823085\] {
+  background-color: 823085;
+}
+
+.bg-\[\#823085\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(130 48 133 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#9b4993\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(155 73 147 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#682876\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(104 40 118 / var(--tw-bg-opacity));
+}
+
+.bg-\[110b09\] {
+  background-color: 110b09;
+}
+
+.bg-\[\#110b09\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(17 11 9 / var(--tw-bg-opacity));
+}
+
+.bg-\[primary\] {
+  background-color: primary;
+}
+
+.bg-\[00e1c8\] {
+  background-color: 00e1c8;
+}
+
+.bg-\[\#00e1c8\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 225 200 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#5a5f64\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(90 95 100 / var(--tw-bg-opacity));
+}
+
 .bg-opacity-50 {
   --tw-bg-opacity: 0.5;
 }
@@ -1466,6 +1604,15 @@ body {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
+.hover\:border-2:hover {
+  border-width: 2px;
+}
+
+.hover\:border-primary:hover {
+  --tw-border-opacity: 1;
+  border-color: rgb(56 189 248 / var(--tw-border-opacity));
+}
+
 .hover\:bg-sky-400:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(56 189 248 / var(--tw-bg-opacity));
@@ -1474,6 +1621,26 @@ body {
 .hover\:bg-slate-200:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(226 232 240 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-white:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-blue-500:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(59 130 246 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-dark:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(30 41 59 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-primary:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(56 189 248 / var(--tw-bg-opacity));
 }
 
 .hover\:text-primary:hover {
@@ -1542,10 +1709,6 @@ body {
 
   .md\:mb-0 {
     margin-bottom: 0px;
-  }
-
-  .md\:w-80 {
-    width: 20rem;
   }
 
   .md\:border-none {
