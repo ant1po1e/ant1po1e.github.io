@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['index.html'],
+  content: ['index.html',  './node_modules/flowbite/**/*.js'],
   darkMode: 'class',
   theme: {
     container: {
@@ -18,6 +18,9 @@ module.exports = {
       }
     },
   },
-  plugins: [require("tailwind-scrollbar")],
+  plugins: [
+    require('tailwind-scrollbar'),
+    require('flowbite/plugin')
+  ],
 }
 

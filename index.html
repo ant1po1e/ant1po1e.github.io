@@ -5,7 +5,7 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" href="dist/output.css">
-   <link rel="stylesheet" href="dist/preloader.css">
+   <link rel="stylesheet" href="dist/css/style.css">
    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
    <link rel="icon" type="image/x-icon" href="dist/img/favicon.ico">
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
@@ -34,7 +34,7 @@
                <h4 class="font-bold uppercase text-white text-md mb-3 text-3xl">Loading</h4>
          </div> -->
       </div>
-   </div>
+   </div>\
    <!-- Pre-loader-END -->
 
    <!-- Navbar -->
@@ -151,178 +151,246 @@
       <div class="container pt-10 pb-10 bg-slate-700 rounded-xl shadow-lg" data-aos="fade-up" data-aos-once="true">
          <div class=" w-full px-4">
             <div class="max-w-xl mx-auto text-center">
-               <h4 class="font-bold uppercase text-primary text-xl mb-3 lg:text-2xl">Projects</h4>
+               <h4 class="font-bold uppercase text-primary text-xl lg:text-2xl mb-4 md:mb-0">Projects</h4>
             </div>
 
             <div class="gap-5 sm:flex sm:flex-wrap sm:justify-center">
-               <div
-                  class="rounded-xl bg-slate-400 shadow-lg overflow-hidden hover:scale-105 hover:shadow-dark transition duration-300 mb-10 sm:w-64 md:2-80 lg:w-96">
-                  <img src="dist/img/1.jpg" alt="" class="w-full rounded-xl">
-                  <div class="px-6 py-4">
-                     <div class="font-bold text-xl mb-2 text-dark">Rosemi Luxury Hotel</div>
-                     <p class="font-medium text-dark mb-2 leading-relaxed lg:text-lg">A Guestbook application with basic
-                        CRUD
-                        including register & login system.</p>
+               <div id="indicators-carousel" class="relative w-full" data-carousel="static">
+                  <div class="relative h-[26rem] overflow-hidden md:h-[30rem]">
+                     <div class="hidden duration-700 ease-in-out group mb-20 md:mb-0" data-carousel-item>
+                        <img src="dist/img/1.jpg"
+                           class="absolute hidden w-full md:w-1/2 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 md:block"
+                           alt="Project 1">
+                        <div
+                           class="bg-dark bg-opacity-[0.9] h-full md:h-1/2 shadow-lg overflow-hidden transition duration-300 mb-10 w-full md:w-1/2 absolute md:opacity-0 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 opacity-100 group-hover:md:opacity-100">
+                           <div class="px-6 py-4">
+                              <div class="font-bold text-2xl mb-2 text-white">Rosemi Luxury Hotel</div>
+                              <p class="font-medium text-white mb-2 leading-relaxed lg:text-lg">A Guestbook application
+                                 with basic
+                                 CRUD
+                                 including register & login system.</p>
 
-                     <div class="text-base text-white rounded-md bg-[#f06529] py-1 px-3 my-3 inline-block">HTML
-                     </div>
-                     <div class="text-base text-white rounded-md bg-[#2965f1] py-1 px-3 my-3 inline-block">CSS
-                     </div>
-                     <div class="text-base text-white rounded-md bg-[#563d7c] py-1 px-3 my-3 inline-block">
-                        Bootstrap
-                     </div>
-                     <div class="text-base text-white rounded-md bg-[#484C89] py-1 px-3 my-3 inline-block">PHP
+                              <div class="text-base text-white rounded-md bg-[#f06529] py-1 px-3 my-3 inline-block">HTML
+                              </div>
+                              <div class="text-base text-white rounded-md bg-[#2965f1] py-1 px-3 my-3 inline-block">CSS
+                              </div>
+                              <div class="text-base text-white rounded-md bg-[#563d7c] py-1 px-3 my-3 inline-block">
+                                 Bootstrap
+                              </div>
+                              <div class="text-base text-white rounded-md bg-[#484C89] py-1 px-3 my-3 inline-block">PHP
+                              </div>
+
+                              <div class="block">
+                                 <a href="https://github.com/ant1po1e/guestbook" target="_blank"
+                                    class="text-base font-semibold text-primary bg-white py-2 px-3 rounded-md shadow-lg inline-block border-2 border-primary hover:bg-primary hover:text-white transition duration-300">Repository
+                                    <i class="bi bi-arrow-right"></i></a>
+                              </div>
+                           </div>
+                        </div>
                      </div>
 
-                     <div class="block">
-                        <a href="https://github.com/ant1po1e/guestbook" target="_blank"
-                           class="text-base font-semibold text-primary bg-white py-2 px-3 rounded-md shadow-lg inline-block border-2 border-primary hover:bg-primary hover:text-white transition duration-300">Repository
-                           <i class="bi bi-arrow-right"></i></a>
+                     <div class="hidden duration-700 ease-in-out group mb-20 md:mb-0" data-carousel-item>
+                        <img src="dist/img/2.jpg"
+                           class="absolute hidden w-full md:w-1/2 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 md:block"
+                           alt="Project 2">
+                        <div
+                           class="bg-dark bg-opacity-[0.9] h-full md:h-1/2 shadow-lg overflow-hidden transition duration-300 mb-10 w-full md:w-1/2 absolute md:opacity-0 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 opacity-100 group-hover:md:opacity-100">
+                           <div class="px-6 py-4">
+                              <div class="font-bold text-2xl mb-2 text-white">Apolitz</div>
+                              <p class="font-medium text-white mb-2 leading-relaxed lg:text-lg">A website that contains
+                                 artist/band biodata along with their songs and albums.</p>
+
+                              <div class="text-base text-white rounded-md bg-[#f06529] py-1 px-3 my-3 inline-block">HTML
+                              </div>
+                              <div class="text-base text-white rounded-md bg-[#2965f1] py-1 px-3 my-3 inline-block">CSS
+                              </div>
+                              <div class="text-base text-dark rounded-md bg-[#f0db4f] py-1 px-3 my-3 inline-block">
+                                 JS
+                              </div>
+                              <div class="text-base text-white rounded-md bg-[#563d7c] py-1 px-3 my-3 inline-block">
+                                 Bootstrap
+                              </div>
+
+                              <div class="block">
+                                 <a href="https://apolitz.vercel.app" target="_blank"
+                                    class="text-base font-semibold text-white bg-primary py-2 px-3 rounded-md shadow-lg inline-block border-2 border-primary hover:bg-white hover:text-primary transition duration-300"><i
+                                       class="bi bi-link-45deg"></i></a>
+                                 <a href="https://github.com/ant1po1e/apolitz" target="_blank"
+                                    class="text-base font-semibold text-primary bg-white py-2 px-3 rounded-md shadow-lg inline-block border-2 border-primary hover:bg-primary hover:text-white transition duration-300">Repository
+                                    <i class="bi bi-arrow-right"></i></a>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+
+                     <div class="hidden duration-700 ease-in-out group mb-20 md:mb-0" data-carousel-item>
+                        <img src="dist/img/3.jpg"
+                           class="absolute hidden w-full md:w-1/2 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 md:block"
+                           alt="Project 3">
+                        <div
+                           class="bg-dark bg-opacity-[0.9] h-full md:h-1/2 shadow-lg overflow-hidden transition duration-300 mb-10 w-full md:w-1/2 absolute md:opacity-0 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 opacity-100 group-hover:md:opacity-100">
+                           <div class="px-6 py-4">
+                              <div class="font-bold text-2xl mb-2 text-white">Gothicvania</div>
+                              <p class="font-medium text-white mb-2 leading-relaxed lg:text-lg">2D RPG platformer game
+                                 with
+                                 gothic genre.</p>
+
+                              <div class="text-base text-white rounded-md bg-slate-600 py-1 px-3 my-3 inline-block">
+                                 Unity
+                              </div>
+                              <div class="text-base text-white rounded-md bg-[#823085] py-1 px-3 my-3 inline-block">C#
+                              </div>
+
+                              <div class="block">
+                                 <a href="https://github.com/ant1po1e/Gothicvania" target="_blank"
+                                    class="text-base font-semibold text-primary bg-white py-2 px-3 rounded-md shadow-lg inline-block border-2 border-primary hover:bg-primary hover:text-white transition duration-300">Repository
+                                    <i class="bi bi-arrow-right"></i></a>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+
+                     <div class="hidden duration-700 ease-in-out group mb-20 md:mb-0" data-carousel-item>
+                        <img src="dist/img/4.jpg"
+                           class="absolute hidden w-full md:w-1/2 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 md:block"
+                           alt="Project 4">
+                        <div
+                           class="bg-dark bg-opacity-[0.9] h-full md:h-1/2 shadow-lg overflow-hidden transition duration-300 mb-10 w-full md:w-1/2 absolute md:opacity-0 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 opacity-100 group-hover:md:opacity-100">
+                           <div class="px-6 py-4">
+                              <div class="font-bold text-2xl mb-2 text-white">Find the Key</div>
+                              <p class="font-medium text-white mb-2 leading-relaxed lg:text-lg">Simple 2D Platformer
+                                 puzzle
+                                 game.
+                              </p>
+
+                              <div class="text-base text-white rounded-md bg-[#5a5f64] py-1 px-3 my-3 inline-block">
+                                 Construct 2</div>
+
+                              <div class="block">
+                                 <a href="https://github.com/ant1po1e/Find-The-Key" target="_blank"
+                                    class="text-base font-semibold text-primary bg-white py-2 px-3 rounded-md shadow-lg inline-block border-2 border-primary hover:bg-primary hover:text-white transition duration-300">Repository
+                                    <i class="bi bi-arrow-right"></i></a>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+
+                     <div class="hidden duration-700 ease-in-out group mb-20 md:mb-0" data-carousel-item>
+                        <img src="dist/img/5.jpg"
+                           class="absolute hidden w-full md:w-1/2 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 md:block"
+                           alt="Project 5">
+                        <div
+                           class="bg-dark bg-opacity-[0.9] h-full md:h-1/2 shadow-lg overflow-hidden transition duration-300 mb-10 w-full md:w-1/2 absolute md:opacity-0 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 opacity-100 group-hover:md:opacity-100">
+                           <div class="px-6 py-4">
+                              <div class="font-bold text-2xl mb-2 text-white">MutuFinance</div>
+                              <p class="font-medium text-white mb-2 leading-relaxed lg:text-lg">Slicing a finance landing
+                                 page
+                                 from Figma.
+                              </p>
+
+                              <div class="text-base text-white rounded-md bg-[#f06529] py-1 px-3 my-3 inline-block">HTML
+                              </div>
+                              <div class="text-base text-white rounded-md bg-[#2965f1] py-1 px-3 my-3 inline-block">CSS
+                              </div>
+                              <div class="text-base text-dark rounded-md bg-[#f0db4f] py-1 px-3 my-3 inline-block">
+                                 JS
+                              </div>
+                              <div class="text-base text-white rounded-md bg-[#00b4b6] py-1 px-3 my-3 inline-block">
+                                 Tailwind
+                              </div>
+
+                              <div class="block">
+                                 <a href="https://bootstrap-yudha-pplg2.vercel.app" target="_blank"
+                                    class="text-base font-semibold text-white bg-primary py-2 px-3 rounded-md shadow-lg inline-block border-2 border-primary hover:bg-white hover:text-primary transition duration-300"><i
+                                       class="bi bi-link-45deg"></i></a>
+                                 <a href="https://github.com/ant1po1e/Find-The-Key" target="_blank"
+                                    class="text-base font-semibold text-primary bg-white py-2 px-3 rounded-md shadow-lg inline-block border-2 border-primary hover:bg-primary hover:text-white transition duration-300">Repository
+                                    <i class="bi bi-arrow-right"></i></a>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+
+                     <div class="hidden duration-700 ease-in-out group mb-20 md:mb-0" data-carousel-item>
+                        <img src="dist/img/6.jpg"
+                           class="absolute hidden w-full md:w-1/2 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 md:block"
+                           alt="Project 6">
+                        <div
+                           class="bg-dark bg-opacity-[0.9] h-full md:h-1/2 shadow-lg overflow-hidden transition duration-300 mb-10 w-full md:w-1/2 absolute md:opacity-0 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 opacity-100 group-hover:md:opacity-100">
+                           <div class="px-6 py-4">
+                              <div class="font-bold text-xl mb-2 text-white">WeFinance</div>
+                              <p class="font-medium text-white mb-2 leading-relaxed lg:text-lg">Slicing a finance landing
+                                 page
+                                 from Figma.
+                              </p>
+
+                              <div class="text-base text-white rounded-md bg-[#f06529] py-1 px-3 my-3 inline-block">HTML
+                              </div>
+                              <div class="text-base text-white rounded-md bg-[#2965f1] py-1 px-3 my-3 inline-block">CSS
+                              </div>
+                              <div class="text-base text-dark rounded-md bg-[#f0db4f] py-1 px-3 my-3 inline-block">
+                                 JS
+                              </div>
+                              <div class="text-base text-white rounded-md bg-[#00b4b6] py-1 px-3 my-3 inline-block">
+                                 Tailwind
+                              </div>
+
+                              <div class="block">
+                                 <a href="https://finance-yudha-pplg2.vercel.app" target="_blank"
+                                    class="text-base font-semibold text-white bg-primary py-2 px-3 rounded-md shadow-lg inline-block border-2 border-primary hover:bg-white hover:text-primary transition duration-300"><i
+                                       class="bi bi-link-45deg"></i></a>
+                                 <a href="https://github.com/ant1po1e/Find-The-Key" target="_blank"
+                                    class="text-base font-semibold text-primary bg-white py-2 px-3 rounded-md shadow-lg inline-block border-2 border-primary hover:bg-slate-200 transition duration-300">Repository
+                                    <i class="bi bi-arrow-right"></i></a>
+                              </div>
+                           </div>
+                        </div>
                      </div>
                   </div>
+
+                  <div class="absolute z-30 flex space-x-3 -translate-x-1/2 bottom-5 left-1/2">
+                     <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1"
+                        data-carousel-slide-to="0"></button>
+                     <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2"
+                        data-carousel-slide-to="1"></button>
+                     <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3"
+                        data-carousel-slide-to="2"></button>
+                     <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 4"
+                        data-carousel-slide-to="3"></button>
+                     <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 5"
+                        data-carousel-slide-to="4"></button>
+                     <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 6"
+                        data-carousel-slide-to="5"></button>
+                  </div>
+
+                  <button type="button"
+                     class="absolute top-[165px] left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group md:top-0 focus:outline-none"
+                     data-carousel-prev>
+                     <span
+                        class="inline-flex items-center justify-center w-10 h-10 md:w-20 md:h-20 rounded-full bg-white/30 group-hover:bg-white/50 ">
+                        <svg class="w-4 h-4 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                           fill="none" viewBox="0 0 6 10">
+                           <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M5 1 1 5l4 4" />
+                        </svg>
+                        <span class="sr-only">Previous</span>
+                     </span>
+                  </button>
+                  <button type="button"
+                     class="absolute top-[165px] md:top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                     data-carousel-next>
+                     <span
+                        class="inline-flex items-center justify-center w-10 h-10 md:w-20 md:h-20 rounded-full bg-white/30 group-hover:bg-white/50 ">
+                        <svg class="w-4 h-4 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                           fill="none" viewBox="0 0 6 10">
+                           <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="m1 9 4-4-4-4" />
+                        </svg>
+                        <span class="sr-only">Next</span>
+                     </span>
+                  </button>
+
                </div>
-
-               <div
-                  class="rounded-xl shadow-lg bg-slate-400 overflow-hidden hover:scale-105 hover:shadow-dark transition duration-300 mb-10 sm:w-64 md:2-80 lg:w-96">
-                  <img src="dist/img/2.jpg" alt="" class="w-full rounded-xl">
-                  <div class="px-6 py-4">
-                     <div class="font-bold text-xl mb-2 text-dark">Apolitz</div>
-                     <p class="font-medium text-dark mb-2 leading-relaxed lg:text-lg">A website that contains
-                        artist/band biodata along with their songs and albums.</p>
-
-                     <div class="text-base text-white rounded-md bg-[#f06529] py-1 px-3 my-3 inline-block">HTML
-                     </div>
-                     <div class="text-base text-white rounded-md bg-[#2965f1] py-1 px-3 my-3 inline-block">CSS
-                     </div>
-                     <div class="text-base text-dark rounded-md bg-[#f0db4f] py-1 px-3 my-3 inline-block">
-                        JS
-                     </div>
-                     <div class="text-base text-white rounded-md bg-[#563d7c] py-1 px-3 my-3 inline-block">
-                        Bootstrap
-                     </div>
-
-                     <div class="block">
-                        <a href="https://apolitz.vercel.app" target="_blank"
-                           class="text-base font-semibold text-white bg-primary py-2 px-3 rounded-md shadow-lg inline-block border-2 border-primary hover:bg-white hover:text-primary transition duration-300"><i
-                              class="bi bi-link-45deg"></i></a>
-                        <a href="https://github.com/ant1po1e/apolitz" target="_blank"
-                           class="text-base font-semibold text-primary bg-white py-2 px-3 rounded-md shadow-lg inline-block border-2 border-primary hover:bg-primary hover:text-white transition duration-300">Repository
-                           <i class="bi bi-arrow-right"></i></a>
-                     </div>
-                  </div>
-               </div>
-
-               <div
-                  class="rounded-xl shadow-lg bg-slate-400 overflow-hidden hover:scale-105 hover:shadow-dark transition duration-300 mb-10 sm:w-64 md:2-80 lg:w-96">
-                  <img src="dist/img/3.jpg" alt="" class="w-full rounded-xl">
-                  <div class="px-6 py-4">
-                     <div class="font-bold text-xl mb-2 text-dark">Gothicvania</div>
-                     <p class="font-medium text-dark mb-2 leading-relaxed lg:text-lg">2D RPG platformer game with
-                        gothic genre.</p>
-
-                     <div class="text-base text-white rounded-md bg-[#110b09] py-1 px-3 my-3 inline-block">Unity
-                     </div>
-                     <div class="text-base text-white rounded-md bg-[#823085] py-1 px-3 my-3 inline-block">C#</div>
-
-                     <div class="block">
-                        <a href="https://github.com/ant1po1e/Gothicvania" target="_blank"
-                           class="text-base font-semibold text-primary bg-white py-2 px-3 rounded-md shadow-lg inline-block border-2 border-primary hover:bg-primary hover:text-white transition duration-300">Repository
-                           <i class="bi bi-arrow-right"></i></a>
-                     </div>
-                  </div>
-               </div>
-            </div>
-
-
-            <div id="project-hidden" class="hidden">
-               <div class="gap-5 sm:flex sm:flex-wrap sm:justify-center">
-                  <div
-                     class="rounded-xl bg-slate-400 shadow-lg overflow-hidden hover:scale-105 hover:shadow-dark transition duration-300 mb-10 sm:w-64 md:2-80 lg:w-96">
-                     <img src="dist/img/4.jpg" alt="" class="w-full rounded-xl">
-                     <div class="px-6 py-4">
-                        <div class="font-bold text-xl mb-2 text-dark">Find the Key</div>
-                        <p class="font-medium text-dark mb-2 leading-relaxed lg:text-lg">Simple 2D Platformer puzzle
-                           game.
-                        </p>
-
-                        <div class="text-base text-white rounded-md bg-[#5a5f64] py-1 px-3 my-3 inline-block">
-                           Construct 2</div>
-
-                        <div class="block">
-                           <a href="https://github.com/ant1po1e/Find-The-Key" target="_blank"
-                              class="text-base font-semibold text-primary bg-white py-2 px-3 rounded-md shadow-lg inline-block border-2 border-primary hover:bg-primary hover:text-white transition duration-300">Repository
-                              <i class="bi bi-arrow-right"></i></a>
-                        </div>
-                     </div>
-                  </div>
-
-                  <div
-                     class="rounded-xl bg-slate-400 shadow-lg overflow-hidden hover:scale-105 hover:shadow-dark transition duration-300 mb-10 sm:w-64 md:2-80 lg:w-96">
-                     <img src="dist/img/5.jpg" alt="" class="w-full rounded-xl">
-                     <div class="px-6 py-4">
-                        <div class="font-bold text-xl mb-2 text-dark">MutuFinance</div>
-                        <p class="font-medium text-dark mb-2 leading-relaxed lg:text-lg">Slicing a finance landing page
-                           from Figma.
-                        </p>
-
-                        <div class="text-base text-white rounded-md bg-[#f06529] py-1 px-3 my-3 inline-block">HTML
-                        </div>
-                        <div class="text-base text-white rounded-md bg-[#2965f1] py-1 px-3 my-3 inline-block">CSS
-                        </div>
-                        <div class="text-base text-dark rounded-md bg-[#f0db4f] py-1 px-3 my-3 inline-block">
-                           JS
-                        </div>
-                        <div class="text-base text-white rounded-md bg-[#00b4b6] py-1 px-3 my-3 inline-block">
-                           Tailwind
-                        </div>
-
-                        <div class="block">
-                           <a href="https://bootstrap-yudha-pplg2.vercel.app" target="_blank"
-                           class="text-base font-semibold text-white bg-primary py-2 px-3 rounded-md shadow-lg inline-block border-2 border-primary hover:bg-white hover:text-primary transition duration-300"><i
-                              class="bi bi-link-45deg"></i></a>
-                           <a href="https://github.com/ant1po1e/Find-The-Key" target="_blank"
-                              class="text-base font-semibold text-primary bg-white py-2 px-3 rounded-md shadow-lg inline-block border-2 border-primary hover:bg-primary hover:text-white transition duration-300">Repository
-                              <i class="bi bi-arrow-right"></i></a>
-                        </div>
-                     </div>
-                  </div>
-
-                  <div
-                     class="rounded-xl bg-slate-400 shadow-lg overflow-hidden hover:scale-105 hover:shadow-dark transition duration-300 mb-10 sm:w-64 md:2-80 lg:w-96">
-                     <img src="dist/img/6.jpg" alt="" class="w-full rounded-xl">
-                     <div class="px-6 py-4">
-                        <div class="font-bold text-xl mb-2 text-dark">WeFinance</div>
-                        <p class="font-medium text-dark mb-2 leading-relaxed lg:text-lg">Slicing a finance landing page
-                           from Figma.
-                        </p>
-
-                        <div class="text-base text-white rounded-md bg-[#f06529] py-1 px-3 my-3 inline-block">HTML
-                        </div>
-                        <div class="text-base text-white rounded-md bg-[#2965f1] py-1 px-3 my-3 inline-block">CSS
-                        </div>
-                        <div class="text-base text-dark rounded-md bg-[#f0db4f] py-1 px-3 my-3 inline-block">
-                           JS
-                        </div>
-                        <div class="text-base text-white rounded-md bg-[#00b4b6] py-1 px-3 my-3 inline-block">
-                           Tailwind
-                        </div>
-
-                        <div class="block">
-                           <a href="https://finance-yudha-pplg2.vercel.app" target="_blank"
-                           class="text-base font-semibold text-white bg-primary py-2 px-3 rounded-md shadow-lg inline-block border-2 border-primary hover:bg-white hover:text-primary transition duration-300"><i
-                              class="bi bi-link-45deg"></i></a>
-                           <a href="https://github.com/ant1po1e/Find-The-Key" target="_blank"
-                              class="text-base font-semibold text-primary bg-white py-2 px-3 rounded-md shadow-lg inline-block border-2 border-primary hover:bg-slate-200 transition duration-300">Repository
-                              <i class="bi bi-arrow-right"></i></a>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <div class="text-center mx-auto" data-aos="zoom-out" data-aos-once="true">
-               <button id="project-show-btn"
-                  class="text-base font-semibold text-primary bg-slate-900 py-3 px-20 rounded-full shadow-lg inline-block border-2 border-primary hover:bg-sky-400 hover:text-white hover:scale-110 transition duration-300">See
-                  more..</button>
             </div>
          </div>
    </section>
@@ -351,7 +419,7 @@
                      <div class="pt-4 pb-2">
                         <div class="font-bold text-md text-white">HTML</div>
                      </div>
-                     <div class="w-full bg-gray-300 rounded-full dark:bg-gray-700 shadow-lg">
+                     <div class="w-full bg-gray-300 rounded-full shadow-lg">
                         <div
                            class="bg-orange-500 text-xs font-bold text-white text-center p-0.5 leading-none rounded-full"
                            style="width: 90%"> 90%</div>
@@ -362,7 +430,7 @@
                      <div class="pt-4 pb-2">
                         <div class="font-bold text-md text-white">CSS</div>
                      </div>
-                     <div class="w-full bg-gray-300 rounded-full dark:bg-gray-700 shadow-lg">
+                     <div class="w-full bg-gray-300 rounded-full shadow-lg">
                         <div class="bg-sky-400 text-xs font-bold text-dark text-center p-0.5 leading-none rounded-full"
                            style="width: 85%"> 85%</div>
                      </div>
@@ -372,7 +440,7 @@
                      <div class="pt-4 pb-2">
                         <div class="font-bold text-md text-white">Javascript</div>
                      </div>
-                     <div class="w-full bg-gray-300 rounded-full dark:bg-gray-700 shadow-lg">
+                     <div class="w-full bg-gray-300 rounded-full shadow-lg">
                         <div
                            class="bg-amber-300 text-xs font-bold text-dark text-center p-0.5 leading-none rounded-full"
                            style="width: 70%"> 70%</div>
@@ -383,7 +451,7 @@
                      <div class="pt-4 pb-2">
                         <div class="font-bold text-md text-white">Go</div>
                      </div>
-                     <div class="w-full bg-gray-300 rounded-full dark:bg-gray-700 shadow-lg">
+                     <div class="w-full bg-gray-300 rounded-full shadow-lg">
                         <div class="bg-sky-300 text-xs font-bold text-dark text-center p-0.5 leading-none rounded-full"
                            style="width: 65%"> 65%</div>
                      </div>
@@ -393,7 +461,7 @@
                      <div class="pt-4 pb-2">
                         <div class="font-bold text-md text-white">PHP</div>
                      </div>
-                     <div class="w-full bg-gray-300 rounded-full dark:bg-gray-700 shadow-lg">
+                     <div class="w-full bg-gray-300 rounded-full shadow-lg">
                         <div
                            class="bg-indigo-300 text-xs font-bold text-dark text-center p-0.5 leading-none rounded-full"
                            style="width: 80%"> 80%</div>
@@ -404,7 +472,7 @@
                      <div class="pt-4 pb-2">
                         <div class="font-bold text-md text-white">C#</div>
                      </div>
-                     <div class="w-full bg-gray-300 rounded-full dark:bg-gray-700 shadow-lg">
+                     <div class="w-full bg-gray-300 rounded-full shadow-lg">
                         <div
                            class="bg-fuchsia-700 text-xs font-bold text-white text-center p-0.5 leading-none rounded-full"
                            style="width: 85%"> 85%</div>
@@ -424,7 +492,7 @@
                         <div class="pt-4 pb-2">
                            <div class="font-bold text-md text-white">Laravel</div>
                         </div>
-                        <div class="w-full bg-gray-300 rounded-full dark:bg-gray-700 shadow-lg">
+                        <div class="w-full bg-gray-300 rounded-full shadow-lg">
                            <div
                               class="bg-red-500 text-xs font-bold text-white text-center p-0.5 leading-none rounded-full"
                               style="width: 85%"> 85%</div>
@@ -435,7 +503,7 @@
                         <div class="pt-4 pb-2">
                            <div class="font-bold text-md text-white">Bootstrap</div>
                         </div>
-                        <div class="w-full bg-gray-300 rounded-full dark:bg-gray-700 shadow-lg">
+                        <div class="w-full bg-gray-300 rounded-full shadow-lg">
                            <div
                               class="bg-violet-600 text-xs font-bold text-white text-center p-0.5 leading-none rounded-full"
                               style="width: 90%"> 90%</div>
@@ -446,7 +514,7 @@
                         <div class="pt-4 pb-2">
                            <div class="font-bold text-md text-white">TailwindCSS</div>
                         </div>
-                        <div class="w-full bg-gray-300 rounded-full dark:bg-gray-700 shadow-lg">
+                        <div class="w-full bg-gray-300 rounded-full shadow-lg">
                            <div
                               class="bg-cyan-400 text-xs font-bold text-dark text-center p-0.5 leading-none rounded-full"
                               style="width: 85%"> 85%</div>
@@ -466,7 +534,7 @@
                         <div class="pt-4 pb-2">
                            <div class="font-bold text-md text-white">Unity</div>
                         </div>
-                        <div class="w-full bg-gray-300 rounded-full dark:bg-gray-700 shadow-lg">
+                        <div class="w-full bg-gray-300 rounded-full shadow-lg">
                            <div
                               class="bg-slate-600 text-xs font-bold text-white text-center p-0.5 leading-none rounded-full"
                               style="width: 80%"> 80%</div>
@@ -477,7 +545,7 @@
                         <div class="pt-4 pb-2">
                            <div class="font-bold text-md text-white">Construct 2</div>
                         </div>
-                        <div class="w-full bg-gray-300 rounded-full dark:bg-gray-700 shadow-lg">
+                        <div class="w-full bg-gray-300 rounded-full shadow-lg">
                            <div
                               class="bg-slate-500 text-xs font-bold text-white text-center p-0.5 leading-none rounded-full"
                               style="width: 95%"> 95%</div>
@@ -497,7 +565,7 @@
                         <div class="pt-4 pb-2">
                            <div class="font-bold text-md text-white">Canva</div>
                         </div>
-                        <div class="w-full bg-gray-300 rounded-full dark:bg-gray-700 shadow-lg">
+                        <div class="w-full bg-gray-300 rounded-full shadow-lg">
                            <div
                               class="bg-purple-500 text-xs font-bold text-white text-center p-0.5 leading-none rounded-full"
                               style="width: 70%">70%</div>
@@ -508,7 +576,7 @@
                         <div class="pt-4 pb-2">
                            <div class="font-bold text-md text-white">Figma</div>
                         </div>
-                        <div class="w-full bg-gray-300 rounded-full dark:bg-gray-700 shadow-lg">
+                        <div class="w-full bg-gray-300 rounded-full shadow-lg">
                            <div
                               class="bg-red-600 text-xs font-bold text-white text-center p-0.5 leading-none rounded-full"
                               style="width: 50%">50%</div>
@@ -627,7 +695,7 @@
 
 
    <script src="dist/js/script.js"></script>
-
+   <script src="node_modules/flowbite/dist/flowbite.min.js"></script>
    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
    <script>
       AOS.init();

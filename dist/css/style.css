@@ -12,7 +12,7 @@
   box-sizing: border-box !important;
 }
 
-.ldio-hc1lg81h6f6 > div {
+.ldio-hc1lg81h6f6>div {
   position: absolute;
   width: 144px;
   height: 144px;
@@ -24,8 +24,8 @@
   animation: ldio-hc1lg81h6f6 1s linear infinite;
 }
 
-.ldio-hc1lg81h6f6 > div:nth-child(2),
-.ldio-hc1lg81h6f6 > div:nth-child(4) {
+.ldio-hc1lg81h6f6>div:nth-child(2),
+.ldio-hc1lg81h6f6>div:nth-child(4) {
   width: 108px;
   height: 108px;
   top: 46px;
@@ -33,23 +33,23 @@
   animation: ldio-hc1lg81h6f6 1s linear infinite reverse;
 }
 
-.ldio-hc1lg81h6f6 > div:nth-child(2) {
+.ldio-hc1lg81h6f6>div:nth-child(2) {
   border-color: transparent #eaeaea transparent #eaeaea;
 }
 
-.ldio-hc1lg81h6f6 > div:nth-child(3) {
+.ldio-hc1lg81h6f6>div:nth-child(3) {
   border-color: transparent;
 }
 
-.ldio-hc1lg81h6f6 > div:nth-child(3) div {
+.ldio-hc1lg81h6f6>div:nth-child(3) div {
   position: absolute;
   width: 100%;
   height: 100%;
   transform: rotate(45deg);
 }
 
-.ldio-hc1lg81h6f6 > div:nth-child(3) div:before,
-.ldio-hc1lg81h6f6 > div:nth-child(3) div:after {
+.ldio-hc1lg81h6f6>div:nth-child(3) div:before,
+.ldio-hc1lg81h6f6>div:nth-child(3) div:after {
   content: "";
   display: block;
   position: absolute;
@@ -62,25 +62,25 @@
   box-shadow: 0 128px 0 0 #ffffff;
 }
 
-.ldio-hc1lg81h6f6 > div:nth-child(3) div:after {
+.ldio-hc1lg81h6f6>div:nth-child(3) div:after {
   left: -16px;
   top: 48px;
   box-shadow: 128px 0 0 0 #ffffff;
 }
 
-.ldio-hc1lg81h6f6 > div:nth-child(4) {
+.ldio-hc1lg81h6f6>div:nth-child(4) {
   border-color: transparent;
 }
 
-.ldio-hc1lg81h6f6 > div:nth-child(4) div {
+.ldio-hc1lg81h6f6>div:nth-child(4) div {
   position: absolute;
   width: 100%;
   height: 100%;
   transform: rotate(45deg);
 }
 
-.ldio-hc1lg81h6f6 > div:nth-child(4) div:before,
-.ldio-hc1lg81h6f6 > div:nth-child(4) div:after {
+.ldio-hc1lg81h6f6>div:nth-child(4) div:before,
+.ldio-hc1lg81h6f6>div:nth-child(4) div:after {
   content: "";
   display: block;
   position: absolute;
@@ -93,7 +93,7 @@
   box-shadow: 0 92px 0 0 #eaeaea;
 }
 
-.ldio-hc1lg81h6f6 > div:nth-child(4) div:after {
+.ldio-hc1lg81h6f6>div:nth-child(4) div:after {
   left: -16px;
   top: 30px;
   box-shadow: 92px 0 0 0 #eaeaea;
@@ -119,4 +119,61 @@
 
 .ldio-hc1lg81h6f6 div {
   box-sizing: content-box;
+}
+
+.box {
+  background: url(./../../dist/img/antipole.jpg);
+  -webkit-background-size: cover;
+  background-size: cover;
+  background-position: center center;
+  height: 350px;
+  width: 350px;
+  padding: 10px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+    rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  animation: animate 5s ease-in-out infinite;
+  transition: all 1s ease-in-out;
+}
+
+#cursor {
+  animation: blink 1s linear infinite;
+}
+
+#preloader {
+  background: #1e293b;
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  z-index: 100;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 100%;
+  }
+
+  50% {
+    opacity: 0%;
+  }
+}
+
+@keyframes animate {
+  0% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+
+  50% {
+    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+  }
+
+  100% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .box {
+    width: 300px;
+    height: 300px;
+  }
 }

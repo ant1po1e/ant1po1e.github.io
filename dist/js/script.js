@@ -126,22 +126,6 @@ skillBtn.addEventListener('click', () => {
 });
 
 
-const projectHidden = document.querySelector('#project-hidden');
-const projectBtn = document.querySelector('#project-show-btn');
-
-projectBtn.addEventListener('click', () => {
-    projectBtn.classList.toggle('active');
-
-    if (projectBtn.classList.contains('active')) {
-        projectHidden.classList.remove('hidden');
-        projectBtn.innerHTML = 'See less...';
-    } else {
-        projectHidden.classList.add('hidden');
-        projectBtn.innerHTML = 'See more...';
-    }
-});
-
-
 const loader = document.getElementById("preloader");
 const body = document.body;
 const html = document.documentElement;
