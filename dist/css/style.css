@@ -121,6 +121,10 @@
   box-sizing: content-box;
 }
 
+body {
+  background: radial-gradient(50% 50% at 50% 50%, #02001f 0%, #06005c 100%);
+}
+
 .box {
   background: url(./../../dist/img/antipole.jpg);
   -webkit-background-size: cover;
