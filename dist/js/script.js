@@ -110,22 +110,6 @@ const writeLoop = async () => {
 writeLoop();
 
 
-const skillHidden = document.querySelector('#skill-hidden');
-const skillBtn = document.querySelector('#skill-show-btn');
-
-skillBtn.addEventListener('click', () => {
-    skillBtn.classList.toggle('active');
-
-    if (skillBtn.classList.contains('active')) {
-        skillHidden.classList.remove('hidden');
-        skillBtn.innerHTML = 'See less...';
-    } else {
-        skillHidden.classList.add('hidden');
-        skillBtn.innerHTML = 'See more...';
-    }
-});
-
-
 const loader = document.getElementById("preloader");
 const body = document.body;
 const html = document.documentElement;
