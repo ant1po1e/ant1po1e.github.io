@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="/dist/css/output.css">
+   <link rel="stylesheet" href="dist/css/style.css">
+   <link rel="icon" type="image/x-icon" href="dist/img/favicon.ico">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+   <title>Document</title>
+</head>
+
+<body>
+   <div class="bg-blue-950 bg-opacity-90 flex justify-center h-screen w-screen pt-10">
+      <aside class="flex flext-auto justify-center text-blue-200">
+         <ul>
+            <li>
+               <a href="/"
+                  class="h-16 p-6 mb-7 text-6xl flex justify-center items-center w-full hover:scale-125 hover:text-blue-500 transition duration-300">
+                  <i class="bi bi-arrow-left"></i>
+               </a>
+            </li>
+         </ul>
+      </aside>
+
+
+      <section class="flex flex-1 justify-center items-center">
+         <div class="container w-[750px] px-5 py-10 bg-blue-950 opacity-75 rounded-2xl">
+            <div class="w-full px-4">
+               <div class="mx-auto text-center">
+                  <h1 class="font-bold text-white text-3xl">Contact Me!</h1>
+               </div>
+            </div>
+
+            <div class="text-center mt-5 w-full px-4 py-4 border-t-2 border-t-white text-white">
+               <form name="Ant1po1e-contact-form">
+                  <div class="w-full lg:w-3/4 lg:mx-auto">
+                     <div class="w-full px-4 mb-8" data-aos="zoom-in" data-aos-once="true">
+                        <label for="name" class="text-base font-bold text-blue-300">Name</label>
+                        <input type="text" id="name" name="name"
+                           class="w-full bg-slate-500 text-white p-3 rounded-xl focus:outline-none focus:ring-blue-300 focus:ring-1 focus:border-blue-300"
+                           placeholder="ex: Antipole" required>
+                     </div>
+                     <div class="w-full px-4 mb-8" data-aos="zoom-in" data-aos-once="true">
+                        <label for="email" class="text-base font-bold text-blue-300">Email</label>
+                        <input type="email" id="email" name="email"
+                           class="w-full bg-slate-500 text-white p-3 rounded-xl focus:outline-none focus:ring-blue-300 focus:ring-1 focus:border-blue-300"
+                           placeholder="ex: antipole@example.com" required>
+                     </div>
+                     <div class="w-full px-4 mb-8" data-aos="zoom-in" data-aos-once="true">
+                        <label for="message" class="text-base font-bold text-blue-300">Message</label>
+                        <textarea type="text" id="message" name="message"
+                           class="w-full bg-slate-500 text-white p-3 rounded-xl focus:outline-none focus:ring-blue-300 focus:ring-1 focus:border-blue-300"
+                           placeholder="Write anything here!" required></textarea>
+                     </div>
+
+                     <div
+                        class="alert hidden items-center justify-center w-full text-center mb-8 p-4 space-x-4 rounded-lg shadow text-blue-300 divide-gray-700 space-x bg-gray-800 border border-blue-300"
+                        role="alert">
+                        <svg class="w-5 h-5 text-blue-600 dark:text-blue-500 rotate-45" aria-hidden="true"
+                           xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
+                           <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="m9 17 8 2L9 1 1 19l8-2Zm0 0V9" />
+                        </svg>
+                        <div class="pl-4 text-sm font-normal">
+                           <span class="font-bold">Thanks!</span> Your message has been submitted.
+                        </div>
+                     </div>
+
+                     <div class="text-center mx-auto" data-aos="zoom-out" data-aos-once="true">
+                        <button id="submit" type="submit"
+                           class="text-base font-semibold text-blue-300 bg-slate-900 py-3 px-20 rounded-full shadow-lg inline-block border-2 border-blue-300 hover:bg-blue-300 hover:text-white hover:scale-110 transition duration-300">Submit
+                           <span class="success hidden"><i class="bi bi-check-lg"></i></span></button>
+                     </div>
+                  </div>
+               </form>
+            </div>
+         </div>
+      </section>
+
+
+   </div>
+   <script src="dist/js/contact.js"></script>
+</body>
+
+</html>

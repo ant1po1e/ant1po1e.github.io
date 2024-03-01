@@ -1,26 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['index.html',  './dist/flowbite/**/*.js'],
-  darkMode: 'class',
+  content: ['index.html', 'contact.html', 'project.html'],
   theme: {
-    container: {
-      center: true,
-      padding: '16px'
-    },
-    extend: {
-      colors: {
-        primary: '#38bdf8',
-        secondary: '#64748b',
-        dark: '#1e293b'
-      },
-      screens: {
-        '2xl': '1320px'
-      }
-    },
+    extend: {},
   },
-  plugins: [
-    require('tailwind-scrollbar'),
-    require('flowbite/plugin')
-  ],
+  plugins: [],
 }
 
