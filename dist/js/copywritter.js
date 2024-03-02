@@ -1,7 +1,3 @@
-import { injectSpeedInsights } from '@vercel/speed-insights';
-
-injectSpeedInsights();
-
 function sleep(ms) {
     return new Promise((resolve) => setTimeout(resolve, ms));
 }
