@@ -22,3 +22,12 @@ body {
 .text-header {
    font-size: 100px;
 }
+
+.neon {
+   color: #fff;
+   text-shadow:
+      0 0 7px #fff,
+      0 0 10px #fff,
+      0 0 102px rgb(147 197 253),
+      0 0 151px rgb(147 197 253);
+}
