@@ -13,25 +13,21 @@
 
 <body>
    <header>
-      <div class="flex items-center p-3 justify-center text-sm text-yellow-800 border border-yellow-300 bg-yellow-100"
-         role="alert">
-         <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-            fill="currentColor" viewBox="0 0 20 20">
-            <path
-               d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
-         </svg>
-         <span class="sr-only">Info</span>
-         <div>
-            <span class="font-bold">This website is not responsive yet!</span>
-         </div>
-      </div>
+      <ul class="flex md:hidden justify-start bg-blue-950 bg-opacity-90 text-blue-200">
+         <li>
+            <a href="/"
+               class="p-6 mb-7 text-4xl flex justify-center items-center w-full hover:scale-125 hover:text-blue-500 transition duration-300">
+               <i class="bi bi-arrow-left"></i>
+            </a>
+         </li>
+      </ul>
    </header>
    <div class="bg-blue-950 bg-opacity-90 flex justify-center h-screen w-screen pt-10">
 
 
 
       <!-- BackButton -->
-      <aside class="flex flext-auto justify-center text-blue-200">
+      <aside class="hidden md:flex flext-auto justify-center text-blue-200">
          <ul>
             <li>
                <a href="/"
@@ -47,10 +43,10 @@
 
       <!-- Contact -->
       <section class="flex flex-1 justify-center items-center">
-         <div class="container w-[750px] px-5 py-10 bg-blue-950 bg-opacity-75 rounded-2xl">
+         <div class="container w-30 md:w-[600px] lg:w-[750px] px-5 py-10 bg-blue-950 bg-opacity-75 md:rounded-2xl">
             <div class="w-full px-4">
                <div class="mx-auto text-center">
-                  <h1 class="font-bold text-white text-3xl">Contact Me!</h1>
+                  <h1 class="font-bold text-white text-xl md:text-3xl">Contact Me!</h1>
                </div>
             </div>
 

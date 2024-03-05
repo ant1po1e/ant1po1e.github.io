@@ -13,29 +13,46 @@
 
 <body>
    <header>
-      <div class="flex items-center p-3 justify-center text-sm text-yellow-800 border border-yellow-300 bg-yellow-100"
-         role="alert">
-         <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-            fill="currentColor" viewBox="0 0 20 20">
-            <path
-               d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
-         </svg>
-         <span class="sr-only">Info</span>
-         <div>
-            <span class="font-bold">This website is not responsive yet!</span>
-         </div>
-      </div>
+      <ul class="flex md:hidden justify-start pl-4 gap-4 bg-blue-950 bg-opacity-90 text-blue-200">
+         <li>
+            <a href="https://github.com/ant1po1e" target="_blank"
+               class="mt-6 text-4xl flex justify-center items-center w-full hover:scale-125 hover:text-blue-400 transition duration-300">
+               <i class="bi bi-github"></i>
+            </a>
+         </li>
+
+         <li>
+            <a href="https://www.linkedin.com/in/apriansyah-yudha-pratama-805795265/" target="_blank"
+               class="mt-6 text-4xl flex justify-center items-center w-full hover:scale-125 hover:text-blue-400 transition duration-300">
+               <i class="bi bi-linkedin"></i>
+            </a>
+         </li>
+
+         <li>
+            <a href="https://www.instagram.com/apolz.frontier/" target="_blank"
+               class="mt-6 text-4xl flex justify-center items-center w-full hover:scale-125 hover:text-blue-400 transition duration-300">
+               <i class="bi bi-instagram"></i>
+            </a>
+         </li>
+
+         <li>
+            <a href="https://www.youtube.com/@ant1po1e" target="_blank"
+               class="mt-6 text-4xl flex justify-center items-center w-full hover:scale-125 hover:text-blue-400 transition duration-300">
+               <i class="bi bi-youtube"></i>
+            </a>
+         </li>
+      </ul>
    </header>
    <div class="bg-blue-950 bg-opacity-90 flex justify-center h-screen w-screen pt-10">
 
 
 
       <!-- Sidebar -->
-      <aside class="flex flext-auto items-center justify-center text-blue-200">
+      <aside class="hidden md:flex flext-auto items-center justify-center text-blue-200">
          <ul>
             <li>
                <a href="https://github.com/ant1po1e" target="_blank"
-                  class="h-16 p-6 mb-7 text-6xl flex justify-center items-center w-full hover:scale-125 hover:text-blue-400 transition duration-300">
+                  class="h-16 mt-6 mb-7 text-6xl flex justify-center items-center w-full hover:scale-125 hover:text-blue-400 transition duration-300">
                   <i class="bi bi-github"></i>
                </a>
             </li>
@@ -68,12 +85,12 @@
 
       <!-- Header -->
       <section class="flex flex-1 justify-center items-center">
-         <div class="container w-[750px] px-5 py-10 bg-blue-950 bg-opacity-75 rounded-2xl">
+         <div class="container w-30 md:w-[600px] lg:w-[750px] px-5 py-10 bg-blue-950 bg-opacity-75 md:rounded-2xl">
             <div class="w-full px-4">
                <div class="mx-auto text-center">
-                  <h1 class="font-bold text-white text-header neon">Antipole</h1>
+                  <h1 class="font-bold text-white text-5xl md:text-[100px] neon">Antipole</h1>
                </div>
-               <div class="sm:flex sm:flex-wrap sm:justify-center text-3xl">
+               <div class="flex flex-wrap justify-center text-xl md:text-3xl">
                   <span id="typewriter" class="font-mono font-bold text-blue-200"></span><span id="cursor"
                      class="text-white font-bold">|</span>
                </div>
@@ -97,9 +114,8 @@
       <!-- Header-END -->
 
 
-
    </div>
-   <script src="dist/js/copywritter.js"></script>
+   <script src="dist/js/copywritter.js"></script> 
 </body>
 
 </html>
