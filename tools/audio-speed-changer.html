@@ -50,8 +50,8 @@
 
         <!-- Tools -->
         <section class="flex flex-1 justify-center items-center">
-            <div class="container w-30 md:w-[600px] lg:w-[750px] px-5 py-10 bg-blue-950 bg-opacity-75 md:rounded-2xl"
-                data-aos="zoom-out" data-aos-once="true" data-aos-once="true">
+            <div class="container w-full max-w-2xl lg:max-w-3xl px-5 py-10 bg-blue-950 bg-opacity-75 md:rounded-2xl"
+                data-aos="zoom-out" data-aos-once="true">
                 <div class="w-full px-4">
                     <div class="mx-auto text-center">
                         <h1 class="font-bold text-white text-xl md:text-3xl" data-aos="zoom-in" data-aos-delay="50"
@@ -63,69 +63,77 @@
                     <h1 class="font-bold text-white text-lg py-4 md:text-xl" data-aos="zoom-in" data-aos-delay="50"
                         data-aos-once="true">| Audio Speed Changer |</h1>
 
-                    <div class="w-full lg:w-3/4 lg:mx-auto">
+                    <div class="w-full lg:w-full lg:mx-auto">
                         <form id="mp3-form">
-                            <div class="w-full px-4 mb-8" data-aos="fade-right" data-aos-delay="50"
-                                data-aos-once="true">
-                                <label for="mp3-upload" class="text-base font-bold text-blue-300">Upload File</label>
-                                <input
-                                    class="block w-full text-sm border rounded-lg cursor-pointer text-gray-400 focus:outline-none bg-gray-700 border-gray-600 dark:placeholder-gray-400"
-                                    id="mp3-upload" type="file" accept="audio/mp3" required>
+                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                                <div class="w-full px-4 mb-2" data-aos="fade-right" data-aos-delay="50"
+                                    data-aos-once="true">
+                                    <label for="mp3-upload" class="text-base font-bold text-blue-300">Upload
+                                        File</label>
+                                    <input
+                                        class="block w-full text-sm border rounded-lg cursor-pointer text-gray-400 focus:outline-none bg-gray-700 border-gray-600 dark:placeholder-gray-400"
+                                        id="mp3-upload" type="file" accept="audio/mp3" required>
+                                </div>
+
+                                <div class="w-full px-4 mb-2" data-aos="fade-right" data-aos-delay="50"
+                                    data-aos-once="true">
+                                    <label for="speed" class="text-base font-bold text-blue-300">Speed (e.g.
+                                        1.25x)</label>
+                                    <input type="number" id="speed" name="speed" step="0.01"
+                                        class="w-full bg-slate-500 text-white p-3 rounded-xl focus:outline-none focus:ring-blue-300 focus:ring-1 focus:border-blue-300"
+                                        placeholder="1.25" value="1.25">
+                                    <input type="checkbox" id="use-multiplier" name="use-multiplier" checked> Use
+                                    Multiplier<br>
+                                </div>
+
+                                <div class="w-full px-4 mb-2" data-aos="fade-right" data-aos-delay="50"
+                                    data-aos-once="true">
+                                    <label for="original-bpm" class="text-base font-bold text-blue-300">Original
+                                        BPM</label>
+                                    <input type="number" id="original-bpm" name="original-bpm"
+                                        class="w-full bg-slate-500 text-white p-3 rounded-xl focus:outline-none focus:ring-blue-300 focus:ring-1 focus:border-blue-300"
+                                        placeholder="Enter original BPM" required>
+                                </div>
+
+                                <div class="w-full px-4 mb-2" data-aos="fade-right" data-aos-delay="50"
+                                    data-aos-once="true">
+                                    <label for="target-bpm" class="text-base font-bold text-blue-300">Target BPM</label>
+                                    <input type="number" id="target-bpm" name="target-bpm"
+                                        class="w-full bg-slate-500 text-white p-3 rounded-xl focus:outline-none focus:ring-blue-300 focus:ring-1 focus:border-blue-300"
+                                        placeholder="Enter target BPM">
+                                    <input type="checkbox" id="use-target-bpm" name="use-target-bpm"> Use Target BPM<br>
+                                </div>
 
                             </div>
 
-                            <div class="w-full px-4 mb-8" data-aos="fade-right" data-aos-delay="50"
-                                data-aos-once="true">
-                                <label for="speed" class="text-base font-bold text-blue-300">Speed (e.g.
-                                    1.25x)</label>
-                                <input type="number" id="speed" name="speed" step="0.01"
-                                    class="w-full bg-slate-500 text-white p-3 rounded-xl focus:outline-none focus:ring-blue-300 focus:ring-1 focus:border-blue-300"
-                                    placeholder="1.25" value="1.25">
-                            </div>
-
-                            <div class="w-full px-4 mb-8" data-aos="fade-right" data-aos-delay="50"
-                                data-aos-once="true">
-                                <label for="original-bpm" class="text-base font-bold text-blue-300">Original BPM</label>
-                                <input type="number" id="original-bpm" name="original-bpm"
-                                    class="w-full bg-slate-500 text-white p-3 rounded-xl focus:outline-none focus:ring-blue-300 focus:ring-1 focus:border-blue-300"
-                                    placeholder="Enter original BPM" required>
-                            </div>
-
-                            <div class="w-full px-4 mb-8" data-aos="fade-right" data-aos-delay="50"
-                                data-aos-once="true">
-                                <label for="target-bpm" class="text-base font-bold text-blue-300">Target BPM</label>
-                                <input type="number" id="target-bpm" name="target-bpm"
-                                    class="w-full bg-slate-500 text-white p-3 rounded-xl focus:outline-none focus:ring-blue-300 focus:ring-1 focus:border-blue-300"
-                                    placeholder="Enter target BPM">
-                            </div>
-
-
-                            <div class="flex items-center justify-center pb-5">
+                            <div class="w-full px-4 mb-2 flex items-center justify-center pb-5" data-aos="fade-right"
+                                data-aos-delay="50" data-aos-once="true">
                                 <input id="preserve-pitch" type="checkbox"
                                     class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                <label for="preserve-pitch"
-                                    class="m-2 text-base font-bold text-blue-300">Pitch the audio</label>
+                                <label for="preserve-pitch" class="ml-2 text-base font-bold text-blue-300">Pitch the
+                                    audio</label>
                             </div>
-
-
                             <div class="text-center mx-auto" data-aos="zoom-out" data-aos-delay="300"
                                 data-aos-once="true">
                                 <button id="submit" type="submit"
-                                    class="text-base font-semibold text-blue-300 bg-slate-900 py-3 px-20 rounded-full shadow-lg inline-block border-2 border-blue-300 hover:bg-blue-300 hover:text-white hover:scale-110 transition duration-300">Proceed
+                                    class="text-base font-semibold text-blue-300 bg-slate-900 py-3 px-20 rounded-full shadow-lg inline-block border-2 border-blue-300 hover:bg-blue-300 hover:text-white hover:scale-110 transition duration-300">
+                                    Proceed
                                 </button>
                             </div>
 
                             <div class="flex justify-center pt-10">
-                                <audio id="audio-player" controls></audio>
+                                <audio id="audio-player" controls disabled>
+                                    <source id="audio-source" src="" type="audio/mp3">
+                                    Your browser does not support the audio element.
+                                </audio>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
+        </section>
 
-    </div>
-    </section>
-    <!-- Contact-END -->
+        <!-- Tools-END -->
 
 
 
