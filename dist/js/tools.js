@@ -33,7 +33,7 @@ document.getElementById('mp3-form').addEventListener('submit', function(event) {
     if (document.getElementById('use-target-bpm').checked) {
         if (originalBPM && targetBPM) {
             speed = targetBPM / originalBPM;
-            document.getElementById('speed').value = targetBPM.toFixed(2); 
+            document.getElementById('speed').value = speed.toFixed(2); 
         }
     } else if (speedInput) {
         speed = speedInput;
