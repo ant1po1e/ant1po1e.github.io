@@ -17,9 +17,18 @@ document.getElementById('mp3-form').addEventListener('submit', function(event) {
     const fileInput = document.getElementById('mp3-upload').files[0];
     const speedInput = parseFloat(document.getElementById('speed').value);
     const originalBPM = parseFloat(document.getElementById('original-bpm').value);
-    const targetBPM = parseFloat(document.getElementById('target-bpm').value);
+    const targetBPMInput = parseFloat(document.getElementById('target-bpm').value);
+    const preservePitch = document.getElementById('preserve-pitch').checked;
 
-    let speed = 1.0; 
+    let speed = 1.0;
+    let targetBPM = targetBPMInput;
+
+    if (originalBPM && !targetBPM) {
+        if (speedInput) {
+            targetBPM = originalBPM * speedInput;
+            document.getElementById('target-bpm').value = targetBPM.toFixed(2)
+        }
+    }
 
     if (originalBPM && targetBPM) {
         speed = targetBPM / originalBPM;
@@ -33,7 +42,11 @@ document.getElementById('mp3-form').addEventListener('submit', function(event) {
 
         audioPlayer.src = fileURL;
         audioPlayer.playbackRate = speed;
+
+        audioPlayer.preservesPitch = !preservePitch;
+
         audioPlayer.play();
     }
 });
+
 
