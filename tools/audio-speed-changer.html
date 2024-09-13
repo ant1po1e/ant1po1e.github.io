@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-4499218414555492">
+    <link rel="stylesheet" href="/dist/css/output.css">
+    <link rel="stylesheet" href="/dist/css/style.css">
+    <link rel="icon" type="image/x-icon" href="/dist/img/favicon.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <title>Ant1po1e | Tools</title>
+</head>
+
+<body>
+    <!-- BackButton-Mobile -->
+    <header>
+        <ul class="flex md:hidden justify-start bg-blue-950 bg-opacity-90 text-blue-200">
+            <li data-aos="fade-left" data-aos-once="true">
+                <a href="/tools/"
+                    class="p-6 mb-7 text-4xl flex justify-center items-center w-full hover:scale-125 hover:text-blue-500 transition duration-300">
+                    <i class="bi bi-arrow-left"></i>
+                </a>
+            </li>
+        </ul>
+    </header>
+    <!-- BackButton-Mobile-END -->
+
+
+
+    <div class="bg-blue-950 bg-opacity-90 flex justify-center h-screen w-screen pt-10">
+
+
+
+        <!-- BackButton -->
+        <aside class="hidden md:flex flext-auto justify-center text-blue-200">
+            <ul>
+                <li data-aos="fade-left" data-aos-once="true">
+                    <a href="/tools/"
+                        class="h-16 p-6 mb-7 text-6xl flex justify-center items-center w-full hover:scale-125 hover:text-blue-500 transition duration-300">
+                        <i class="bi bi-arrow-left"></i>
+                    </a>
+                </li>
+            </ul>
+        </aside>
+        <!-- BackButton-END -->
+
+
+
+        <!-- Tools -->
+        <section class="flex flex-1 justify-center items-center">
+            <div class="container w-30 md:w-[600px] lg:w-[750px] px-5 py-10 bg-blue-950 bg-opacity-75 md:rounded-2xl"
+                data-aos="zoom-out" data-aos-once="true" data-aos-once="true">
+                <div class="w-full px-4">
+                    <div class="mx-auto text-center">
+                        <h1 class="font-bold text-white text-xl md:text-3xl" data-aos="zoom-in" data-aos-delay="50"
+                            data-aos-once="true">Tools</h1>
+                    </div>
+                </div>
+
+                <div class="text-center mt-5 w-full px-4 py-4 border-t-2 border-t-white text-white">
+                    <h1 class="font-bold text-white text-lg py-4 md:text-xl" data-aos="zoom-in" data-aos-delay="50"
+                        data-aos-once="true">| Audio Speed Changer |</h1>
+
+                    <div class="w-full lg:w-3/4 lg:mx-auto">
+                        <form id="mp3-form">
+                            <div class="w-full px-4 mb-8" data-aos="fade-right" data-aos-delay="50"
+                                data-aos-once="true">
+                                <label for="mp3-upload" class="text-base font-bold text-blue-300">Upload File</label>
+                                <input
+                                    class="block w-full text-sm border rounded-lg cursor-pointer text-gray-400 focus:outline-none bg-gray-700 border-gray-600 dark:placeholder-gray-400"
+                                    id="mp3-upload" type="file" accept="audio/mp3" required>
+
+                            </div>
+
+                            <div class="w-full px-4 mb-8" data-aos="fade-right" data-aos-delay="50"
+                                data-aos-once="true">
+                                <label for="speed" class="text-base font-bold text-blue-300">Speed (e.g.
+                                    1.25x):</label>
+                                <input type="number" id="speed" name="speed" step="0.01"
+                                    class="w-full bg-slate-500 text-white p-3 rounded-xl focus:outline-none focus:ring-blue-300 focus:ring-1 focus:border-blue-300"
+                                    placeholder="1.25" value="1.25">
+                            </div>
+
+                            <div class="w-full px-4 mb-8" data-aos="fade-right" data-aos-delay="50"
+                                data-aos-once="true">
+                                <label for="original-bpm" class="text-base font-bold text-blue-300">Speed (e.g.
+                                    1.25x):</label>
+                                <input type="number" id="original-bpm" name="original-bpm"
+                                    class="w-full bg-slate-500 text-white p-3 rounded-xl focus:outline-none focus:ring-blue-300 focus:ring-1 focus:border-blue-300"
+                                    placeholder="Enter original BPM">
+                            </div>
+
+                            <div class="w-full px-4 mb-8" data-aos="fade-right" data-aos-delay="50"
+                                data-aos-once="true">
+                                <label for="target-bpm" class="text-base font-bold text-blue-300">Speed (e.g.
+                                    1.25x):</label>
+                                <input type="number" id="target-bpm" name="target-bpm"
+                                    class="w-full bg-slate-500 text-white p-3 rounded-xl focus:outline-none focus:ring-blue-300 focus:ring-1 focus:border-blue-300"
+                                    placeholder="Enter target BPM">
+                            </div>
+
+                            <div class="text-center mx-auto" data-aos="zoom-out" data-aos-delay="300"
+                                data-aos-once="true">
+                                <button id="submit" type="submit"
+                                    class="text-base font-semibold text-blue-300 bg-slate-900 py-3 px-20 rounded-full shadow-lg inline-block border-2 border-blue-300 hover:bg-blue-300 hover:text-white hover:scale-110 transition duration-300">Proceed
+                                </button>
+                            </div>
+
+                            <div class="flex justify-center pt-10">
+                                <audio id="audio-player" controls></audio>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+    </div>
+    </section>
+    <!-- Contact-END -->
+
+
+
+    </div>
+
+
+
+    <script src="/dist/js/tools.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+
+</html>

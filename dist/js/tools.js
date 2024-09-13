@@ -10,3 +10,30 @@ function calculate() {
         alert('Please fill in all fields!');
     }
 }
+
+document.getElementById('mp3-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const fileInput = document.getElementById('mp3-upload').files[0];
+    const speedInput = parseFloat(document.getElementById('speed').value);
+    const originalBPM = parseFloat(document.getElementById('original-bpm').value);
+    const targetBPM = parseFloat(document.getElementById('target-bpm').value);
+
+    let speed = 1.0; 
+
+    if (originalBPM && targetBPM) {
+        speed = targetBPM / originalBPM;
+    } else if (speedInput) {
+        speed = speedInput;
+    }
+
+    if (fileInput) {
+        const audioPlayer = document.getElementById('audio-player');
+        const fileURL = URL.createObjectURL(fileInput);
+
+        audioPlayer.src = fileURL;
+        audioPlayer.playbackRate = speed;
+        audioPlayer.play();
+    }
+});
+
