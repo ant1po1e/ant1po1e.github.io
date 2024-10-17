@@ -33,8 +33,8 @@ function generateBBCode() {
         code = `[color=${startColor}]${text}[/color]`;
     }
 
-    if (font !== 'None' && font !== 'Default') code = `[font=${font}]${code}[/font]`;
-    if (size !== 'None' && size !== 'Default') code = `[size=${size}]${code}[/size]`;
+    if (font !== 'None') code = `[font=${font}]${code}[/font]`;
+    if (size !== 'None') code = `[size=${size}]${code}[/size]`;
     if (bold) code = `[b]${code}[/b]`;
     if (italic) code = `[i]${code}[/i]`;
 
