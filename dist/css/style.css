@@ -2,6 +2,8 @@ body {
    background: url(./../../dist/img/bg.png);
    -webkit-background-size: cover;
    background-size: cover;
+   background-repeat: no-repeat;
+   background-attachment: fixed;
    background-position: center center;
 }
 
