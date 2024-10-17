@@ -25,14 +25,16 @@ function generateBBCode() {
     let code = '';
     if (effect === 'horizontal') {
         code = applyGradient(text, startColor, endColor);
+    } else if (effect === 'middle') {
+        code = applyMiddleGradient(text, startColor, middleColor, endColor);
     } else if (effect === 'three-color') {
         code = applyThreeColorGradient(text, startColor, middleColor, endColor);
     } else if (effect === 'solid') {
         code = `[color=${startColor}]${text}[/color]`;
     }
 
-    if (font !== 'Default') code = `[font=${font}]${code}[/font]`;
-    if (size !== 'Default') code = `[size=${size}]${code}[/size]`;
+    if (font !== 'None' && font !== 'Default') code = `[font=${font}]${code}[/font]`;
+    if (size !== 'None' && size !== 'Default') code = `[size=${size}]${code}[/size]`;
     if (bold) code = `[b]${code}[/b]`;
     if (italic) code = `[i]${code}[/i]`;
 
@@ -44,6 +46,21 @@ function applyGradient(text, startColor, endColor) {
     let result = '';
     for (let i = 0; i < text.length; i++) {
         let color = interpolateColor(startColor, endColor, i / (text.length - 1));
+        result += `[color=${color}]${text[i]}[/color]`;
+    }
+    return result;
+}
+
+function applyMiddleGradient(text, startColor, middleColor, endColor) {
+    let result = '';
+    let midPoint = Math.floor(text.length / 2);
+    for (let i = 0; i < text.length; i++) {
+        let color;
+        if (i < midPoint) {
+            color = interpolateColor(startColor, middleColor, i / midPoint);
+        } else {
+            color = interpolateColor(middleColor, endColor, (i - midPoint) / (text.length - midPoint - 1));
+        }
         result += `[color=${color}]${text[i]}[/color]`;
     }
     return result;
@@ -80,7 +97,7 @@ function updatePreview(bbcode) {
         .replace(/\[\/color\]/g, '</span>')
         .replace(/\[font=([^\]]+)\]/g, '<span style="font-family: $1">')
         .replace(/\[\/font\]/g, '</span>')
-        .replace(/\[size=([^\]]+)\]/g, `<span style="font-size: 25px">`)
+        .replace(/\[size=([^\]]+)\]/g, '<span style="font-size: 25px">')
         .replace(/\[\/size\]/g, '</span>')
         .replace(/\[b\]/g, '<strong>')
         .replace(/\[\/b\]/g, '</strong>')
@@ -93,7 +110,7 @@ function updatePreview(bbcode) {
 function updateColorInputs() {
     let effect = document.getElementById('effect').value;
     document.getElementById('middleColor').style.display = 
-        (effect === 'three-color') ? 'inline' : 'none';
+        (effect === 'middle' || effect === 'three-color') ? 'inline' : 'none';
     document.getElementById('endColor').style.display = 
         (effect !== 'solid') ? 'inline' : 'none';
 }
