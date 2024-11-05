@@ -3,7 +3,7 @@ module.exports = {
   plugins: [
     require('flowbite/plugin')
   ],
-  content: ['index.html', './contact/index.html', './projects/index.html', './tools/index.html', './tools/snap-calculator.html', './tools/bbcode-colorizer.html', './dist/flowbite/**/*.js'],
+  content: ['index.html', './contact/index.html', './projects/index.html', './tools/index.html', './tools/snap-calculator.html', './tools/bbcode-colorizer.html', './tools/todo.html', './dist/flowbite/**/*.js'],
   theme: {
     extend: {},
   },

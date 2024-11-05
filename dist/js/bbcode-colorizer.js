@@ -1,16 +1,3 @@
-function calculate() {
-    const desiredSnap = document.getElementById('desired-snap').value;
-    const baseSnap = document.getElementById('base-snap').value;
-    const bpm = document.getElementById('bpm').value;
-
-    if (bpm && desiredSnap && baseSnap) {
-        const result = (bpm * desiredSnap) / baseSnap;
-        document.getElementById('result').textContent = result.toFixed(2) + ' BPM';
-    } else {
-        alert('Please fill in all fields!');
-    }
-}
-
 function generateBBCode() {
     let text = document.getElementById('text').value;
     let effect = document.getElementById('effect').value;
@@ -83,8 +70,8 @@ function applyThreeColorGradient(text, startColor, middleColor, endColor) {
 function interpolateColor(color1, color2, factor) {
     let result = "#";
     for (let i = 1; i <= 3; i++) {
-        let c1 = parseInt(color1.substr(i*2-1, 2), 16);
-        let c2 = parseInt(color2.substr(i*2-1, 2), 16);
+        let c1 = parseInt(color1.substr(i * 2 - 1, 2), 16);
+        let c2 = parseInt(color2.substr(i * 2 - 1, 2), 16);
         let c = Math.round(c1 + factor * (c2 - c1));
         result += c.toString(16).padStart(2, '0');
     }
@@ -109,9 +96,9 @@ function updatePreview(bbcode) {
 
 function updateColorInputs() {
     let effect = document.getElementById('effect').value;
-    document.getElementById('middleColor').style.display = 
+    document.getElementById('middleColor').style.display =
         (effect === 'middle' || effect === 'three-color') ? 'inline' : 'none';
-    document.getElementById('endColor').style.display = 
+    document.getElementById('endColor').style.display =
         (effect !== 'solid') ? 'inline' : 'none';
 }
 
