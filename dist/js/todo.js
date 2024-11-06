@@ -94,19 +94,19 @@ class TodoApp {
             row.className = 'border-b bg-gray-800 border-gray-700 hover:bg-gray-600';
             
             row.innerHTML = `
-                <th scope="row" class="px-6 py-4 font-medium whitespace-nowrap ${todo.completed ? 'line-through text-gray-400' : 'text-white'}">
+                <th scope="row" class="px-1.5 py-2 md:px-6 md:py-3 font-medium whitespace-nowrap ${todo.completed ? 'line-through text-gray-400' : 'text-white'}">
                     ${todo.title}
                 </th>
-                <td class="px-6 py-4">
+                <td class="px-1.5 py-2 md:px-6 md:py-3">
                     ${this.formatDate(todo.createdAt)}
                 </td>
-                <td class="px-6 py-4">
+                <td class="px-1.5 py-2 md:px-6 md:py-3">
                     ${this.formatDate(todo.dueDate)}
                 </td>
-                <td class="px-6 py-4">
+                <td class="px-1.5 py-2 md:px-6 md:py-3">
                     ${todo.completed ? 'Done' : 'Not Done'}
                 </td>
-                <td class="px-6 py-4 text-right">
+                <td class="px-1.5 py-2 md:px-6 md:py-3 text-right">
                     <button onclick="todoApp.toggleTodo(${todo.id})" 
                             class="font-medium text-green-500 hover:text-green-300 px-2">
                         <i class="bi bi-check-circle${todo.completed ? '-fill' : ''}"></i>

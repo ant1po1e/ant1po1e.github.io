@@ -70,7 +70,7 @@
 
         <!-- Tools -->
         <section class="flex flex-1 justify-center items-center">
-            <div class="container w-30 md:w-[600px] lg:w-[15000px] px-5 py-10 bg-blue-950 bg-opacity-75 md:rounded-2xl"
+            <div class="container w-30 md:w-[600px] lg:w-[1250px] px-5 py-10 bg-blue-950 bg-opacity-75 md:rounded-2xl"
                 data-aos="zoom-out" data-aos-once="true" data-aos-once="true">
                 <div class="w-full px-4">
                     <div class="mx-auto text-center">
@@ -86,70 +86,72 @@
                     <div class="w-full lg:w-3/4 lg:mx-auto">
                         <div class="w-full px-4 mb-8" data-aos="fade-right" data-aos-delay="200" data-aos-once="true">
                             <form class="todo-form" id="todoForm">
-                            <div class="flex gap-4 todo-form" id="todoForm">
-                                <div class="w-full px-4 mb-8" data-aos="fade-right" data-aos-delay="50"
-                                    data-aos-once="true">
-                                    <label for="text" class="text-base font-bold text-blue-300">Text</label>
-                                    <input type="text" id="todoTitle" name="text"
-                                        class="w-full bg-slate-500 text-white p-3 rounded-xl focus:outline-none focus:ring-blue-300 focus:ring-1 focus:border-blue-300"
-                                        placeholder="Text" value="Hello World!">
-                                </div>
+                                <div class="md:flex todo-form" id="todoForm">
+                                    <div class="w-full px-2 mb-8" data-aos="fade-right" data-aos-delay="50"
+                                        data-aos-once="true">
+                                        <label for="text" class="text-base font-bold text-blue-300">Text</label>
+                                        <input type="text" id="todoTitle" name="text"
+                                            class="w-full bg-slate-500 text-white p-3 rounded-xl focus:outline-none focus:ring-blue-300 focus:ring-1 focus:border-blue-300"
+                                            placeholder="Text" value="Hello World!">
+                                    </div>
 
-                                <div class="w-full px-4 mb-8" data-aos="fade-right" data-aos-delay="50"
-                                    data-aos-once="true">
-                                    <label for="datepicker-autohide" class="text-base font-bold text-blue-300">Due Date</label>
+                                    <div class="w-full px-2 mb-8" data-aos="fade-right" data-aos-delay="50"
+                                        data-aos-once="true">
+                                        <label for="datepicker-autohide" class="text-base font-bold text-blue-300">Due
+                                            Date</label>
 
-                                    <div class="relative max-w-full">
-                                        <div
-                                            class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                                            <svg class="w-4 h-4 text-gray-400" aria-hidden="true"
-                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                                viewBox="0 0 20 20">
-                                                <path
-                                                    d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
-                                            </svg>
+                                        <div class="relative max-w-full">
+                                            <div
+                                                class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                                                <svg class="w-4 h-4 text-gray-400" aria-hidden="true"
+                                                    xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                    viewBox="0 0 20 20">
+                                                    <path
+                                                        d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
+                                                </svg>
+                                            </div>
+                                            <input id="datepicker-autohide" datepicker datepicker-autohide type="text"
+                                                class="w-full bg-slate-500 text-white ps-10 p-3 rounded-xl focus:outline-none focus:ring-blue-300 focus:ring-1 focus:border-blue-300"
+                                                placeholder="Select date">
                                         </div>
-                                        <input id="datepicker-autohide" datepicker datepicker-autohide type="text"
-                                            class="w-full bg-slate-500 text-white ps-10 p-3 rounded-xl focus:outline-none focus:ring-blue-300 focus:ring-1 focus:border-blue-300"
-                                            placeholder="Select date">
                                     </div>
                                 </div>
-                            </div>
-                            <div class="text-center mx-auto" data-aos="zoom-out" data-aos-delay="250"
-                                data-aos-once="true">
-                                <button id="submit" type="submit"
-                                    class="text-base font-semibold text-blue-300 bg-slate-900 py-3 px-20 rounded-full shadow-lg inline-block border-2 border-blue-300 hover:bg-blue-300 hover:text-white hover:scale-110 transition duration-300">Add
-                                </button>
+                                <div class="text-center mx-auto" data-aos="zoom-out" data-aos-delay="250"
+                                    data-aos-once="true">
+                                    <button id="submit" type="submit"
+                                        class="text-base font-semibold text-blue-300 bg-slate-900 py-3 px-20 rounded-full shadow-lg inline-block border-2 border-blue-300 hover:bg-blue-300 hover:text-white hover:scale-110 transition duration-300">Add
+                                    </button>
+                                </div>
+                            </form>
+
+                            <div class="relative shadow-md rounded-lg pt-10">
+                                <div class="overflow-x-auto">
+                                    <table class="w-full px-2 text-[10px] md:text-sm text-left rtl:text-right text-gray-400">
+                                        <thead class="text-[8px] md:text-xs uppercase bg-gray-700 text-gray-400">
+                                            <tr>
+                                                <th scope="col" class="px-1.5 py-2 md:px-6 md:py-3">
+                                                    Name
+                                                </th>
+                                                <th scope="col" class="px-1.5 py-2 md:px-6 md:py-3">
+                                                    Date Added
+                                                </th>
+                                                <th scope="col" class="px-1.5 py-2 md:px-6 md:py-3">
+                                                    Due Date
+                                                </th>
+                                                <th scope="col" class="px-1.5 py-2 md:px-6 md:py-3">
+                                                    Status
+                                                </th>
+                                                <th scope="col" class="px-1.5 py-2 md:px-6 md:py-3">
+                                                    <span class="sr-only">Edit</span>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="todoList">
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                             
-                        </form>
-
-                            <div class="relative overflow-x-auto shadow-md sm:rounded-lg pt-10">
-                                <table class="w-full text-sm text-left rtl:text-right text-gray-400">
-                                    <thead
-                                        class="text-xs uppercase bg-gray-700 text-gray-400">
-                                        <tr>
-                                            <th scope="col" class="px-6 py-3">
-                                                Name
-                                            </th>
-                                            <th scope="col" class="px-6 py-3">
-                                                Date Added
-                                            </th>
-                                            <th scope="col" class="px-6 py-3">
-                                                Due Date
-                                            </th>
-                                            <th scope="col" class="px-6 py-3">
-                                                Status
-                                            </th>
-                                            <th scope="col" class="px-6 py-3">
-                                                <span class="sr-only">Edit</span>
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="todoList">
-                                    </tbody>
-                                </table>
-                            </div>
 
                         </div>
 
