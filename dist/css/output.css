@@ -1329,6 +1329,10 @@ input:checked + .toggle-bg {
   width: 1.75rem;
 }
 
+.w-auto {
+  width: auto;
+}
+
 .w-full {
   width: 100%;
 }
@@ -2309,28 +2313,22 @@ input:checked + .toggle-bg {
     width: 100%;
   }
 
+  .md\:w-auto {
+    width: auto;
+  }
+
   .md\:rounded-2xl {
     border-radius: 1rem;
-  }
-
-  .md\:px-3 {
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
-  }
-
-  .md\:py-3 {
-    padding-top: 0.75rem;
-    padding-bottom: 0.75rem;
-  }
-
-  .md\:px-5 {
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
   }
 
   .md\:px-6 {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
+  }
+
+  .md\:py-3 {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
   }
 
   .md\:text-2xl {
