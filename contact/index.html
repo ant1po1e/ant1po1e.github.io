@@ -28,115 +28,103 @@
    <link rel="stylesheet" href="/dist/css/style.css">
    <link rel="icon" type="image/x-icon" href="/dist/img/favicon.ico">
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&display=swap" rel="stylesheet">
    <title>Ant1po1e | Contact</title>
 </head>
 
-<body>
-   <!-- BackButton-Mobile -->
-   <header>
-      <ul class="flex md:hidden justify-start bg-blue-950 bg-opacity-80 text-blue-200">
-         <li data-aos="fade-left" data-aos-once="true">
-            <a href="/"
-               class="p-6 mb-7 text-4xl flex justify-center items-center w-full hover:scale-125 hover:text-blue-500 transition duration-300">
-               <i class="bi bi-arrow-left"></i>
-            </a>
-         </li>
-      </ul>
+<body class="relative min-h-screen bg-[#f3f1e7] overflow-x-hidden select-none">
+   <div class="absolute inset-0 bg-[rgba(200,200,200,0.6)] backdrop-blur-[10px]"></div>
+   <header class="flex justify-between items-center pt-4 relative z-10">
+      <a href="/"
+         class="text-black font-bold font-merienda text-lg md:text-2xl p-3 rounded-r-lg bg-white shadow-lg hover:text-blue-400 hover:pl-12 transition-all duration-300">
+         <i class="bi bi-arrow-left"></i> Back
+      </a>
+      <div class="flex items-center space-x-4 text-black text-sm font-normal px-6">
+         <a href="https://osu.ppy.sh/users/Antipole"
+            class="flex items-center bg-white bg-opacity-60 backdrop-blur-md shadow-lg hover:bg-blue-400 rounded-full px-1 py-1 transition duration-300">
+            <img alt="Antipole's Avatar" class="w-10 h-10 rounded-full object-cover" height="32"
+               src="https://a.ppy.sh/17258072" width="32" />
+         </a>
+      </div>
    </header>
-   <!-- BackButton-Mobile-END -->
+   <main class="relative z-10 max-w-[1200px] mx-auto px-6 pt-10 pb-6 min-h-[calc(100vh-72px)]">
 
-
-
-   <div class="bg-blue-950 bg-opacity-80 flex justify-center h-screen w-screen pt-10">
-
-
-
-      <!-- BackButton -->
-      <aside class="hidden md:flex flext-auto justify-center text-blue-200">
-         <ul>
-            <li data-aos="fade-left" data-aos-once="true">
-               <a href="/"
-                  class="h-16 p-6 mb-7 text-6xl flex justify-center items-center w-full hover:scale-125 hover:text-blue-500 transition duration-300">
-                  <i class="bi bi-arrow-left"></i>
-               </a>
-            </li>
-         </ul>
-      </aside>
-      <!-- BackButton-END -->
-
-
-
-      <!-- Contact -->
-      <section class="flex flex-1 justify-center items-center">
-         <div class="container w-30 md:w-[600px] lg:w-[750px] px-5 py-10 bg-blue-950 bg-opacity-75 md:rounded-2xl"
-            data-aos="zoom-out" data-aos-once="true" data-aos-once="true">
+      <!-- Main Section -->
+      <section class="w-full px-4 md:px-24 flex justify-center items-center">
+         <div class="w-full md:w-1/2 px-5 py-10 bg-white bg-opacity-50 backdrop-blur-md rounded-lg shadow-lg">
             <div class="w-full px-4">
                <div class="mx-auto text-center">
-                  <h1 class="font-bold text-white text-xl md:text-3xl" data-aos="zoom-in" data-aos-delay="50"
-                     data-aos-once="true">Contact
+                  <h1 class="font-bold text-black font-merienda text-xl md:text-3xl" >Contact
                      Me!</h1>
                </div>
             </div>
 
-            <div class="text-center mt-5 w-full px-4 py-4 border-t-2 border-t-white text-white">
-               <form name="Ant1po1e-contact-form">
-                  <div class="w-full lg:w-3/4 lg:mx-auto">
-                     <div class="w-full px-4 mb-8" data-aos="fade-right" data-aos-delay="50" data-aos-once="true">
-                        <label for="name" class="text-base font-bold text-blue-300">Name</label>
-                        <input type="text" id="name" name="name"
-                           class="w-full bg-slate-500 text-white p-3 rounded-xl focus:outline-none focus:ring-blue-300 focus:ring-1 focus:border-blue-300"
-                           placeholder="ex: Antipole" required>
-                     </div>
-                     <div class="w-full px-4 mb-8" data-aos="fade-right" data-aos-delay="100" data-aos-once="true">
-                        <label for="email" class="text-base font-bold text-blue-300">Email</label>
-                        <input type="email" id="email" name="email"
-                           class="w-full bg-slate-500 text-white p-3 rounded-xl focus:outline-none focus:ring-blue-300 focus:ring-1 focus:border-blue-300"
-                           placeholder="ex: antipole@example.com" required>
-                     </div>
-                     <div class="w-full px-4 mb-8" data-aos="fade-right" data-aos-delay="150" data-aos-once="true">
-                        <label for="message" class="text-base font-bold text-blue-300">Message</label>
-                        <textarea type="text" id="message" name="message"
-                           class="w-full bg-slate-500 text-white p-3 rounded-xl focus:outline-none focus:ring-blue-300 focus:ring-1 focus:border-blue-300"
-                           placeholder="Write anything here!" required></textarea>
-                     </div>
-
-                     <div
-                        class="alert hidden items-center justify-center w-full text-center mb-8 p-4 space-x-4 rounded-lg shadow text-blue-300 divide-gray-700 space-x bg-gray-800 border border-blue-300"
-                        role="alert">
-                        <svg class="w-5 h-5 text-blue-600 dark:text-blue-500 rotate-45" aria-hidden="true"
-                           xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
-                           <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                              d="m9 17 8 2L9 1 1 19l8-2Zm0 0V9" />
-                        </svg>
-                        <div class="pl-4 text-sm font-normal">
-                           <span class="font-bold">Thanks!</span> Your message has been submitted.
-                        </div>
-                     </div>
-
-                     <div class="text-center mx-auto" data-aos="zoom-out" data-aos-delay="300" data-aos-once="true">
-                        <button id="submit" type="submit"
-                           class="text-base font-semibold text-blue-300 bg-slate-900 py-3 px-20 rounded-full shadow-lg inline-block border-2 border-blue-300 hover:bg-blue-300 hover:text-white hover:scale-110 transition duration-300">Submit
-                           <span class="success hidden"><i class="bi bi-check-lg"></i></span></button>
-                     </div>
+            <div class="text-center mt-5 w-full px-4 py-4 border-t-2 border-t-black text-white">
+               <form name="Ant1po1e-contact-form" class="space-y-4 max-w-md mx-auto">
+                  <div>
+                     <label for="name" class="sr-only">Name</label>
+                     <input type="text" id="name" name="name" placeholder="Name"
+                        class="w-full bg-slate-700 shadow-lg bg-opacity-50 text-white text-sm px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-white placeholder:text-slate-300 hover:scale-105 transition duration-300"
+                        required>
+                  </div>
+                  <div>
+                     <label for="email" class="sr-only">Email</label>
+                     <input type="email" id="email" name="email" placeholder="Email"
+                        class="w-full bg-slate-700 shadow-lg bg-opacity-50 text-white text-sm px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-white placeholder:text-slate-300 hover:scale-105 transition duration-300"
+                        required>
+                  </div>
+                  <div>
+                     <label for="message" class="sr-only">Message</label>
+                     <textarea id="message" name="message" placeholder="Your message" rows="4"
+                        class="w-full bg-slate-700 shadow-lg bg-opacity-50 text-white text-sm px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-white placeholder:text-slate-300 hover:scale-105 transition duration-300 resize-none"
+                        required></textarea>
+                  </div>
+                  <div class="text-center flex justify-center">
+                     <button type="submit"
+                        class="relative flex h-[50px] w-24 hover:w-40 items-center justify-center overflow-hidden rounded-lg bg-black text-white shadow-2xl transition-all before:absolute before:h-0 before:w-0 before:rounded-full before:bg-blue-400 before:duration-500 before:ease-out hover:shadow-blue-400 hover:before:h-56 hover:before:w-56 duration-300">
+                        <span class="relative z-10">Submit</span>
+                     </button>
                   </div>
                </form>
             </div>
          </div>
       </section>
-      <!-- Contact-END -->
 
-
-
-   </div>
-
-
+      <!-- Footer -->
+      <footer
+         class="fixed bottom-0 md:bottom-8 left-1/2 transform -translate-x-1/2 flex flex-wrap items-center justify-center gap-6">
+         <div class="w-full bg-white bg-opacity-50 backdrop-blur-md rounded-lg p-6 shadow-lg flex gap-5 md:gap-12">
+            <p class="font-merienda">
+               <a href="/projects/"
+                  class="text-black text-base md:text-2xl relative group hover:text-blue-400 rounded-md p-0 hover:py-1 hover:px-2 hover:bg-white transition-all duration-300"
+                  aria-label="Projects">
+                  PROJECTS
+               </a>
+            </p>
+            <p class="font-merienda">
+               <a href="/tools/"
+                  class="text-black text-base md:text-2xl relative group hover:text-blue-400 rounded-md p-0 hover:py-1 hover:px-2 hover:bg-white transition-all duration-300">
+                  TOOLS
+               </a>
+            </p>
+            <p class="font-merienda">
+               <a href="/contact/"
+                  class="text-black text-base md:text-2xl relative group hover:text-blue-400 rounded-md p-0 hover:py-1 hover:px-2 hover:bg-white transition-all duration-300">
+                  CONTACT
+               </a>
+            </p>
+            <p class="font-merienda">
+               <a href="https://ant1po1e.itch.io"
+                  class="text-black text-base md:text-2xl relative group hover:text-blue-400 rounded-md p-0 hover:py-1 hover:px-2 hover:bg-white transition-all duration-300">
+                  ITCH.IO
+               </a>
+            </p>
+         </div>
+      </footer>
+   </main>
 
    <script src="/dist/js/contact.js"></script>
-   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-   <script>
-      AOS.init();
-   </script>
 </body>
 
 </html>

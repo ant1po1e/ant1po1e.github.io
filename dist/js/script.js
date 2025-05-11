@@ -36,28 +36,3 @@ const writeLoop = async () => {
 };
 
 writeLoop();
-
-
-const home = document.querySelector("#home");
-const project = document.querySelector("#project");
-const contact = document.querySelector("#contact");
-
-const projectBtn = document.querySelector("#project-btn");
-const contactBtn = document.querySelector("#contact-btn")
-
-
-projectBtn.addEventListener('click', function () {
-    home.classList.add('hidden');
-    home.classList.remove('flex');
-
-    project.classList.add('flex');
-    project.classList.remove('hidden');
-});
-
-contactBtn.addEventListener('click', function () {
-    home.classList.add('hidden');
-    home.classList.remove('flex');
-
-    contact.classList.add('flex');
-    contact.classList.remove('hidden');
-});

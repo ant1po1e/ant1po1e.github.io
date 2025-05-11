@@ -1,10 +1,22 @@
 body {
    background: url(./../../dist/img/bg.webp);
    -webkit-background-size: cover;
-   background-size: cover;
+   background-size: 150%;
    background-repeat: no-repeat;
    background-attachment: fixed;
    background-position: center center;
+   font-family: 'Inter', sans-serif;
+}
+
+@media (max-width: 768px) {
+   body {
+      background-size: 400%;
+      background-position: center; 
+   }
+}
+
+.font-merienda {
+   font-family: "Merienda", cursive;
 }
 
 #cursor {
@@ -28,4 +40,17 @@ body {
       0 0 5px #fff,
       0 0 50px rgb(147 197 253),
       0 0 50px rgb(147 197 253);
+}
+
+.neon-underline {
+   color: #fff;
+   box-shadow:
+      0 0 5px #fff,
+      0 0 5px #fff,
+      0 0 50px rgb(147 197 253),
+      0 0 50px rgb(147 197 253);
+}
+
+.modal-backdrop {
+    pointer-events: none; /* Membuat backdrop tidak menghalangi interaksi */
 }
