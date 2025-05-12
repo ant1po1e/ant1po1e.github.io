@@ -55,7 +55,7 @@
          <div class="w-full md:w-1/2 px-5 py-10 bg-white bg-opacity-50 backdrop-blur-md rounded-lg shadow-lg">
             <div class="w-full px-4">
                <div class="mx-auto text-center">
-                  <h1 class="font-bold text-black font-merienda text-xl md:text-3xl" >Contact
+                  <h1 class="font-bold text-black font-merienda text-xl md:text-3xl">Contact
                      Me!</h1>
                </div>
             </div>
@@ -76,12 +76,20 @@
                   </div>
                   <div>
                      <label for="message" class="sr-only">Message</label>
-                     <textarea id="message" name="message" placeholder="Your message" rows="4"
+                     <textarea type="text" id="email" name="email" placeholder="Your message" rows="4"
                         class="w-full bg-slate-700 shadow-lg bg-opacity-50 text-white text-sm px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-white placeholder:text-slate-300 hover:scale-105 transition duration-300 resize-none"
                         required></textarea>
                   </div>
+                  <div
+                     class="alert success hidden items-center justify-center w-full text-center mb-8 p-4 space-x-4 rounded-lg shadow text-blue-400 divide-gray-700 space-x bg-white border border-blue-300"
+                     role="alert">
+                     <i class="bi bi-send"></i>
+                     <div class="pl-1 text-sm font-normal">
+                        <span class="font-bold">Thanks!</span> Your message has been submitted.
+                     </div>
+                  </div>
                   <div class="text-center flex justify-center">
-                     <button type="submit"
+                     <button type="submit" id="submit"
                         class="relative flex h-[50px] w-24 hover:w-40 items-center justify-center overflow-hidden rounded-lg bg-black text-white shadow-2xl transition-all before:absolute before:h-0 before:w-0 before:rounded-full before:bg-blue-400 before:duration-500 before:ease-out hover:shadow-blue-400 hover:before:h-56 hover:before:w-56 duration-300">
                         <span class="relative z-10">Submit</span>
                      </button>
