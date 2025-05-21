@@ -8,6 +8,7 @@
     "tailwindcss": "^3.4.3"
   },
   "dependencies": {
+    "dotenv": "^16.5.0",
     "flowbite": "^2.3.0"
   }
 }
