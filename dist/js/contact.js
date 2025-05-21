@@ -1,6 +1,4 @@
-require('dotenv').config();
-
-const scriptURL = process.env.CONTACT_SCRIPT_URL;
+const scriptURL = "https://script.google.com/macros/s/AKfycbx0eCzzKaKtZ2gIwprnJ-5xtkpoM0kqcLv5uoVVUVZZMgIsJ6Fn6YHJ5OzUIOcpIcJV/exec";
 const form = document.forms["Ant1po1e-contact-form"];
 const success = document.querySelector(".success")
 const formAlert = document.querySelector(".alert");
