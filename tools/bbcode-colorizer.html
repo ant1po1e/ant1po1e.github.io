@@ -37,12 +37,12 @@
     <div class="absolute inset-0 bg-[rgba(200,200,200,0.6)] backdrop-blur-[10px]"></div>
     <header class="flex justify-between items-center pt-4 relative z-10">
         <a href="/tools/"
-            class="text-black font-bold font-merienda text-lg md:text-2xl p-3 rounded-r-lg bg-white shadow-lg hover:text-blue-400 hover:pl-12 transition-all duration-300">
+            class="text-black font-bold font-merienda text-lg md:text-2xl p-3 rounded-r-lg bg-white shadow-lg md:hover:text-blue-400 md:hover:pl-12 transition-all duration-300">
             <i class="bi bi-arrow-left"></i> Back
         </a>
         <div class="flex items-center space-x-4 text-black text-sm font-normal px-6">
             <a href="https://osu.ppy.sh/users/Antipole"
-                class="flex items-center bg-white bg-opacity-60 backdrop-blur-md shadow-lg hover:bg-blue-400 rounded-full px-1 py-1 transition duration-300">
+                class="flex items-center bg-white bg-opacity-60 backdrop-blur-md shadow-lg md:hover:bg-blue-400 rounded-full px-1 py-1 transition duration-300">
                 <img alt="Antipole's Avatar" class="w-10 h-10 rounded-full object-cover" height="32"
                     src="https://a.ppy.sh/17258072" width="32" />
             </a>
@@ -65,13 +65,13 @@
                         <div>
                             <label for="text" class="sr-only">Text</label>
                             <input type="text" id="text" name="text" placeholder="Text"
-                                class="w-full bg-slate-700 shadow-lg bg-opacity-50 text-white text-sm px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-white placeholder:text-slate-300 hover:scale-105 transition duration-300"
+                                class="w-full bg-slate-700 shadow-lg bg-opacity-50 text-white text-sm px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-white placeholder:text-slate-300 md:hover:scale-105 transition duration-300"
                                 value="Hello World!">
                         </div>
                         <div>
                             <label for="effect" class="sr-only">Effect</label>
                             <select id="effect"
-                                class="w-full bg-slate-700 shadow-lg bg-opacity-50 text-white text-sm px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-white placeholder:text-slate-300 hover:scale-105 transition duration-300">
+                                class="w-full bg-slate-700 shadow-lg bg-opacity-50 text-white text-sm px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-white placeholder:text-slate-300 md:hover:scale-105 transition duration-300">
                                 <option value="horizontal">Horizontal gradient</option>
                                 <option value="three-color">Three colored gradient</option>
                                 <option value="solid">Solid color</option>
@@ -79,7 +79,7 @@
                         </div>
                         <div>
                             <label for="color" class="sr-only">Colors</label>
-                            <div class="flex hover:scale-105 transition duration-300">
+                            <div class="flex md:hover:scale-105 transition duration-300">
                                 <input type="color" id="startColor" name="startColor"
                                     class="w-full bg-slate-700 shadow-lg bg-opacity-50 text-white text-sm px-2 py-1 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-white placeholder:text-slate-300"
                                     value="#FF0000">
@@ -93,7 +93,7 @@
                         </div>
                         <div class="flex gap-4">
                             <select id="font"
-                                class="w-full bg-slate-700 shadow-lg bg-opacity-50 text-white text-sm px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-white placeholder:text-slate-300 hover:scale-105 transition duration-300">
+                                class="w-full bg-slate-700 shadow-lg bg-opacity-50 text-white text-sm px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-white placeholder:text-slate-300 md:hover:scale-105 transition duration-300">
                                 <option value="None">Font</option>
                                 <option value="Arial">Arial</option>
                                 <option value="Arial Black">Arial Black</option>
@@ -117,7 +117,7 @@
                             </select>
 
                             <select id="size"
-                                class="w-full bg-slate-700 shadow-lg bg-opacity-50 text-white text-sm px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-white placeholder:text-slate-300 hover:scale-105 transition duration-300">
+                                class="w-full bg-slate-700 shadow-lg bg-opacity-50 text-white text-sm px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-white placeholder:text-slate-300 md:hover:scale-105 transition duration-300">
                                 <option value="None">Size</option>
                                 <option value="50">Tiny</option>
                                 <option value="85">Small</option>
@@ -160,26 +160,26 @@
             <div class="w-full bg-white bg-opacity-50 backdrop-blur-md rounded-lg p-6 shadow-lg flex gap-5 md:gap-12">
                 <p class="font-merienda">
                     <a href="/projects/"
-                        class="text-black text-base md:text-2xl relative group hover:text-blue-400 rounded-md p-0 hover:py-1 hover:px-2 hover:bg-white transition-all duration-300"
+                        class="text-black text-base md:text-2xl relative group md:hover:text-blue-400 rounded-md p-0 md:hover:py-1 md:hover:px-2 md:hover:bg-white transition-all duration-300"
                         aria-label="Projects">
                         PROJECTS
                     </a>
                 </p>
                 <p class="font-merienda">
                     <a href="/tools/"
-                        class="text-black text-base md:text-2xl relative group hover:text-blue-400 rounded-md p-0 hover:py-1 hover:px-2 hover:bg-white transition-all duration-300">
+                        class="text-black text-base md:text-2xl relative group md:hover:text-blue-400 rounded-md p-0 md:hover:py-1 md:hover:px-2 md:hover:bg-white transition-all duration-300">
                         TOOLS
                     </a>
                 </p>
                 <p class="font-merienda">
                     <a href="/contact/"
-                        class="text-black text-base md:text-2xl relative group hover:text-blue-400 rounded-md p-0 hover:py-1 hover:px-2 hover:bg-white transition-all duration-300">
+                        class="text-black text-base md:text-2xl relative group md:hover:text-blue-400 rounded-md p-0 md:hover:py-1 md:hover:px-2 md:hover:bg-white transition-all duration-300">
                         CONTACT
                     </a>
                 </p>
                 <p class="font-merienda">
                     <a href="https://ant1po1e.itch.io"
-                        class="text-black text-base md:text-2xl relative group hover:text-blue-400 rounded-md p-0 hover:py-1 hover:px-2 hover:bg-white transition-all duration-300">
+                        class="text-black text-base md:text-2xl relative group md:hover:text-blue-400 rounded-md p-0 md:hover:py-1 md:hover:px-2 md:hover:bg-white transition-all duration-300">
                         ITCH.IO
                     </a>
                 </p>
