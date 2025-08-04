@@ -7,7 +7,7 @@
 	],
 	"functions": {
 		"api/*.js": {
-			"runtime": "nodejs"
+			"runtime": "nodejs@22.x"
 		}
 	}
 }
