@@ -5,8 +5,7 @@ export const ContactSection = () => {
 	const [loading, setLoading] = useState(false);
 	const [showAlert, setShowAlert] = useState(false);
 
-	const scriptURL =
-		"https://script.google.com/macros/s/AKfycbx0eCzzKaKtZ2gIwprnJ-5xtkpoM0kqcLv5uoVVUVZZMgIsJ6Fn6YHJ5OzUIOcpIcJV/exec";
+	const scriptURL = "/api/contact";
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -14,9 +13,11 @@ export const ContactSection = () => {
 
 		try {
 			const form = formRef.current;
+			const formData = new FormData(form);
+
 			const response = await fetch(scriptURL, {
 				method: "POST",
-				body: new FormData(form),
+				body: formData,
 			});
 
 			if (response.ok) {
