@@ -3,7 +3,7 @@ import { Carousel } from "flowbite-react";
 const projects = [
 	{
 		title: "Gulanova Website",
-		image: "./projects/gulanova-site.webp",
+		image: "/projects/gulanova-site.webp",
 		alt: "Gulanova Website",
 		link: "https://gulanova.top",
 		stack: "html,css,js,tailwind,jquery,figma",
@@ -12,7 +12,7 @@ const projects = [
 	},
 	{
 		title: "Wave Walker",
-		image: "./projects/wave-walker.webp",
+		image: "/projects/wave-walker.webp",
 		alt: "Wave Walker",
 		link: "https://ant1po1e.itch.io/wave-walker",
 		stack: "unity,cs",
@@ -21,7 +21,7 @@ const projects = [
 	},
 	{
 		title: "Wave Walker 2",
-		image: "./projects/wave-walker-2.webp",
+		image: "/projects/wave-walker-2.webp",
 		alt: "Wave Walker 2",
 		link: "https://ant1po1e.itch.io/wave-walker-2",
 		stack: "unity,cs",
@@ -30,7 +30,7 @@ const projects = [
 	},
 	{
 		title: "Wave Walker 3",
-		image: "./projects/wave-walker-3.webp",
+		image: "/projects/wave-walker-3.webp",
 		alt: "Wave Walker 3",
 		link: "https://ant1po1e.itch.io/wave-walker-3-the-box",
 		stack: "unity,cs",
@@ -39,7 +39,7 @@ const projects = [
 	},
 	{
 		title: "Dodge the Thing",
-		image: "./projects/dodge-the-thing.webp",
+		image: "/projects/dodge-the-thing.webp",
 		alt: "Dodge the Thing",
 		link: "https://ant1po1e.itch.io/dodge-the-thing",
 		stack: "unity,cs",
@@ -48,7 +48,7 @@ const projects = [
 	},
 	{
 		title: "Apolz Pomodoro",
-		image: "./projects/apolz-pomodoro.webp",
+		image: "/projects/apolz-pomodoro.webp",
 		alt: "Apolz Pomodoro",
 		link: "https://ant1po1e.itch.io/apolz-pomodoro",
 		stack: "unity,cs",
@@ -57,7 +57,7 @@ const projects = [
 	},
 	{
 		title: "Zombie Shooter",
-		image: "./projects/zombie-shooter.webp",
+		image: "/projects/zombie-shooter.webp",
 		alt: "Zombie Shooter",
 		link: "https://github.com/ant1po1e/zombie-shooter-course",
 		stack: "unity,cs",
@@ -66,7 +66,7 @@ const projects = [
 	},
 	{
 		title: "Gothicvania",
-		image: "./projects/gothicvania.webp",
+		image: "/projects/gothicvania.webp",
 		alt: "Find The Key",
 		link: "https://github.com/ant1po1e/Gothicvania",
 		stack: "unity,cs",
@@ -75,7 +75,7 @@ const projects = [
 	},
 	{
 		title: "Find The Key",
-		image: "./projects/find-the-key.webp",
+		image: "/projects/find-the-key.webp",
 		alt: "Find The Key",
 		link: "https://github.com/ant1po1e/Find-The-Key",
 		stack: "html",
