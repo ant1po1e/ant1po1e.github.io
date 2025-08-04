@@ -7,7 +7,7 @@
 	],
 	"functions": {
 		"api/*.js": {
-			"runtime": "nodejs@18.x"
+			"runtime": "@vercel/node@20.x"
 		}
 	}
 }
