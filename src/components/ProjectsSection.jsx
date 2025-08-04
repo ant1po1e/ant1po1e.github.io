@@ -157,7 +157,7 @@ export const ProjectsSection = () => {
 										</a>
 										<div className="mt-2 flex justify-center">
 											<img
-												src={`https://skillicons.dev/icons?i=${project.techs}`}
+												src={`https://skillicons.dev/icons?i=${project.stack}`}
 												alt="Stack"
 											/>
 										</div>

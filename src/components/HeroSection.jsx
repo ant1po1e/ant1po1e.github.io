@@ -10,7 +10,7 @@ export const HeroSection = () => {
 				</h1>
 			</div>
 
-			<div className="flex flex-wrap justify-center md:justify-start mx-auto mt-7 md:mt-3 text-xl md:text-3xl neon">
+			<div className="flex flex-wrap justify-center md:justify-start mx-auto mt-1 md:mt-3 text-xl md:text-3xl neon">
 				<div className="font-mono font-bold">
 					<Typewriter
 						words={[
@@ -26,7 +26,7 @@ export const HeroSection = () => {
 				</div>
 			</div>
 
-			<div className="flex flex-wrap justify-start mt-20 bg-white/50 backdrop-blur-md rounded-lg shadow-lg max-w-[450px]">
+			<div className="flex flex-wrap justify-start mt-10 md:mt-20 bg-white/50 backdrop-blur-md rounded-lg shadow-lg max-w-[450px]">
 				<h1 className="font-normal text-black text-base mb-5 font-sans m-5">
 					Hello! I'm Antipole, a web developer and game developer. I create
 					websites and games that are not only functional but also visually
