@@ -7,7 +7,9 @@
 	},
 	"build": {
 		"env": {
-			"CONTACT_FORM_SCRIPT": "@contact_form_script"
+			"CONTACT_FORM_SCRIPT": "@contact_form_script",
+			"YOUTUBE_API_KEY": "@youtube_api_key",
+			"YOUTUBE_CHANNEL_ID": "@youtube_channel_id"
 		}
 	}
 }
