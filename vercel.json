@@ -1,5 +1,5 @@
 {
-	"rewrites": { "source": "/(.*)", "destination": "/" },
+	"rewrites": [{ "source": "/(.*)", "destination": "/" }],
 	"functions": {
 		"api/*.js": {
 			"runtime": "edge"
