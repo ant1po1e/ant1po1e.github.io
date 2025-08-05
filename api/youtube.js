@@ -8,8 +8,21 @@ export default async function handler(req, res) {
 		const response = await fetch(url);
 		const data = await response.json();
 
-		res.status(200).json(data);
+		if (!data.items) {
+			return res.status(500).json({ error: "No videos found" });
+		}
+
+		const videos = data.items
+			.filter((item) => item.id.kind === "youtube#video")
+			.map((item) => ({
+				id: item.id.videoId,
+				title: item.snippet.title,
+				thumbnail: item.snippet.thumbnails.medium.url,
+			}));
+
+		res.status(200).json(videos);
 	} catch (error) {
+		console.error("YouTube API error:", error);
 		res.status(500).json({ error: "Failed to fetch YouTube feed" });
 	}
 }
