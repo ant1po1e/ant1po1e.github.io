@@ -6,9 +6,9 @@ import { Beatmaps } from "./pages/Beatmaps";
 import { Tools } from "./pages/Tools";
 import { Contact } from "./pages/Contact";
 import { BBCodeGenerator } from "./pages/BBCodeGenerator";
+import { SnapCalculator } from "./pages/SnapCalculator";
 import { Navbar } from "./components/Navbar";
 import "bootstrap-icons/font/bootstrap-icons.css";
-import { SnapCalculator } from "./pages/SnapCalculator";
 
 function App() {
 	return (

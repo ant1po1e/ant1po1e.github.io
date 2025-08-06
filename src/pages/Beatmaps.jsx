@@ -2,7 +2,7 @@ import { Footer } from "../components/Footer";
 import { useEffect } from "react";
 import { OsuBeatmapFeed } from "../components/OsuBeatmapFeed";
 
-export const Projects = () => {
+export const Beatmaps = () => {
 	useEffect(() => {
 		document.title = "Antipole | Contributed Beatmaps";
 	}, []);
