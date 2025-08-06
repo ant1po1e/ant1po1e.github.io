@@ -14,7 +14,7 @@ export const OsuBeatmapFeed = () => {
 	useEffect(() => {
 		const fetchBeatmaps = async () => {
 			try {
-				const res = await fetch("/api/beatmaps");
+				const res = await fetch("https://script.google.com/macros/s/AKfycbzSZTnYMhBcBhYdJkbhv5IVhGFXRDucYKOE8hc19bhiaba7qhLHjFyTS4gH-AbF3Ona/exec");
 				if (!res.ok) throw new Error("Fetch failed");
 				const data = await res.json();
 
@@ -101,7 +101,7 @@ export const OsuBeatmapFeed = () => {
 						Contributed Beatmaps
 					</h1>
 
-					<div className="mt-3 flex justify-center md:mt-0 md:absolute md:right-0 md:top-1/2 md:-translate-y-1/2">
+					<div className="mt-3 flex relative z-50 justify-center md:mt-0 md:absolute md:right-0 md:top-1/2 md:-translate-y-1/2">
 						<DropdownFilter
 							selectedBadge={selectedBadge}
 							setSelectedBadge={setSelectedBadge}
