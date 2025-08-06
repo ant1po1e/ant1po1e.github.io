@@ -100,7 +100,8 @@ export const OsuBeatmapFeed = () => {
 						Contributed Beatmaps
 					</h1>
 
-					<div className="md:absolute md:right-0 md:top-1/2 md:-translate-y-1/2">
+					{/* Mobile (block) & Desktop (absolute right) */}
+					<div className="mt-3 flex justify-center md:mt-0 md:absolute md:right-0 md:top-1/2 md:-translate-y-1/2">
 						<select
 							value={selectedBadge}
 							onChange={(e) => setSelectedBadge(e.target.value)}
@@ -116,7 +117,7 @@ export const OsuBeatmapFeed = () => {
 							<option value="contest">Contest</option>
 							<option value="hs">Hitsound</option>
 							<option value="collab">Collab</option>
-							<option value="gd">Gues Difficulty</option>
+							<option value="gd">Guest Difficulty</option>
 						</select>
 					</div>
 				</div>
