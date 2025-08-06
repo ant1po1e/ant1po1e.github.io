@@ -15,9 +15,17 @@ export const ContactSection = () => {
 			const form = formRef.current;
 			const formData = new FormData(form);
 
+			const urlEncoded = new URLSearchParams();
+			for (let pair of formData.entries()) {
+				urlEncoded.append(pair[0], pair[1]);
+			}
+
 			const response = await fetch(scriptURL, {
 				method: "POST",
-				body: formData,
+				headers: {
+					"Content-Type": "application/x-www-form-urlencoded",
+				},
+				body: urlEncoded.toString(),
 			});
 
 			if (response.ok) {
