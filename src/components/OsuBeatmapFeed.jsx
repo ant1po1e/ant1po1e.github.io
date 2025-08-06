@@ -107,7 +107,7 @@ export const OsuBeatmapFeed = () => {
 							onChange={(e) => setSelectedBadge(e.target.value)}
 							className={twMerge(
 								"bg-white border border-gray-300 text-sm text-black px-4 py-2 rounded-md shadow-sm",
-								"focus:outline-none focus:ring-2 focus:ring-blue-500",
+								"focus:outline-none focus:ring-2 focus:ring-blue-400",
 								"transition duration-300 ease-in-out transform md:hover:scale-[1.025]",
 								"hover:shadow-md focus:shadow-lg"
 							)}>
@@ -192,13 +192,13 @@ export const OsuBeatmapFeed = () => {
 								disabled={currentPage === 1}
 								onClick={() => setCurrentPage((prev) => Math.max(1, prev - 1))}
 								className={twMerge(
-									"px-4 py-1 text-sm font-medium rounded bg-white text-black md:hover:bg-blue-300",
+									"px-2 py-0.5 md:px-4 md:py-1 text-sm font-medium rounded bg-white text-black md:hover:bg-blue-300",
 									"disabled:opacity-40 disabled:cursor-not-allowed transition duration-300"
 								)}>
 								Prev
 							</button>
 
-							<span className="text-black text-sm font-medium mt-1">
+							<span className="text-black text-xs md:text-sm font-medium mt-1">
 								Page {currentPage} of {totalPages}
 							</span>
 
@@ -208,7 +208,7 @@ export const OsuBeatmapFeed = () => {
 									setCurrentPage((prev) => Math.min(totalPages, prev + 1))
 								}
 								className={twMerge(
-									"px-4 py-1 text-sm font-medium rounded bg-white text-black md:hover:bg-blue-300",
+									"px-2 py-0.5 md:px-4 md:py-1 text-sm font-medium rounded bg-white text-black md:hover:bg-blue-300",
 									"disabled:opacity-40 disabled:cursor-not-allowed transition duration-300"
 								)}>
 								Next
