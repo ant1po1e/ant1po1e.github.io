@@ -100,13 +100,12 @@ export const OsuBeatmapFeed = () => {
 						Contributed Beatmaps
 					</h1>
 
-					{/* Mobile (block) & Desktop (absolute right) */}
 					<div className="mt-3 flex justify-center md:mt-0 md:absolute md:right-0 md:top-1/2 md:-translate-y-1/2">
 						<select
 							value={selectedBadge}
 							onChange={(e) => setSelectedBadge(e.target.value)}
 							className={twMerge(
-								"bg-white border border-gray-300 text-sm text-black px-4 py-2 rounded-md shadow-sm",
+								"bg-white border border-gray-300 text-sm text-black px-4 py-2 pr-8 rounded-md shadow-sm", // ✅ pr-8 ditambahkan
 								"focus:outline-none focus:ring-2 focus:ring-blue-400",
 								"transition duration-300 ease-in-out transform md:hover:scale-[1.025]",
 								"hover:shadow-md focus:shadow-lg"
