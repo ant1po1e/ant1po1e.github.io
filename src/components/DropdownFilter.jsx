@@ -21,7 +21,6 @@ export const DropdownFilter = ({ selectedBadge, setSelectedBadge }) => {
 
 	return (
 		<div className="relative inline-block text-left w-full max-w-[200px]">
-			{/* Dropdown trigger */}
 			<button
 				onClick={() => setOpen(!open)}
 				className={twMerge(

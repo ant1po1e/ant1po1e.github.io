@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { twMerge } from "tailwind-merge";
+import { DropdownFilter } from "./DropdownFilter";
 
 const ITEMS_PER_PAGE = 6;
 
@@ -101,7 +102,7 @@ export const OsuBeatmapFeed = () => {
 					</h1>
 
 					<div className="mt-3 flex justify-center md:mt-0 md:absolute md:right-0 md:top-1/2 md:-translate-y-1/2">
-						<CustomDropdown
+						<DropdownFilter
 							selectedBadge={selectedBadge}
 							setSelectedBadge={setSelectedBadge}
 						/>
