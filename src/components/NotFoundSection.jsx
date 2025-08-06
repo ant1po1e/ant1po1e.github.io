@@ -4,7 +4,7 @@ export const NotFoundSection = () => {
 			<div className="w-full md:w-1/2 px-5 py-5 bg-white/50 backdrop-blur-md rounded-lg shadow-lg">
 				<div className="w-full px-4">
 					<div className="mx-auto text-center space-y-3">
-						<h1 className="font-bold text-black font-merienda mb-6 text-2xl md:text-4xl">
+						<h1 className="font-bold text-black mb-6 text-2xl md:text-4xl">
 							Oops! Page Not Found
 						</h1>
 						<p className="text-slate-800 text-sm md:text-base font-medium">

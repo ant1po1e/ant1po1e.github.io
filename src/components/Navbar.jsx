@@ -14,7 +14,7 @@ export const Navbar = () => {
 		<header className="flex justify-between items-center pt-4 relative z-10">
 			<Link
 				to={isOnRoot ? "/" : backUrl}
-				className="text-black font-bold font-merienda text-lg md:text-2xl p-3 rounded-r-lg bg-white shadow-lg md:hover:text-blue-400 md:hover:pl-12 transition-all duration-300">
+				className="text-black font-bold text-lg md:text-2xl p-3 rounded-r-lg bg-white shadow-lg md:hover:text-blue-400 md:hover:pl-12 transition-all duration-300">
 				{isOnRoot ? (
 					"Antipole's Website"
 				) : (

@@ -24,6 +24,10 @@ body {
 	font-family: "Merienda", cursive;
 }
 
+.font-quicksand {
+	font-family: "Quicksand", sans-serif;
+}
+
 .neon {
 	color: #fff;
 	text-shadow: 0 0 5px #fff, 0 0 5px #fff, 0 0 50px rgb(147 197 253),

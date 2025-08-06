@@ -31,13 +31,13 @@ export const Footer = () => {
 					className={`transition-all duration-300 w-full bg-white/50 backdrop-blur-md rounded-t-xl overflow-hidden shadow-lg ${
 						isOpen ? "max-h-[300px] py-4" : "max-h-0 py-0"
 					}`}>
-					<ul className="flex flex-col items-center gap-3 text-black font-merienda">
+					<ul className="flex flex-col items-center gap-3 text-black font-medium">
 						{links.map((link) => (
 							<li key={link.label}>
 								<Link
 									to={link.to}
 									onClick={() => setIsOpen(false)}
-									className="text-base font-semibold">
+									className="text-base font-medium">
 									{link.label}
 								</Link>
 							</li>
@@ -47,7 +47,7 @@ export const Footer = () => {
 								href="https://ant1po1e.itch.io"
 								target="_blank"
 								rel="noopener noreferrer"
-								className="text-base font-semibold">
+								className="text-base font-medium">
 								ITCH.IO
 							</a>
 						</li>
@@ -58,7 +58,7 @@ export const Footer = () => {
 			<div className="hidden md:flex items-center justify-center mb-8">
 				<div className="bg-white/50 backdrop-blur-md rounded-lg p-6 shadow-lg flex gap-10">
 					{links.map((link) => (
-						<div key={link.label} className="font-merienda">
+						<div key={link.label} className="font-medium">
 							<Link
 								to={link.to}
 								className="text-black text-base md:text-2xl relative md:hover:text-blue-400 rounded-md p-0 md:hover:py-1 md:hover:px-3 md:hover:bg-white transition-all duration-300">
@@ -66,7 +66,7 @@ export const Footer = () => {
 							</Link>
 						</div>
 					))}
-					<div className="font-merienda">
+					<div className="font-medium">
 						<a
 							href="https://ant1po1e.itch.io"
 							className="text-black text-base md:text-2xl relative md:hover:text-blue-400 rounded-md p-0 md:hover:py-1 md:hover:px-3 md:hover:bg-white transition-all duration-300"
