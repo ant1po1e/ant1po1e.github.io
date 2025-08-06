@@ -8,7 +8,7 @@ const badges = [
 	{ value: "contest", label: "Contest" },
 	{ value: "hs", label: "Hitsound" },
 	{ value: "collab", label: "Collab" },
-	{ value: "gd", label: "Guest Difficulty" },
+	{ value: "gd", label: "Guest Difficulty" }, 
 ];
 
 export const DropdownFilter = ({ selectedBadge, setSelectedBadge }) => {
@@ -19,16 +19,23 @@ export const DropdownFilter = ({ selectedBadge, setSelectedBadge }) => {
 		setOpen(false);
 	};
 
+	const selectedLabel =
+		badges.find((b) => b.value === selectedBadge)?.label || "Filter";
+
 	return (
 		<div className="relative inline-block text-left w-full max-w-[200px]">
+			{/* Dropdown trigger */}
 			<button
 				onClick={() => setOpen(!open)}
 				className={twMerge(
 					"w-full bg-white border border-gray-300 text-sm text-black px-4 py-2 rounded-md shadow-sm flex justify-between items-center",
 					"focus:outline-none focus:ring-2 focus:ring-blue-400",
-					"transition duration-300 ease-in-out hover:shadow-md"
+					"transition duration-300 ease-in-out hover:shadow-md",
+					"min-w-[180px]" 
 				)}>
-				{badges.find((b) => b.value === selectedBadge)?.label || "Filter"}
+				<span className="truncate">{selectedLabel}</span>
+
+				{/* Icon */}
 				<svg
 					className={`w-4 h-4 ml-2 transition-transform duration-200 ${
 						open ? "rotate-180" : ""
@@ -44,11 +51,16 @@ export const DropdownFilter = ({ selectedBadge, setSelectedBadge }) => {
 						d="M19 9l-7 7-7-7"
 					/>
 				</svg>
+
+				{/* Invisible element to maintain button width */}
+				<span className="absolute invisible pointer-events-none">
+					Guest Difficulty
+				</span>
 			</button>
 
-			{/* Dropdown options */}
+			{/* Dropdown list */}
 			{open && (
-				<ul className="absolute z-10 mt-2 w-full bg-white border border-gray-300 rounded-md shadow-md max-h-60 overflow-auto animate-fadeIn">
+				<ul className="absolute z-50 mt-2 w-full bg-white border border-gray-300 rounded-md shadow-md max-h-60 overflow-auto animate-fadeIn">
 					{badges.map((badge) => (
 						<li
 							key={badge.value}
