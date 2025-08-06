@@ -104,7 +104,7 @@ export const BBCodeSection = () => {
 				<div className="w-full px-4">
 					<div className="mx-auto text-center">
 						<h1 className="font-bold text-black text-xl md:text-3xl">
-							Tools |
+							Tools |{" "} 
 							<span className="text-base md:text-xl">
 								BBCode Text Colorizer
 							</span>
