@@ -24,7 +24,7 @@ export const SnapCalcSection = () => {
 	};
 	return (
 		<section className="w-full px-4 md:px-24 flex justify-center items-center">
-			<div className="w-full md:w-1/2 px-5 py-5 bg-white/50 backdrop-blur-md rounded-lg shadow-lg">
+			<div className="w-full md:w-1/2 px-5 py-5 bg-white/50 backdrop-blur-md rounded-lg shadow-lg mb-20 sm:mb-0">
 				<div className="w-full px-4">
 					<div className="mx-auto text-center">
 						<h1 className="font-bold text-black font-merienda text-xl md:text-3xl">
