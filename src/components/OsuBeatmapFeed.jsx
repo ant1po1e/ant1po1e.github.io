@@ -14,7 +14,7 @@ export const OsuBeatmapFeed = () => {
 	useEffect(() => {
 		const fetchBeatmaps = async () => {
 			try {
-				const res = await fetch("https://script.google.com/macros/s/AKfycbzSZTnYMhBcBhYdJkbhv5IVhGFXRDucYKOE8hc19bhiaba7qhLHjFyTS4gH-AbF3Ona/exec");
+				const res = await fetch("api/beatmaps");
 				if (!res.ok) throw new Error("Fetch failed");
 				const data = await res.json();
 
