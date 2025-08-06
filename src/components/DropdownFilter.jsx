@@ -23,7 +23,7 @@ export const DropdownFilter = ({ selectedBadge, setSelectedBadge }) => {
 		badges.find((b) => b.value === selectedBadge)?.label || "Filter";
 
 	return (
-		<div className="relative inline-block text-left w-full max-w-[150px]">
+		<div className="relative inline-block text-left w-full max-w-[160px]">
 			{/* Dropdown trigger */}
 			<button
 				onClick={() => setOpen(!open)}
@@ -31,7 +31,7 @@ export const DropdownFilter = ({ selectedBadge, setSelectedBadge }) => {
 					" bg-white border border-gray-300 text-sm text-black px-4 py-2 rounded-md shadow-sm flex justify-between items-center",
 					"focus:outline-none focus:ring-2 focus:ring-blue-400",
 					"transition duration-300 ease-in-out hover:shadow-md",
-					"min-w-[150px]"
+					"min-w-[160px]"
 				)}>
 				<span className="truncate">{selectedLabel}</span>
 
