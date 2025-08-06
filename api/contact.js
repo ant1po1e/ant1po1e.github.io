@@ -6,9 +6,15 @@ export default async function handler(req, res) {
 	const scriptURL = process.env.CONTACT_FORM_SCRIPT;
 
 	try {
+		const buffers = [];
+		for await (const chunk of req) {
+			buffers.push(chunk);
+		}
+		const bodyBuffer = Buffer.concat(buffers);
+
 		const response = await fetch(scriptURL, {
 			method: "POST",
-			body: req.body,
+			body: bodyBuffer,
 			headers: {
 				"Content-Type": req.headers["content-type"],
 			},
@@ -19,10 +25,11 @@ export default async function handler(req, res) {
 		if (response.ok) {
 			return res.status(200).json({ message: "Success", text });
 		} else {
+			console.error("Google Script Error:", text);
 			return res.status(500).json({ message: "Google Script Error", text });
 		}
 	} catch (err) {
-		console.error("Error:", err);
+		console.error("Handler error:", err);
 		return res.status(500).json({ error: "Internal Server Error" });
 	}
 }
