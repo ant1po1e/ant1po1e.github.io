@@ -14,7 +14,7 @@ export const NotFoundSection = () => {
 						<div className="pt-4">
 							<a
 								href="/"
-								className="inline-block px-6 py-2 bg-black text-white font-semibold rounded-lg hover:bg-blue-400 hover:scale-110 transition duration-300">
+								className="inline-block px-6 py-2 bg-black text-white font-semibold rounded-lg md:hover:bg-blue-400 md:hover:scale-110 transition duration-300">
 								<i className="bi bi-arrow-left" /> Back to Home
 							</a>
 						</div>

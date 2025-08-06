@@ -37,7 +37,7 @@ export const Footer = () => {
 								<Link
 									to={link.to}
 									onClick={() => setIsOpen(false)}
-									className="text-base font-semibold hover:text-blue-500 transition duration-200">
+									className="text-base font-semibold">
 									{link.label}
 								</Link>
 							</li>
@@ -47,35 +47,34 @@ export const Footer = () => {
 								href="https://ant1po1e.itch.io"
 								target="_blank"
 								rel="noopener noreferrer"
-								className="text-base font-semibold hover:text-blue-500 transition duration-200">
+								className="text-base font-semibold">
 								ITCH.IO
 							</a>
 						</li>
 					</ul>
 				</div>
 			</div>
-
 			{/* Desktop Footer */}
 			<div className="hidden md:flex items-center justify-center mb-8">
-				<div className="bg-white/50 backdrop-blur-md rounded-lg p-6 shadow-lg flex gap-12">
+				<div className="bg-white/50 backdrop-blur-md rounded-lg p-6 shadow-lg flex gap-10">
 					{links.map((link) => (
-						<p key={link.label} className="font-merienda">
+						<div key={link.label} className="font-merienda">
 							<Link
 								to={link.to}
-								className="text-black text-2xl hover:text-blue-400 hover:bg-white px-2 py-1 rounded-md transition-all duration-300">
+								className="text-black text-base md:text-2xl relative md:hover:text-blue-400 rounded-md p-0 md:hover:py-1 md:hover:px-3 md:hover:bg-white transition-all duration-300">
 								{link.label}
 							</Link>
-						</p>
+						</div>
 					))}
-					<p className="font-merienda">
+					<div className="font-merienda">
 						<a
 							href="https://ant1po1e.itch.io"
-							className="text-black text-2xl hover:text-blue-400 hover:bg-white px-2 py-1 rounded-md transition-all duration-300"
+							className="text-black text-base md:text-2xl relative md:hover:text-blue-400 rounded-md p-0 md:hover:py-1 md:hover:px-3 md:hover:bg-white transition-all duration-300"
 							target="_blank"
 							rel="noopener noreferrer">
 							ITCH.IO
 						</a>
-					</p>
+					</div>
 				</div>
 			</div>
 		</footer>

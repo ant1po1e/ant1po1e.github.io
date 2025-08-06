@@ -101,7 +101,7 @@ export const ProjectsSection = () => {
 						<Carousel
 							className="overflow-x-hidden relative"
 							leftControl={
-								<span className="inline-flex items-center justify-center w-10 h-10 sm:w-10 sm:h-10 rounded-lg bg-black/50 hover:bg-white/50 ring-4 ring-white outline-none hover:scale-110 transition duration-300">
+								<span className="inline-flex items-center justify-center w-10 h-10 sm:w-10 sm:h-10 rounded-lg bg-black/50 md:hover:bg-white/50 ring-4 ring-white outline-none md:hover:scale-110 transition duration-300">
 									<svg
 										className="w-4 h-4 text-white rtl:rotate-180"
 										aria-hidden="true"
@@ -119,7 +119,7 @@ export const ProjectsSection = () => {
 								</span>
 							}
 							rightControl={
-								<span className="inline-flex items-center justify-center w-10 h-10 sm:w-10 sm:h-10 rounded-lg bg-black/50 hover:bg-white/50 ring-4 ring-white outline-none hover:scale-110 transition duration-300">
+								<span className="inline-flex items-center justify-center w-10 h-10 sm:w-10 sm:h-10 rounded-lg bg-black/50 md:hover:bg-white/50 ring-4 ring-white outline-none md:hover:scale-110 transition duration-300">
 									<svg
 										className="w-4 h-4 text-white"
 										aria-hidden="true"
