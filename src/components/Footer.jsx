@@ -15,6 +15,13 @@ export const Footer = () => {
 		{ to: "/contact", label: "CONTACT" },
 	];
 
+	const iMap = {
+		PROJECTS: <i className="bi bi-kanban" />,
+		BEATMAPS: <i className="bi bi-music-note-beamed" />,
+		TOOLS: <i className="bi bi-wrench" />,
+		CONTACT: <i className="bi bi-envelope" />,
+	};
+
 	return (
 		<footer className="fixed bottom-0 left-0 w-full z-50">
 			{/* Mobile Footer */}
@@ -56,24 +63,32 @@ export const Footer = () => {
 			</div>
 			{/* Desktop Footer */}
 			<div className="hidden md:flex items-center justify-center mb-8">
-				<div className="bg-white/50 backdrop-blur-md rounded-lg p-6 shadow-lg flex gap-10">
+				<div className="bg-white/50 backdrop-blur-md rounded-lg p-6 shadow-lg flex gap-6">
 					{links.map((link) => (
-						<div key={link.label} className="font-medium">
+						<div key={link.label} className="relative group font-medium">
 							<Link
 								to={link.to}
-								className="text-black text-base md:text-2xl relative md:hover:text-blue-400 rounded-md p-0 md:hover:py-1 md:hover:px-3 md:hover:bg-white transition-all duration-300">
-								{link.label}
+								className="text-black text-2xl relative rounded-md p-2 transition-all duration-300 hover:text-blue-400 hover:bg-white hover:px-5 hover:shadow-md">
+								{/* Icon */}
+								{iMap[link.label]}
 							</Link>
+							{/* Tooltip */}
+							<span className="absolute -top-13 left-1/2 -translate-x-1/2 bg-white text-black text-sm px-5 py-2 rounded-md opacity-0 shadow-md group-hover:opacity-100 group-hover:-translate-y-1 transition-all duration-300 whitespace-nowrap pointer-events-none">
+								{link.label}
+							</span>
 						</div>
 					))}
-					<div className="font-medium">
+					<div className="relative group font-medium">
 						<a
 							href="https://ant1po1e.itch.io"
-							className="text-black text-base md:text-2xl relative md:hover:text-blue-400 rounded-md p-0 md:hover:py-1 md:hover:px-3 md:hover:bg-white transition-all duration-300"
 							target="_blank"
-							rel="noopener noreferrer">
-							ITCH.IO
+							rel="noopener noreferrer"
+							className="text-black text-2xl relative rounded-md p-2 transition-all duration-300 hover:text-blue-400 hover:bg-white hover:px-5 hover:shadow-md">
+							<i className="bi bi-controller" />
 						</a>
+						<span className="absolute -top-13 left-1/2 -translate-x-1/2 bg-white text-black text-sm px-5 py-2 rounded-md opacity-0 shadow-md group-hover:opacity-100 group-hover:-translate-y-1 transition-all duration-300 whitespace-nowrap pointer-events-none">
+							ITCH.IO
+						</span>
 					</div>
 				</div>
 			</div>
