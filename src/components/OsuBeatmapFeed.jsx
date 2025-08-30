@@ -77,8 +77,7 @@ export const OsuBeatmapFeed = () => {
 			<p
 				ref={ref}
 				className={`${textClass} truncate`}
-				title={showTooltip ? children : ""}
-			>
+				title={showTooltip ? children : ""}>
 				{children}
 			</p>
 		);
@@ -92,8 +91,7 @@ export const OsuBeatmapFeed = () => {
 					<p className="text-red-500 font-semibold">{error}</p>
 					<button
 						onClick={fetchBeatmaps}
-						className="px-4 py-2 bg-black text-white rounded-lg md:hover:bg-blue-400 transition"
-					>
+						className="px-4 py-2 bg-black text-white rounded-lg md:hover:bg-blue-400 transition">
 						Retry
 					</button>
 				</div>
@@ -125,7 +123,7 @@ export const OsuBeatmapFeed = () => {
 							[...Array(6)].map((_, i) => (
 								<div
 									key={i}
-									className="w-full max-w-[300px] h-[140px] bg-gray-200 animate-pulse rounded-xl"
+									className="w-full max-w-[300px] h-[140px] bg-gray-white shimmer rounded-xl"
 								/>
 							))
 						) : filteredBeatmaps.length === 0 ? (
@@ -141,8 +139,7 @@ export const OsuBeatmapFeed = () => {
 										href={set.link}
 										target="_blank"
 										rel="noopener noreferrer"
-										className="w-full max-w-[300px] group transition-transform duration-300 md:hover:scale-105"
-									>
+										className="w-full max-w-[300px] group transition-transform duration-300 md:hover:scale-105">
 										<div
 											className={twMerge(
 												"relative h-[140px] rounded-xl overflow-hidden shadow-md md:hover:shadow-xl transition duration-300"
@@ -152,14 +149,12 @@ export const OsuBeatmapFeed = () => {
 												backgroundSize: "cover",
 												backgroundPosition: "center",
 											}}
-											aria-label={`Beatmap ${set.title} by ${set.artist}`}
-										>
+											aria-label={`Beatmap ${set.title} by ${set.artist}`}>
 											<div
 												className={twMerge(
 													"absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-[#3166a7]/80",
 													"p-4 flex flex-col justify-end transition-all duration-300 md:group-hover:backdrop-blur-none"
-												)}
-											>
+												)}>
 												<div className="text-white text-center">
 													<TruncTooltip textClass="text-md font-semibold mb-0.5">
 														{set.title}
@@ -177,8 +172,7 @@ export const OsuBeatmapFeed = () => {
 																className={`px-1 py-[1px] text-[10px] font-medium rounded-sm shadow ${
 																	badgeStyle[badge.toLowerCase()] ||
 																	"bg-gray-200 text-gray-800"
-																}`}
-															>
+																}`}>
 																{badge}
 															</span>
 														))}
@@ -202,8 +196,7 @@ export const OsuBeatmapFeed = () => {
 								className={twMerge(
 									"px-2 py-0.5 md:px-4 md:py-1 text-sm font-medium rounded bg-white text-black md:hover:bg-blue-300",
 									"disabled:opacity-40 disabled:cursor-not-allowed transition duration-300"
-								)}
-							>
+								)}>
 								Prev
 							</button>
 
@@ -220,8 +213,7 @@ export const OsuBeatmapFeed = () => {
 								className={twMerge(
 									"px-2 py-0.5 md:px-4 md:py-1 text-sm font-medium rounded bg-white text-black md:hover:bg-blue-300",
 									"disabled:opacity-40 disabled:cursor-not-allowed transition duration-300"
-								)}
-							>
+								)}>
 								Next
 							</button>
 						</div>
