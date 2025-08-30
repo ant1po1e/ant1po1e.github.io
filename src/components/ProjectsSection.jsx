@@ -100,73 +100,76 @@ export const ProjectsSection = () => {
 					<div className="h-[7.2rem] md:h-72 w-full rounded-lg overflow-x-hidden">
 						<Carousel
 							className="overflow-x-hidden relative"
+							indicators={false}
+							slideInterval={5000}
+							pauseOnHover
+							loop
 							leftControl={
-								<span className="inline-flex items-center justify-center w-10 h-10 sm:w-10 sm:h-10 rounded-lg bg-black/50 md:hover:bg-white/50 ring-4 ring-white outline-none md:hover:scale-110 transition duration-300">
+								<span className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-black/50 md:hover:bg-white/50 ring-4 ring-white md:hover:scale-110 transition duration-300">
 									<svg
 										className="w-4 h-4 text-white rtl:rotate-180"
-										aria-hidden="true"
-										xmlns="http://www.w3.org/2000/svg"
+										viewBox="0 0 6 10"
 										fill="none"
-										viewBox="0 0 6 10">
+										xmlns="http://www.w3.org/2000/svg">
 										<path
+											d="M5 1 1 5l4 4"
 											stroke="currentColor"
+											strokeWidth="2"
 											strokeLinecap="round"
 											strokeLinejoin="round"
-											strokeWidth="2"
-											d="M5 1 1 5l4 4"
 										/>
 									</svg>
 								</span>
 							}
 							rightControl={
-								<span className="inline-flex items-center justify-center w-10 h-10 sm:w-10 sm:h-10 rounded-lg bg-black/50 md:hover:bg-white/50 ring-4 ring-white outline-none md:hover:scale-110 transition duration-300">
+								<span className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-black/50 md:hover:bg-white/50 ring-4 ring-white md:hover:scale-110 transition duration-300">
 									<svg
 										className="w-4 h-4 text-white"
-										aria-hidden="true"
-										xmlns="http://www.w3.org/2000/svg"
+										viewBox="0 0 6 10"
 										fill="none"
-										viewBox="0 0 6 10">
+										xmlns="http://www.w3.org/2000/svg">
 										<path
+											d="m1 1 4 4-4 4"
 											stroke="currentColor"
+											strokeWidth="2"
 											strokeLinecap="round"
 											strokeLinejoin="round"
-											strokeWidth="2"
-											d="m1 1 4 4-4 4"
 										/>
 									</svg>
 								</span>
-							}
-							indicators={false}
-							slideInterval={5000}
-							pauseOnHover>
+							}>
 							{projects.map((project, idx) => (
 								<div key={idx} className="relative w-full h-full group">
 									<img
 										src={project.image}
-										alt={project.title}
+										alt={project.alt}
 										className="absolute block max-w-full max-h-full w-full h-full object-contain md:object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 rounded-lg"
 									/>
-									<div className="absolute block w-full h-full py-6 px-6 sm:py-10 sm:px-20 -translate-x-1/2 z-50 -translate-y-1/2 top-1/2 left-1/2 rounded-lg bg-white/70 backdrop-blur-md text-black opacity-0 md:group-hover:opacity-100 transition duration-300">
-										<h2 className="hidden md:inline font-bold text-lg md:text-2xl">
+
+									{/* Overlay */}
+									<div className="absolute block w-full h-full py-6 px-6 sm:py-10 sm:px-20 -translate-x-1/2 z-50 -translate-y-1/2 top-1/2 left-1/2 rounded-lg bg-white/70 backdrop-blur-md text-black opacity-100 md:opacity-0 md:group-hover:opacity-100 transition duration-300">
+										{/* Title */}
+										<h2 className="font-bold text-lg md:text-2xl">
 											{project.title}
 										</h2>
-										<a
-											href={project.link}
-											className="inline md:hidden font-bold text-lg md:text-2xl">
-											{project.title}
-										</a>
+
+										{/* Stack */}
 										<div className="mt-2 flex justify-center">
 											<img
 												src={`https://skillicons.dev/icons?i=${project.stack}`}
 												alt="Stack"
 											/>
 										</div>
-										<div className="mt-12 md:hover:scale-110 transition duration-300">
+
+										{/* Link */}
+										<div className="mt-6 md:mt-12 md:hover:scale-110 transition duration-300">
 											<a
 												href={project.link}
-												className="text-lg md:text-xl hidden md:inline bg-white rounded-lg p-2 md:hover:bg-blue-400 md:hover:text-white md:hover:scale-110 transition duration-300">
+												target="_blank"
+												rel="noopener noreferrer"
+												className="inline-block text-lg md:text-xl bg-white rounded-lg p-2 md:hover:bg-blue-400 md:hover:text-white md:hover:scale-110 transition duration-300">
 												<i className={`text-2xl ${project.icon}`}></i>{" "}
-												{project.label}
+												{project.linkText}
 											</a>
 										</div>
 									</div>

@@ -6,11 +6,17 @@ export const SnapCalcSection = () => {
 	const [bpm, setBpm] = useState("");
 	const [result, setResult] = useState("");
 	const [copied, setCopied] = useState(false);
+	const [error, setError] = useState("");
 
-	const handleCopy = () => {
-		navigator.clipboard.writeText(result);
-		setCopied(true);
-		setTimeout(() => setCopied(false), 2000);
+	const handleCopy = async () => {
+		if (!result) return;
+		try {
+			await navigator.clipboard.writeText(result);
+			setCopied(true);
+			setTimeout(() => setCopied(false), 1500);
+		} catch {
+			// fallback diam2 kalau browser block
+		}
 	};
 
 	const calculate = () => {
@@ -18,10 +24,13 @@ export const SnapCalcSection = () => {
 			const calculated =
 				(parseFloat(bpm) * parseFloat(desiredSnap)) / parseFloat(baseSnap);
 			setResult(`${calculated.toFixed(3)}`);
+			setError("");
 		} else {
-			alert("Please fill in all fields!");
+			setError("⚠️ Please fill in all fields before calculating.");
+			setResult("");
 		}
 	};
+
 	return (
 		<section className="w-full px-4 md:px-24 flex justify-center items-center">
 			<div className="w-full md:w-1/2 px-5 py-5 bg-white/50 backdrop-blur-md rounded-lg shadow-lg mb-20 sm:mb-0">
@@ -92,6 +101,11 @@ export const SnapCalcSection = () => {
 							/>
 						</div>
 
+						{/* Error Message */}
+						{error && (
+							<p className="text-red-400 text-sm font-medium">{error}</p>
+						)}
+
 						{/* Button */}
 						<div className="text-center flex justify-center">
 							<button
@@ -102,22 +116,39 @@ export const SnapCalcSection = () => {
 							</button>
 						</div>
 
-						{/* Result */}
-						<div className="result pt-6 md:hover:scale-90 transition duration-300">
-							<h2 className="text-sm md:text-xl font-bold bg-white inline rounded-lg py-2 px-4 text-blue-400">
-								Result:
+						{/* Result + Tooltip */}
+						<div className="pt-6 md:hover:scale-90 transition duration-300">
+							{/* Wrapper relative supaya tooltip punya anchor yang jelas */}
+							<div className="inline-block relative">
+								<h2 className="text-sm md:text-xl font-bold bg-white inline rounded-lg py-2 px-4 text-blue-400">
+									Result:&nbsp;
+									<button
+										type="button"
+										onClick={handleCopy}
+										onKeyDown={(e) => e.key === "Enter" && handleCopy()}
+										disabled={!result}
+										aria-label={
+											result ? `Copy result ${result} BPM` : "No result to copy"
+										}
+										className="relative inline-flex items-center gap-1 md:hover:underline focus:outline-none focus:ring-2 focus:ring-blue-400 rounded px-1 disabled:opacity-40 disabled:cursor-not-allowed">
+										{result || "—"}
+									</button>
+									<span aria-hidden>&nbsp;BPM</span>
+								</h2>
+
+								{/* Tooltip yang bener-bener muncul saat click */}
 								<span
-									className="hover:underline relative inline-block cursor-pointer"
-									onClick={handleCopy}>
-									{result}&nbsp;
+									className={`pointer-events-none absolute left-1/2 -translate-x-1/2 rounded bg-blue-400 text-white text-xs px-2 py-1 shadow transition-all duration-200
+                    ${
+											copied
+												? "opacity-100 scale-100 -top-8"
+												: "opacity-0 scale-95 -top-6"
+										}`}
+									role="status"
+									aria-live="polite">
+									Copied!
 								</span>
-								BPM
-								{copied && (
-									<span className="absolute -top-6 left-1/2 -translate-x-1/2 bg-green-500 text-white text-xs px-2 py-1 rounded shadow transition-opacity duration-300">
-										Copied!
-									</span>
-								)}
-							</h2>
+							</div>
 						</div>
 					</div>
 				</div>

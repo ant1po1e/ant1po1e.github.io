@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 
 export const ContactSection = () => {
 	const formRef = useRef(null);
+	const alertRef = useRef(null);
 	const [loading, setLoading] = useState(false);
 	const [showAlert, setShowAlert] = useState(false);
 
@@ -31,6 +32,15 @@ export const ContactSection = () => {
 			if (response.ok) {
 				form.reset();
 				setShowAlert(true);
+
+				// Fokus ke alert untuk screen reader
+				setTimeout(() => {
+					if (alertRef.current) {
+						alertRef.current.focus();
+					}
+				}, 100);
+
+				// Auto-hide setelah 3 detik
 				setTimeout(() => setShowAlert(false), 3000);
 			} else {
 				alert("Something went wrong! Please try again later.");
@@ -44,7 +54,9 @@ export const ContactSection = () => {
 	};
 
 	return (
-		<section className="w-full px-4 md:px-24 flex justify-center items-center">
+		<section
+			className="w-full px-4 md:px-24 flex justify-center items-center"
+			aria-label="Contact Section">
 			<div className="w-full md:w-1/2 px-5 py-5 bg-white/50 backdrop-blur-md rounded-lg shadow-lg mb-20 sm:mb-0">
 				<div className="w-full px-4">
 					<div className="mx-auto text-center">
@@ -59,7 +71,12 @@ export const ContactSection = () => {
 						ref={formRef}
 						name="Ant1po1e-contact-form"
 						onSubmit={handleSubmit}
-						className="space-y-4 max-w-md mx-auto">
+						className="space-y-4 max-w-md mx-auto"
+						aria-describedby="contact-description">
+						<p id="contact-description" className="sr-only">
+							Fill out this form to send me a message
+						</p>
+
 						<div>
 							<label htmlFor="name" className="sr-only">
 								Name
@@ -70,6 +87,7 @@ export const ContactSection = () => {
 								name="name"
 								placeholder="Name"
 								required
+								aria-label="Your name"
 								className="w-full bg-slate-700/50 shadow-lg text-white text-sm px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-white placeholder:text-slate-300 md:hover:scale-105 transition duration-300"
 							/>
 						</div>
@@ -83,6 +101,7 @@ export const ContactSection = () => {
 								name="email"
 								placeholder="Email"
 								required
+								aria-label="Your email address"
 								className="w-full bg-slate-700/50 shadow-lg text-white text-sm px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-white placeholder:text-slate-300 md:hover:scale-105 transition duration-300"
 							/>
 						</div>
@@ -96,15 +115,19 @@ export const ContactSection = () => {
 								placeholder="Your message"
 								rows="4"
 								required
+								aria-label="Your message"
 								className="w-full bg-slate-700/50 shadow-lg text-white text-sm px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-white placeholder:text-slate-300 md:hover:scale-105 transition duration-300 resize-none"></textarea>
 						</div>
 
 						{/* Success alert */}
 						{showAlert && (
 							<div
+								ref={alertRef}
+								tabIndex={-1}
 								className="items-center justify-center w-full text-center mb-8 p-4 space-x-4 rounded-lg shadow text-blue-400 divide-gray-700 bg-white border border-blue-300 flex transition-opacity duration-300"
-								role="alert">
-								<i className="bi bi-send"></i>
+								role="alert"
+								aria-live="polite">
+								<i className="bi bi-send" aria-hidden="true"></i>
 								<div className="pl-1 text-sm font-normal">
 									<span className="font-bold">Thanks!</span> Your message has
 									been submitted.
@@ -117,10 +140,14 @@ export const ContactSection = () => {
 							<button
 								type="submit"
 								disabled={loading}
+								aria-busy={loading}
 								className="relative flex h-[50px] w-24 md:hover:w-40 items-center justify-center overflow-hidden rounded-lg bg-black text-white shadow-2xl transition-all before:absolute before:h-0 before:w-0 before:rounded-full before:bg-blue-400 before:duration-500 before:ease-out md:hover:shadow-blue-400 md:hover:before:h-56 md:hover:before:w-56 duration-300">
 								<span className="relative z-10">
 									{loading ? (
-										<i className="bi bi-arrow-clockwise animate-spin inline-block" />
+										<i
+											className="bi bi-arrow-clockwise animate-spin inline-block"
+											aria-hidden="true"
+										/>
 									) : (
 										"Submit"
 									)}

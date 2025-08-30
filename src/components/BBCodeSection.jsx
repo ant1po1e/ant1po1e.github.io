@@ -69,7 +69,10 @@ export const BBCodeSection = () => {
 			.replace(/\[\/color\]/g, "</span>")
 			.replace(/\[font=([^\]]+)\]/g, '<span style="font-family: $1">')
 			.replace(/\[\/font\]/g, "</span>")
-			.replace(/\[size=([^\]]+)\]/g, '<span style="font-size: 25px">')
+			.replace(/\[size=(\d+)\]/g, (_, size) => {
+				const pxMap = { 50: "12px", 85: "14px", 100: "16px", 150: "20px" };
+				return `<span style="font-size:${pxMap[size] || "16px"}">`;
+			})
 			.replace(/\[\/size\]/g, "</span>")
 			.replace(/\[b\]/g, "<strong>")
 			.replace(/\[\/b\]/g, "</strong>")
@@ -104,7 +107,7 @@ export const BBCodeSection = () => {
 				<div className="w-full px-4">
 					<div className="mx-auto text-center">
 						<h1 className="font-bold text-black text-xl md:text-3xl">
-							Tools |{" "} 
+							Tools |{" "}
 							<span className="text-base md:text-xl">
 								BBCode Text Colorizer
 							</span>

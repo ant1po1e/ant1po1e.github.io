@@ -11,26 +11,28 @@ export const OsuBeatmapFeed = () => {
 	const [error, setError] = useState(null);
 	const [selectedBadge, setSelectedBadge] = useState("all");
 
+	const fetchBeatmaps = async () => {
+		try {
+			setLoading(true);
+			setError(null);
+			const res = await fetch("api/beatmaps");
+			if (!res.ok) throw new Error("Fetch failed");
+			const data = await res.json();
+
+			const sorted = [...data].sort(
+				(a, b) => (b.badges?.length || 0) - (a.badges?.length || 0)
+			);
+
+			setBeatmaps(sorted);
+		} catch (err) {
+			console.error(err);
+			setError("Failed to load beatmaps. Please try again later.");
+		} finally {
+			setLoading(false);
+		}
+	};
+
 	useEffect(() => {
-		const fetchBeatmaps = async () => {
-			try {
-				const res = await fetch("api/beatmaps");
-				if (!res.ok) throw new Error("Fetch failed");
-				const data = await res.json();
-
-				const sorted = [...data].sort(
-					(a, b) => (b.badges?.length || 0) - (a.badges?.length || 0)
-				);
-
-				setBeatmaps(sorted);
-			} catch (err) {
-				console.error(err);
-				setError("Failed to load beatmaps. Please try again later.");
-			} finally {
-				setLoading(false);
-			}
-		};
-
 		fetchBeatmaps();
 	}, []);
 
@@ -75,19 +77,25 @@ export const OsuBeatmapFeed = () => {
 			<p
 				ref={ref}
 				className={`${textClass} truncate`}
-				title={showTooltip ? children : ""}>
+				title={showTooltip ? children : ""}
+			>
 				{children}
 			</p>
 		);
 	};
 
+	// 🔴 Error State
 	if (error) {
 		return (
 			<section className="w-full px-4 md:px-24 flex justify-center items-center">
-				<div className="w-full md:w-4/5 px-5 py-5 bg-white/50 backdrop-blur-md rounded-lg shadow-lg">
-					<div className="text-center text-red-500 font-semibold py-10">
-						{error}
-					</div>
+				<div className="w-full md:w-4/5 px-5 py-8 bg-white/50 backdrop-blur-md rounded-lg shadow-lg text-center space-y-4">
+					<p className="text-red-500 font-semibold">{error}</p>
+					<button
+						onClick={fetchBeatmaps}
+						className="px-4 py-2 bg-black text-white rounded-lg md:hover:bg-blue-400 transition"
+					>
+						Retry
+					</button>
 				</div>
 			</section>
 		);
@@ -113,8 +121,16 @@ export const OsuBeatmapFeed = () => {
 				<div className="text-center mt-3 w-full px-4 py-4 border-t-2 border-t-black text-white">
 					<div className="grid gap-3 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 place-items-center mb-6">
 						{loading ? (
+							// Skeleton Loader
+							[...Array(6)].map((_, i) => (
+								<div
+									key={i}
+									className="w-full max-w-[300px] h-[140px] bg-gray-200 animate-pulse rounded-xl"
+								/>
+							))
+						) : filteredBeatmaps.length === 0 ? (
 							<div className="col-span-full text-black font-medium py-10">
-								Loading beatmapsets...
+								No beatmaps found for this category.
 							</div>
 						) : (
 							currentBeatmaps.map((set, index) => {
@@ -125,22 +141,25 @@ export const OsuBeatmapFeed = () => {
 										href={set.link}
 										target="_blank"
 										rel="noopener noreferrer"
-										className="w-full max-w-[300px] group transition-transform duration-300 md:hover:scale-105">
+										className="w-full max-w-[300px] group transition-transform duration-300 md:hover:scale-105"
+									>
 										<div
 											className={twMerge(
-												"relative h-[140px] rounded-xl overflow-hidden shadow-md md:hover:shadow-xl transition",
-												"duration-300"
+												"relative h-[140px] rounded-xl overflow-hidden shadow-md md:hover:shadow-xl transition duration-300"
 											)}
 											style={{
 												backgroundImage: `url(https://assets.ppy.sh/beatmaps/${beatmapId}/covers/card.jpg)`,
 												backgroundSize: "cover",
 												backgroundPosition: "center",
-											}}>
+											}}
+											aria-label={`Beatmap ${set.title} by ${set.artist}`}
+										>
 											<div
 												className={twMerge(
 													"absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-[#3166a7]/80",
-													"p-4 flex flex-col justify-end transition-all duration-300 group-hover:backdrop-blur-none"
-												)}>
+													"p-4 flex flex-col justify-end transition-all duration-300 md:group-hover:backdrop-blur-none"
+												)}
+											>
 												<div className="text-white text-center">
 													<TruncTooltip textClass="text-md font-semibold mb-0.5">
 														{set.title}
@@ -158,7 +177,8 @@ export const OsuBeatmapFeed = () => {
 																className={`px-1 py-[1px] text-[10px] font-medium rounded-sm shadow ${
 																	badgeStyle[badge.toLowerCase()] ||
 																	"bg-gray-200 text-gray-800"
-																}`}>
+																}`}
+															>
 																{badge}
 															</span>
 														))}
@@ -178,10 +198,12 @@ export const OsuBeatmapFeed = () => {
 							<button
 								disabled={currentPage === 1}
 								onClick={() => setCurrentPage((prev) => Math.max(1, prev - 1))}
+								aria-label="Previous page"
 								className={twMerge(
 									"px-2 py-0.5 md:px-4 md:py-1 text-sm font-medium rounded bg-white text-black md:hover:bg-blue-300",
 									"disabled:opacity-40 disabled:cursor-not-allowed transition duration-300"
-								)}>
+								)}
+							>
 								Prev
 							</button>
 
@@ -194,10 +216,12 @@ export const OsuBeatmapFeed = () => {
 								onClick={() =>
 									setCurrentPage((prev) => Math.min(totalPages, prev + 1))
 								}
+								aria-label="Next page"
 								className={twMerge(
 									"px-2 py-0.5 md:px-4 md:py-1 text-sm font-medium rounded bg-white text-black md:hover:bg-blue-300",
 									"disabled:opacity-40 disabled:cursor-not-allowed transition duration-300"
-								)}>
+								)}
+							>
 								Next
 							</button>
 						</div>
