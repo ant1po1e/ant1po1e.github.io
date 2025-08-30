@@ -123,8 +123,9 @@ export const OsuBeatmapFeed = () => {
 							[...Array(6)].map((_, i) => (
 								<div
 									key={i}
-									className="w-full max-w-[300px] h-[140px] bg-gray-white shimmer rounded-xl"
-								/>
+									className="relative w-full max-w-[300px] h-[140px] overflow-hidden rounded-xl bg-gray-300">
+									<div className="absolute inset-0 -translate-x-full animate-[shimmer_2s_infinite] bg-gradient-to-r from-transparent via-white/60 to-transparent" />
+								</div>
 							))
 						) : filteredBeatmaps.length === 0 ? (
 							<div className="col-span-full text-black font-medium py-10">
