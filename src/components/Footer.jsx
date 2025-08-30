@@ -9,6 +9,7 @@ export const Footer = () => {
 	};
 
 	const links = [
+		{ to: "/", label: "HOME" },
 		{ to: "/projects", label: "PROJECTS" },
 		{ to: "/contributed-beatmaps", label: "BEATMAPS" },
 		{ to: "/tools", label: "TOOLS" },
@@ -16,6 +17,7 @@ export const Footer = () => {
 	];
 
 	const iMap = {
+		HOME: <i className="bi bi-house" />,
 		PROJECTS: <i className="bi bi-kanban" />,
 		BEATMAPS: <i className="bi bi-music-note-beamed" />,
 		TOOLS: <i className="bi bi-wrench" />,
