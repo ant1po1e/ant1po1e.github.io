@@ -126,7 +126,7 @@ export const ArticleSection = () => {
 
 	return (
 		<section
-			className="w-full px-4 md:px-24 flex justify-center items-center min-h-[70vh]"
+			className="w-full px-4 md:px-24 flex justify-center items-center"
 			aria-labelledby="article-section">
 			<div className="w-full md:w-7/8 px-5 py-5 bg-white/50 backdrop-blur-md rounded-lg shadow-lg">
 				<div className="w-full px-4">
@@ -136,7 +136,7 @@ export const ArticleSection = () => {
 						</h1>
 					</div>
 				</div>
-				<div className="text-justify mt-5 w-full px-4 py-4 border-t-2 border-t-black overflow-y-auto max-h-[400px]">
+				<div className="text-justify mt-5 w-full px-4 py-4 border-t-2 border-t-black overflow-y-auto max-h-[50vh]">
 					<div className="mt-4 divide-y divide-gray-200">
 						{articles.map((article, index) => (
 							<AccordionItem

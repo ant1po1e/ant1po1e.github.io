@@ -96,10 +96,46 @@ export const ProjectsSection = () => {
 					</div>
 				</div>
 
-				<div className="text-center mt-5 w-full px-4 py-4 border-t-2 border-t-black text-white">
-					<div className="h-[7.2rem] md:h-72 w-full rounded-lg overflow-x-hidden">
+				{/* --- Mobile Card View --- */}
+				<div className="mt-5 w-full px-4 py-4 border-t-2 border-t-black block md:hidden space-y-5 max-h-[50vh] overflow-auto">
+					{projects.map((project, idx) => (
+						<div
+							key={idx}
+							className="bg-white rounded-lg shadow-md overflow-hidden">
+							<img
+								src={project.image}
+								alt={project.alt}
+								className="w-full h-40 object-cover"
+							/>
+							<div className="p-4">
+								<h2 className="font-bold text-lg">{project.title}</h2>
+								<div className="mt-2">
+									<img
+										src={`https://skillicons.dev/icons?i=${project.stack}`}
+										alt="Stack"
+										className="h-6"
+									/>
+								</div>
+								<div className="mt-4">
+									<a
+										href={project.link}
+										target="_blank"
+										rel="noopener noreferrer"
+										className="inline-block text-sm bg-blue-500 text-white rounded-lg px-3 py-1 hover:bg-blue-600 transition duration-300">
+										<i className={`mr-2 ${project.icon}`} />
+										{project.linkText}
+									</a>
+								</div>
+							</div>
+						</div>
+					))}
+				</div>
+
+				{/* --- Desktop Carousel --- */}
+				<div className="text-center mt-5 w-full px-4 py-4 border-t-2 border-t-black text-white hidden md:block">
+					<div className="h-72 w-full rounded-lg overflow-hidden">
 						<Carousel
-							className="overflow-x-hidden relative"
+							className="overflow-hidden relative"
 							indicators={false}
 							slideInterval={5000}
 							pauseOnHover
@@ -124,12 +160,12 @@ export const ProjectsSection = () => {
 							rightControl={
 								<span className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-black/50 md:hover:bg-white/50 ring-4 ring-white md:hover:scale-110 transition duration-300">
 									<svg
-										className="w-4 h-4 text-white"
+										className="w-4 h-4 text-white ltr:rotate-180"
 										viewBox="0 0 6 10"
 										fill="none"
 										xmlns="http://www.w3.org/2000/svg">
 										<path
-											d="m1 1 4 4-4 4"
+											d="M5 1 1 5l4 4"
 											stroke="currentColor"
 											strokeWidth="2"
 											strokeLinecap="round"
@@ -143,25 +179,20 @@ export const ProjectsSection = () => {
 									<img
 										src={project.image}
 										alt={project.alt}
-										className="absolute block max-w-full max-h-full w-full h-full object-contain md:object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 rounded-lg"
+										className="absolute block max-w-full max-h-full w-full h-full object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 rounded-lg"
 									/>
 
-									{/* Overlay */}
-									<div className="absolute block w-full h-full py-6 px-6 sm:py-10 sm:px-20 -translate-x-1/2 z-50 -translate-y-1/2 top-1/2 left-1/2 rounded-lg bg-white/70 backdrop-blur-md text-black opacity-100 md:opacity-0 md:group-hover:opacity-100 transition duration-300">
-										{/* Title */}
+									{/* Overlay (hanya desktop) */}
+									<div className="absolute w-full h-full py-6 px-6 sm:py-10 sm:px-20 -translate-x-1/2 z-50 -translate-y-1/2 top-1/2 left-1/2 rounded-lg bg-white/70 backdrop-blur-md text-black opacity-0 group-hover:opacity-100 transition duration-300">
 										<h2 className="font-bold text-lg md:text-2xl">
 											{project.title}
 										</h2>
-
-										{/* Stack */}
 										<div className="mt-2 flex justify-center">
 											<img
 												src={`https://skillicons.dev/icons?i=${project.stack}`}
 												alt="Stack"
 											/>
 										</div>
-
-										{/* Link */}
 										<div className="mt-6 md:mt-12 md:hover:scale-110 transition duration-300">
 											<a
 												href={project.link}
