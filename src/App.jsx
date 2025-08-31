@@ -1,8 +1,9 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Home } from "./pages/Home";
 import { NotFound } from "./pages/NotFound";
-import { Projects } from "./pages/Projects";
 import { Beatmaps } from "./pages/Beatmaps";
+import { Article } from "./pages/Article";
+import { Projects } from "./pages/Projects";
 import { Tools } from "./pages/Tools";
 import { Contact } from "./pages/Contact";
 import { BBCodeGenerator } from "./pages/BBCodeGenerator";
@@ -19,6 +20,7 @@ function App() {
 				<Route index element={<Home />} />
 				<Route path="*" element={<NotFound />} />
 				<Route path="/contributed-beatmaps" element={<Beatmaps />} />
+				<Route path="/how-to-map" element={<Article />} />
 				<Route path="/projects" element={<Projects />} />
 				<Route path="/contact" element={<Contact />} />
 				<Route path="/tools">

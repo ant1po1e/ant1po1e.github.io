@@ -12,6 +12,7 @@ export const Footer = () => {
 		{ to: "/", label: "HOME" },
 		{ to: "/projects", label: "PROJECTS" },
 		{ to: "/contributed-beatmaps", label: "BEATMAPS" },
+		{ to: "/how-to-map", label: "HOW TO MAP" },
 		{ to: "/tools", label: "TOOLS" },
 		{ to: "/contact", label: "CONTACT" },
 	];
@@ -22,6 +23,7 @@ export const Footer = () => {
 		BEATMAPS: <i className="bi bi-music-note-list" aria-hidden="true" />,
 		TOOLS: <i className="bi bi-tools" aria-hidden="true" />,
 		CONTACT: <i className="bi bi-envelope-fill" aria-hidden="true" />,
+		"HOW TO MAP": <i class="bi bi-map-fill"></i>,
 	};
 
 	return (
@@ -47,24 +49,24 @@ export const Footer = () => {
 					className={`transition-all duration-300 w-full bg-white/50 backdrop-blur-md rounded-t-xl overflow-hidden shadow-lg ${
 						isOpen ? "max-h-[300px] py-4" : "max-h-0 py-0"
 					}`}>
-					<ul className="flex flex-col items-center gap-3 text-black font-medium">
+					<ul className="flex flex-col items-center text-black font-medium divide-y-1 divide-gray-300 px-10">
 						{links.map((link) => (
-							<li key={link.label}>
+							<li key={link.label} className="w-full">
 								<Link
 									to={link.to}
 									onClick={() => setIsOpen(false)}
-									className="text-base font-medium"
+									className="block w-full py-2 text-center text-base font-medium md:hover:bg-black/10 transition"
 									aria-label={`Navigate to ${link.label}`}>
 									{link.label}
 								</Link>
 							</li>
 						))}
-						<li>
+						<li className="w-full">
 							<a
 								href="https://ant1po1e.itch.io"
 								target="_blank"
 								rel="noopener noreferrer"
-								className="text-base font-medium"
+								className="block w-full py-2 text-center text-base font-medium md:hover:bg-black/10 transition"
 								aria-label="Visit ITCH.IO (opens in a new tab)">
 								ITCH.IO
 							</a>

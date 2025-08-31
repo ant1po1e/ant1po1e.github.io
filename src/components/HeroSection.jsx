@@ -47,25 +47,34 @@ export const HeroSection = () => {
 
 			{/* Mobile social links */}
 			<div className="flex flex-wrap md:hidden justify-center gap-2 mt-4">
+				{/* GitHub dengan teks di kiri dalam kotak */}
 				<a
 					href="https://github.com/ant1po1e"
 					aria-label="GitHub"
 					target="_blank"
 					rel="noopener noreferrer"
-					className="w-10 h-10 rounded-lg bg-white flex items-center justify-center text-lg shadow-md md:hover:bg-blue-400 focus:ring-2 focus:ring-blue-400 transition duration-300 group">
+					className="px-3 h-10 rounded-lg bg-white flex flex-row items-center gap-2 shadow-md md:hover:bg-blue-400 focus:ring-2 focus:ring-blue-400 transition duration-300 group">
+					<span className="text-sm font-medium text-black md:group-hover:text-white transition-colors duration-300">
+						GitHub
+					</span>
 					<i
-						className="bi bi-github md:group-hover:text-2xl md:group-hover:text-white transition-all duration-300"
+						className="bi bi-github text-lg md:group-hover:text-2xl md:group-hover:text-white transition-all duration-300"
 						aria-hidden="true"
 					/>
 				</a>
+
+				{/* YouTube dengan teks di kanan dalam kotak */}
 				<a
 					href="https://www.youtube.com/@ant1po1e"
-					aria-label="Youtube"
+					aria-label="YouTube"
 					target="_blank"
 					rel="noopener noreferrer"
-					className="w-10 h-10 rounded-lg bg-white flex items-center justify-center text-lg shadow-md md:hover:bg-blue-400 focus:ring-2 focus:ring-blue-400 transition duration-300 group">
+					className="px-3 h-10 rounded-lg bg-white flex flex-row-reverse items-center gap-2 shadow-md md:hover:bg-blue-400 focus:ring-2 focus:ring-blue-400 transition duration-300 group">
+					<span className="text-sm font-medium text-black md:group-hover:text-white transition-colors duration-300">
+						YouTube
+					</span>
 					<i
-						className="bi bi-youtube md:group-hover:text-2xl md:group-hover:text-white transition-all duration-300"
+						className="bi bi-youtube text-lg md:group-hover:text-2xl md:group-hover:text-white transition-all duration-300"
 						aria-hidden="true"
 					/>
 				</a>
