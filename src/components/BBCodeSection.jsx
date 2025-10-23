@@ -115,9 +115,8 @@ export const BBCodeSection = () => {
 					</div>
 				</div>
 
-				<div className="text-center mt-5 w-full px-4 py-4 border-t-2 border-t-black text-white">
+				<div className="text-center mt-5 w-full px-4 py-4 border-t-2 border-t-black text-white overflow-y-auto max-h-[50vh]">
 					<div className="space-y-4 max-w-md mx-auto">
-						{/* Text input */}
 						<div>
 							<label htmlFor="text" className="sr-only">
 								Text

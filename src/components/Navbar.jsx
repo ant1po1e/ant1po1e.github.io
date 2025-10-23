@@ -18,7 +18,7 @@ export const Navbar = () => {
 			<Link
 				to={isOnRoot ? "/" : backUrl}
 				aria-label={isOnRoot ? "Go to homepage" : "Go back"}
-				className="text-black font-bold text-lg md:text-2xl p-3 rounded-r-lg bg-white shadow-lg md:hover:text-blue-400 md:hover:pl-12 focus:ring-2 focus:ring-blue-400 transition-all duration-300">
+				className="text-[#232323] font-bold text-lg md:text-2xl p-3 rounded-r-lg bg-white shadow-lg md:hover:text-blue-400 md:hover:pl-12 focus:ring-2 focus:ring-blue-400 transition-all duration-300">
 				{isOnRoot ? (
 					"Antipole's Website"
 				) : (

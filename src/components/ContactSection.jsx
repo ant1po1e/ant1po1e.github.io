@@ -33,14 +33,12 @@ export const ContactSection = () => {
 				form.reset();
 				setShowAlert(true);
 
-				// Fokus ke alert untuk screen reader
 				setTimeout(() => {
 					if (alertRef.current) {
 						alertRef.current.focus();
 					}
 				}, 100);
 
-				// Auto-hide setelah 3 detik
 				setTimeout(() => setShowAlert(false), 3000);
 			} else {
 				alert("Something went wrong! Please try again later.");
