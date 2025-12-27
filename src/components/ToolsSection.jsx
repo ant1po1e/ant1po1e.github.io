@@ -18,9 +18,9 @@ export const ToolsSection = () => {
 								to="/tools/snap-calculator"
 								aria-label="Go to Snap Calculator tool"
 								className="relative flex items-center justify-center mt-2 py-2 px-4 md:px-8 
-                  overflow-hidden font-semibold text-black rounded-lg 
-                  transition-all duration-300 ease-in-out 
-                  md:hover:bg-white md:hover:text-blue-400 md:hover:scale-110 group">
+											overflow-hidden font-semibold text-black rounded-lg 
+											transition-all duration-300 ease-in-out 
+											md:hover:bg-white md:hover:text-blue-400 md:hover:scale-110 group">
 								Snap Calculator
 								{/* Hover arrows */}
 								<span className="absolute left-0 -translate-x-12 md:group-hover:translate-x-0 ease-out duration-200">
@@ -38,11 +38,10 @@ export const ToolsSection = () => {
 								to="/tools/bbcode-generator"
 								aria-label="Go to BBCode Text Colorizer tool"
 								className="relative flex items-center justify-center mt-2 py-2 px-4 md:px-8 
-                  overflow-hidden font-semibold text-black rounded-lg 
-                  transition-all duration-300 ease-in-out 
-                  md:hover:bg-white md:hover:text-blue-400 md:hover:scale-110 group">
+											overflow-hidden font-semibold text-black rounded-lg 
+											transition-all duration-300 ease-in-out 
+											md:hover:bg-white md:hover:text-blue-400 md:hover:scale-110 group">
 								BBCode Text Colorizer
-								{/* Hover arrows */}
 								<span className="absolute left-0 -translate-x-12 md:group-hover:translate-x-0 ease-out duration-200">
 									<i className="bi bi-arrow-right" />
 								</span>
