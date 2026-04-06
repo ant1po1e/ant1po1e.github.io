@@ -69,17 +69,6 @@ export const Footer = () => {
                                 </Link>
                             </li>
                         ))}
-                        <li className="w-full">
-                            <a
-                                href="https://ant1po1e.itch.io"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="block w-full py-2 text-center text-base font-medium md:hover:bg-black/10 transition"
-                                aria-label="Visit ITCH.IO (opens in a new tab)"
-                            >
-                                ITCH.IO
-                            </a>
-                        </li>
                     </ul>
                 </div>
             </div>
@@ -108,26 +97,6 @@ export const Footer = () => {
                             </span>
                         </div>
                     ))}
-                    <div className="relative group font-medium">
-                        <a
-                            href="https://ant1po1e.itch.io"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-black text-2xl relative rounded-md p-2 transition-all duration-300 md:hover:text-blue-400 md:hover:bg-white md:hover:px-5 md:hover:shadow-md"
-                            aria-label="Visit ITCH.IO (opens in a new tab)"
-                        >
-                            <i
-                                className="bi bi-shop-window"
-                                aria-hidden="true"
-                            />
-                        </a>
-                        <span
-                            role="tooltip"
-                            className="absolute -top-13 left-1/2 -translate-x-1/2 bg-white text-black text-sm px-5 py-2 rounded-md opacity-0 shadow-md md:group-hover:opacity-100 md:group-hover:-translate-y-1 transition-all duration-300 whitespace-nowrap pointer-events-none"
-                        >
-                            ITCH.IO
-                        </span>
-                    </div>
                 </div>
             </div>
         </footer>
