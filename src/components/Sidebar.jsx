@@ -34,8 +34,8 @@ export const Sidebar = () => {
             {/* Itch.io */}
             <div className="relative group font-medium">
                 <a
-                    href="https://www.youtube.com/@ant1po1e"
-                    aria-label="YouTube"
+                    href="https://ant1po1e.itch.io/"
+                    aria-label="Itch.io"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-16 h-16 rounded-lg bg-white flex items-center justify-center text-3xl shadow-md md:hover:bg-blue-400 md:hover:scale-110 transition duration-300 group">
