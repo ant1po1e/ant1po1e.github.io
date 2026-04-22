@@ -17,7 +17,6 @@ const StaffingItem = ({ link, date, title, roles }) => {
                 {date}
             </span>
 
-            {/* Title */}
             <a
                 href={link}
                 target="_blank"
@@ -33,7 +32,6 @@ const StaffingItem = ({ link, date, title, roles }) => {
                 </span>
             </a>
 
-            {/* Roles */}
             <div className="mt-2 flex flex-wrap gap-2">
                 {roles.map((role, idx) => {
                     const key = role.toLowerCase();
