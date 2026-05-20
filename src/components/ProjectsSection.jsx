@@ -6,7 +6,7 @@ const projects = [
         image: "/projects/gulanova-site.webp",
         alt: "Gulanova Website",
         link: "https://gulanova.top",
-        stack: "html,css,js,tailwind,jquery,figma",
+        stack: "react,tailwind,css",
         icon: "bi bi-link",
         linkText: "Site",
     },

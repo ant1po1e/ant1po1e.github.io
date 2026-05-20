@@ -4,7 +4,6 @@ import remarkGfm from "remark-gfm";
 
 const AccordionItem = ({ title, markdown, isOpen, onClick }) => (
     <div className="border-b border-gray-300">
-        {/* Button */}
         <button
             onClick={onClick}
             className="w-full flex justify-between items-center py-3 text-left text-black font-medium focus:outline-none"
@@ -17,7 +16,6 @@ const AccordionItem = ({ title, markdown, isOpen, onClick }) => (
             />
         </button>
 
-        {/* Content */}
         <div
             className={`overflow-hidden transition-all duration-300 ${
                 isOpen ? "max-h-screen py-2" : "max-h-0"
