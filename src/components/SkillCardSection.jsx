@@ -119,109 +119,114 @@ export const SkillCardSection = () => {
         link.click();
     };
 
-    const CardContent = () => (
-        <>
-            <div
-                className="absolute top-0 right-0 w-40 h-40 blur-3xl rounded-full opacity-20"
-                style={{ backgroundColor: themeColors.primary }}
-            />
+    const CardContent = useMemo(
+        () => (
+            <>
+                <div
+                    className="absolute top-0 right-0 w-40 h-40 blur-3xl rounded-full opacity-20"
+                    style={{ backgroundColor: themeColors.primary }}
+                />
 
-            <div
-                className="absolute bottom-0 left-0 w-40 h-40 blur-3xl rounded-full opacity-20"
-                style={{ backgroundColor: themeColors.secondary }}
-            />
+                <div
+                    className="absolute bottom-0 left-0 w-40 h-40 blur-3xl rounded-full opacity-20"
+                    style={{ backgroundColor: themeColors.secondary }}
+                />
 
-            <div className="relative z-10 text-center">
-                <div className="flex justify-center">
-                    <label htmlFor="avatar-upload" className="cursor-pointer">
-                        {avatar ? (
-                            <div
-                                className="w-24 h-24 rounded-3xl p-[2px]"
-                                style={{
-                                    background: `linear-gradient(
+                <div className="relative z-10 text-center">
+                    <div className="flex justify-center">
+                        <label
+                            htmlFor="avatar-upload"
+                            className="cursor-pointer">
+                            {avatar ? (
+                                <div
+                                    className="w-24 h-24 rounded-3xl p-[2px]"
+                                    style={{
+                                        background: `linear-gradient(
                                     135deg,
                                     ${themeColors.primary},
                                     ${themeColors.secondary}
                                 )`,
-                                }}>
-                                <img
-                                    src={avatar}
-                                    alt="avatar"
-                                    className="w-full h-full rounded-[22px] object-cover"
-                                />
-                            </div>
-                        ) : (
-                            <div className="w-24 h-24 rounded-3xl border border-white/20 bg-white/10 flex items-center justify-center text-xs">
-                                Upload
-                            </div>
-                        )}
-                    </label>
+                                    }}>
+                                    <img
+                                        src={avatar}
+                                        alt="avatar"
+                                        className="w-full h-full rounded-[22px] object-cover"
+                                    />
+                                </div>
+                            ) : (
+                                <div className="w-24 h-24 rounded-3xl border border-white/20 bg-white/10 flex items-center justify-center text-xs">
+                                    Upload
+                                </div>
+                            )}
+                        </label>
 
-                    <input
-                        id="avatar-upload"
-                        type="file"
-                        accept="image/*"
-                        onChange={handleAvatarUpload}
-                        hidden
-                    />
-                </div>
+                        <input
+                            id="avatar-upload"
+                            type="file"
+                            accept="image/*"
+                            onChange={handleAvatarUpload}
+                            hidden
+                        />
+                    </div>
 
-                <div className="mt-4">
-                    <input
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                        className="bg-transparent text-center outline-none text-3xl font-black w-full"
-                    />
-                </div>
+                    <div className="mt-4">
+                        <input
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                            className="bg-transparent text-center outline-none text-3xl font-black w-full"
+                        />
+                    </div>
 
-                <div className="flex justify-center mt-4">
-                    <span
-                        className={`px-4 py-2 rounded-full border text-sm font-semibold ${RANK_STYLES[rank]}`}>
-                        {rank}
-                    </span>
-                </div>
+                    <div className="flex justify-center mt-4">
+                        <span
+                            className={`px-4 py-2 rounded-full border text-sm font-semibold ${RANK_STYLES[rank]}`}>
+                            {rank}
+                        </span>
+                    </div>
 
-                <div className="mt-8">
-                    <SkillRadarChart
-                        skills={skills}
-                        setSkills={setSkills}
-                        themeColors={themeColors}
-                    />
-                </div>
+                    <div className="mt-8">
+                        <SkillRadarChart
+                            skills={skills}
+                            setSkills={setSkills}
+                            themeColors={themeColors}
+                        />
+                    </div>
 
-                <div className="mt-2 flex flex-col items-center">
-                    <h2
-                        className="text-6xl font-black bg-clip-text text-transparent"
-                        style={{
-                            backgroundImage: `linear-gradient(
+                    <div className="mt-2 flex flex-col items-center">
+                        <h2
+                            className="text-6xl font-black bg-clip-text text-transparent"
+                            style={{
+                                backgroundImage: `linear-gradient(
                             90deg,
                             ${themeColors.primary},
                             ${themeColors.secondary}
                         )`,
-                        }}>
-                        {overallScore}
-                    </h2>
+                            }}>
+                            {overallScore}
+                        </h2>
 
-                    <p className="text-[10px] tracking-[5px] text-gray-500">
-                        OVERALL
+                        <p className="text-[10px] tracking-[5px] text-gray-500">
+                            OVERALL
+                        </p>
+                    </div>
+
+                    <div className="mt-5 flex justify-center">
+                        <div className="inline-block px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm">
+                            Top Skill •{" "}
+                            <span className="font-bold">
+                                {topSkill[0].toUpperCase()}
+                            </span>{" "}
+                            {topSkill[1]}
+                        </div>
+                    </div>
+
+                    <p className="text-xs text-gray-400 mt-6 tracking-wider text-center">
+                        antipole.my.id/tools/skill-card
                     </p>
                 </div>
-
-                <div className="mt-5 flex justify-center">
-                    <div className="inline-block px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm">
-                        Top Skill •{" "}
-                        <span className="font-bold">
-                            {topSkill[0].toUpperCase()}
-                        </span>{" "}
-                        {topSkill[1]}
-                    </div>
-                </div>
-
-                <p className="text-xs text-gray-400 mt-6 tracking-wider text-center">
-                    antipole.my.id/tools/skill-card
-                </p>
-            </div>
-        </>
+            </>
+        ),
+        [avatar, username, rank, overallScore, topSkill, skills, themeColors],
     );
 
     return (
@@ -277,7 +282,7 @@ export const SkillCardSection = () => {
                                 via-slate-900
                                 to-slate-800
                             ">
-                            <CardContent />
+                            {CardContent}
                         </div>
                     </div>
                 </div>
@@ -316,7 +321,7 @@ export const SkillCardSection = () => {
                                 transform: `scale(${1342 / 420})`,
                                 transformOrigin: "top center",
                             }}>
-                            <CardContent />
+                            {CardContent}
                         </div>
                     </div>
                 </div>
