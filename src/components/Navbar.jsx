@@ -6,7 +6,9 @@ export const Navbar = () => {
     const isOnRoot = path === "/";
 
     const isInToolsSubpage =
-        path === "/tools/bbcode-generator" || path === "/tools/snap-calculator";
+        path === "/tools/bbcode-generator" ||
+        path === "/tools/snap-calculator" ||
+        path === "/tools/skill-card";
 
     const backUrl = isInToolsSubpage ? "/tools" : "/";
 

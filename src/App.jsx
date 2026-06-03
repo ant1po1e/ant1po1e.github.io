@@ -9,6 +9,7 @@ import { Tools } from "./pages/Tools";
 import { Contact } from "./pages/Contact";
 import { BBCodeGenerator } from "./pages/BBCodeGenerator";
 import { SnapCalculator } from "./pages/SnapCalculator";
+import { SkillCard } from './pages/SkillCard';
 import { Navbar } from "./components/Navbar";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
@@ -33,6 +34,10 @@ function App() {
                     <Route
                         path="snap-calculator"
                         element={<SnapCalculator />}
+                    />
+                    <Route
+                        path="skill-card"
+                        element={<SkillCard />}
                     />
                 </Route>
                 <Route path="/contact" element={<Contact />} />
