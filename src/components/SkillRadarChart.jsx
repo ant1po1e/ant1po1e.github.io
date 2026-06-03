@@ -154,7 +154,7 @@ export const SkillRadarChart = ({ skills, setSkills, themeColors }) => {
                 {SKILLS.map((skill, index) => {
                     const point = getSkillPoint(skills[skill.key], index);
 
-                    const labelPoint = getAxisPoint(MAX_RADIUS + 35, index);
+                    const labelPoint = getAxisPoint(MAX_RADIUS + 28, index);
 
                     return (
                         <g key={skill.key}>
