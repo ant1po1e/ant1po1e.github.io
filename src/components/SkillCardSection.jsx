@@ -69,7 +69,7 @@ export const SkillCardSection = () => {
         jack: 70,
         stamina: 85,
         tech: 65,
-        ln: 90,
+        release: 90,
         reading: 72,
     });
 
