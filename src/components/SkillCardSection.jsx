@@ -8,8 +8,7 @@ const STAT_CONFIG = [
     { key: "jack", label: "JCK" },
     { key: "stamina", label: "STA" },
     { key: "tech", label: "TEC" },
-    { key: "ln", label: "LN" },
-    { key: "release", label: "REL" },
+    { key: "release", label: "LN" },
     { key: "reading", label: "RDG" },
 ];
 
@@ -71,7 +70,6 @@ export const SkillCardSection = () => {
         stamina: 85,
         tech: 65,
         ln: 90,
-        release: 78,
         reading: 72,
     });
 
