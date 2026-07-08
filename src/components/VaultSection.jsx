@@ -173,70 +173,132 @@ function UploadZone({ onUploaded }) {
     );
 }
 
-function QuickCopyButton({ pathname }) {
+function formatDate(iso) {
+    try {
+        return new Date(iso).toLocaleDateString(undefined, {
+            day: "numeric",
+            month: "short",
+            year: "numeric",
+        });
+    } catch {
+        return "";
+    }
+}
+
+function TableRow({ image, onSelect, onDelete }) {
     const [copied, setCopied] = useState(false);
 
-    async function handleClick(e) {
+    async function copyLink(e) {
         e.stopPropagation();
         try {
-            await navigator.clipboard.writeText(toShareUrl(pathname));
+            await navigator.clipboard.writeText(toShareUrl(image.pathname));
             setCopied(true);
             setTimeout(() => setCopied(false), 1200);
         } catch {
-            // ignore — user can still open the lightbox and copy from there
+            // ignore
         }
     }
 
     return (
-        <button
-            onClick={handleClick}
-            className={`absolute top-2 right-2 text-[10px] font-semibold uppercase tracking-wide px-2 py-1 rounded backdrop-blur bg-white/80 border transition opacity-0 group-hover:opacity-100 flex items-center gap-1 ${
-                copied
-                    ? "border-blue-400 text-blue-400"
-                    : "border-black/10 text-black hover:text-blue-400"
-            }`}>
-            <i className={`bi ${copied ? "bi-check2" : "bi-clipboard"}`} />
-            {copied ? "Copied" : "Copy link"}
-        </button>
+        <tr
+            onClick={() => onSelect(image)}
+            className="border-b border-black/5 last:border-b-0 hover:bg-black/5 transition cursor-pointer">
+            <td className="px-4 py-2 w-14">
+                <img
+                    src={image.url}
+                    alt={image.name}
+                    className="w-10 h-10 object-cover rounded border border-black/10"
+                />
+            </td>
+            <td className="px-3 py-2 text-black/80 text-sm truncate max-w-[160px] sm:max-w-[260px]">
+                {image.name}
+            </td>
+            <td className="px-3 py-2 text-black/40 text-xs whitespace-nowrap hidden sm:table-cell">
+                {formatDate(image.uploadedAt)}
+            </td>
+            <td className="px-4 py-2">
+                <div className="flex items-center justify-end gap-3 text-black/50">
+                    <button
+                        onClick={copyLink}
+                        title="Copy link"
+                        className={`transition hover:text-blue-400 ${copied ? "text-blue-400" : ""}`}>
+                        <i
+                            className={`bi ${copied ? "bi-check2" : "bi-clipboard"}`}
+                        />
+                    </button>
+                    <button
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            onDelete(image);
+                        }}
+                        title="Delete"
+                        className="hover:text-red-500 transition">
+                        <i className="bi bi-trash" />
+                    </button>
+                </div>
+            </td>
+        </tr>
     );
 }
 
-function ImageGrid({ images, onSelect }) {
-    if (images.length === 0) {
-        return (
-            <div className="text-center py-16 border border-dashed border-black/15 rounded-lg">
-                <i className="bi bi-images text-3xl text-black/25" />
-                <p className="font-semibold text-black/60 mt-2">
-                    The vault is empty
-                </p>
-                <p className="text-black/40 text-sm mt-1">
-                    Upload your first image above
-                </p>
-            </div>
-        );
-    }
-
+function ImageListModal({ images, onClose, onSelect, onDelete }) {
     return (
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
-            {images.map((img) => (
-                <div
-                    key={img.url}
-                    onClick={() => onSelect(img)}
-                    className="group relative aspect-square bg-black/5 rounded-lg overflow-hidden cursor-pointer border border-black/10">
-                    <img
-                        src={img.url}
-                        alt={img.name}
-                        loading="lazy"
-                        className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
-                    />
-                    <QuickCopyButton pathname={img.pathname} />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition flex items-end p-2">
-                        <span className="text-[10px] text-white truncate">
-                            {img.name}
+        <div
+            className="fixed inset-0 z-40 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6"
+            onClick={onClose}>
+            <div
+                className="w-full max-w-2xl max-h-[80vh] bg-white rounded-lg shadow-lg flex flex-col overflow-hidden"
+                onClick={(e) => e.stopPropagation()}>
+                <div className="flex items-center justify-between px-5 py-4 border-b border-black/10 shrink-0">
+                    <h2 className="font-bold text-black text-lg">
+                        All images{" "}
+                        <span className="text-black/40 font-normal text-sm">
+                            ({images.length})
                         </span>
-                    </div>
+                    </h2>
+                    <button
+                        onClick={onClose}
+                        className="text-black/50 hover:text-black transition">
+                        <i className="bi bi-x-lg text-lg" />
+                    </button>
                 </div>
-            ))}
+
+                <div className="overflow-y-auto flex-1">
+                    {images.length === 0 ? (
+                        <div className="text-center py-16 text-black/40">
+                            <i className="bi bi-images text-3xl" />
+                            <p className="mt-2 text-sm">No images yet</p>
+                        </div>
+                    ) : (
+                        <table className="w-full">
+                            <thead className="sticky top-0 bg-white border-b border-black/10 text-black/40 text-[10px] uppercase tracking-wide">
+                                <tr>
+                                    <th className="px-4 py-2 w-14" />
+                                    <th className="text-left font-semibold px-3 py-2">
+                                        Name
+                                    </th>
+                                    <th className="text-left font-semibold px-3 py-2 hidden sm:table-cell">
+                                        Uploaded
+                                    </th>
+                                    <th className="text-right font-semibold px-4 py-2">
+                                        Actions
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {images.map((img) => (
+                                    <TableRow
+                                        key={img.url}
+                                        image={img}
+                                        onSelect={onSelect}
+                                        onDelete={onDelete}
+                                    />
+                                ))}
+                            </tbody>
+                        </table>
+                    )}
+                </div>
+            </div>
         </div>
     );
 }
@@ -349,6 +411,7 @@ function ImageLightbox({ image, onClose, onDelete }) {
 export const VaultSection = () => {
     const [authState, setAuthState] = useState("checking"); // checking | out | in
     const [images, setImages] = useState([]);
+    const [listOpen, setListOpen] = useState(false);
     const [selected, setSelected] = useState(null);
     const [error, setError] = useState("");
 
@@ -374,6 +437,7 @@ export const VaultSection = () => {
         await logout();
         setAuthState("out");
         setImages([]);
+        setListOpen(false);
     }
 
     function handleUploaded(blob) {
@@ -450,11 +514,25 @@ export const VaultSection = () => {
                                 </p>
                             )}
 
-                            <ImageGrid images={images} onSelect={setSelected} />
+                            <button
+                                onClick={() => setListOpen(true)}
+                                className="w-full flex items-center justify-center gap-2 bg-black/5 hover:bg-black/10 border border-black/10 rounded-lg py-3 font-semibold text-black transition">
+                                <i className="bi bi-collection" />
+                                View images ({images.length})
+                            </button>
                         </>
                     )}
                 </div>
             </div>
+
+            {listOpen && (
+                <ImageListModal
+                    images={images}
+                    onClose={() => setListOpen(false)}
+                    onSelect={setSelected}
+                    onDelete={handleDelete}
+                />
+            )}
 
             <ImageLightbox
                 image={selected}
