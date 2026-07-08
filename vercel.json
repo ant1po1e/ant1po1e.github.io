@@ -1,13 +1,13 @@
 {
     "rewrites": [
         {
+            "source": "/i/:path*",
+            "destination": "/api/img?p=:path*"
+        },
+        {
             "source": "/((?!api).*)",
             "destination": "/"
-        },
-        { 
-			"source": "/i/:path*", 
-			"destination": "/api/img?p=:path*" 
-		}
+        }
     ],
     "buildCommand": "vite build",
     "outputDirectory": "dist",
