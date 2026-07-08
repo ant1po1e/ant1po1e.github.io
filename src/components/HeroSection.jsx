@@ -4,8 +4,7 @@ export const HeroSection = () => {
     return (
         <section
             className="w-full px-4 md:px-24"
-            aria-label="Hero Section with introduction and social links"
-        >
+            aria-label="Hero Section with introduction and social links">
             {/* Title */}
             <div className="mx-auto text-center md:text-start">
                 <h1 className="font-bold text-white text-5xl md:text-[100px] mb-5 neon font-merienda relative inline-block cursor-pointer group">
@@ -55,8 +54,7 @@ export const HeroSection = () => {
                     aria-label="GitHub"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-3 h-10 rounded-lg bg-white flex flex-row items-center gap-2 shadow-md md:hover:bg-blue-400 focus:ring-2 focus:ring-blue-400 transition duration-300 group"
-                >
+                    className="px-3 h-10 rounded-lg bg-white flex flex-row items-center gap-2 shadow-md md:hover:bg-blue-400 focus:ring-2 focus:ring-blue-400 transition duration-300 group">
                     <span className="text-sm font-medium text-black md:group-hover:text-white transition-colors duration-300">
                         GitHub
                     </span>
@@ -72,8 +70,7 @@ export const HeroSection = () => {
                     aria-label="YouTube"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-3 h-10 rounded-lg bg-white flex flex-row-reverse items-center gap-2 shadow-md md:hover:bg-blue-400 focus:ring-2 focus:ring-blue-400 transition duration-300 group"
-                >
+                    className="px-3 h-10 rounded-lg bg-white flex flex-row-reverse items-center gap-2 shadow-md md:hover:bg-blue-400 focus:ring-2 focus:ring-blue-400 transition duration-300 group">
                     <span className="text-sm font-medium text-black md:group-hover:text-white transition-colors duration-300">
                         YouTube
                     </span>
@@ -99,14 +96,12 @@ export const HeroSection = () => {
                         href="https://x.com/amairoka"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="relative hidden md:inline-flex items-center p-3 text-sm font-medium text-center text-white bg-blue-400 rounded-md shadow-lg md:hover:scale-110 md:hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 transition-all duration-300 group"
-                    >
+                        className="relative hidden md:inline-flex items-center p-3 text-sm font-medium text-center text-white bg-blue-400 rounded-md shadow-lg md:hover:scale-110 md:hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 transition-all duration-300 group">
                         <span>Artwork Credit</span>
                         {/* Badge with tooltip */}
                         <div
                             className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -end-2 md:group-hover:scale-0 transition duration-300"
-                            aria-hidden="true"
-                        >
+                            aria-hidden="true">
                             !
                         </div>
                     </a>

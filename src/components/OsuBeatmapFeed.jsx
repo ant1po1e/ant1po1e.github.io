@@ -20,7 +20,7 @@ export const OsuBeatmapFeed = () => {
             const data = await res.json();
 
             const sorted = [...data].sort(
-                (a, b) => (b.badges?.length || 0) - (a.badges?.length || 0)
+                (a, b) => (b.badges?.length || 0) - (a.badges?.length || 0),
             );
 
             setBeatmaps(sorted);
@@ -63,7 +63,7 @@ export const OsuBeatmapFeed = () => {
     const start = (currentPage - 1) * ITEMS_PER_PAGE;
     const currentBeatmaps = filteredBeatmaps.slice(
         start,
-        start + ITEMS_PER_PAGE
+        start + ITEMS_PER_PAGE,
     );
 
     const TruncTooltip = ({ children, textClass }) => {
@@ -73,7 +73,7 @@ export const OsuBeatmapFeed = () => {
         useEffect(() => {
             if (ref.current) {
                 setShowTooltip(
-                    ref.current.scrollWidth > ref.current.clientWidth
+                    ref.current.scrollWidth > ref.current.clientWidth,
                 );
             }
         }, [children]);
@@ -82,8 +82,7 @@ export const OsuBeatmapFeed = () => {
             <p
                 ref={ref}
                 className={`${textClass} truncate`}
-                title={showTooltip ? children : ""}
-            >
+                title={showTooltip ? children : ""}>
                 {children}
             </p>
         );
@@ -97,8 +96,7 @@ export const OsuBeatmapFeed = () => {
                     <p className="text-red-500 font-semibold">{error}</p>
                     <button
                         onClick={fetchBeatmaps}
-                        className="px-4 py-2 bg-black text-white rounded-lg md:hover:bg-blue-400 transition"
-                    >
+                        className="px-4 py-2 bg-black text-white rounded-lg md:hover:bg-blue-400 transition">
                         Retry
                     </button>
                 </div>
@@ -130,8 +128,7 @@ export const OsuBeatmapFeed = () => {
                             [...Array(6)].map((_, i) => (
                                 <div
                                     key={i}
-                                    className="relative w-full max-w-[300px] h-[140px] overflow-hidden rounded-xl bg-gray-300"
-                                >
+                                    className="relative w-full max-w-[300px] h-[140px] overflow-hidden rounded-xl bg-gray-300">
                                     <div className="absolute inset-0 -translate-x-full animate-[shimmer_2s_infinite] bg-gradient-to-r from-transparent via-white/60 to-transparent" />
                                 </div>
                             ))
@@ -148,25 +145,22 @@ export const OsuBeatmapFeed = () => {
                                         href={set.link}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="w-full max-w-[300px] group transition-transform duration-300 md:hover:scale-105"
-                                    >
+                                        className="w-full max-w-[300px] group transition-transform duration-300 md:hover:scale-105">
                                         <div
                                             className={twMerge(
-                                                "relative h-[140px] rounded-xl overflow-hidden shadow-md md:hover:shadow-xl transition duration-300"
+                                                "relative h-[140px] rounded-xl overflow-hidden shadow-md md:hover:shadow-xl transition duration-300",
                                             )}
                                             style={{
                                                 backgroundImage: `url(https://assets.ppy.sh/beatmaps/${beatmapId}/covers/card.jpg)`,
                                                 backgroundSize: "cover",
                                                 backgroundPosition: "center",
                                             }}
-                                            aria-label={`Beatmap ${set.title} by ${set.artist}`}
-                                        >
+                                            aria-label={`Beatmap ${set.title} by ${set.artist}`}>
                                             <div
                                                 className={twMerge(
                                                     "absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-[#3166a7]/80",
-                                                    "p-4 flex flex-col justify-end transition-all duration-300 md:group-hover:backdrop-blur-none"
-                                                )}
-                                            >
+                                                    "p-4 flex flex-col justify-end transition-all duration-300 md:group-hover:backdrop-blur-none",
+                                                )}>
                                                 <div className="text-white text-center">
                                                     <TruncTooltip textClass="text-md font-semibold mb-0.5">
                                                         {set.title}
@@ -187,11 +181,10 @@ export const OsuBeatmapFeed = () => {
                                                                             badge.toLowerCase()
                                                                         ] ||
                                                                         "bg-gray-200 text-gray-800"
-                                                                    }`}
-                                                                >
+                                                                    }`}>
                                                                     {badge}
                                                                 </span>
-                                                            )
+                                                            ),
                                                         )}
                                                     </div>
                                                 )}
@@ -210,15 +203,14 @@ export const OsuBeatmapFeed = () => {
                                 disabled={currentPage === 1}
                                 onClick={() =>
                                     setCurrentPage((prev) =>
-                                        Math.max(1, prev - 1)
+                                        Math.max(1, prev - 1),
                                     )
                                 }
                                 aria-label="Previous page"
                                 className={twMerge(
                                     "px-2 py-0.5 md:px-4 md:py-1 text-sm font-medium rounded bg-white text-black md:hover:bg-blue-300",
-                                    "disabled:opacity-40 disabled:cursor-not-allowed transition duration-300"
-                                )}
-                            >
+                                    "disabled:opacity-40 disabled:cursor-not-allowed transition duration-300",
+                                )}>
                                 Prev
                             </button>
 
@@ -230,15 +222,14 @@ export const OsuBeatmapFeed = () => {
                                 disabled={currentPage === totalPages}
                                 onClick={() =>
                                     setCurrentPage((prev) =>
-                                        Math.min(totalPages, prev + 1)
+                                        Math.min(totalPages, prev + 1),
                                     )
                                 }
                                 aria-label="Next page"
                                 className={twMerge(
                                     "px-2 py-0.5 md:px-4 md:py-1 text-sm font-medium rounded bg-white text-black md:hover:bg-blue-300",
-                                    "disabled:opacity-40 disabled:cursor-not-allowed transition duration-300"
-                                )}
-                            >
+                                    "disabled:opacity-40 disabled:cursor-not-allowed transition duration-300",
+                                )}>
                                 Next
                             </button>
                         </div>

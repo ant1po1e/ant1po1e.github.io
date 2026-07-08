@@ -21,8 +21,7 @@ const StaffingItem = ({ link, date, title, roles }) => {
                 href={link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-baseline gap-2"
-            >
+                className="flex items-baseline gap-2">
                 <h3 className="mt-1 text-lg md:text-2xl py-1 font-bold text-black rounded-lg transition-all duration-300 md:hover:text-blue-400 md:hover:bg-white md:hover:px-5 md:hover:shadow-md">
                     {title}
                 </h3>
@@ -40,8 +39,7 @@ const StaffingItem = ({ link, date, title, roles }) => {
                     return (
                         <span
                             key={idx}
-                            className={`text-xs md:text-sm px-2.5 py-0.5 rounded-md border font-medium ${style} md:hover:px-5 transition-all duration-300`}
-                        >
+                            className={`text-xs md:text-sm px-2.5 py-0.5 rounded-md border font-medium ${style} md:hover:px-5 transition-all duration-300`}>
                             {role}
                         </span>
                     );

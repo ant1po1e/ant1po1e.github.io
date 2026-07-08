@@ -15,14 +15,12 @@ export const Navbar = () => {
     return (
         <header
             className="flex justify-between items-center pt-4 relative z-10"
-            aria-label="Main navigation bar"
-        >
+            aria-label="Main navigation bar">
             {/* Logo / Back button */}
             <Link
                 to={isOnRoot ? "/" : backUrl}
                 aria-label={isOnRoot ? "Go to homepage" : "Go back"}
-                className="text-[#232323] font-bold text-lg md:text-2xl p-3 rounded-r-lg bg-white shadow-lg md:hover:text-blue-400 md:hover:pl-12 focus:ring-2 focus:ring-blue-400 transition-all duration-300"
-            >
+                className="text-[#232323] font-bold text-lg md:text-2xl p-3 rounded-r-lg bg-white shadow-lg md:hover:text-blue-400 md:hover:pl-12 focus:ring-2 focus:ring-blue-400 transition-all duration-300">
                 {isOnRoot ? (
                     "Antipole's Website"
                 ) : (
@@ -40,8 +38,7 @@ export const Navbar = () => {
                     aria-label="Visit Antipole's osu! profile"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center bg-white bg-opacity-60 backdrop-blur-md shadow-lg md:hover:bg-blue-400 rounded-full px-1 py-1 focus:ring-2 focus:ring-blue-400 transition duration-300"
-                >
+                    className="flex items-center bg-white bg-opacity-60 backdrop-blur-md shadow-lg md:hover:bg-blue-400 rounded-full px-1 py-1 focus:ring-2 focus:ring-blue-400 transition duration-300">
                     <img
                         src="https://a.ppy.sh/17258072"
                         alt="Antipole's osu! avatar"

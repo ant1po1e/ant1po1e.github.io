@@ -101,8 +101,7 @@ export const ProjectsSection = () => {
                     {projects.map((project, idx) => (
                         <div
                             key={idx}
-                            className="bg-white rounded-lg shadow-md overflow-hidden"
-                        >
+                            className="bg-white rounded-lg shadow-md overflow-hidden">
                             <img
                                 src={project.image}
                                 alt={project.alt}
@@ -124,8 +123,7 @@ export const ProjectsSection = () => {
                                         href={project.link}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="inline-block text-sm bg-blue-500 text-white rounded-lg px-3 py-1 hover:bg-blue-600 transition duration-300"
-                                    >
+                                        className="inline-block text-sm bg-blue-500 text-white rounded-lg px-3 py-1 hover:bg-blue-600 transition duration-300">
                                         <i className={`mr-2 ${project.icon}`} />
                                         {project.linkText}
                                     </a>
@@ -150,8 +148,7 @@ export const ProjectsSection = () => {
                                         className="w-4 h-4 text-white rtl:rotate-180"
                                         viewBox="0 0 6 10"
                                         fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                    >
+                                        xmlns="http://www.w3.org/2000/svg">
                                         <path
                                             d="M5 1 1 5l4 4"
                                             stroke="currentColor"
@@ -168,8 +165,7 @@ export const ProjectsSection = () => {
                                         className="w-4 h-4 text-white ltr:rotate-180"
                                         viewBox="0 0 6 10"
                                         fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                    >
+                                        xmlns="http://www.w3.org/2000/svg">
                                         <path
                                             d="M5 1 1 5l4 4"
                                             stroke="currentColor"
@@ -179,13 +175,11 @@ export const ProjectsSection = () => {
                                         />
                                     </svg>
                                 </span>
-                            }
-                        >
+                            }>
                             {projects.map((project, idx) => (
                                 <div
                                     key={idx}
-                                    className="relative w-full h-full group"
-                                >
+                                    className="relative w-full h-full group">
                                     <img
                                         src={project.image}
                                         alt={project.alt}
@@ -208,11 +202,9 @@ export const ProjectsSection = () => {
                                                 href={project.link}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className="inline-block text-lg md:text-xl bg-white rounded-lg p-2 md:hover:bg-blue-400 md:hover:text-white md:hover:scale-110 transition duration-300"
-                                            >
+                                                className="inline-block text-lg md:text-xl bg-white rounded-lg p-2 md:hover:bg-blue-400 md:hover:text-white md:hover:scale-110 transition duration-300">
                                                 <i
-                                                    className={`text-2xl ${project.icon}`}
-                                                ></i>{" "}
+                                                    className={`text-2xl ${project.icon}`}></i>{" "}
                                                 {project.linkText}
                                             </a>
                                         </div>

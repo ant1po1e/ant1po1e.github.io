@@ -73,8 +73,7 @@ export const SnapCalcSection = () => {
                                 id="base-snap"
                                 value={baseSnap}
                                 onChange={(e) => setBaseSnap(e.target.value)}
-                                className="w-full bg-slate-700/50 shadow-lg text-white text-sm px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-white placeholder:text-slate-300 md:hover:scale-105 transition duration-300"
-                            >
+                                className="w-full bg-slate-700/50 shadow-lg text-white text-sm px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-white placeholder:text-slate-300 md:hover:scale-105 transition duration-300">
                                 <option value="1">1/1</option>
                                 <option value="2">1/2</option>
                                 <option value="3">1/3</option>
@@ -117,8 +116,7 @@ export const SnapCalcSection = () => {
                             <button
                                 onClick={calculate}
                                 type="button"
-                                className="relative flex h-[50px] w-24 md:hover:w-40 items-center justify-center overflow-hidden rounded-lg bg-black text-white shadow-2xl transition-all before:absolute before:h-0 before:w-0 before:rounded-full before:bg-blue-400 before:duration-500 before:ease-out md:hover:shadow-blue-400 md:hover:before:h-56 md:hover:before:w-56 duration-300"
-                            >
+                                className="relative flex h-[50px] w-24 md:hover:w-40 items-center justify-center overflow-hidden rounded-lg bg-black text-white shadow-2xl transition-all before:absolute before:h-0 before:w-0 before:rounded-full before:bg-blue-400 before:duration-500 before:ease-out md:hover:shadow-blue-400 md:hover:before:h-56 md:hover:before:w-56 duration-300">
                                 <span className="relative z-10">Calculate</span>
                             </button>
                         </div>
@@ -141,8 +139,7 @@ export const SnapCalcSection = () => {
                                                 ? `Copy result ${result} BPM`
                                                 : "No result to copy"
                                         }
-                                        className="relative inline-flex items-center gap-1 md:hover:underline focus:outline-none focus:ring-2 focus:ring-blue-400 rounded px-1 disabled:opacity-40 disabled:cursor-not-allowed"
-                                    >
+                                        className="relative inline-flex items-center gap-1 md:hover:underline focus:outline-none focus:ring-2 focus:ring-blue-400 rounded px-1 disabled:opacity-40 disabled:cursor-not-allowed">
                                         {result || "—"}
                                     </button>
                                     <span aria-hidden>&nbsp;BPM</span>
@@ -157,8 +154,7 @@ export const SnapCalcSection = () => {
                             : "opacity-0 scale-95 -top-6"
                     }`}
                                     role="status"
-                                    aria-live="polite"
-                                >
+                                    aria-live="polite">
                                     Copied!
                                 </span>
                             </div>

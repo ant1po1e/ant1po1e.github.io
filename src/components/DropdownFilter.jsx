@@ -31,9 +31,8 @@ export const DropdownFilter = ({ selectedBadge, setSelectedBadge }) => {
                     " bg-white border border-gray-300 text-sm text-black px-4 py-2 rounded-md shadow-sm flex justify-between items-center",
                     "focus:outline-none focus:ring-2 focus:ring-blue-400",
                     "transition duration-300 ease-in-out md:hover:shadow-md",
-                    "min-w-[160px]"
-                )}
-            >
+                    "min-w-[160px]",
+                )}>
                 <span className="truncate">{selectedLabel}</span>
 
                 {/* Icon */}
@@ -44,8 +43,7 @@ export const DropdownFilter = ({ selectedBadge, setSelectedBadge }) => {
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                >
+                    xmlns="http://www.w3.org/2000/svg">
                     <path
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -67,8 +65,7 @@ export const DropdownFilter = ({ selectedBadge, setSelectedBadge }) => {
                         <li
                             key={badge.value}
                             onClick={() => handleSelect(badge.value)}
-                            className="px-4 py-2 text-sm text-black cursor-pointer md:hover:bg-blue-100 transition"
-                        >
+                            className="px-4 py-2 text-sm text-black cursor-pointer md:hover:bg-blue-100 transition">
                             {badge.label}
                         </li>
                     ))}
