@@ -102,5 +102,6 @@ export async function uploadImage(file, onProgress) {
 // instead of the raw *.public.blob.vercel-storage.com URL. Nicer to share/embed,
 // and becomes properly "branded" once a custom domain is attached to the project.
 export function toShareUrl(pathname) {
-    return `${window.location.origin}/i/${pathname}`;
+    const origin = window.location.origin.replace(/^(https?:\/\/)www\./, "$1");
+    return `${origin}/i/${pathname}`;
 }
