@@ -44,12 +44,16 @@ function LoginForm({ onSuccess }) {
                     className="w-full bg-white/70 border border-black/15 rounded-lg px-4 py-2.5 text-black text-center placeholder:text-black/40 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition"
                 />
                 {error && <p className="text-red-500 text-sm">{error}</p>}
-                <button
-                    type="submit"
-                    disabled={loading}
-                    className="w-full bg-black text-white hover:bg-blue-400 disabled:opacity-50 disabled:cursor-not-allowed font-semibold rounded-lg py-2.5 transition">
-                    {loading ? "Checking…" : "Unlock"}
-                </button>
+                <div className="text-center flex justify-center">
+                    <button
+                        type="submit"
+                        disabled={loading}
+                        className="relative flex h-[50px] w-32 md:hover:w-40 items-center justify-center overflow-hidden rounded-lg bg-black text-white shadow-2xl transition-all before:absolute before:h-0 before:w-0 before:rounded-full before:bg-blue-400 before:duration-500 before:ease-out md:hover:shadow-blue-400 md:hover:before:h-56 md:hover:before:w-56 duration-300">
+                        <span className="relative z-10">
+                            {loading ? "Checking…" : "Unlock"}
+                        </span>
+                    </button>
+                </div>
             </form>
         </div>
     );
@@ -241,13 +245,14 @@ function TableRow({ image, onSelect, onDelete }) {
     );
 }
 
-function ImageListModal({ images, onClose, onSelect, onDelete }) {
+function ImageListModal({ images, onClose, onSelect, onDelete, maxHeight }) {
     return (
         <div
             className="fixed inset-0 z-40 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6"
             onClick={onClose}>
             <div
-                className="w-full max-w-2xl max-h-[80vh] bg-white rounded-lg shadow-lg flex flex-col overflow-hidden"
+                className="w-full max-w-2xl bg-white rounded-lg shadow-lg flex flex-col overflow-hidden"
+                style={{ maxHeight: maxHeight ? `${maxHeight}px` : "80vh" }}
                 onClick={(e) => e.stopPropagation()}>
                 <div className="flex items-center justify-between px-5 py-4 border-b border-black/10 shrink-0">
                     <h2 className="font-bold text-black text-lg">
@@ -347,7 +352,7 @@ function CopyRow({ label, value }) {
     );
 }
 
-function ImageLightbox({ image, onClose, onDelete }) {
+function ImageLightbox({ image, onClose, onDelete, maxHeight }) {
     useEffect(() => {
         function onKey(e) {
             if (e.key === "Escape") onClose();
@@ -362,10 +367,11 @@ function ImageLightbox({ image, onClose, onDelete }) {
 
     return (
         <div
-            className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-6 overflow-y-auto"
+            className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-6"
             onClick={onClose}>
             <div
-                className="max-w-3xl w-full bg-white rounded-lg shadow-lg flex flex-col items-center py-6 px-6"
+                className="max-w-3xl w-full bg-white rounded-lg shadow-lg flex flex-col items-center py-6 px-6 overflow-y-auto"
+                style={{ maxHeight: maxHeight ? `${maxHeight}px` : "80vh" }}
                 onClick={(e) => e.stopPropagation()}>
                 <img
                     src={image.url}
@@ -414,6 +420,18 @@ export const VaultSection = () => {
     const [listOpen, setListOpen] = useState(false);
     const [selected, setSelected] = useState(null);
     const [error, setError] = useState("");
+    const cardRef = useRef(null);
+    const [cardHeight, setCardHeight] = useState(null);
+
+    useEffect(() => {
+        const el = cardRef.current;
+        if (!el) return;
+        const update = () => setCardHeight(el.offsetHeight);
+        update();
+        const observer = new ResizeObserver(update);
+        observer.observe(el);
+        return () => observer.disconnect();
+    }, []);
 
     const loadImages = useCallback(async () => {
         try {
@@ -464,7 +482,9 @@ export const VaultSection = () => {
 
     return (
         <section className="w-full px-4 md:px-24 flex justify-center items-center">
-            <div className="w-full px-5 py-5 bg-white/50 backdrop-blur-md rounded-lg shadow-lg mb-20 sm:mb-0">
+            <div
+                ref={cardRef}
+                className="w-full px-5 py-5 bg-white/50 backdrop-blur-md rounded-lg shadow-lg mb-20 sm:mb-0">
                 <div className="w-full px-4">
                     <div className="mx-auto text-center flex items-center justify-center gap-3">
                         <h1 className="font-bold text-black text-xl md:text-3xl">
@@ -531,6 +551,7 @@ export const VaultSection = () => {
                     onClose={() => setListOpen(false)}
                     onSelect={setSelected}
                     onDelete={handleDelete}
+                    maxHeight={cardHeight}
                 />
             )}
 
@@ -538,6 +559,7 @@ export const VaultSection = () => {
                 image={selected}
                 onClose={() => setSelected(null)}
                 onDelete={handleDelete}
+                maxHeight={cardHeight}
             />
         </section>
     );
