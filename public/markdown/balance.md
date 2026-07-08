@@ -1,4 +1,4 @@
-# Balance as Meta-Term
+# Ignoring Things for a Thing
 
 Balance is the most important concept, serving as a “meta-term” that connects all other aspects of mapping. Rather than a strict technical rule, balance is about how different elements work together. It relates closely to:
 
