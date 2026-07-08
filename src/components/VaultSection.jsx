@@ -207,7 +207,7 @@ function TableRow({ image, onSelect, onDelete }) {
         <tr
             onClick={() => onSelect(image)}
             className="border-b border-black/5 last:border-b-0 hover:bg-black/5 transition cursor-pointer">
-            <td className="px-4 py-4 w-14">
+            <td className="px-2 py-2 w-14">
                 <img
                     src={image.url}
                     alt={image.name}
