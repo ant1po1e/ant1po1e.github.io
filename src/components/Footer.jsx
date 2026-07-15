@@ -46,7 +46,7 @@ export const Footer = () => {
                 {/* Expandable menu */}
                 <div
                     id="mobile-footer-menu"
-                    className={`w-full paper-text border border-rule overflow-hidden transition-all duration-300 ${
+                    className={`w-full paper-text bg-paper border border-rule overflow-hidden transition-all duration-300 ${
                         isOpen ? "max-h-[320px] py-2" : "max-h-0 py-0"
                     }`}>
                     <ul className="flex flex-col items-stretch text-ink font-mono text-sm divide-y divide-rule px-6">
