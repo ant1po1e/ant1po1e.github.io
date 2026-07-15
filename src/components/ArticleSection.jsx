@@ -3,69 +3,93 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
 const AccordionItem = ({ title, markdown, isOpen, onClick }) => (
-    <div className="border-b border-gray-300">
+    <div className="border-b border-rule">
         <button
             onClick={onClick}
-            className="w-full flex justify-between items-center py-3 text-left text-black font-medium focus:outline-none"
-        >
+            className="w-full flex justify-between items-center gap-4 py-4 text-left text-ink font-sans font-medium transition-colors duration-300 hover:text-accent focus:outline-none">
             <span>{title}</span>
             <i
                 className={`bi bi-chevron-${
                     isOpen ? "up" : "down"
-                } transition-transform duration-300`}
+                } text-sm text-muted transition-transform duration-300`}
+                aria-hidden="true"
             />
         </button>
 
         <div
             className={`overflow-hidden transition-all duration-300 ${
                 isOpen ? "max-h-screen py-2" : "max-h-0"
-            }`}
-        >
-            <div className="prose prose-sm max-w-none text-sm text-gray-800">
+            }`}>
+            <div className="prose prose-sm max-w-none font-sans text-sm text-ink/80">
                 <ReactMarkdown
                     remarkPlugins={[remarkGfm]}
                     components={{
-                        ul: ({ node, ...props }) => (
+                        a: ({ ...props }) => (
+                            <a
+                                className="text-accent underline decoration-rule hover:decoration-accent transition-colors"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                {...props}
+                            />
+                        ),
+                        ul: ({ ...props }) => (
                             <ul
                                 className="list-disc pl-5 space-y-1"
                                 {...props}
                             />
                         ),
-                        ol: ({ node, ...props }) => (
+                        ol: ({ ...props }) => (
                             <ol
                                 className="list-decimal pl-5 space-y-1"
                                 {...props}
                             />
                         ),
-                        li: ({ node, ...props }) => (
-                            <li className="text-gray-700" {...props} />
+                        li: ({ ...props }) => (
+                            <li className="text-ink/80" {...props} />
                         ),
-                        blockquote: ({ node, ...props }) => (
+                        blockquote: ({ ...props }) => (
                             <blockquote
-                                className="border-l-4 border-gray-400 pl-4 italic text-gray-600"
+                                className="border-l-2 border-rule pl-4 font-mono italic text-muted"
                                 {...props}
                             />
                         ),
-                        table: ({ node, ...props }) => (
+                        code: ({ inline, ...props }) =>
+                            inline ? (
+                                <code
+                                    className="font-mono text-xs bg-rule/30 text-ink rounded-sm px-1.5 py-0.5"
+                                    {...props}
+                                />
+                            ) : (
+                                <code
+                                    className="font-mono text-xs text-ink"
+                                    {...props}
+                                />
+                            ),
+                        pre: ({ ...props }) => (
+                            <pre
+                                className="bg-rule/20 border border-rule rounded-sm p-4 overflow-x-auto"
+                                {...props}
+                            />
+                        ),
+                        table: ({ ...props }) => (
                             <table
-                                className="table-auto border-collapse border border-gray-400 my-4"
+                                className="table-auto border-collapse border border-rule my-4"
                                 {...props}
                             />
                         ),
-                        th: ({ node, ...props }) => (
+                        th: ({ ...props }) => (
                             <th
-                                className="border border-gray-400 px-2 py-1 bg-gray-100"
+                                className="border border-rule px-2 py-1 bg-rule/30 font-mono text-xs uppercase tracking-wide text-ink"
                                 {...props}
                             />
                         ),
-                        td: ({ node, ...props }) => (
+                        td: ({ ...props }) => (
                             <td
-                                className="border border-gray-400 px-2 py-1"
+                                className="border border-rule px-2 py-1"
                                 {...props}
                             />
                         ),
-                    }}
-                >
+                    }}>
                     {markdown}
                 </ReactMarkdown>
             </div>
@@ -87,12 +111,12 @@ export const ArticleSection = () => {
         ];
 
         Promise.all(
-            files.map((file) => fetch(file).then((res) => res.text()))
+            files.map((file) => fetch(file).then((res) => res.text())),
         ).then((markdowns) => {
             const parsed = markdowns.map((md) => {
                 const lines = md.split("\n");
                 const firstHeadingIndex = lines.findIndex((line) =>
-                    line.startsWith("# ")
+                    line.startsWith("# "),
                 );
                 let title = "Untitled";
 
@@ -116,18 +140,20 @@ export const ArticleSection = () => {
     };
 
     return (
-        <section className="w-full px-4 md:px-24 flex justify-center items-center">
-            <div className="w-full md:w-7/8 px-5 py-5 bg-white/50 backdrop-blur-md rounded-lg shadow-lg">
-                <div className="w-full px-4">
-                    <div className="mx-auto text-center">
-                        <h1 className="font-bold text-black text-xl md:text-3xl">
-                            Mapping
-                        </h1>
-                    </div>
+        <section
+            className="w-full flex items-center text-ink px-6 md:px-24 mt-10 md:mt-16"
+            aria-label="Mapping Articles Section">
+            <div className="mx-auto w-full max-w-3xl p-8 rounded-xl shadow-xl bg-paper mb-20 md:mb-0">
+                {/* Heading */}
+                <div className="text-center">
+                    <h2 className="font-display italic font-medium text-ink text-2xl md:text-4xl">
+                        Mapping
+                    </h2>
                 </div>
 
-                <div className="text-justify mt-5 w-full px-4 py-4 border-t-2 border-t-black overflow-y-auto max-h-[50vh]">
-                    <div className="mt-4 divide-y divide-gray-200">
+                {/* Accordion list */}
+                <div className="text-justify mt-6 pt-6 border-t border-rule overflow-y-auto max-h-[42vh] pr-1">
+                    <div className="mt-2 divide-y divide-rule">
                         {articles.map((article, index) => (
                             <AccordionItem
                                 key={index}

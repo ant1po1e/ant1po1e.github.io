@@ -7,13 +7,13 @@ const ROLE_STYLES = {
     mapper: "bg-pink-100 text-pink-700 border-pink-300",
     programmer: "bg-orange-100 text-orange-700 border-orange-300",
     commentator: "bg-red-100 text-red-800 border-red-300",
-    default: "bg-gray-100 text-gray-700 border-gray-300",
+    default: "bg-paper text-ink border-rule",
 };
 
 const StaffingItem = ({ link, date, title, roles }) => {
     return (
-        <div className="py-2">
-            <span className="md:hidden text-xs md:text-sm tracking-widest uppercase text-gray-500">
+        <div className="py-4">
+            <span className="md:hidden font-mono text-xs tracking-widest uppercase text-muted">
                 {date}
             </span>
 
@@ -21,12 +21,12 @@ const StaffingItem = ({ link, date, title, roles }) => {
                 href={link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-baseline gap-2">
-                <h3 className="mt-1 text-lg md:text-2xl py-1 font-bold text-black rounded-lg transition-all duration-300 md:hover:text-blue-400 md:hover:bg-white md:hover:px-5 md:hover:shadow-md">
+                className="group flex items-baseline gap-3">
+                <h3 className="mt-1 font-display italic text-lg md:text-2xl text-ink transition-colors duration-300 group-hover:text-accent">
                     {title}
                 </h3>
 
-                <span className="text-xs md:text-sm tracking-widest uppercase text-black hidden md:block">
+                <span className="hidden md:block font-mono text-xs tracking-widest uppercase text-muted">
                     {date}
                 </span>
             </a>
@@ -39,7 +39,7 @@ const StaffingItem = ({ link, date, title, roles }) => {
                     return (
                         <span
                             key={idx}
-                            className={`text-xs md:text-sm px-2.5 py-0.5 rounded-md border font-medium ${style} md:hover:px-5 transition-all duration-300`}>
+                            className={`font-mono text-[11px] md:text-xs uppercase tracking-wide px-2.5 py-0.5 rounded-sm border font-medium ${style} transition-all duration-300`}>
                             {role}
                         </span>
                     );
@@ -51,18 +51,20 @@ const StaffingItem = ({ link, date, title, roles }) => {
 
 export const StaffingSection = () => {
     return (
-        <section className="w-full px-4 md:px-24 flex justify-center items-center">
-            <div className="w-full md:w-7/8 px-5 py-5 bg-white/50 backdrop-blur-md rounded-lg shadow-lg">
-                <div className="w-full px-4">
-                    <div className="mx-auto text-center">
-                        <h1 className="font-bold text-black text-xl md:text-3xl">
-                            Staffing History
-                        </h1>
-                    </div>
+        <section
+            className="w-full flex items-center text-ink px-6 md:px-24 mt-10 md:mt-16"
+            aria-label="Staffing History Section">
+            <div className="mx-auto w-full max-w-3xl p-8 rounded-xl shadow-xl bg-paper mb-20 md:mb-0">
+                {/* Heading */}
+                <div className="text-center">
+                    <h2 className="font-display italic font-medium text-ink text-2xl md:text-4xl">
+                        Staffing History
+                    </h2>
                 </div>
 
-                <div className="mt-5 w-full px-4 py-4 border-t-2 border-t-black overflow-y-auto max-h-[50vh]">
-                    <div className="mt-4 divide-y divide-gray-300">
+                {/* List */}
+                <div className="mt-6 pt-6 border-t border-rule overflow-y-auto max-h-[42vh] pr-1">
+                    <div className="divide-y divide-rule">
                         {staffingData.map((item, idx) => (
                             <StaffingItem
                                 key={idx}

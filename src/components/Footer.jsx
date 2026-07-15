@@ -9,26 +9,22 @@ export const Footer = () => {
     };
 
     const links = [
-        { to: "/", label: "HOME" },
-        { to: "/projects", label: "PROJECTS" },
-        { to: "/contributed-beatmaps", label: "BEATMAPS" },
-        { to: "/staffing", label: "STAFFING HISTORY" },
-        { to: "/how-to-map", label: "HOW TO MAP" },
-        { to: "/tools", label: "TOOLS" },
-        { to: "/contact", label: "CONTACT" },
+        { to: "/", label: "HOME", icon: "bi-house-door" },
+        { to: "/projects", label: "PROJECTS", icon: "bi-kanban" },
+        {
+            to: "/contributed-beatmaps",
+            label: "BEATMAPS",
+            icon: "bi-music-note-list",
+        },
+        {
+            to: "/staffing",
+            label: "STAFFING HISTORY",
+            icon: "bi-person-lines-fill",
+        },
+        { to: "/how-to-map", label: "HOW TO MAP", icon: "bi-map" },
+        { to: "/tools", label: "TOOLS", icon: "bi-tools" },
+        { to: "/contact", label: "CONTACT", icon: "bi-envelope" },
     ];
-
-    const iMap = {
-        HOME: <i className="bi bi-house-door" aria-hidden="true" />,
-        PROJECTS: <i className="bi bi-kanban" aria-hidden="true" />,
-        BEATMAPS: <i className="bi bi-music-note-list" aria-hidden="true" />,
-        "STAFFING HISTORY": (
-            <i className="bi bi-person-lines-fill" aria-hidden="true" />
-        ),
-        "HOW TO MAP": <i class="bi bi-map"></i>,
-        TOOLS: <i className="bi bi-tools" aria-hidden="true" />,
-        CONTACT: <i className="bi bi-envelope" aria-hidden="true" />,
-    };
 
     return (
         <footer
@@ -37,31 +33,35 @@ export const Footer = () => {
             aria-label="Website Footer">
             {/* Mobile Footer */}
             <div className="md:hidden flex flex-col items-center justify-end">
-                {/* Hamburger button */}
                 <button
                     onClick={toggleFooter}
-                    className="bg-white/50 backdrop-blur-md text-black shadow-lg p-3 w-1/2 rounded-lg mb-2"
+                    className="w-1/2 mb-2 flex items-center justify-center gap-2 bg-paper border border-rule text-ink shadow-sm p-3 rounded-sm font-mono text-xs uppercase tracking-wide"
                     aria-expanded={isOpen}
                     aria-controls="mobile-footer-menu"
                     aria-label="Toggle footer menu">
-                    <i className="bi bi-list text-2xl" aria-hidden="true" />
+                    <i className="bi bi-list text-lg" aria-hidden="true" />
+                    Menu
                 </button>
 
                 {/* Expandable menu */}
                 <div
                     id="mobile-footer-menu"
-                    className={`transition-all duration-300 w-full bg-white/50 backdrop-blur-md rounded-t-xl overflow-hidden shadow-lg ${
-                        isOpen ? "max-h-[300px] py-4" : "max-h-0 py-0"
+                    className={`w-full paper-text border border-rule overflow-hidden transition-all duration-300 ${
+                        isOpen ? "max-h-[320px] py-2" : "max-h-0 py-0"
                     }`}>
-                    <ul className="flex flex-col items-center text-black font-medium divide-y divide-gray-300 px-10">
+                    <ul className="flex flex-col items-stretch text-ink font-mono text-sm divide-y divide-rule px-6">
                         {links.map((link) => (
-                            <li key={link.label} className="w-full">
+                            <li key={link.label}>
                                 <Link
                                     to={link.to}
                                     onClick={() => setIsOpen(false)}
-                                    className="block w-full py-2 text-center text-base font-medium md:hover:bg-black/10 transition"
+                                    className="flex items-center gap-3 w-full py-3 tracking-wide transition-colors duration-300"
                                     aria-label={`Navigate to ${link.label}`}
                                     viewTransition>
+                                    <i
+                                        className={`bi ${link.icon}`}
+                                        aria-hidden="true"
+                                    />
                                     {link.label}
                                 </Link>
                             </li>
@@ -72,22 +72,25 @@ export const Footer = () => {
 
             {/* Desktop Footer */}
             <div className="hidden md:flex items-center justify-center mb-8">
-                <div className="bg-white/50 backdrop-blur-md rounded-lg p-6 shadow-lg flex gap-6">
+                <div className="flex gap-1 bg-paper border border-rule shadow-xl rounded-sm px-2 py-2">
                     {links.map((link) => (
                         <div
                             key={link.label}
                             className="relative group font-medium">
                             <Link
                                 to={link.to}
-                                className="text-black text-2xl relative rounded-md p-2 transition-all duration-300 md:hover:text-blue-400 md:hover:bg-white md:hover:px-5 md:hover:shadow-md"
+                                className="w-16 h-16 flex items-center justify-center text-ink text-2xl rounded-sm transition-colors duration-300 hover:text-accent hover:bg-rule/30"
                                 aria-label={`Navigate to ${link.label}`}
                                 viewTransition>
-                                {iMap[link.label]}
+                                <i
+                                    className={`bi ${link.icon}`}
+                                    aria-hidden="true"
+                                />
                             </Link>
                             {/* Tooltip */}
                             <span
                                 role="tooltip"
-                                className="absolute -top-13 left-1/2 -translate-x-1/2 bg-white text-black text-sm px-5 py-2 rounded-md opacity-0 shadow-md md:group-hover:opacity-100 md:group-hover:-translate-y-1 transition-all duration-300 whitespace-nowrap pointer-events-none">
+                                className="absolute -top-12 left-1/2 -translate-x-1/2 font-mono text-md shadow-lg uppercase tracking-wide bg-paper border border-rule text-ink px-3 py-1.5 opacity-0 group-hover:opacity-100 group-hover:-translate-y-1 transition-all duration-300 whitespace-nowrap pointer-events-none">
                                 {link.label}
                             </span>
                         </div>

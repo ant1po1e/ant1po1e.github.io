@@ -3,71 +3,143 @@
 @plugin "tailwind-scrollbar";
 @source "../.flowbite-react/class-list.json";
 
+@theme {
+    --color-paper: #f7f4ec;
+    --color-ink: #1b1b1f;
+    --color-rule: #ddd7c8;
+    --color-accent: #2a3b63;
+    --color-muted: #8b8577;
+
+    --font-display: "Fraunces", serif;
+    --font-sans: "Inter", sans-serif;
+    --font-mono: "JetBrains Mono", monospace;
+}
+
+.paper-texture {
+    background-color: #f7f4ec; 
+    background-color: var(--color-paper, #f7f4ec);
+
+    background-image:
+        url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='200'%20height='200'%3E%3Cfilter%20id='n'%3E%3CfeTurbulence%20type='fractalNoise'%20baseFrequency='0.9'%20numOctaves='3'%20stitchTiles='stitch'/%3E%3CfeColorMatrix%20type='saturate'%20values='0'/%3E%3C/filter%3E%3Crect%20width='100%25'%20height='100%25'%20filter='url(%23n)'%20opacity='0.45'/%3E%3C/svg%3E"),
+        repeating-linear-gradient(
+                118deg,
+                rgba(27, 27, 31, 0.05) 0px,
+                rgba(27, 27, 31, 0.05) 1px,
+                transparent 2px,
+                transparent 90px
+            ),
+			
+        repeating-linear-gradient(
+                24deg,
+                rgba(27, 27, 31, 0.04) 0px,
+                rgba(27, 27, 31, 0.04) 1px,
+                transparent 2px,
+                transparent 130px
+            ),
+			
+        radial-gradient(
+                ellipse at 18% 15%,
+                rgba(27, 27, 31, 0.08),
+                transparent 55%
+            ),
+        radial-gradient(
+            ellipse at 85% 82%,
+            rgba(27, 27, 31, 0.07),
+            transparent 50%
+        ),
+        radial-gradient(
+            ellipse at 55% 45%,
+            rgba(27, 27, 31, 0.04),
+            transparent 60%
+        ),
+		
+        radial-gradient(
+                ellipse at 90% 8%,
+                rgba(255, 255, 255, 0.55),
+                transparent 40%
+            ),
+        radial-gradient(
+            ellipse at 10% 90%,
+            rgba(255, 255, 255, 0.4),
+            transparent 35%
+        );
+
+    background-blend-mode:
+        multiply, multiply, multiply, multiply, multiply, multiply, screen,
+        screen;
+}
+
 body {
-	background: url(/bg.webp);
-	-webkit-background-size: cover;
-	background-size: 150%;
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	background-position: center center;
-	font-family: "Inter", sans-serif;
+    background: url(/bg.webp);
+    -webkit-background-size: cover;
+    background-size: 150%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    font-family: "Inter", sans-serif;
 }
 
 @media (max-width: 768px) {
-	body {
-		background-size: 400%;
-		background-position: center;
-	}
+    body {
+        background-size: 400%;
+        background-position: center;
+    }
 }
 
 .font-merienda {
-	font-family: "Merienda", cursive;
+    font-family: "Merienda", cursive;
 }
 
 .font-quicksand {
-	font-family: "Quicksand", sans-serif;
+    font-family: "Quicksand", sans-serif;
 }
 
 .neon {
-	color: #fff;
-	text-shadow: 0 0 5px #fff, 0 0 5px #fff, 0 0 50px rgb(147 197 253),
-		0 0 50px rgb(147 197 253);
+    color: #fff;
+    text-shadow:
+        0 0 5px #fff,
+        0 0 5px #fff,
+        0 0 50px rgb(253, 147, 161),
+        0 0 50px rgb(253, 147, 161);
 }
 
 .neon-underline {
-	color: #fff;
-	box-shadow: 0 0 5px #fff, 0 0 5px #fff, 0 0 50px rgb(147 197 253),
-		0 0 50px rgb(147 197 253);
+    color: #fff;
+    box-shadow:
+        0 0 5px #fff,
+        0 0 5px #fff,
+        0 0 50px rgb(253, 147, 161),
+        0 0 50px rgb(253, 147, 161);
 }
 
 .modal-backdrop {
-	pointer-events: none;
+    pointer-events: none;
 }
 
 /* tambahkan di index.css / global.css */
 @keyframes shimmer {
-	0% {
-		background-position: -500px 0;
-	}
-	100% {
-		background-position: 500px 0;
-	}
+    0% {
+        background-position: -500px 0;
+    }
+    100% {
+        background-position: 500px 0;
+    }
 }
 
 @keyframes shimmer {
-	100% {
-		transform: translateX(100%);
-	}
+    100% {
+        transform: translateX(100%);
+    }
 }
 
 .markdown ul {
-	list-style-type: disc;
-	padding-left: 1.25rem; /* sama kayak Tailwind pl-5 */
+    list-style-type: disc;
+    padding-left: 1.25rem; /* sama kayak Tailwind pl-5 */
 }
 .markdown ol {
-	list-style-type: decimal;
-	padding-left: 1.25rem;
+    list-style-type: decimal;
+    padding-left: 1.25rem;
 }
 .markdown li {
-	margin: 0.25rem 0;
+    margin: 0.25rem 0;
 }

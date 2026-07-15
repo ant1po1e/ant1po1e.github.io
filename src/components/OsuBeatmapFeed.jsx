@@ -91,12 +91,14 @@ export const OsuBeatmapFeed = () => {
     // 🔴 Error State
     if (error) {
         return (
-            <section className="w-full px-4 md:px-24 flex justify-center items-center">
-                <div className="w-full md:w-4/5 px-5 py-8 bg-white/50 backdrop-blur-md rounded-lg shadow-lg text-center space-y-4">
-                    <p className="text-red-500 font-semibold">{error}</p>
+            <section
+                className="w-full flex items-center text-ink px-6 md:px-24 mt-10 md:mt-16"
+                aria-label="Contributed Beatmaps Section">
+                <div className="mx-auto w-full max-w-2xl p-8 rounded-xl shadow-xl bg-paper text-center space-y-4">
+                    <p className="font-mono text-sm text-red-600">{error}</p>
                     <button
                         onClick={fetchBeatmaps}
-                        className="px-4 py-2 bg-black text-white rounded-lg md:hover:bg-blue-400 transition">
+                        className="font-mono text-xs uppercase tracking-wide px-4 py-2 rounded-sm bg-ink text-paper hover:bg-accent transition-colors duration-300">
                         Retry
                     </button>
                 </div>
@@ -105,12 +107,15 @@ export const OsuBeatmapFeed = () => {
     }
 
     return (
-        <section className="w-full px-4 md:px-24 flex justify-center items-center">
-            <div className="w-full md:w-4/5 px-5 py-5 bg-white/50 backdrop-blur-md rounded-lg shadow-lg mb-20 sm:mb-0">
-                <div className="w-full px-4 relative mb-4">
-                    <h1 className="font-bold text-black text-xl md:text-3xl text-center">
+        <section
+            className="w-full flex items-center text-ink px-6 md:px-24 mt-10 md:mt-16"
+            aria-label="Contributed Beatmaps Section">
+            <div className="mx-auto w-full max-w-4xl p-8 rounded-xl shadow-xl bg-paper mb-20 md:mb-0">
+                {/* Heading */}
+                <div className="relative mb-2 text-center">
+                    <h2 className="font-display italic font-medium text-ink text-2xl md:text-4xl">
                         Contributed Beatmaps
-                    </h1>
+                    </h2>
 
                     <div className="mt-3 flex relative z-50 justify-center md:mt-0 md:absolute md:right-0 md:top-1/2 md:-translate-y-1/2">
                         <DropdownFilter
@@ -121,19 +126,19 @@ export const OsuBeatmapFeed = () => {
                 </div>
 
                 {/* Cards Grid */}
-                <div className="text-center mt-3 w-full px-4 py-4 border-t-2 border-t-black text-white">
+                <div className="mt-6 pt-6 border-t border-rule">
                     <div className="grid gap-3 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 place-items-center mb-6">
                         {loading ? (
                             // Skeleton Loader
                             [...Array(6)].map((_, i) => (
                                 <div
                                     key={i}
-                                    className="relative w-full max-w-[300px] h-[140px] overflow-hidden rounded-xl bg-gray-300">
-                                    <div className="absolute inset-0 -translate-x-full animate-[shimmer_2s_infinite] bg-gradient-to-r from-transparent via-white/60 to-transparent" />
+                                    className="relative w-full max-w-[300px] h-[140px] overflow-hidden rounded-sm border border-rule bg-rule/30">
+                                    <div className="absolute inset-0 -translate-x-full animate-[shimmer_2s_infinite] bg-gradient-to-r from-transparent via-paper/70 to-transparent" />
                                 </div>
                             ))
                         ) : filteredBeatmaps.length === 0 ? (
-                            <div className="col-span-full text-black font-medium py-10">
+                            <div className="col-span-full font-mono text-sm text-muted py-10">
                                 No beatmaps found for this category.
                             </div>
                         ) : (
@@ -145,10 +150,10 @@ export const OsuBeatmapFeed = () => {
                                         href={set.link}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="w-full max-w-[300px] group transition-transform duration-300 md:hover:scale-105">
+                                        className="w-full max-w-[300px] group transition-transform duration-300 md:hover:scale-[1.02]">
                                         <div
                                             className={twMerge(
-                                                "relative h-[140px] rounded-xl overflow-hidden shadow-md md:hover:shadow-xl transition duration-300",
+                                                "relative h-[140px] rounded-sm border border-rule overflow-hidden shadow-sm md:hover:border-accent transition duration-300",
                                             )}
                                             style={{
                                                 backgroundImage: `url(https://assets.ppy.sh/beatmaps/${beatmapId}/covers/card.jpg)`,
@@ -158,14 +163,14 @@ export const OsuBeatmapFeed = () => {
                                             aria-label={`Beatmap ${set.title} by ${set.artist}`}>
                                             <div
                                                 className={twMerge(
-                                                    "absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-[#3166a7]/80",
+                                                    "absolute inset-0 bg-gradient-to-b from-ink/70 via-ink/40 to-accent/70",
                                                     "p-4 flex flex-col justify-end transition-all duration-300 md:group-hover:backdrop-blur-none",
                                                 )}>
-                                                <div className="text-white text-center">
-                                                    <TruncTooltip textClass="text-md font-semibold mb-0.5">
+                                                <div className="text-paper text-center">
+                                                    <TruncTooltip textClass="font-display italic text-md mb-0.5">
                                                         {set.title}
                                                     </TruncTooltip>
-                                                    <TruncTooltip textClass="text-sm opacity-90 mb-1">
+                                                    <TruncTooltip textClass="font-mono text-xs opacity-90 mb-1">
                                                         {set.artist}
                                                     </TruncTooltip>
                                                 </div>
@@ -176,11 +181,11 @@ export const OsuBeatmapFeed = () => {
                                                             (badge, i) => (
                                                                 <span
                                                                     key={i}
-                                                                    className={`px-1 py-[1px] text-[10px] font-medium rounded-sm shadow ${
+                                                                    className={`px-1 py-[1px] font-mono text-[10px] font-medium rounded-sm shadow-sm ${
                                                                         badgeStyle[
                                                                             badge.toLowerCase()
                                                                         ] ||
-                                                                        "bg-gray-200 text-gray-800"
+                                                                        "bg-paper text-ink border border-rule"
                                                                     }`}>
                                                                     {badge}
                                                                 </span>
@@ -198,7 +203,7 @@ export const OsuBeatmapFeed = () => {
 
                     {/* Pagination */}
                     {totalPages > 1 && !loading && (
-                        <div className="flex justify-center gap-4">
+                        <div className="flex justify-center items-center gap-4 font-mono">
                             <button
                                 disabled={currentPage === 1}
                                 onClick={() =>
@@ -208,13 +213,13 @@ export const OsuBeatmapFeed = () => {
                                 }
                                 aria-label="Previous page"
                                 className={twMerge(
-                                    "px-2 py-0.5 md:px-4 md:py-1 text-sm font-medium rounded bg-white text-black md:hover:bg-blue-300",
-                                    "disabled:opacity-40 disabled:cursor-not-allowed transition duration-300",
+                                    "px-3 py-1.5 text-xs uppercase tracking-wide rounded-sm border border-rule bg-paper text-ink hover:border-accent hover:text-accent",
+                                    "disabled:opacity-40 disabled:cursor-not-allowed transition-colors duration-300",
                                 )}>
                                 Prev
                             </button>
 
-                            <span className="text-black text-xs md:text-sm font-medium mt-1">
+                            <span className="text-muted text-xs uppercase tracking-wide">
                                 Page {currentPage} of {totalPages}
                             </span>
 
@@ -227,8 +232,8 @@ export const OsuBeatmapFeed = () => {
                                 }
                                 aria-label="Next page"
                                 className={twMerge(
-                                    "px-2 py-0.5 md:px-4 md:py-1 text-sm font-medium rounded bg-white text-black md:hover:bg-blue-300",
-                                    "disabled:opacity-40 disabled:cursor-not-allowed transition duration-300",
+                                    "px-3 py-1.5 text-xs uppercase tracking-wide rounded-sm border border-rule bg-paper text-ink hover:border-accent hover:text-accent",
+                                    "disabled:opacity-40 disabled:cursor-not-allowed transition-colors duration-300",
                                 )}>
                                 Next
                             </button>

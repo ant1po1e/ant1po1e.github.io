@@ -1,50 +1,45 @@
 export const Sidebar = () => {
+    const links = [
+        {
+            href: "https://github.com/ant1po1e",
+            label: "GitHub",
+            icon: "bi-github",
+        },
+        {
+            href: "https://www.youtube.com/@ant1po1e",
+            label: "YouTube",
+            icon: "bi-youtube",
+        },
+        {
+            href: "https://ant1po1e.itch.io/",
+            label: "Itch.io",
+            icon: "bi-shop-window",
+        },
+    ];
+
     return (
-        <nav className="flex-col space-y-4 fixed top-28 left-6 z-30 hidden md:flex">
-            {/* GitHub */}
-            <div className="relative group font-medium">
-                <a
-                    href="https://github.com/ant1po1e"
-                    aria-label="GitHub"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-16 h-16 rounded-lg bg-white flex items-center justify-center text-3xl shadow-md md:hover:bg-blue-400 md:hover:scale-110 transition duration-300 group">
-                    <i className="bi bi-github md:group-hover:text-5xl md:group-hover:text-white transition-all duration-300"></i>
-                </a>
-                <span className="absolute left-full ml-3 top-1/2 -translate-y-1/2 px-5 py-2 rounded-md bg-white text-black text-sm opacity-0 md:group-hover:opacity-100 transition duration-300 whitespace-nowrap pointer-events-none shadow-md">
-                    GitHub
-                </span>
-            </div>
+        <nav
+            className="hidden md:flex flex-col gap-3 fixed top-32 left-8 z-30"
+            aria-label="Social links sidebar">
+            {links.map((link) => (
+                <div key={link.label} className="relative group">
+                    <a
+                        href={link.href}
+                        aria-label={link.label}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-16 h-16 flex items-center justify-center rounded-sm shadow-xl border border-rule bg-paper/80 backdrop-blur-sm text-ink text-3xl transition-colors duration-300 hover:border-accent hover:text-accent">
+                        <i className={`bi ${link.icon}`} aria-hidden="true" />
+                    </a>
 
-            {/* YouTube */}
-            <div className="relative group font-medium">
-                <a
-                    href="https://www.youtube.com/@ant1po1e"
-                    aria-label="YouTube"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-16 h-16 rounded-lg bg-white flex items-center justify-center text-3xl shadow-md md:hover:bg-blue-400 md:hover:scale-110 transition duration-300 group">
-                    <i className="bi bi-youtube md:group-hover:text-5xl md:group-hover:text-white transition-all duration-300"></i>
-                </a>
-                <span className="absolute left-full ml-3 top-1/2 -translate-y-1/2 px-5 py-2 rounded-md bg-white text-black text-sm opacity-0 md:group-hover:opacity-100 transition duration-300 whitespace-nowrap pointer-events-none shadow-md">
-                    YouTube
-                </span>
-            </div>
-
-            {/* Itch.io */}
-            <div className="relative group font-medium">
-                <a
-                    href="https://ant1po1e.itch.io/"
-                    aria-label="Itch.io"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-16 h-16 rounded-lg bg-white flex items-center justify-center text-3xl shadow-md md:hover:bg-blue-400 md:hover:scale-110 transition duration-300 group">
-                    <i className="bi bi-shop-window md:group-hover:text-5xl md:group-hover:text-white transition-all duration-300"></i>
-                </a>
-                <span className="absolute left-full ml-3 top-1/2 -translate-y-1/2 px-5 py-2 rounded-md bg-white text-black text-sm opacity-0 md:group-hover:opacity-100 transition duration-300 whitespace-nowrap pointer-events-none shadow-md">
-                    Itch.io
-                </span>
-            </div>
+                    {/* Tooltip */}
+                    <span
+                        role="tooltip"
+                        className="absolute left-full ml-3 top-1/2 -translate-y-1/2 font-mono text-md shadow-lg uppercase tracking-wide px-3 py-1.5 border border-rule bg-paper text-ink opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none">
+                        {link.label}
+                    </span>
+                </div>
+            ))}
         </nav>
     );
 };

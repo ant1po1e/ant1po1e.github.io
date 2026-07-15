@@ -1,6 +1,9 @@
 import { useMemo, useState } from "react";
 import { generateBBCode, generatePreviewHTML } from "../utils/bbcodeUtils";
 
+const fieldClass =
+    "w-full bg-paper border border-rule text-ink text-sm px-4 py-2 rounded-sm focus:outline-none focus:ring-1 focus:ring-accent focus:border-accent placeholder:text-muted transition-colors duration-300";
+
 export const BBCodeSection = () => {
     const [text, setText] = useState("Hello World!");
     const [effect, setEffect] = useState("horizontal");
@@ -44,20 +47,21 @@ export const BBCodeSection = () => {
     const previewHTML = useMemo(() => generatePreviewHTML(bbcode), [bbcode]);
 
     return (
-        <section className="w-full px-4 md:px-24 flex justify-center items-center">
-            <div className="w-full md:w-1/2 scrollbar-none px-5 py-5 bg-white/50 backdrop-blur-md rounded-lg shadow-lg mb-20 sm:mb-0">
-                <div className="w-full px-4">
-                    <div className="mx-auto text-center">
-                        <h1 className="font-bold text-black text-xl md:text-3xl">
-                            Tools |{" "}
-                            <span className="text-base md:text-xl">
-                                BBCode Text Colorizer
-                            </span>
-                        </h1>
-                    </div>
+        <section
+            className="w-full flex items-center text-ink px-6 md:px-24 mt-10 md:mt-16"
+            aria-label="BBCode Text Colorizer Tool">
+            <div className="mx-auto w-full max-w-xl scrollbar-none p-8 rounded-xl shadow-xl bg-paper mb-20 md:mb-0">
+                {/* Heading */}
+                <div className="text-center">
+                    <p className="font-mono text-xs tracking-widest uppercase text-muted mb-1">
+                        Tools
+                    </p>
+                    <h2 className="font-display italic font-medium text-ink text-2xl md:text-4xl">
+                        BBCode Text Colorizer
+                    </h2>
                 </div>
 
-                <div className="text-center mt-5 w-full px-4 py-4 border-t-2 border-t-black text-white overflow-y-auto max-h-[50vh]">
+                <div className="mt-6 pt-6 border-t border-rule overflow-y-auto max-h-[40vh] pr-1">
                     <div className="space-y-4 max-w-md mx-auto">
                         {/* TEXT */}
                         <input
@@ -66,7 +70,7 @@ export const BBCodeSection = () => {
                             placeholder="Text"
                             value={text}
                             onChange={(e) => setText(e.target.value)}
-                            className="w-full bg-slate-700/50 shadow-lg text-white text-sm px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-white placeholder:text-slate-300 md:hover:scale-105 transition duration-300"
+                            className={fieldClass}
                         />
 
                         {/* EFFECT */}
@@ -74,7 +78,7 @@ export const BBCodeSection = () => {
                             id="effect"
                             value={effect}
                             onChange={(e) => setEffect(e.target.value)}
-                            className="w-full bg-slate-700/50 shadow-lg text-white text-sm px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-white placeholder:text-slate-300 md:hover:scale-105 transition duration-300">
+                            className={fieldClass}>
                             <option value="horizontal">
                                 Horizontal Gradient
                             </option>
@@ -85,12 +89,12 @@ export const BBCodeSection = () => {
                         </select>
 
                         {/* COLORS */}
-                        <div className="flex md:hover:scale-105 transition duration-300">
+                        <div className="flex border border-rule rounded-sm overflow-hidden divide-x divide-rule">
                             <input
                                 type="color"
                                 value={startColor}
                                 onChange={(e) => setStartColor(e.target.value)}
-                                className="w-full bg-slate-700/50 shadow-lg text-white text-sm px-2 py-1 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-white"
+                                className="w-full bg-paper h-10 px-2 focus:outline-none focus:ring-1 focus:ring-accent"
                             />
 
                             {effect === "three-color" && (
@@ -100,7 +104,7 @@ export const BBCodeSection = () => {
                                     onChange={(e) =>
                                         setMiddleColor(e.target.value)
                                     }
-                                    className="w-full bg-slate-700/50 shadow-lg text-white text-sm px-2 py-1 focus:outline-none focus:ring-2 focus:ring-white"
+                                    className="w-full bg-paper h-10 px-2 focus:outline-none focus:ring-1 focus:ring-accent"
                                 />
                             )}
 
@@ -111,7 +115,7 @@ export const BBCodeSection = () => {
                                     onChange={(e) =>
                                         setEndColor(e.target.value)
                                     }
-                                    className="w-full bg-slate-700/50 shadow-lg text-white text-sm px-2 py-1 rounded-r-lg focus:outline-none focus:ring-2 focus:ring-white"
+                                    className="w-full bg-paper h-10 px-2 focus:outline-none focus:ring-1 focus:ring-accent"
                                 />
                             )}
                         </div>
@@ -121,23 +125,15 @@ export const BBCodeSection = () => {
                             id="font"
                             value={font}
                             onChange={(e) => setFont(e.target.value)}
-                            className="w-full bg-slate-700/50 shadow-lg text-white text-sm px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-white placeholder:text-slate-300 md:hover:scale-105 transition duration-300">
+                            className={fieldClass}>
                             <option value="None">Font</option>
-
                             <option value="bold">Bold Unicode</option>
-
                             <option value="italic">Italic Unicode</option>
-
                             <option value="boldItalic">Bold Italic</option>
-
                             <option value="script">Script</option>
-
                             <option value="fraktur">Fraktur</option>
-
                             <option value="fullWidth">Full Width</option>
-
                             <option value="smallCaps">Small Caps</option>
-
                             <option value="circled">Circled</option>
                         </select>
 
@@ -146,7 +142,7 @@ export const BBCodeSection = () => {
                             id="size"
                             value={size}
                             onChange={(e) => setSize(e.target.value)}
-                            className="w-full bg-slate-700/50 shadow-lg text-white text-sm px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-white placeholder:text-slate-300 md:hover:scale-105 transition duration-300">
+                            className={fieldClass}>
                             <option value="None">Size</option>
                             <option value="50">Tiny</option>
                             <option value="85">Small</option>
@@ -155,53 +151,41 @@ export const BBCodeSection = () => {
                         </select>
 
                         {/* Bold & Italic */}
-                        <div className="hover:scale-105 transition duration-300">
-                            <ul className="items-center w-full text-sm font-medium border rounded-lg sm:flex bg-slate-700/50 shadow-lg border-gray-600 text-white">
-                                <li className="w-full border-b sm:border-b-0 sm:border-r border-gray-600">
-                                    <div className="flex items-center ps-3">
-                                        <input
-                                            id="bold"
-                                            type="checkbox"
-                                            checked={bold}
-                                            onChange={(e) =>
-                                                setBold(e.target.checked)
-                                            }
-                                            className="w-4 h-4 text-blue-400 rounded focus:ring-blue-400 ring-offset-gray-700 focus:ring-offset-gray-700 focus:ring-2 bg-white border-gray-500"
-                                        />
-                                        <label
-                                            htmlFor="bold"
-                                            className="w-full py-3 ms-2 text-sm font-medium">
-                                            Bold
-                                        </label>
-                                    </div>
-                                </li>
+                        <div className="flex border border-rule rounded-sm divide-x divide-rule font-mono text-sm text-ink">
+                            <label
+                                htmlFor="bold"
+                                className="flex items-center gap-2 w-full px-4 py-3 cursor-pointer">
+                                <input
+                                    id="bold"
+                                    type="checkbox"
+                                    checked={bold}
+                                    onChange={(e) => setBold(e.target.checked)}
+                                    className="w-4 h-4 accent-accent"
+                                />
+                                Bold
+                            </label>
 
-                                <li className="w-full border-gray-600">
-                                    <div className="flex items-center ps-3">
-                                        <input
-                                            id="italic"
-                                            type="checkbox"
-                                            checked={italic}
-                                            onChange={(e) =>
-                                                setItalic(e.target.checked)
-                                            }
-                                            className="w-4 h-4 text-blue-400 rounded focus:ring-blue-400 ring-offset-gray-700 focus:ring-offset-gray-700 focus:ring-2 bg-white border-gray-500"
-                                        />
-                                        <label
-                                            htmlFor="italic"
-                                            className="w-full py-3 ms-2 text-sm font-medium">
-                                            Italic
-                                        </label>
-                                    </div>
-                                </li>
-                            </ul>
+                            <label
+                                htmlFor="italic"
+                                className="flex items-center gap-2 w-full px-4 py-3 cursor-pointer">
+                                <input
+                                    id="italic"
+                                    type="checkbox"
+                                    checked={italic}
+                                    onChange={(e) =>
+                                        setItalic(e.target.checked)
+                                    }
+                                    className="w-4 h-4 accent-accent"
+                                />
+                                Italic
+                            </label>
                         </div>
 
                         {/* PREVIEW */}
-                        <div className="hover:scale-105 transition duration-300">
-                            <div className="w-full bg-slate-700/50 shadow-lg text-white text-base px-4 py-2 rounded-t-lg focus:outline-none focus:ring-2 focus:ring-white placeholder:text-slate-300">
+                        <div className="border border-rule rounded-sm overflow-hidden">
+                            <div className="w-full bg-paper px-4 py-3 border-b border-rule">
                                 <span
-                                    className="bg-white px-2 py-1 rounded-md text-black"
+                                    className="text-base"
                                     dangerouslySetInnerHTML={{
                                         __html: previewHTML,
                                     }}
@@ -213,7 +197,7 @@ export const BBCodeSection = () => {
                                 rows={4}
                                 value={bbcode}
                                 readOnly
-                                className="w-full bg-slate-700/50 shadow-lg text-white text-sm px-4 py-2 rounded-b-lg focus:outline-none focus:ring-2 focus:ring-white placeholder:text-slate-300 resize-none"
+                                className="w-full bg-paper font-mono text-ink text-xs px-4 py-3 focus:outline-none focus:ring-1 focus:ring-accent resize-none"
                             />
                         </div>
                     </div>

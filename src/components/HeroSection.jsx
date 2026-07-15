@@ -1,110 +1,95 @@
 import { Typewriter } from "react-simple-typewriter";
 
+const SOCIALS = [
+    { label: "GitHub", href: "https://github.com/ant1po1e", icon: "bi-github" },
+    {
+        label: "YouTube",
+        href: "https://www.youtube.com/@ant1po1e",
+        icon: "bi-youtube",
+    },
+];
+
 export const HeroSection = () => {
     return (
         <section
-            className="w-full px-4 md:px-24"
+            className="w-full flex items-center text-ink md:px-24 mt-16 md:mt-24"
             aria-label="Hero Section with introduction and social links">
-            {/* Title */}
-            <div className="mx-auto text-center md:text-start">
-                <h1 className="font-bold text-white text-5xl md:text-[100px] mb-5 neon font-merienda relative inline-block cursor-pointer group">
-                    Antipole
-                    {/* underline */}
-                    <span
-                        aria-hidden="true"
-                        className="absolute left-0 -bottom-2 w-0 h-[5px] bg-white transition-all duration-500 md:group-hover:w-1/2 neon-underline"
-                    />
-                </h1>
-            </div>
+            <div className="mx-auto w-full max-w-6xl grid grid-cols-1 md:grid-cols-[1.1fr_0.9fr] gap-14 md:gap-10 items-center p-12 rounded-xl shadow-xl bg-paper">
+                <div className="flex flex-col items-start text-left">
+                    {/* Name */}
+                    <h1 className="font-display italic font-medium text-ink text-6xl md:text-[110px] leading-[0.95] mb-4">
+                        Antipole
+                    </h1>
 
-            {/* Typewriter */}
-            <div className="flex flex-wrap justify-center md:justify-start mx-auto mt-1 md:mt-3 text-xl md:text-3xl neon">
-                <div className="font-mono font-bold" aria-label="Roles I do">
-                    <Typewriter
-                        words={[
-                            "Game Developer",
-                            "Desktop Developer",
-                            "Photographer",
-                            "Rhythm Gamer",
-                        ]}
-                        cursor
-                        delaySpeed={2000}
-                        loop
-                    />
+                    {/* Status / typewriter row */}
+                    <div className="flex items-center gap-2 font-mono text-sm md:text-base text-ink/80 mb-8">
+                        <span
+                            className="inline-block w-2 h-2 rounded-full bg-accent animate-pulse"
+                            aria-hidden="true"
+                        />
+                        <Typewriter
+                            words={[
+                                "Game Developer",
+                                "Desktop Developer",
+                                "Photographer",
+                                "Rhythm Gamer",
+                            ]}
+                            cursor
+                            delaySpeed={2000}
+                            loop
+                        />
+                    </div>
+
+                    {/* Bio */}
+                    <p className="font-sans text-base md:text-lg leading-relaxed text-ink/85 max-w-md border-l-2 border-rule pl-5">
+                        Hello! I'm Antipole, a web developer and game developer.
+                        I build things that are functional and visually
+                        considered — code and design treated as one craft.
+                        Currently chasing high scores and better commits.
+                    </p>
+
+                    <div className="flex flex-wrap items-center gap-x-6 gap-y-3 mt-10 font-mono text-sm md:hidden">
+                        {SOCIALS.map((social) => (
+                            <a
+                                key={social.label}
+                                href={social.href}
+                                aria-label={social.label}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="group inline-flex items-center gap-2 text-ink/80 hover:text-accent transition-colors duration-300">
+                                <i
+                                    className={`bi ${social.icon} text-base`}
+                                    aria-hidden="true"
+                                />
+                                <span className="border-b border-transparent group-hover:border-accent transition-all duration-300">
+                                    {social.label}
+                                </span>
+                            </a>
+                        ))}
+                    </div>
                 </div>
-            </div>
 
-            {/* Description */}
-            <div className="flex flex-wrap justify-start mt-10 md:mt-20 bg-white/50 backdrop-blur-md rounded-lg shadow-lg max-w-[450px]">
-                <p className="font-normal text-black text-base mb-5 font-sans m-5">
-                    Hello! I'm Antipole, a web developer and game developer. I
-                    create websites and games that are not only functional but
-                    also visually appealing. My passion for coding and design
-                    drives me to constantly learn and improve my skills,
-                    delivering creative and efficient solutions for every
-                    project I undertake.
-                </p>
-            </div>
-
-            {/* Mobile social links */}
-            <div className="flex flex-wrap md:hidden justify-center gap-2 mt-4">
-                {/* GitHub dengan teks di kiri dalam kotak */}
-                <a
-                    href="https://github.com/ant1po1e"
-                    aria-label="GitHub"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-3 h-10 rounded-lg bg-white flex flex-row items-center gap-2 shadow-md md:hover:bg-blue-400 focus:ring-2 focus:ring-blue-400 transition duration-300 group">
-                    <span className="text-sm font-medium text-black md:group-hover:text-white transition-colors duration-300">
-                        GitHub
-                    </span>
-                    <i
-                        className="bi bi-github text-lg md:group-hover:text-2xl md:group-hover:text-white transition-all duration-300"
-                        aria-hidden="true"
-                    />
-                </a>
-
-                {/* YouTube dengan teks di kanan dalam kotak */}
-                <a
-                    href="https://www.youtube.com/@ant1po1e"
-                    aria-label="YouTube"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-3 h-10 rounded-lg bg-white flex flex-row-reverse items-center gap-2 shadow-md md:hover:bg-blue-400 focus:ring-2 focus:ring-blue-400 transition duration-300 group">
-                    <span className="text-sm font-medium text-black md:group-hover:text-white transition-colors duration-300">
-                        YouTube
-                    </span>
-                    <i
-                        className="bi bi-youtube text-lg md:group-hover:text-2xl md:group-hover:text-white transition-all duration-300"
-                        aria-hidden="true"
-                    />
-                </a>
-            </div>
-
-            {/* Background artwork */}
-            <div className="relative w-full px-4 md:px-24">
-                <img
-                    src="/amamiya.webp"
-                    alt="" // kalau purely dekoratif, alt kosong
-                    className="fixed right-0 top-1/2 -translate-y-1/2 drop-shadow-2xl translate-x-1/4 w-0 md:w-[90%] md:h-screen object-cover pointer-events-none max-w-none z-[-1]"
-                    aria-hidden="true"
-                />
-
-                {/* Artwork credit */}
-                <div className="fixed right-48 top-1/2 translate-y-1/2 flex">
-                    <a
-                        href="https://x.com/amairoka"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="relative hidden md:inline-flex items-center p-3 text-sm font-medium text-center text-white bg-blue-400 rounded-md shadow-lg md:hover:scale-110 md:hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 transition-all duration-300 group">
-                        <span>Artwork Credit</span>
-                        {/* Badge with tooltip */}
-                        <div
-                            className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -end-2 md:group-hover:scale-0 transition duration-300"
-                            aria-hidden="true">
-                            !
+                {/* ============ RIGHT: ARTWORK, MAGAZINE-PINNED ============ */}
+                <div className="relative md:flex justify-center md:justify-end hidden group">
+                    <figure className="relative group-hover:rotate-0 -rotate-5 w-[78%] sm:w-[65%] md:w-full max-w-[380px] transition-all duration-300">
+                        <div className="bg-white shadow-[0_20px_45px_-15px_rgba(27,27,31,0.35)] rounded-sm">
+                            <img
+                                src="/hero.webp"
+                                alt="Illustrated character artwork representing Antipole"
+                                className="w-full h-auto object-cover rounded-[2px]"
+                            />
                         </div>
-                    </a>
+                        <figcaption className="absolute -bottom-8 left-3 font-mono italic text-xs text-muted">
+                            Art —{" "}
+                            <a
+                                href="https://x.com/amairoka"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="underline decoration-rule hover:text-accent hover:decoration-accent transition-colors">
+                                @amairoka
+                            </a>
+                        </figcaption>
+                    </figure>
                 </div>
             </div>
         </section>

@@ -10,14 +10,15 @@
         "preview": "vite preview"
     },
     "dependencies": {
-        "@vercel/blob": "^2.3.3",
         "@tailwindcss/typography": "^0.5.16",
         "@tailwindcss/vite": "^4.1.11",
+        "@vercel/blob": "^2.3.3",
         "bootstrap-icons": "^1.13.1",
         "clsx": "^2.1.1",
         "flowbite-react": "^0.12.5",
         "formidable": "^3.5.4",
         "html-to-image": "^1.11.13",
+        "lucide-react": "^1.24.0",
         "react": "^19.1.1",
         "react-dom": "^19.1.1",
         "react-markdown": "^10.1.0",

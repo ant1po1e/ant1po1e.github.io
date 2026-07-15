@@ -1,12 +1,33 @@
 import { useRef, useState } from "react";
 
+const ANON_EMAIL = "anonymous@antipole.my.id";
+
+const fieldClass =
+    "w-full bg-paper border border-rule text-ink text-sm px-4 py-2 rounded-sm focus:outline-none focus:ring-1 focus:ring-accent focus:border-accent placeholder:text-muted transition-colors duration-300";
+
 export const ContactSection = () => {
     const formRef = useRef(null);
     const alertRef = useRef(null);
+    const previousEmailRef = useRef("");
+
     const [loading, setLoading] = useState(false);
     const [showAlert, setShowAlert] = useState(false);
+    const [email, setEmail] = useState("");
+    const [isAnonymous, setIsAnonymous] = useState(false);
 
     const scriptURL = "/api/contact";
+
+    const toggleAnonymous = (checked) => {
+        setIsAnonymous(checked);
+
+        if (checked) {
+            // remember what the user typed so we can restore it if they untick
+            previousEmailRef.current = email;
+            setEmail(ANON_EMAIL);
+        } else {
+            setEmail(previousEmailRef.current);
+        }
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -31,6 +52,11 @@ export const ContactSection = () => {
 
             if (response.ok) {
                 form.reset();
+                // form.reset() only resets the DOM, not our controlled email state
+                setEmail("");
+                setIsAnonymous(false);
+                previousEmailRef.current = "";
+
                 setShowAlert(true);
 
                 setTimeout(() => {
@@ -53,18 +79,17 @@ export const ContactSection = () => {
 
     return (
         <section
-            className="w-full px-4 md:px-24 flex justify-center items-center"
+            className="w-full flex items-center text-ink px-6 md:px-24 mt-10 md:mt-16"
             aria-label="Contact Section">
-            <div className="w-full md:w-1/2 px-5 py-5 bg-white/50 backdrop-blur-md rounded-lg shadow-lg mb-20 sm:mb-0">
-                <div className="w-full px-4">
-                    <div className="mx-auto text-center">
-                        <h1 className="font-bold text-black text-xl md:text-3xl">
-                            Contact Me!
-                        </h1>
-                    </div>
+            <div className="mx-auto w-full max-w-2xl p-8 rounded-xl shadow-xl bg-paper mb-20 md:mb-0">
+                {/* Heading */}
+                <div className="text-center">
+                    <h2 className="font-display italic font-medium text-ink text-2xl md:text-4xl">
+                        Contact Me!
+                    </h2>
                 </div>
 
-                <div className="text-center mt-5 w-full px-4 py-4 border-t-2 border-t-black text-white">
+                <div className="mt-6 pt-6 border-t border-rule">
                     <form
                         ref={formRef}
                         name="Ant1po1e-contact-form"
@@ -86,23 +111,58 @@ export const ContactSection = () => {
                                 placeholder="Name"
                                 required
                                 aria-label="Your name"
-                                className="w-full bg-slate-700/50 shadow-lg text-white text-sm px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-white placeholder:text-slate-300 md:hover:scale-105 transition duration-300"
+                                className={fieldClass}
                             />
                         </div>
+
+                        {/* Email + anonymous lock */}
                         <div>
                             <label htmlFor="email" className="sr-only">
                                 Email
                             </label>
-                            <input
-                                type="email"
-                                id="email"
-                                name="email"
-                                placeholder="Email"
-                                required
-                                aria-label="Your email address"
-                                className="w-full bg-slate-700/50 shadow-lg text-white text-sm px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-white placeholder:text-slate-300 md:hover:scale-105 transition duration-300"
-                            />
+                            <div className="relative">
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    placeholder="Email"
+                                    required
+                                    readOnly={isAnonymous}
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    aria-label="Your email address"
+                                    aria-readonly={isAnonymous}
+                                    className={`${fieldClass} ${
+                                        isAnonymous
+                                            ? "text-muted cursor-not-allowed pr-9"
+                                            : ""
+                                    }`}
+                                />
+                                {isAnonymous && (
+                                    <i
+                                        className="bi bi-lock-fill absolute right-3 top-1/2 -translate-y-1/2 text-muted text-sm"
+                                        aria-hidden="true"
+                                    />
+                                )}
+                            </div>
+
+                            {/* Anonymous toggle */}
+                            <label
+                                htmlFor="anonymous-toggle"
+                                className="mt-2 flex items-center gap-2 font-mono text-xs uppercase tracking-wide text-muted cursor-pointer w-fit">
+                                <input
+                                    id="anonymous-toggle"
+                                    type="checkbox"
+                                    checked={isAnonymous}
+                                    onChange={(e) =>
+                                        toggleAnonymous(e.target.checked)
+                                    }
+                                    className="w-4 h-4 accent-accent"
+                                />
+                                Send anonymously
+                            </label>
                         </div>
+
                         <div>
                             <label htmlFor="message" className="sr-only">
                                 Message
@@ -114,7 +174,8 @@ export const ContactSection = () => {
                                 rows="4"
                                 required
                                 aria-label="Your message"
-                                className="w-full bg-slate-700/50 shadow-lg text-white text-sm px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-white placeholder:text-slate-300 md:hover:scale-105 transition duration-300 resize-none"></textarea>
+                                className={`${fieldClass} resize-none`}
+                            />
                         </div>
 
                         {/* Success alert */}
@@ -122,14 +183,15 @@ export const ContactSection = () => {
                             <div
                                 ref={alertRef}
                                 tabIndex={-1}
-                                className="items-center justify-center w-full text-center mb-8 p-4 space-x-4 rounded-lg shadow text-blue-400 divide-gray-700 bg-white border border-blue-300 flex transition-opacity duration-300"
+                                className="items-center justify-center w-full text-center mb-2 p-4 gap-3 rounded-sm border border-rule bg-paper text-ink flex transition-opacity duration-300"
                                 role="alert"
                                 aria-live="polite">
                                 <i
-                                    className="bi bi-send"
-                                    aria-hidden="true"></i>
-                                <div className="pl-1 text-sm font-normal">
-                                    <span className="font-bold">Thanks!</span>{" "}
+                                    className="bi bi-send text-accent"
+                                    aria-hidden="true"
+                                />
+                                <div className="text-sm font-sans">
+                                    <span className="font-medium">Thanks!</span>{" "}
                                     Your message has been submitted.
                                 </div>
                             </div>
@@ -141,17 +203,15 @@ export const ContactSection = () => {
                                 type="submit"
                                 disabled={loading}
                                 aria-busy={loading}
-                                className="relative flex h-[50px] w-24 md:hover:w-40 items-center justify-center overflow-hidden rounded-lg bg-black text-white shadow-2xl transition-all before:absolute before:h-0 before:w-0 before:rounded-full before:bg-blue-400 before:duration-500 before:ease-out md:hover:shadow-blue-400 md:hover:before:h-56 md:hover:before:w-56 duration-300">
-                                <span className="relative z-10">
-                                    {loading ? (
-                                        <i
-                                            className="bi bi-arrow-clockwise animate-spin inline-block"
-                                            aria-hidden="true"
-                                        />
-                                    ) : (
-                                        "Submit"
-                                    )}
-                                </span>
+                                className="font-mono text-xs uppercase tracking-wide px-6 py-2.5 rounded-sm bg-ink text-paper hover:bg-accent transition-colors duration-300 disabled:opacity-60 disabled:cursor-not-allowed">
+                                {loading ? (
+                                    <i
+                                        className="bi bi-arrow-clockwise animate-spin inline-block"
+                                        aria-hidden="true"
+                                    />
+                                ) : (
+                                    "Submit"
+                                )}
                             </button>
                         </div>
                     </form>

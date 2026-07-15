@@ -1,5 +1,8 @@
 import { useState } from "react";
 
+const fieldClass =
+    "w-full bg-paper border border-rule text-ink text-sm px-4 py-2 rounded-sm focus:outline-none focus:ring-1 focus:ring-accent focus:border-accent placeholder:text-muted transition-colors duration-300";
+
 export const SnapCalcSection = () => {
     const [desiredSnap, setDesiredSnap] = useState("");
     const [baseSnap, setBaseSnap] = useState("1");
@@ -33,20 +36,21 @@ export const SnapCalcSection = () => {
     };
 
     return (
-        <section className="w-full px-4 md:px-24 flex justify-center items-center">
-            <div className="w-full md:w-1/2 px-5 py-5 bg-white/50 backdrop-blur-md rounded-lg shadow-lg mb-20 sm:mb-0">
-                <div className="w-full px-4">
-                    <div className="mx-auto text-center">
-                        <h1 className="font-bold text-black text-xl md:text-3xl">
-                            Tools |{" "}
-                            <span className="text-base md:text-xl">
-                                Snap Calculator
-                            </span>
-                        </h1>
-                    </div>
+        <section
+            className="w-full flex items-center text-ink px-6 md:px-24 mt-10 md:mt-16"
+            aria-label="Snap Calculator Tool">
+            <div className="mx-auto w-full max-w-xl p-8 rounded-xl shadow-xl bg-paper mb-20 md:mb-0">
+                {/* Heading */}
+                <div className="text-center">
+                    <p className="font-mono text-xs tracking-widest uppercase text-muted mb-1">
+                        Tools
+                    </p>
+                    <h2 className="font-display italic font-medium text-ink text-2xl md:text-4xl">
+                        Snap Calculator
+                    </h2>
                 </div>
 
-                <div className="text-center mt-5 w-full px-4 py-4 border-t-2 border-t-black text-white">
+                <div className="mt-6 pt-6 border-t border-rule">
                     <div className="space-y-4 max-w-md mx-auto">
                         {/* Desired Snap */}
                         <div>
@@ -60,7 +64,7 @@ export const SnapCalcSection = () => {
                                 placeholder="Desired Snap (1/x)"
                                 value={desiredSnap}
                                 onChange={(e) => setDesiredSnap(e.target.value)}
-                                className="w-full bg-slate-700/50 shadow-lg text-white text-sm px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-white placeholder:text-slate-300 md:hover:scale-105 transition duration-300"
+                                className={fieldClass}
                             />
                         </div>
 
@@ -73,7 +77,7 @@ export const SnapCalcSection = () => {
                                 id="base-snap"
                                 value={baseSnap}
                                 onChange={(e) => setBaseSnap(e.target.value)}
-                                className="w-full bg-slate-700/50 shadow-lg text-white text-sm px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-white placeholder:text-slate-300 md:hover:scale-105 transition duration-300">
+                                className={fieldClass}>
                                 <option value="1">1/1</option>
                                 <option value="2">1/2</option>
                                 <option value="3">1/3</option>
@@ -100,32 +104,31 @@ export const SnapCalcSection = () => {
                                 placeholder="BPM"
                                 value={bpm}
                                 onChange={(e) => setBpm(e.target.value)}
-                                className="w-full bg-slate-700/50 shadow-lg text-white text-sm px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-white placeholder:text-slate-300 md:hover:scale-105 transition duration-300"
+                                className={fieldClass}
                             />
                         </div>
 
                         {/* Error Message */}
                         {error && (
-                            <p className="text-red-400 text-sm font-medium">
+                            <p className="font-mono text-xs text-red-600">
                                 {error}
                             </p>
                         )}
 
                         {/* Button */}
-                        <div className="text-center flex justify-center">
+                        <div className="text-center flex justify-center pt-2">
                             <button
                                 onClick={calculate}
                                 type="button"
-                                className="relative flex h-[50px] w-24 md:hover:w-40 items-center justify-center overflow-hidden rounded-lg bg-black text-white shadow-2xl transition-all before:absolute before:h-0 before:w-0 before:rounded-full before:bg-blue-400 before:duration-500 before:ease-out md:hover:shadow-blue-400 md:hover:before:h-56 md:hover:before:w-56 duration-300">
-                                <span className="relative z-10">Calculate</span>
+                                className="font-mono text-xs uppercase tracking-wide px-6 py-2.5 rounded-sm bg-ink text-paper hover:bg-accent transition-colors duration-300">
+                                Calculate
                             </button>
                         </div>
 
                         {/* Result + Tooltip */}
-                        <div className="pt-6 md:hover:scale-90 transition duration-300">
-                            {/* Wrapper relative supaya tooltip punya anchor yang jelas */}
+                        <div className="pt-4 text-center">
                             <div className="inline-block relative">
-                                <h2 className="text-sm md:text-xl font-bold bg-white inline rounded-lg py-2 px-4 text-blue-400">
+                                <div className="font-mono text-sm md:text-base border border-rule rounded-sm py-2 px-4 text-ink">
                                     Result:&nbsp;
                                     <button
                                         type="button"
@@ -139,15 +142,15 @@ export const SnapCalcSection = () => {
                                                 ? `Copy result ${result} BPM`
                                                 : "No result to copy"
                                         }
-                                        className="relative inline-flex items-center gap-1 md:hover:underline focus:outline-none focus:ring-2 focus:ring-blue-400 rounded px-1 disabled:opacity-40 disabled:cursor-not-allowed">
+                                        className="relative inline-flex items-center gap-1 text-accent hover:underline focus:outline-none focus:ring-1 focus:ring-accent rounded-sm px-1 disabled:opacity-40 disabled:cursor-not-allowed disabled:text-ink">
                                         {result || "—"}
                                     </button>
                                     <span aria-hidden>&nbsp;BPM</span>
-                                </h2>
+                                </div>
 
-                                {/* Tooltip yang bener-bener muncul saat click */}
+                                {/* Tooltip on copy */}
                                 <span
-                                    className={`pointer-events-none absolute left-1/2 -translate-x-1/2 rounded bg-blue-400 text-white text-xs px-2 py-1 shadow transition-all duration-200
+                                    className={`pointer-events-none absolute left-1/2 -translate-x-1/2 rounded-sm bg-ink text-paper font-mono text-xs px-2 py-1 shadow transition-all duration-200
                     ${
                         copied
                             ? "opacity-100 scale-100 -top-8"

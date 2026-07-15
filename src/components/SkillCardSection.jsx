@@ -211,7 +211,7 @@ export const SkillCardSection = () => {
                     </div>
 
                     <div className="mt-5 flex justify-center">
-                        <div className="inline-block px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm">
+                        <div className="inline-block px-4 py-2 rounded-full bg-white/5 border text-white border-white/10 text-sm">
                             Top Skill •{" "}
                             <span className="font-bold">
                                 {topSkill[0].toUpperCase()}
@@ -230,26 +230,30 @@ export const SkillCardSection = () => {
     );
 
     return (
-        <section className="w-full px-4 md:px-24 flex justify-center items-center">
-            <div className="w-full md:w-2/3 scrollbar-none px-5 py-5 bg-white/50 backdrop-blur-md rounded-lg shadow-lg mb-20 sm:mb-0">
-                <header className="text-center mb-5">
-                    <h1 className="font-bold text-black text-xl md:text-3xl">
-                        Tools |{" "}
-                        <span className="text-base md:text-xl font-normal">
-                            osu!mania Skill Card
-                        </span>
+        <section
+            className="w-full flex items-center text-ink px-6 md:px-24 mt-10 md:mt-16"
+            aria-label="osu!mania Skill Card Tool">
+            <div className="mx-auto w-full max-w-xl scrollbar-none p-8 rounded-xl shadow-xl bg-paper mb-20 md:mb-0">
+                {/* Heading */}
+                <header className="text-center">
+                    <p className="font-mono text-xs tracking-widest uppercase text-muted mb-1">
+                        Tools
+                    </p>
+                    <h1 className="font-display italic font-medium text-ink text-2xl md:text-4xl">
+                        osu!mania Skill Card
                     </h1>
                 </header>
 
-                <div className="text-center mt-5 w-full px-4 py-4 border-t-2 border-t-black text-white overflow-y-auto max-h-[50vh]">
+                <div className="mt-6 pt-6 border-t border-rule overflow-y-auto max-h-[40vh] pr-1">
                     <div className="space-y-4 max-w-md mx-auto">
+                        {/* Theme picker */}
                         <div className="flex justify-center">
                             <select
                                 value={theme}
                                 onChange={(e) =>
                                     handleThemeChange(e.target.value)
                                 }
-                                className="w-full bg-slate-700/50 shadow-lg text-white text-sm px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-white md:hover:scale-105 transition duration-300">
+                                className="w-full bg-paper border border-rule text-ink text-sm px-4 py-2 rounded-sm focus:outline-none focus:ring-1 focus:ring-accent focus:border-accent transition-colors duration-300">
                                 {Object.entries(THEMES).map(([key, value]) => (
                                     <option key={key} value={key}>
                                         {value.name}
@@ -258,15 +262,17 @@ export const SkillCardSection = () => {
                             </select>
                         </div>
 
+                        {/* Download button */}
                         <div className="text-center flex justify-center">
                             <button
                                 onClick={downloadCard}
                                 type="button"
-                                className="relative flex h-[50px] w-32 md:hover:w-40 items-center justify-center overflow-hidden rounded-lg bg-black text-white shadow-2xl transition-all before:absolute before:h-0 before:w-0 before:rounded-full before:bg-blue-400 before:duration-500 before:ease-out md:hover:shadow-blue-400 md:hover:before:h-56 md:hover:before:w-56 duration-300">
-                                <span className="relative z-10">Download</span>
+                                className="font-mono text-xs uppercase tracking-wide px-6 py-2.5 rounded-sm bg-ink text-paper hover:bg-accent transition-colors duration-300">
+                                Download
                             </button>
                         </div>
 
+                        {/* --- The card itself: intentionally untouched dark theme --- */}
                         <div
                             ref={cardRef}
                             className="

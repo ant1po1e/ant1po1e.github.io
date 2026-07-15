@@ -28,16 +28,16 @@ export const DropdownFilter = ({ selectedBadge, setSelectedBadge }) => {
             <button
                 onClick={() => setOpen(!open)}
                 className={twMerge(
-                    " bg-white border border-gray-300 text-sm text-black px-4 py-2 rounded-md shadow-sm flex justify-between items-center",
-                    "focus:outline-none focus:ring-2 focus:ring-blue-400",
-                    "transition duration-300 ease-in-out md:hover:shadow-md",
+                    "bg-paper border border-rule font-mono text-xs uppercase tracking-wide text-ink px-4 py-2 rounded-sm shadow-sm flex justify-between items-center",
+                    "focus:outline-none focus:ring-1 focus:ring-accent focus:border-accent",
+                    "transition-colors duration-300 hover:border-accent",
                     "min-w-[160px]",
                 )}>
                 <span className="truncate">{selectedLabel}</span>
 
                 {/* Icon */}
                 <svg
-                    className={`w-4 h-4 ml-2 transition-transform duration-200 ${
+                    className={`w-4 h-4 ml-2 text-muted transition-transform duration-200 ${
                         open ? "rotate-180" : ""
                     }`}
                     fill="none"
@@ -60,15 +60,22 @@ export const DropdownFilter = ({ selectedBadge, setSelectedBadge }) => {
 
             {/* Dropdown list */}
             {open && (
-                <ul className="absolute z-50 mt-2 w-full bg-white border border-gray-300 rounded-md shadow-md max-h-40 overflow-auto">
-                    {badges.map((badge) => (
-                        <li
-                            key={badge.value}
-                            onClick={() => handleSelect(badge.value)}
-                            className="px-4 py-2 text-sm text-black cursor-pointer md:hover:bg-blue-100 transition">
-                            {badge.label}
-                        </li>
-                    ))}
+                <ul className="absolute z-50 mt-2 w-full bg-paper border border-rule rounded-sm shadow-md max-h-40 overflow-auto">
+                    {badges.map((badge) => {
+                        const isSelected = badge.value === selectedBadge;
+
+                        return (
+                            <li
+                                key={badge.value}
+                                onClick={() => handleSelect(badge.value)}
+                                className={twMerge(
+                                    "px-4 py-2 font-mono text-xs uppercase tracking-wide cursor-pointer transition-colors duration-200 hover:bg-rule/30 hover:text-accent",
+                                    isSelected ? "text-accent" : "text-ink",
+                                )}>
+                                {badge.label}
+                            </li>
+                        );
+                    })}
                 </ul>
             )}
         </div>
