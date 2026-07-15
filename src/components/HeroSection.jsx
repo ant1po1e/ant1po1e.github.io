@@ -82,11 +82,11 @@ export const HeroSection = () => {
                         <figcaption className="absolute -bottom-8 left-3 font-mono italic text-xs text-muted">
                             Art —{" "}
                             <a
-                                href="https://x.com/amairoka"
+                                href="https://x.com/rytoua318"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="underline decoration-rule hover:text-accent hover:decoration-accent transition-colors">
-                                @amairoka
+                                シン・りょうた
                             </a>
                         </figcaption>
                     </figure>
