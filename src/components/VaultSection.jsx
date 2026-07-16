@@ -6,11 +6,61 @@ import {
     login,
     logout,
     toShareUrl,
-    uploadImage,
+    uploadFile,
 } from "../lib/api.js";
 
 const fieldClass =
     "w-full bg-paper border border-rule text-ink text-sm px-4 py-2 rounded-sm focus:outline-none focus:ring-1 focus:ring-accent focus:border-accent placeholder:text-muted transition-colors duration-300";
+
+const IMAGE_EXTS = new Set([
+    "jpg",
+    "jpeg",
+    "png",
+    "webp",
+    "gif",
+    "svg",
+    "bmp",
+    "tiff",
+    "avif",
+]);
+const VIDEO_EXTS = new Set(["mp4", "webm", "mov", "mkv", "m4v"]);
+const AUDIO_EXTS = new Set(["mp3", "wav", "ogg", "flac", "m4a", "aac"]);
+
+const FILE_ICONS = {
+    pdf: "bi-file-earmark-pdf",
+    zip: "bi-file-earmark-zip",
+    rar: "bi-file-earmark-zip",
+    "7z": "bi-file-earmark-zip",
+    doc: "bi-file-earmark-word",
+    docx: "bi-file-earmark-word",
+    xls: "bi-file-earmark-excel",
+    xlsx: "bi-file-earmark-excel",
+    ppt: "bi-file-earmark-slides",
+    pptx: "bi-file-earmark-slides",
+    txt: "bi-file-earmark-text",
+    md: "bi-file-earmark-text",
+    csv: "bi-file-earmark-spreadsheet",
+};
+
+function extOf(name) {
+    const match = /\.([a-zA-Z0-9]+)$/.exec(name || "");
+    return match ? match[1].toLowerCase() : "";
+}
+
+function fileKind(name) {
+    const ext = extOf(name);
+    if (IMAGE_EXTS.has(ext)) return "image";
+    if (VIDEO_EXTS.has(ext)) return "video";
+    if (AUDIO_EXTS.has(ext)) return "audio";
+    return "other";
+}
+
+function fileIconClass(name) {
+    const ext = extOf(name);
+    if (VIDEO_EXTS.has(ext)) return "bi-file-earmark-play";
+    if (AUDIO_EXTS.has(ext)) return "bi-file-earmark-music";
+    return FILE_ICONS[ext] || "bi-file-earmark";
+}
 
 function LoginForm({ onSuccess }) {
     const [password, setPassword] = useState("");
@@ -35,7 +85,7 @@ function LoginForm({ onSuccess }) {
         <div className="max-w-sm mx-auto py-10 text-center">
             <i className="bi bi-lock-fill text-3xl text-muted" />
             <p className="text-muted text-sm mt-3 mb-6">
-                This gallery is private. Enter the password to continue.
+                This vault is private. Enter the password to continue.
             </p>
             <form onSubmit={handleSubmit} className="space-y-3">
                 <input
@@ -53,7 +103,7 @@ function LoginForm({ onSuccess }) {
                     <button
                         type="submit"
                         disabled={loading}
-                        className="font-mono text-xs uppercase tracking-wide px-6 py-2.5 rounded-sm bg-ink text-paper hover:bg-accent transition-colors duration-300 disabled:opacity-60 disabled:cursor-not-allowed">
+                        className="font-mono text-xs uppercase tracking-wide px-6 py-2.5 rounded-sm bg-ink text-paper md:hover:bg-accent transition-colors duration-300 disabled:opacity-60 disabled:cursor-not-allowed">
                         {loading ? "Checking…" : "Unlock"}
                     </button>
                 </div>
@@ -69,9 +119,7 @@ function UploadZone({ onUploaded }) {
 
     const handleFiles = useCallback(
         async (fileList) => {
-            const files = Array.from(fileList).filter((f) =>
-                f.type.startsWith("image/"),
-            );
+            const files = Array.from(fileList);
             if (files.length === 0) return;
 
             setQueue((q) => [
@@ -85,7 +133,7 @@ function UploadZone({ onUploaded }) {
 
             for (const file of files) {
                 try {
-                    const blob = await uploadImage(file, (pct) => {
+                    const blob = await uploadFile(file, (pct) => {
                         setQueue((q) =>
                             q.map((item) =>
                                 item.name === file.name
@@ -129,17 +177,16 @@ function UploadZone({ onUploaded }) {
                 className={`cursor-pointer rounded-sm border-2 border-dashed px-6 py-8 text-center transition-colors duration-300 ${
                     dragging
                         ? "border-accent bg-accent/5"
-                        : "border-rule hover:border-ink/40"
+                        : "border-rule md:hover:border-ink/40"
                 }`}>
                 <i className="bi bi-cloud-arrow-up text-2xl text-muted" />
-                <p className="font-medium text-ink mt-2">Drop images here</p>
+                <p className="font-medium text-ink mt-2">Drop files here</p>
                 <p className="font-mono text-xs text-muted mt-1">
-                    or click to choose files · auto-converted to WebP
+                    or click to choose files · images are auto-converted to WebP
                 </p>
                 <input
                     ref={inputRef}
                     type="file"
-                    accept="image/*"
                     multiple
                     className="hidden"
                     onChange={(e) => {
@@ -207,13 +254,21 @@ function TableRow({ image, onSelect, onDelete }) {
     return (
         <tr
             onClick={() => onSelect(image)}
-            className="border-b border-rule last:border-b-0 hover:bg-rule/20 transition-colors duration-200 cursor-pointer">
+            className="border-b border-rule last:border-b-0 md:hover:bg-rule/20 transition-colors duration-200 cursor-pointer">
             <td className="px-2 py-2 w-14">
-                <img
-                    src={image.url}
-                    alt={image.name}
-                    className="w-10 h-10 object-cover rounded-sm border border-rule"
-                />
+                {fileKind(image.name) === "image" ? (
+                    <img
+                        src={image.url}
+                        alt={image.name}
+                        className="w-10 h-10 object-cover rounded-sm border border-rule"
+                    />
+                ) : (
+                    <div className="w-10 h-10 flex items-center justify-center rounded-sm border border-rule bg-rule/20 text-muted">
+                        <i
+                            className={`bi ${fileIconClass(image.name)} text-lg`}
+                        />
+                    </div>
+                )}
             </td>
             <td className="px-3 py-2 text-ink/80 text-sm truncate max-w-[160px] sm:max-w-[260px]">
                 {image.name}
@@ -226,7 +281,7 @@ function TableRow({ image, onSelect, onDelete }) {
                     <button
                         onClick={copyLink}
                         title="Copy link"
-                        className={`transition-colors duration-300 hover:text-accent ${copied ? "text-accent" : ""}`}>
+                        className={`transition-colors duration-300 md:hover:text-accent ${copied ? "text-accent" : ""}`}>
                         <i
                             className={`bi ${copied ? "bi-check2" : "bi-clipboard"}`}
                         />
@@ -257,14 +312,14 @@ function ImageListModal({ images, onClose, onSelect, onDelete, maxHeight }) {
                 onClick={(e) => e.stopPropagation()}>
                 <div className="flex items-center justify-between px-5 py-4 border-b border-rule shrink-0">
                     <h2 className="font-display italic text-lg text-ink">
-                        All images{" "}
+                        All files{" "}
                         <span className="font-sans not-italic text-muted text-sm">
                             ({images.length})
                         </span>
                     </h2>
                     <button
                         onClick={onClose}
-                        className="text-muted hover:text-accent transition-colors duration-300">
+                        className="text-muted md:hover:text-accent transition-colors duration-300">
                         <i className="bi bi-x-lg text-lg" />
                     </button>
                 </div>
@@ -272,9 +327,9 @@ function ImageListModal({ images, onClose, onSelect, onDelete, maxHeight }) {
                 <div className="overflow-y-auto flex-1">
                     {images.length === 0 ? (
                         <div className="text-center py-16 text-muted">
-                            <i className="bi bi-images text-3xl" />
+                            <i className="bi bi-collection text-3xl" />
                             <p className="mt-2 text-sm font-mono">
-                                No images yet
+                                No files yet
                             </p>
                         </div>
                     ) : (
@@ -347,7 +402,7 @@ function CopyRow({ label, value }) {
                 className={`shrink-0 font-mono text-[10px] font-semibold uppercase tracking-wide px-2.5 py-1.5 rounded-sm border transition-colors duration-300 ${
                     copied
                         ? "border-accent text-accent"
-                        : "border-rule text-muted hover:text-ink hover:border-ink/30"
+                        : "border-rule text-muted md:hover:text-ink md:hover:border-ink/30"
                 }`}>
                 {copied ? "Copied" : "Copy"}
             </button>
@@ -367,6 +422,7 @@ function ImageLightbox({ image, onClose, onDelete, maxHeight }) {
     if (!image) return null;
 
     const snippets = buildSnippets(image);
+    const kind = fileKind(image.name);
 
     return (
         <div
@@ -376,11 +432,36 @@ function ImageLightbox({ image, onClose, onDelete, maxHeight }) {
                 className="max-w-3xl w-full bg-paper border border-rule rounded-xl shadow-xl flex flex-col items-center py-6 px-6 overflow-y-auto"
                 style={{ maxHeight: maxHeight ? `${maxHeight}px` : "80vh" }}
                 onClick={(e) => e.stopPropagation()}>
-                <img
-                    src={image.url}
-                    alt={image.name}
-                    className="max-h-[50vh] w-auto object-contain rounded-sm border border-rule"
-                />
+                {kind === "image" && (
+                    <img
+                        src={image.url}
+                        alt={image.name}
+                        className="max-h-[50vh] w-auto object-contain rounded-sm border border-rule"
+                    />
+                )}
+                {kind === "video" && (
+                    <video
+                        src={image.url}
+                        controls
+                        className="max-h-[50vh] w-auto rounded-sm border border-rule"
+                    />
+                )}
+                {kind === "audio" && (
+                    <div className="w-full flex flex-col items-center gap-3 py-6">
+                        <i className="bi bi-file-earmark-music text-5xl text-muted" />
+                        <audio src={image.url} controls className="w-full" />
+                    </div>
+                )}
+                {kind === "other" && (
+                    <div className="w-full flex flex-col items-center gap-2 py-10">
+                        <i
+                            className={`bi ${fileIconClass(image.name)} text-5xl text-muted`}
+                        />
+                        <p className="font-mono text-xs text-muted">
+                            No preview available for this file type
+                        </p>
+                    </div>
+                )}
 
                 <div className="w-full flex items-center justify-between mt-4 text-xs font-mono text-muted">
                     <span className="truncate">{image.name}</span>
@@ -485,7 +566,7 @@ export const VaultSection = () => {
 
     return (
         <section
-            className="w-full flex items-center text-ink px-6 md:px-24 mt-10 md:mt-16"
+            className="w-full flex items-center text-ink px-6 md:px-24 mt-16 md:mt-24"
             aria-label="Vault Section">
             <div
                 ref={cardRef}
@@ -497,7 +578,7 @@ export const VaultSection = () => {
                     {authState === "in" && (
                         <span className="font-mono text-muted text-sm md:text-base">
                             {images.length}{" "}
-                            {images.length === 1 ? "image" : "images"}
+                            {images.length === 1 ? "file" : "files"}
                         </span>
                     )}
                 </div>
@@ -523,7 +604,7 @@ export const VaultSection = () => {
                             <div className="flex justify-end mb-4">
                                 <button
                                     onClick={handleLogout}
-                                    className="font-mono text-xs uppercase tracking-wide text-muted hover:text-accent transition-colors duration-300 flex items-center gap-1">
+                                    className="font-mono text-xs uppercase tracking-wide text-muted md:hover:text-accent transition-colors duration-300 flex items-center gap-1">
                                     <i className="bi bi-box-arrow-right" /> Log
                                     out
                                 </button>
@@ -539,9 +620,9 @@ export const VaultSection = () => {
 
                             <button
                                 onClick={() => setListOpen(true)}
-                                className="w-full flex items-center justify-center gap-2 bg-paper hover:border-accent hover:text-accent border border-rule rounded-sm py-3 font-mono text-xs uppercase tracking-wide text-ink transition-colors duration-300">
+                                className="w-full flex items-center justify-center gap-2 bg-paper md:hover:border-accent md:hover:text-accent border border-rule rounded-sm py-3 font-mono text-xs uppercase tracking-wide text-ink transition-colors duration-300">
                                 <i className="bi bi-collection" />
-                                View images ({images.length})
+                                View files ({images.length})
                             </button>
                         </>
                     )}

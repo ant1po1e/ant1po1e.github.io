@@ -86,7 +86,7 @@ const projects = [
 
 // Small outline arrow button used for the desktop carousel controls
 const CarouselArrow = ({ direction }) => (
-    <span className="inline-flex items-center justify-center w-10 h-10 rounded-sm border border-rule bg-paper/90 backdrop-blur-sm text-ink transition-colors duration-300 hover:border-accent hover:text-accent">
+    <span className="inline-flex items-center justify-center w-10 h-10 rounded-sm border border-rule bg-paper/90 backdrop-blur-sm text-ink transition-colors duration-300 md:hover:border-accent md:hover:text-accent">
         <svg
             className={`w-3.5 h-3.5 ${direction === "right" ? "rotate-180" : ""}`}
             viewBox="0 0 6 10"
@@ -106,7 +106,7 @@ const CarouselArrow = ({ direction }) => (
 export const ProjectsSection = () => {
     return (
         <section
-            className="w-full flex items-center text-ink px-6 md:px-24 mt-10 md:mt-16"
+            className="w-full flex items-center text-ink px-6 md:px-24 mt-16 md:mt-24"
             aria-label="Projects Section">
             <div className="mx-auto w-full max-w-xl p-8 md:p-8 rounded-xl shadow-xl bg-paper mb-20 md:mb-0">
                 {/* Heading */}
@@ -142,12 +142,12 @@ export const ProjectsSection = () => {
                                     href={project.link}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="group inline-flex items-center gap-2 mt-4 font-mono text-xs uppercase tracking-wide text-ink/80 hover:text-accent transition-colors duration-300">
+                                    className="group inline-flex items-center gap-2 mt-4 font-mono text-xs uppercase tracking-wide text-ink/80 md:hover:text-accent transition-colors duration-300">
                                     <i
                                         className={project.icon}
                                         aria-hidden="true"
                                     />
-                                    <span className="border-b border-transparent group-hover:border-accent transition-all duration-300">
+                                    <span className="border-b border-transparent md:group-hover:border-accent transition-all duration-300">
                                         {project.linkText}
                                     </span>
                                 </a>
@@ -178,7 +178,7 @@ export const ProjectsSection = () => {
                                     />
 
                                     {/* Overlay (desktop only) */}
-                                    <div className="absolute w-full h-full py-8 px-8 sm:px-20 -translate-x-1/2 z-50 rounded-xl -translate-y-1/2 top-1/2 left-1/2 flex flex-col items-center justify-center text-center bg-paper/90 backdrop-blur-sm text-ink opacity-0 group-hover:opacity-100 transition duration-300">
+                                    <div className="absolute w-full h-full py-8 px-8 sm:px-20 -translate-x-1/2 z-50 rounded-xl -translate-y-1/2 top-1/2 left-1/2 flex flex-col items-center justify-center text-center bg-paper/90 backdrop-blur-sm text-ink opacity-0 md:group-hover:opacity-100 transition duration-300">
                                         <h3 className="font-display italic text-xl md:text-3xl text-ink">
                                             {project.title}
                                         </h3>
@@ -192,7 +192,7 @@ export const ProjectsSection = () => {
                                             href={project.link}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="group/link inline-flex items-center gap-2 mt-8 font-mono text-sm uppercase tracking-wide text-ink/80 hover:text-accent transition-colors duration-300">
+                                            className="group/link inline-flex items-center gap-2 mt-8 font-mono text-sm uppercase tracking-wide text-ink/80 md:hover:text-accent transition-colors duration-300">
                                             <i
                                                 className={`text-lg ${project.icon}`}
                                                 aria-hidden="true"

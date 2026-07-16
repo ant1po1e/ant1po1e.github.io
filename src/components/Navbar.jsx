@@ -17,7 +17,7 @@ export const Navbar = () => {
             <Link
                 to={isOnRoot ? "/" : backUrl}
                 aria-label={isOnRoot ? "Go to homepage" : "Go back"}
-                className="fixed top-6 left-6 md:top-8 md:left-8 z-30 shadow-xl font-display italic text-ink text-xl md:text-3xl bg-paper/90 backdrop-blur-sm border border-rule rounded-sm px-8 py-2 shadow-sm transition-colors duration-300 hover:text-accent hover:border-accent focus:ring-2 focus:ring-accent">
+                className="fixed top-6 left-6 md:top-8 md:left-8 z-30 shadow-xl font-display italic text-ink text-xl md:text-3xl bg-paper/90 backdrop-blur-sm border border-rule rounded-sm px-8 py-2 transition-colors duration-300 md:hover:text-accent md:hover:border-accent focus:ring-2 focus:ring-accent">
                 {isOnRoot ? (
                     "Antipole"
                 ) : (
@@ -34,7 +34,7 @@ export const Navbar = () => {
                 aria-label="Visit Antipole's osu! profile"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="fixed top-6 right-6 md:top-8 md:right-8 shadow-xl z-30 group flex items-center font-mono text-xs uppercase tracking-wide text-muted bg-paper/90 backdrop-blur-sm border border-rule rounded-full p-1 transition-colors duration-300 hover:text-accent hover:border-accent">
+                className="fixed top-6 right-6 md:top-8 md:right-8 shadow-xl z-30 group flex items-center font-mono text-xs uppercase tracking-wide text-muted bg-paper/90 backdrop-blur-sm border border-rule rounded-full p-1 transition-colors duration-300 md:hover:text-accent md:hover:border-accent">
                 <img
                     src="https://a.ppy.sh/17258072"
                     alt="Antipole's osu! avatar"

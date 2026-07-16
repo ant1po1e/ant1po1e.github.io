@@ -48,7 +48,7 @@ export const BBCodeSection = () => {
 
     return (
         <section
-            className="w-full flex items-center text-ink px-6 md:px-24 mt-10 md:mt-16"
+            className="w-full flex items-center text-ink px-6 md:px-24 mt-16 md:mt-24"
             aria-label="BBCode Text Colorizer Tool">
             <div className="mx-auto w-full max-w-xl scrollbar-none p-8 rounded-xl shadow-xl bg-paper mb-20 md:mb-0">
                 {/* Heading */}

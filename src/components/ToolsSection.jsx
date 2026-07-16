@@ -9,7 +9,7 @@ const TOOLS = [
 export const ToolsSection = () => {
     return (
         <section
-            className="w-full flex items-center text-ink px-6 md:px-24 mt-10 md:mt-16"
+            className="w-full flex items-center text-ink px-6 md:px-24 mt-16 md:mt-24"
             aria-label="Tools Section">
             <div className="mx-auto w-full max-w-xl p-8 rounded-xl shadow-xl bg-paper mb-20 md:mb-0">
                 {/* Heading */}
@@ -27,12 +27,12 @@ export const ToolsSection = () => {
                                 <Link
                                     to={tool.to}
                                     aria-label={`Go to ${tool.label} tool`}
-                                    className="group flex items-center justify-between py-4 font-mono text-sm md:text-base uppercase tracking-wide text-ink/80 transition-colors duration-300 hover:text-accent">
-                                    <span className="border-b border-transparent group-hover:border-accent transition-all duration-300">
+                                    className="group flex items-center justify-between py-4 font-mono text-sm md:text-base uppercase tracking-wide text-ink/80 transition-colors duration-300 md:hover:text-accent">
+                                    <span className="border-b border-transparent md:group-hover:border-accent transition-all duration-300">
                                         {tool.label}
                                     </span>
                                     <i
-                                        className="bi bi-arrow-up-right text-base transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
+                                        className="bi bi-arrow-up-right text-base transition-transform duration-300 md:group-hover:translate-x-1 md:group-hover:-translate-y-1"
                                         aria-hidden="true"
                                     />
                                 </Link>

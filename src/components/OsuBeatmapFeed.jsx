@@ -92,13 +92,13 @@ export const OsuBeatmapFeed = () => {
     if (error) {
         return (
             <section
-                className="w-full flex items-center text-ink px-6 md:px-24 mt-10 md:mt-16"
+                className="w-full flex items-center text-ink px-6 md:px-24 mt-16 md:mt-24"
                 aria-label="Contributed Beatmaps Section">
                 <div className="mx-auto w-full max-w-2xl p-8 rounded-xl shadow-xl bg-paper text-center space-y-4">
                     <p className="font-mono text-sm text-red-600">{error}</p>
                     <button
                         onClick={fetchBeatmaps}
-                        className="font-mono text-xs uppercase tracking-wide px-4 py-2 rounded-sm bg-ink text-paper hover:bg-accent transition-colors duration-300">
+                        className="font-mono text-xs uppercase tracking-wide px-4 py-2 rounded-sm bg-ink text-paper md:hover:bg-accent transition-colors duration-300">
                         Retry
                     </button>
                 </div>
@@ -213,7 +213,7 @@ export const OsuBeatmapFeed = () => {
                                 }
                                 aria-label="Previous page"
                                 className={twMerge(
-                                    "px-3 py-1.5 text-xs uppercase tracking-wide rounded-sm border border-rule bg-paper text-ink hover:border-accent hover:text-accent",
+                                    "px-3 py-1.5 text-xs uppercase tracking-wide rounded-sm border border-rule bg-paper text-ink md:hover:border-accent md:hover:text-accent",
                                     "disabled:opacity-40 disabled:cursor-not-allowed transition-colors duration-300",
                                 )}>
                                 Prev
@@ -232,7 +232,7 @@ export const OsuBeatmapFeed = () => {
                                 }
                                 aria-label="Next page"
                                 className={twMerge(
-                                    "px-3 py-1.5 text-xs uppercase tracking-wide rounded-sm border border-rule bg-paper text-ink hover:border-accent hover:text-accent",
+                                    "px-3 py-1.5 text-xs uppercase tracking-wide rounded-sm border border-rule bg-paper text-ink md:hover:border-accent md:hover:text-accent",
                                     "disabled:opacity-40 disabled:cursor-not-allowed transition-colors duration-300",
                                 )}>
                                 Next

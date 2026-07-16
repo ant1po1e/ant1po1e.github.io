@@ -65,7 +65,7 @@ export default function Login({ onSuccess }) {
                         <button
                             type="submit"
                             disabled={loading}
-                            className="w-full bg-ink hover:bg-accent disabled:opacity-50 disabled:cursor-not-allowed text-paper font-mono text-xs uppercase tracking-wide rounded-sm py-3 transition-colors duration-300">
+                            className="w-full bg-ink md:hover:bg-accent disabled:opacity-50 disabled:cursor-not-allowed text-paper font-mono text-xs uppercase tracking-wide rounded-sm py-3 transition-colors duration-300">
                             {loading ? "Checking…" : "Unlock Vault"}
                         </button>
                     </form>

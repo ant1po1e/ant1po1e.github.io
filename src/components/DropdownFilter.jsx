@@ -30,7 +30,7 @@ export const DropdownFilter = ({ selectedBadge, setSelectedBadge }) => {
                 className={twMerge(
                     "bg-paper border border-rule font-mono text-xs uppercase tracking-wide text-ink px-4 py-2 rounded-sm shadow-sm flex justify-between items-center",
                     "focus:outline-none focus:ring-1 focus:ring-accent focus:border-accent",
-                    "transition-colors duration-300 hover:border-accent",
+                    "transition-colors duration-300 md:hover:border-accent",
                     "min-w-[160px]",
                 )}>
                 <span className="truncate">{selectedLabel}</span>
@@ -69,7 +69,7 @@ export const DropdownFilter = ({ selectedBadge, setSelectedBadge }) => {
                                 key={badge.value}
                                 onClick={() => handleSelect(badge.value)}
                                 className={twMerge(
-                                    "px-4 py-2 font-mono text-xs uppercase tracking-wide cursor-pointer transition-colors duration-200 hover:bg-rule/30 hover:text-accent",
+                                    "px-4 py-2 font-mono text-xs uppercase tracking-wide cursor-pointer transition-colors duration-200 md:hover:bg-rule/30 md:hover:text-accent",
                                     isSelected ? "text-accent" : "text-ink",
                                 )}>
                                 {badge.label}

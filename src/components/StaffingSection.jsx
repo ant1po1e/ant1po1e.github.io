@@ -22,7 +22,7 @@ const StaffingItem = ({ link, date, title, roles }) => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group flex items-baseline gap-3">
-                <h3 className="mt-1 font-display italic text-lg md:text-2xl text-ink transition-colors duration-300 group-hover:text-accent">
+                <h3 className="mt-1 font-display italic text-lg md:text-2xl text-ink transition-colors duration-300 md:group-hover:text-accent">
                     {title}
                 </h3>
 
@@ -52,7 +52,7 @@ const StaffingItem = ({ link, date, title, roles }) => {
 export const StaffingSection = () => {
     return (
         <section
-            className="w-full flex items-center text-ink px-6 md:px-24 mt-10 md:mt-16"
+            className="w-full flex items-center text-ink px-6 md:px-24 mt-16 md:mt-24"
             aria-label="Staffing History Section">
             <div className="mx-auto w-full max-w-3xl p-8 rounded-xl shadow-xl bg-paper mb-20 md:mb-0">
                 {/* Heading */}

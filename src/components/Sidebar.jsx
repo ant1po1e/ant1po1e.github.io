@@ -28,14 +28,14 @@ export const Sidebar = () => {
                         aria-label={link.label}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-16 h-16 flex items-center justify-center rounded-sm shadow-xl border border-rule bg-paper/80 backdrop-blur-sm text-ink text-3xl transition-colors duration-300 hover:border-accent hover:text-accent">
+                        className="w-16 h-16 flex items-center justify-center rounded-sm shadow-xl border border-rule bg-paper/80 backdrop-blur-sm text-ink text-3xl transition-colors duration-300 md:hover:border-accent md:hover:text-accent">
                         <i className={`bi ${link.icon}`} aria-hidden="true" />
                     </a>
 
                     {/* Tooltip */}
                     <span
                         role="tooltip"
-                        className="absolute left-full ml-3 top-1/2 -translate-y-1/2 font-mono text-md shadow-lg uppercase tracking-wide px-3 py-1.5 border border-rule bg-paper text-ink opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none">
+                        className="absolute left-full ml-3 top-1/2 -translate-y-1/2 font-mono text-md shadow-lg uppercase tracking-wide px-3 py-1.5 border border-rule bg-paper text-ink opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none">
                         {link.label}
                     </span>
                 </div>

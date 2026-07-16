@@ -37,7 +37,7 @@ export const SnapCalcSection = () => {
 
     return (
         <section
-            className="w-full flex items-center text-ink px-6 md:px-24 mt-10 md:mt-16"
+            className="w-full flex items-center text-ink px-6 md:px-24 mt-16 md:mt-24"
             aria-label="Snap Calculator Tool">
             <div className="mx-auto w-full max-w-xl p-8 rounded-xl shadow-xl bg-paper mb-20 md:mb-0">
                 {/* Heading */}
@@ -120,7 +120,7 @@ export const SnapCalcSection = () => {
                             <button
                                 onClick={calculate}
                                 type="button"
-                                className="font-mono text-xs uppercase tracking-wide px-6 py-2.5 rounded-sm bg-ink text-paper hover:bg-accent transition-colors duration-300">
+                                className="font-mono text-xs uppercase tracking-wide px-6 py-2.5 rounded-sm bg-ink text-paper md:hover:bg-accent transition-colors duration-300">
                                 Calculate
                             </button>
                         </div>

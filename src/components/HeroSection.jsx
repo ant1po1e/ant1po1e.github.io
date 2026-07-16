@@ -56,12 +56,12 @@ export const HeroSection = () => {
                                 aria-label={social.label}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="group inline-flex items-center gap-2 text-ink/80 hover:text-accent transition-colors duration-300">
+                                className="group inline-flex items-center gap-2 text-ink/80 md:hover:text-accent transition-colors duration-300">
                                 <i
                                     className={`bi ${social.icon} text-base`}
                                     aria-hidden="true"
                                 />
-                                <span className="border-b border-transparent group-hover:border-accent transition-all duration-300">
+                                <span className="border-b border-transparent md:group-hover:border-accent transition-all duration-300">
                                     {social.label}
                                 </span>
                             </a>
@@ -71,7 +71,7 @@ export const HeroSection = () => {
 
                 {/* ============ RIGHT: ARTWORK, MAGAZINE-PINNED ============ */}
                 <div className="relative md:flex justify-center md:justify-end hidden group">
-                    <figure className="relative group-hover:rotate-0 -rotate-5 w-[78%] sm:w-[65%] md:w-full max-w-[380px] transition-all duration-300">
+                    <figure className="relative md:group-hover:rotate-0 -rotate-5 w-[78%] sm:w-[65%] md:w-full max-w-[380px] transition-all duration-300">
                         <div className="bg-white shadow-[0_20px_45px_-15px_rgba(27,27,31,0.35)] rounded-sm">
                             <img
                                 src="/hero.webp"
@@ -85,7 +85,7 @@ export const HeroSection = () => {
                                 href="https://x.com/rytoua318"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="underline decoration-rule hover:text-accent hover:decoration-accent transition-colors">
+                                className="underline decoration-rule md:hover:text-accent md:hover:decoration-accent transition-colors">
                                 シン・りょうた
                             </a>
                         </figcaption>

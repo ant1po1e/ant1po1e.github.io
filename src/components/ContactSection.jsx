@@ -79,7 +79,7 @@ export const ContactSection = () => {
 
     return (
         <section
-            className="w-full flex items-center text-ink px-6 md:px-24 mt-10 md:mt-16"
+            className="w-full flex items-center text-ink px-6 md:px-24 mt-16 md:mt-24"
             aria-label="Contact Section">
             <div className="mx-auto w-full max-w-2xl p-8 rounded-xl shadow-xl bg-paper mb-20 md:mb-0">
                 {/* Heading */}
@@ -203,7 +203,7 @@ export const ContactSection = () => {
                                 type="submit"
                                 disabled={loading}
                                 aria-busy={loading}
-                                className="font-mono text-xs uppercase tracking-wide px-6 py-2.5 rounded-sm bg-ink text-paper hover:bg-accent transition-colors duration-300 disabled:opacity-60 disabled:cursor-not-allowed">
+                                className="font-mono text-xs uppercase tracking-wide px-6 py-2.5 rounded-sm bg-ink text-paper md:hover:bg-accent transition-colors duration-300 disabled:opacity-60 disabled:cursor-not-allowed">
                                 {loading ? (
                                     <i
                                         className="bi bi-arrow-clockwise animate-spin inline-block"

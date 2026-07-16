@@ -29,7 +29,6 @@ export default async function handler(request, response) {
         // Files are converted to WebP client-side before upload; GIFs are
         // sent through untouched to preserve animation.
         return {
-          allowedContentTypes: ["image/webp", "image/gif"],
           addRandomSuffix: false,
           maximumSizeInBytes: 25 * 1024 * 1024, // 25MB
         };

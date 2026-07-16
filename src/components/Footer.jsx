@@ -79,7 +79,7 @@ export const Footer = () => {
                             className="relative group font-medium">
                             <Link
                                 to={link.to}
-                                className="w-16 h-16 flex items-center justify-center text-ink text-2xl rounded-sm transition-colors duration-300 hover:text-accent hover:bg-rule/30"
+                                className="w-16 h-16 flex items-center justify-center text-ink text-2xl rounded-sm transition-colors duration-300 md:hover:text-accent md:hover:bg-rule/30"
                                 aria-label={`Navigate to ${link.label}`}
                                 viewTransition>
                                 <i
@@ -90,7 +90,7 @@ export const Footer = () => {
                             {/* Tooltip */}
                             <span
                                 role="tooltip"
-                                className="absolute -top-12 left-1/2 -translate-x-1/2 font-mono text-md shadow-lg uppercase tracking-wide bg-paper border border-rule text-ink px-3 py-1.5 opacity-0 group-hover:opacity-100 group-hover:-translate-y-1 transition-all duration-300 whitespace-nowrap pointer-events-none">
+                                className="absolute -top-12 left-1/2 -translate-x-1/2 font-mono text-md shadow-lg uppercase tracking-wide bg-paper border border-rule text-ink px-3 py-1.5 opacity-0 md:group-hover:opacity-100 md:group-hover:-translate-y-1 transition-all duration-300 whitespace-nowrap pointer-events-none">
                                 {link.label}
                             </span>
                         </div>

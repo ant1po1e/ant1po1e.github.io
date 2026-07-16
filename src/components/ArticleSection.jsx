@@ -6,7 +6,7 @@ const AccordionItem = ({ title, markdown, isOpen, onClick }) => (
     <div className="border-b border-rule">
         <button
             onClick={onClick}
-            className="w-full flex justify-between items-center gap-4 py-4 text-left text-ink font-sans font-medium transition-colors duration-300 hover:text-accent focus:outline-none">
+            className="w-full flex justify-between items-center gap-4 py-4 text-left text-ink font-sans font-medium transition-colors duration-300 md:hover:text-accent focus:outline-none">
             <span>{title}</span>
             <i
                 className={`bi bi-chevron-${
@@ -26,7 +26,7 @@ const AccordionItem = ({ title, markdown, isOpen, onClick }) => (
                     components={{
                         a: ({ ...props }) => (
                             <a
-                                className="text-accent underline decoration-rule hover:decoration-accent transition-colors"
+                                className="text-accent underline decoration-rule md:hover:decoration-accent transition-colors"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 {...props}
@@ -141,7 +141,7 @@ export const ArticleSection = () => {
 
     return (
         <section
-            className="w-full flex items-center text-ink px-6 md:px-24 mt-10 md:mt-16"
+            className="w-full flex items-center text-ink px-6 md:px-24 mt-16 md:mt-24"
             aria-label="Mapping Articles Section">
             <div className="mx-auto w-full max-w-3xl p-8 rounded-xl shadow-xl bg-paper mb-20 md:mb-0">
                 {/* Heading */}
