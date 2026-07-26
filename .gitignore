@@ -1,29 +1,34 @@
-# dependencies
-/node_modules
+# Dependencies
+node_modules/
 
-# next.js
-/.next/
-/out/
+# Build
+dist/
 
-# production
-/build
+# Vercel
+.vercel/
 
-# misc
-.DS_Store
-*.pem
+# Environment
+.env
+.env.*
+!.env.example
 
-# debug
+# TypeScript
+*.tsbuildinfo
+
+# Logs
+logs/
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
 
-# local env files
-.env*.local
-.env
+# Editors
+.vscode/
+.idea/
 
-# vercel
-.vercel
+# OS
+.DS_Store
+Thumbs.db
 
-# typescript
-*.tsbuildinfo
-next-env.d.ts
+pnpm-workspace.yaml

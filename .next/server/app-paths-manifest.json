@@ -1,0 +1,8 @@
+{
+  "/page": "app/page.js",
+  "/staffing/page": "app/staffing/page.js",
+  "/projects/page": "app/projects/page.js",
+  "/tools/page": "app/tools/page.js",
+  "/how-to-map/page": "app/how-to-map/page.js",
+  "/contact/page": "app/contact/page.js"
+}
