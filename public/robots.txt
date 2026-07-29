@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://www.gulanova.top/sitemap.xml
+Sitemap: https://www.antipole.my.id/sitemap.xml
