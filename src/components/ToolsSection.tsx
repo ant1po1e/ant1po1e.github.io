@@ -4,6 +4,7 @@ const TOOLS = [
     { to: "/tools/snap-calculator", label: "Snap Calculator" },
     { to: "/tools/bbcode-generator", label: "BBCode Text Colorizer" },
     { to: "/tools/skill-card", label: "Skill Calculator" },
+    { to: "https://barline-scope.vercel.app/", label: "Barline Scope" },
 ];
 
 export const ToolsSection = () => {

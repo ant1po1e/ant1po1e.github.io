@@ -60,3 +60,5 @@ pids/
 Thumbs.db
 
 pnpm-workspace.yaml
+
+/.next/
