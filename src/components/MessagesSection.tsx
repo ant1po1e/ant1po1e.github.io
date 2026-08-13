@@ -4,9 +4,6 @@ import { useEffect, useRef, useState } from "react";
 import { toJpeg } from "html-to-image";
 import { fetchMessages, type AnonMessage } from "@/lib/api";
 
-// Export canvas: fixed width, height grows with message length, card
-// centered with generous padding on a branded background — a shareable
-// image rather than a bare screenshot of the on-page card.
 const EXPORT_WIDTH = 1080;
 const EXPORT_SCALE = 1.7;
 
@@ -29,9 +26,6 @@ interface CardFaceProps {
     message: AnonMessage;
     scale?: number;
 }
-
-// Single source of truth for the card's look — reused as-is on the page and
-// scaled up for the exported JPG, so the two visuals never drift apart.
 function CardFace({ message, scale = 1 }: CardFaceProps) {
     const px = (n: number) => `${n * scale}px`;
 
@@ -51,18 +45,8 @@ function CardFace({ message, scale = 1 }: CardFaceProps) {
                 <span
                     className="font-display italic text-ink truncate"
                     style={{ fontSize: px(19) }}>
-                    {message.name}
+                    ASK ME SOMETHING!
                 </span>
-                {message.isAnonymous && (
-                    <span
-                        className="font-mono uppercase tracking-wide rounded-full border border-rule text-muted shrink-0"
-                        style={{
-                            fontSize: px(10),
-                            padding: `${2 * scale}px ${8 * scale}px`,
-                        }}>
-                        Anonymous
-                    </span>
-                )}
             </div>
 
             <p
@@ -131,8 +115,6 @@ function MessageCard({ message }: { message: AnonMessage }) {
                 />
             </button>
 
-            {/* Off-screen export composition: gradient background with the
-                card centered inside, captured instead of the bare card above. */}
             <div
                 aria-hidden="true"
                 style={{ position: "fixed", left: "-99999px", top: 0 }}>
@@ -150,18 +132,6 @@ function MessageCard({ message }: { message: AnonMessage }) {
                         justifyContent: "center",
                         gap: "36px",
                     }}>
-                    <p
-                        style={{
-                            fontFamily: "'JetBrains Mono', monospace",
-                            fontSize: "15px",
-                            letterSpacing: "4px",
-                            textTransform: "uppercase",
-                            color: "rgba(247,244,236,0.55)",
-                            margin: 0,
-                        }}>
-                        Ask me something!
-                    </p>
-
                     <div style={{ width: "100%" }}>
                         <CardFace message={message} scale={EXPORT_SCALE} />
                     </div>
@@ -174,7 +144,7 @@ function MessageCard({ message }: { message: AnonMessage }) {
                             color: "rgba(247,244,236,0.4)",
                             margin: 0,
                         }}>
-                        antipole.my.id/str
+                        antipole
                     </p>
                 </div>
             </div>
@@ -209,8 +179,6 @@ export function MessagesSection() {
         if (!query.trim()) return true;
         const q = query.toLowerCase();
         return (
-            m.name.toLowerCase().includes(q) ||
-            m.email.toLowerCase().includes(q) ||
             m.message.toLowerCase().includes(q)
         );
     });
