@@ -62,3 +62,6 @@ Thumbs.db
 pnpm-workspace.yaml
 
 /.next/
+
+/graphify-out/
+/.claude/

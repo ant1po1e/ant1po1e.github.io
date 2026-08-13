@@ -51,6 +51,19 @@ export function deleteImage(url: string) {
     });
 }
 
+export interface ContactMessage {
+    id: string;
+    name: string;
+    email: string;
+    message: string;
+    timestamp: string | null;
+    isAnonymous: boolean;
+}
+
+export function fetchMessages() {
+    return jsonFetch<{ messages: ContactMessage[] }>("/api/messages");
+}
+
 function reserveSlug(ext: string) {
     return jsonFetch<{ pathname: string }>(
         `/api/slug?ext=${encodeURIComponent(ext)}`,

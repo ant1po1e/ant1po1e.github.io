@@ -12,6 +12,7 @@ import {
     uploadFile,
     type VaultImage,
 } from "@/lib/api";
+import { MessagesPanel } from "./MessagesPanel";
 
 const fieldClass =
     "w-full bg-paper border border-rule text-ink text-sm px-4 py-2 rounded-sm focus:outline-none focus:ring-1 focus:ring-accent focus:border-accent placeholder:text-muted transition-colors duration-300";
@@ -553,9 +554,11 @@ function ImageLightbox({
 }
 
 type AuthState = "checking" | "out" | "in";
+type VaultTab = "files" | "messages";
 
 export const VaultSection = () => {
     const [authState, setAuthState] = useState<AuthState>("checking");
+    const [activeTab, setActiveTab] = useState<VaultTab>("files");
     const [images, setImages] = useState<VaultImage[]>([]);
     const [listOpen, setListOpen] = useState(false);
     const [selected, setSelected] = useState<VaultImage | null>(null);
@@ -632,7 +635,7 @@ export const VaultSection = () => {
                     <h2 className="font-display italic font-medium text-ink text-2xl md:text-4xl">
                         Vault
                     </h2>
-                    {authState === "in" && (
+                    {authState === "in" && activeTab === "files" && (
                         <span className="font-mono text-muted text-sm md:text-base">
                             {images.length}{" "}
                             {images.length === 1 ? "file" : "files"}
@@ -658,29 +661,58 @@ export const VaultSection = () => {
 
                     {authState === "in" && (
                         <>
-                            <div className="flex justify-end mb-4">
+                            <div className="flex items-center justify-between mb-4 gap-3">
+                                <div className="flex items-center gap-1 border border-rule rounded-sm p-1">
+                                    <button
+                                        onClick={() => setActiveTab("files")}
+                                        className={`font-mono text-xs uppercase tracking-wide px-3 py-1.5 rounded-sm transition-colors duration-300 ${
+                                            activeTab === "files"
+                                                ? "bg-ink text-paper"
+                                                : "text-muted md:hover:text-ink"
+                                        }`}>
+                                        Files
+                                    </button>
+                                    <button
+                                        onClick={() =>
+                                            setActiveTab("messages")
+                                        }
+                                        className={`font-mono text-xs uppercase tracking-wide px-3 py-1.5 rounded-sm transition-colors duration-300 ${
+                                            activeTab === "messages"
+                                                ? "bg-ink text-paper"
+                                                : "text-muted md:hover:text-ink"
+                                        }`}>
+                                        Messages
+                                    </button>
+                                </div>
+
                                 <button
                                     onClick={handleLogout}
-                                    className="font-mono text-xs uppercase tracking-wide text-muted md:hover:text-accent transition-colors duration-300 flex items-center gap-1">
+                                    className="font-mono text-xs uppercase tracking-wide text-muted md:hover:text-accent transition-colors duration-300 flex items-center gap-1 shrink-0">
                                     <i className="bi bi-box-arrow-right" /> Log
                                     out
                                 </button>
                             </div>
 
-                            <UploadZone onUploaded={handleUploaded} />
+                            {activeTab === "files" ? (
+                                <>
+                                    <UploadZone onUploaded={handleUploaded} />
 
-                            {error && (
-                                <p className="font-mono text-xs text-red-600 mb-4">
-                                    {error}
-                                </p>
+                                    {error && (
+                                        <p className="font-mono text-xs text-red-600 mb-4">
+                                            {error}
+                                        </p>
+                                    )}
+
+                                    <button
+                                        onClick={() => setListOpen(true)}
+                                        className="w-full flex items-center justify-center gap-2 bg-paper md:hover:border-accent md:hover:text-accent border border-rule rounded-sm py-3 font-mono text-xs uppercase tracking-wide text-ink transition-colors duration-300">
+                                        <i className="bi bi-collection" />
+                                        View files ({images.length})
+                                    </button>
+                                </>
+                            ) : (
+                                <MessagesPanel />
                             )}
-
-                            <button
-                                onClick={() => setListOpen(true)}
-                                className="w-full flex items-center justify-center gap-2 bg-paper md:hover:border-accent md:hover:text-accent border border-rule rounded-sm py-3 font-mono text-xs uppercase tracking-wide text-ink transition-colors duration-300">
-                                <i className="bi bi-collection" />
-                                View files ({images.length})
-                            </button>
                         </>
                     )}
                 </div>
