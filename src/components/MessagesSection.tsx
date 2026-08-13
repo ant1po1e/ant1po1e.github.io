@@ -1,7 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { toJpeg } from "html-to-image";
 import { fetchMessages, type AnonMessage } from "@/lib/api";
+
+const PAPER_BG = "#f7f4ec";
 
 function formatDate(iso: string | null) {
     if (!iso) return "Unknown date";
@@ -19,20 +22,36 @@ function formatDate(iso: string | null) {
 }
 
 function MessageCard({ message }: { message: AnonMessage }) {
-    const [copied, setCopied] = useState(false);
+    const cardRef = useRef<HTMLDivElement>(null);
+    const actionsRef = useRef<HTMLButtonElement>(null);
+    const [downloading, setDownloading] = useState(false);
 
-    async function copyMessage() {
+    async function downloadCard() {
+        if (!cardRef.current || downloading) return;
+        setDownloading(true);
         try {
-            await navigator.clipboard.writeText(message.message);
-            setCopied(true);
-            setTimeout(() => setCopied(false), 1200);
-        } catch {
-            // ignore
+            const dataUrl = await toJpeg(cardRef.current, {
+                cacheBust: true,
+                pixelRatio: 2,
+                backgroundColor: PAPER_BG,
+                // exclude the download button itself from the exported image
+                filter: (node) => node !== actionsRef.current,
+            });
+            const link = document.createElement("a");
+            link.download = `message-${message.id}.jpg`;
+            link.href = dataUrl;
+            link.click();
+        } catch (err) {
+            console.error("Failed to export card", err);
+        } finally {
+            setDownloading(false);
         }
     }
 
     return (
-        <div className="border border-rule rounded-sm bg-paper p-4 flex flex-col gap-3">
+        <div
+            ref={cardRef}
+            className="border border-rule rounded-sm bg-paper p-4 flex flex-col gap-3">
             <div className="flex items-start justify-between gap-3">
                 <div className="min-w-0">
                     <p className="font-medium text-ink truncate flex items-center gap-2">
@@ -43,19 +62,18 @@ function MessageCard({ message }: { message: AnonMessage }) {
                             </span>
                         )}
                     </p>
-                    {!message.isAnonymous && message.email && (
-                        <p className="font-mono text-xs text-muted truncate">
-                            {message.email}
-                        </p>
-                    )}
                 </div>
                 <button
-                    onClick={copyMessage}
-                    title="Copy message"
-                    className={`shrink-0 transition-colors duration-300 md:hover:text-accent ${
-                        copied ? "text-accent" : "text-muted"
+                    ref={actionsRef}
+                    onClick={downloadCard}
+                    disabled={downloading}
+                    title="Download as JPG"
+                    className={`shrink-0 transition-colors duration-300 md:hover:text-accent disabled:opacity-50 ${
+                        downloading ? "text-accent" : "text-muted"
                     }`}>
-                    <i className={`bi ${copied ? "bi-check2" : "bi-clipboard"}`} />
+                    <i
+                        className={`bi ${downloading ? "bi-arrow-repeat animate-spin" : "bi-download"}`}
+                    />
                 </button>
             </div>
 
@@ -145,7 +163,7 @@ export function MessagesSection() {
                     </p>
                 </div>
             ) : (
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-[55vh] overflow-y-auto pr-1">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-[42vh] overflow-y-auto pr-1">
                     {filtered.map((message) => (
                         <MessageCard key={message.id} message={message} />
                     ))}
