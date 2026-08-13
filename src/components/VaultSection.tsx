@@ -12,7 +12,7 @@ import {
     uploadFile,
     type VaultImage,
 } from "@/lib/api";
-import { MessagesPanel } from "./MessagesPanel";
+import { MessagesSection } from "./MessagesSection";
 
 const fieldClass =
     "w-full bg-paper border border-rule text-ink text-sm px-4 py-2 rounded-sm focus:outline-none focus:ring-1 focus:ring-accent focus:border-accent placeholder:text-muted transition-colors duration-300";
@@ -711,7 +711,7 @@ export const VaultSection = () => {
                                     </button>
                                 </>
                             ) : (
-                                <MessagesPanel />
+                                <MessagesSection />
                             )}
                         </>
                     )}

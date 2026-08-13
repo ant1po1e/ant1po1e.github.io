@@ -51,7 +51,7 @@ export function deleteImage(url: string) {
     });
 }
 
-export interface ContactMessage {
+export interface AnonMessage {
     id: string;
     name: string;
     email: string;
@@ -61,7 +61,7 @@ export interface ContactMessage {
 }
 
 export function fetchMessages() {
-    return jsonFetch<{ messages: ContactMessage[] }>("/api/messages");
+    return jsonFetch<{ messages: AnonMessage[] }>("/api/messages");
 }
 
 function reserveSlug(ext: string) {

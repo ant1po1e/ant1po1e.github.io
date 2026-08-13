@@ -1,164 +1,156 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { fetchMessages, type AnonMessage } from "@/lib/api";
 
-// Column names we treat specially so cards read naturally regardless of how
-// the connected spreadsheet's headers are capitalized/phrased.
-const TIMESTAMP_KEYS = ["timestamp", "date", "waktu", "tanggal", "time"];
-const MESSAGE_KEYS = ["message", "pesan", "isi", "content", "text"];
-
-function normalizeList(
-    data: AnonMessage[] | { messages?: AnonMessage[] },
-): AnonMessage[] {
-    if (Array.isArray(data)) return data;
-    return data.messages ?? [];
-}
-
-function pickKey(row: AnonMessage, candidates: string[]) {
-    const keys = Object.keys(row);
-    for (const candidate of candidates) {
-        const found = keys.find((k) => k.toLowerCase() === candidate);
-        if (found) return found;
+function formatDate(iso: string | null) {
+    if (!iso) return "Unknown date";
+    try {
+        return new Date(iso).toLocaleString(undefined, {
+            day: "numeric",
+            month: "short",
+            year: "numeric",
+            hour: "2-digit",
+            minute: "2-digit",
+        });
+    } catch {
+        return iso;
     }
-    return null;
 }
 
-function formatTimestamp(value: string) {
-    const date = new Date(value);
-    if (Number.isNaN(date.getTime())) return value;
-    return date.toLocaleString(undefined, {
-        day: "numeric",
-        month: "short",
-        year: "numeric",
-        hour: "2-digit",
-        minute: "2-digit",
-    });
-}
+function MessageCard({ message }: { message: AnonMessage }) {
+    const [copied, setCopied] = useState(false);
 
-interface MessageCardProps {
-    row: AnonMessage;
-}
-
-function MessageCard({ row }: MessageCardProps) {
-    const timestampKey = pickKey(row, TIMESTAMP_KEYS);
-    const messageKey = pickKey(row, MESSAGE_KEYS);
-
-    const mainKey = messageKey ?? Object.keys(row)[0] ?? null;
-    const mainValue = mainKey ? row[mainKey] : "";
-
-    const otherEntries = Object.entries(row).filter(
-        ([key]) => key !== timestampKey && key !== mainKey,
-    );
+    async function copyMessage() {
+        try {
+            await navigator.clipboard.writeText(message.message);
+            setCopied(true);
+            setTimeout(() => setCopied(false), 1200);
+        } catch {
+            // ignore
+        }
+    }
 
     return (
-        <div className="border border-rule rounded-sm bg-paper p-4 flex flex-col gap-2 shadow-sm transition-colors duration-300 md:hover:border-accent">
-            {mainValue && (
-                <p className="font-sans text-sm text-ink/90 whitespace-pre-wrap break-words">
-                    {mainValue}
-                </p>
-            )}
-
-            {otherEntries.length > 0 && (
-                <div className="flex flex-wrap gap-x-4 gap-y-1 mt-1">
-                    {otherEntries.map(([key, value]) => (
-                        <span
-                            key={key}
-                            className="font-mono text-[11px] text-muted">
-                            <span className="uppercase tracking-wide">
-                                {key}
+        <div className="border border-rule rounded-sm bg-paper p-4 flex flex-col gap-3">
+            <div className="flex items-start justify-between gap-3">
+                <div className="min-w-0">
+                    <p className="font-medium text-ink truncate flex items-center gap-2">
+                        {message.name}
+                        {message.isAnonymous && (
+                            <span className="font-mono text-[10px] uppercase tracking-wide px-1.5 py-0.5 rounded-sm border border-rule text-muted">
+                                Anonymous
                             </span>
-                            : <span className="text-ink/70">{value}</span>
-                        </span>
-                    ))}
+                        )}
+                    </p>
+                    {!message.isAnonymous && message.email && (
+                        <p className="font-mono text-xs text-muted truncate">
+                            {message.email}
+                        </p>
+                    )}
                 </div>
-            )}
+                <button
+                    onClick={copyMessage}
+                    title="Copy message"
+                    className={`shrink-0 transition-colors duration-300 md:hover:text-accent ${
+                        copied ? "text-accent" : "text-muted"
+                    }`}>
+                    <i className={`bi ${copied ? "bi-check2" : "bi-clipboard"}`} />
+                </button>
+            </div>
 
-            {timestampKey && (
-                <span className="mt-1 font-mono text-[10px] uppercase tracking-widest text-muted self-end">
-                    {formatTimestamp(row[timestampKey])}
-                </span>
-            )}
+            <p className="text-sm text-ink/80 whitespace-pre-wrap break-words">
+                {message.message || (
+                    <span className="text-muted italic">
+                        (no message content)
+                    </span>
+                )}
+            </p>
+
+            <p className="font-mono text-[11px] text-muted mt-auto">
+                {formatDate(message.timestamp)}
+            </p>
         </div>
     );
 }
 
-export const MessagesSection = () => {
-    const [rows, setRows] = useState<AnonMessage[]>([]);
+export function MessagesSection() {
+    const [messages, setMessages] = useState<AnonMessage[]>([]);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState<string | null>(null);
+    const [error, setError] = useState("");
+    const [query, setQuery] = useState("");
 
-    const load = async () => {
+    async function load() {
+        setLoading(true);
+        setError("");
         try {
-            setLoading(true);
-            setError(null);
-            const data = await fetchMessages();
-            setRows(normalizeList(data));
+            const { messages } = await fetchMessages();
+            setMessages(messages);
         } catch (err) {
             setError(err instanceof Error ? err.message : String(err));
         } finally {
             setLoading(false);
         }
-    };
+    }
 
     useEffect(() => {
         load();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    // Newest first, assuming rows come out of the sheet in append order.
-    const sorted = useMemo(() => [...rows].reverse(), [rows]);
-
-    if (loading) {
+    const filtered = messages.filter((m) => {
+        if (!query.trim()) return true;
+        const q = query.toLowerCase();
         return (
-            <div className="grid gap-3 grid-cols-1 sm:grid-cols-2">
-                {[...Array(4)].map((_, i) => (
-                    <div
-                        key={i}
-                        className="h-24 rounded-sm border border-rule bg-rule/20 animate-pulse"
-                    />
-                ))}
-            </div>
+            m.name.toLowerCase().includes(q) ||
+            m.email.toLowerCase().includes(q) ||
+            m.message.toLowerCase().includes(q)
         );
-    }
-
-    if (error) {
-        return (
-            <div className="text-center py-10 space-y-3">
-                <p className="font-mono text-xs text-red-600">{error}</p>
-                <button
-                    onClick={load}
-                    className="font-mono text-xs uppercase tracking-wide px-4 py-2 rounded-sm bg-ink text-paper md:hover:bg-accent transition-colors duration-300">
-                    Retry
-                </button>
-            </div>
-        );
-    }
-
-    if (sorted.length === 0) {
-        return (
-            <div className="text-center py-10 text-muted">
-                <i className="bi bi-chat-square-text text-2xl" />
-                <p className="mt-2 text-sm font-mono">No messages yet</p>
-            </div>
-        );
-    }
+    });
 
     return (
         <div>
-            <div className="flex justify-end mb-3">
+            <div className="flex items-center gap-2 mb-4">
+                <input
+                    type="text"
+                    value={query}
+                    onChange={(e) => setQuery(e.target.value)}
+                    placeholder="Search messages..."
+                    className="flex-1 bg-paper border border-rule text-ink text-sm px-4 py-2 rounded-sm focus:outline-none focus:ring-1 focus:ring-accent focus:border-accent placeholder:text-muted transition-colors duration-300"
+                />
                 <button
                     onClick={load}
                     title="Refresh"
-                    className="font-mono text-xs uppercase tracking-wide text-muted md:hover:text-accent transition-colors duration-300 flex items-center gap-1">
-                    <i className="bi bi-arrow-clockwise" /> Refresh
+                    className="shrink-0 w-9 h-9 flex items-center justify-center rounded-sm border border-rule text-muted md:hover:text-accent md:hover:border-accent transition-colors duration-300">
+                    <i
+                        className={`bi bi-arrow-clockwise ${loading ? "animate-spin" : ""}`}
+                    />
                 </button>
             </div>
-            <div className="grid gap-3 grid-cols-1 sm:grid-cols-2 max-h-[50vh] overflow-y-auto pr-1">
-                {sorted.map((row, idx) => (
-                    <MessageCard key={idx} row={row} />
-                ))}
-            </div>
+
+            {error && (
+                <p className="font-mono text-xs text-red-600 mb-4">{error}</p>
+            )}
+
+            {loading ? (
+                <div className="flex justify-center py-16">
+                    <i className="bi bi-arrow-repeat animate-spin text-2xl text-muted" />
+                </div>
+            ) : filtered.length === 0 ? (
+                <div className="text-center py-16 text-muted">
+                    <i className="bi bi-chat-square-text text-3xl" />
+                    <p className="mt-2 text-sm font-mono">
+                        {messages.length === 0
+                            ? "No messages yet"
+                            : "No messages match your search"}
+                    </p>
+                </div>
+            ) : (
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-[55vh] overflow-y-auto pr-1">
+                    {filtered.map((message) => (
+                        <MessageCard key={message.id} message={message} />
+                    ))}
+                </div>
+            )}
         </div>
     );
-};
+}
