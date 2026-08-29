@@ -1,250 +1,112 @@
-const transformByOffset = (
-    text: string,
-    upperStart: number,
-    lowerStart: number,
-    digitStart: number | null = null,
-) => {
-    return [...text]
-        .map((char) => {
-            const code = char.charCodeAt(0);
-
-            // A-Z
-            if (code >= 65 && code <= 90) {
-                return String.fromCodePoint(upperStart + (code - 65));
-            }
-
-            // a-z
-            if (code >= 97 && code <= 122) {
-                return String.fromCodePoint(lowerStart + (code - 97));
-            }
-
-            // 0-9
-            if (digitStart !== null && code >= 48 && code <= 57) {
-                return String.fromCodePoint(digitStart + (code - 48));
-            }
-
-            return char;
-        })
-        .join("");
-};
-
-/* =========================
-   BOLD
-========================= */
-
-export const toBold = (text: string) =>
-    transformByOffset(text, 0x1d400, 0x1d41a, 0x1d7ce);
-
-/* =========================
-   ITALIC
-========================= */
-
-export const toItalic = (text: string) =>
-    transformByOffset(text, 0x1d434, 0x1d44e);
-
-/* =========================
-   BOLD ITALIC
-========================= */
-
-export const toBoldItalic = (text: string) =>
-    transformByOffset(text, 0x1d468, 0x1d482);
-
-/* =========================
-   FULL WIDTH
-========================= */
-
-export const toFullWidth = (text: string) => {
-    return [...text]
-        .map((char) => {
-            if (char === " ") return "　";
-
-            const code = char.charCodeAt(0);
-
-            if (code >= 33 && code <= 126) {
-                return String.fromCharCode(code + 65248);
-            }
-
-            return char;
-        })
-        .join("");
-};
-
-/* =========================
-   SMALL CAPS
-========================= */
-
-const SMALL_CAPS_MAP: Record<string, string> = {
-    a: "ᴀ",
-    b: "ʙ",
-    c: "ᴄ",
-    d: "ᴅ",
-    e: "ᴇ",
-    f: "ꜰ",
-    g: "ɢ",
-    h: "ʜ",
-    i: "ɪ",
-    j: "ᴊ",
-    k: "ᴋ",
-    l: "ʟ",
-    m: "ᴍ",
-    n: "ɴ",
-    o: "ᴏ",
-    p: "ᴘ",
-    q: "ǫ",
-    r: "ʀ",
-    s: "s",
-    t: "ᴛ",
-    u: "ᴜ",
-    v: "ᴠ",
-    w: "ᴡ",
-    x: "x",
-    y: "ʏ",
-    z: "ᴢ",
-};
-
-export const toSmallCaps = (text: string) =>
-    [...text]
-        .map((char) => {
-            const lower = char.toLowerCase();
-            return SMALL_CAPS_MAP[lower] || char;
-        })
-        .join("");
-
-/* =========================
-   CIRCLED
-========================= */
-
-export const toCircled = (text: string) => {
-    return [...text]
-        .map((char) => {
-            const code = char.charCodeAt(0);
-
-            if (code >= 65 && code <= 90) {
-                return String.fromCodePoint(0x24b6 + (code - 65));
-            }
-
-            if (code >= 97 && code <= 122) {
-                return String.fromCodePoint(0x24d0 + (code - 97));
-            }
-
-            return char;
-        })
-        .join("");
-};
-
-/* =========================
-   SCRIPT
-========================= */
-
-const SCRIPT_MAP: Record<string, string> = {
-    A: "𝒜",
-    B: "𝐵",
-    C: "𝒞",
-    D: "𝒟",
-    E: "𝐸",
-    F: "𝐹",
-    G: "𝒢",
-    H: "𝐻",
-    I: "𝐼",
-    J: "𝒥",
-    K: "𝒦",
-    L: "𝐿",
-    M: "𝑀",
-    N: "𝒩",
-    O: "𝒪",
-    P: "𝒫",
-    Q: "𝒬",
-    R: "𝑅",
-    S: "𝒮",
-    T: "𝒯",
-    U: "𝒰",
-    V: "𝒱",
-    W: "𝒲",
-    X: "𝒳",
-    Y: "𝒴",
-    Z: "𝒵",
-
-    a: "𝒶",
-    b: "𝒷",
-    c: "𝒸",
-    d: "𝒹",
-    e: "𝑒",
-    f: "𝒻",
-    g: "𝑔",
-    h: "𝒽",
-    i: "𝒾",
-    j: "𝒿",
-    k: "𝓀",
-    l: "𝓁",
-    m: "𝓂",
-    n: "𝓃",
-    o: "𝑜",
-    p: "𝓅",
-    q: "𝓆",
-    r: "𝓇",
-    s: "𝓈",
-    t: "𝓉",
-    u: "𝓊",
-    v: "𝓋",
-    w: "𝓌",
-    x: "𝓍",
-    y: "𝓎",
-    z: "𝓏",
-};
-
-export const toScript = (text: string) =>
-    [...text].map((char) => SCRIPT_MAP[char] || char).join("");
-
-/* =========================
-   FRAKTUR
-========================= */
-
-export const toFraktur = (text: string) =>
-    transformByOffset(text, 0x1d56c, 0x1d586);
-
-/* =========================
-   MAIN API
-========================= */
-
 export type UnicodeFontKey =
-    | "bold"
-    | "italic"
-    | "boldItalic"
-    | "script"
-    | "fraktur"
-    | "fullWidth"
-    | "smallCaps"
-    | "circled"
-    | "None"
-    | string;
+  | 'None'
+  | 'bold'
+  | 'italic'
+  | 'boldItalic'
+  | 'script'
+  | 'fraktur'
+  | 'fullWidth'
+  | 'smallCaps'
+  | 'circled';
 
-export const applyUnicodeFont = (text: string, font: UnicodeFontKey) => {
-    switch (font) {
-        case "bold":
-            return toBold(text);
+const UPPER = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+const LOWER = 'abcdefghijklmnopqrstuvwxyz';
+const DIGITS = '0123456789';
 
-        case "italic":
-            return toItalic(text);
+// Builds a map from the Unicode "Mathematical Alphanumeric Symbols" block,
+// which runs in contiguous A-Z / a-z / 0-9 code point ranges for most styles.
+function buildOffsetMap(startUpper: number, startLower: number, startDigit: number | null): Record<string, string> {
+  const map: Record<string, string> = {};
+  UPPER.split('').forEach((c, i) => (map[c] = String.fromCodePoint(startUpper + i)));
+  LOWER.split('').forEach((c, i) => (map[c] = String.fromCodePoint(startLower + i)));
+  if (startDigit !== null) {
+    DIGITS.split('').forEach((c, i) => (map[c] = String.fromCodePoint(startDigit + i)));
+  }
+  return map;
+}
 
-        case "boldItalic":
-            return toBoldItalic(text);
+const BOLD_MAP = buildOffsetMap(0x1d400, 0x1d41a, 0x1d7ce);
 
-        case "script":
-            return toScript(text);
+// Mathematical Italic has one legacy exception: italic "h" reuses the
+// pre-existing Planck constant symbol instead of a dedicated code point.
+const ITALIC_MAP: Record<string, string> = { ...buildOffsetMap(0x1d434, 0x1d44e, null), h: '\u210e' };
 
-        case "fraktur":
-            return toFraktur(text);
+const BOLD_ITALIC_MAP = buildOffsetMap(0x1d468, 0x1d482, null);
 
-        case "fullWidth":
-            return toFullWidth(text);
+const FULLWIDTH_MAP = buildOffsetMap(0xff21, 0xff41, 0xff10);
 
-        case "smallCaps":
-            return toSmallCaps(text);
-
-        case "circled":
-            return toCircled(text);
-
-        default:
-            return text;
-    }
+// Circled Latin letters + circled digits (digits are not contiguous with letters).
+const CIRCLED_MAP: Record<string, string> = {
+  ...buildOffsetMap(0x24b6, 0x24d0, null),
+  '0': '\u24ea',
+  '1': '\u2460',
+  '2': '\u2461',
+  '3': '\u2462',
+  '4': '\u2463',
+  '5': '\u2464',
+  '6': '\u2465',
+  '7': '\u2466',
+  '8': '\u2467',
+  '9': '\u2468',
 };
+
+// Mathematical Script is missing several code points that instead reuse
+// older "Letterlike Symbols" characters (a known quirk of this Unicode block).
+const SCRIPT_EXCEPTIONS: Record<string, string> = {
+  E: '\u2130',
+  F: '\u2131',
+  H: '\u210b',
+  I: '\u2110',
+  L: '\u2112',
+  M: '\u2133',
+  R: '\u211b',
+  e: '\u212f',
+  g: '\u210a',
+  o: '\u2134',
+};
+const SCRIPT_MAP: Record<string, string> = { ...buildOffsetMap(0x1d49c, 0x1d4b6, null), ...SCRIPT_EXCEPTIONS };
+
+// Mathematical Fraktur has the same kind of legacy exceptions.
+const FRAKTUR_EXCEPTIONS: Record<string, string> = {
+  C: '\u212d',
+  H: '\u210c',
+  I: '\u2111',
+  R: '\u211c',
+  Z: '\u2128',
+};
+const FRAKTUR_MAP: Record<string, string> = { ...buildOffsetMap(0x1d504, 0x1d51e, null), ...FRAKTUR_EXCEPTIONS };
+
+// Small Caps isn't a contiguous Unicode block — letters are scattered across
+// Latin Extended / IPA Extensions, and a few (q, s, x) have no dedicated
+// small-caps glyph, so they fall back to their normal lowercase form.
+const SMALL_CAPS_MAP: Record<string, string> = {
+  a: '\u1d00', b: '\u0299', c: '\u1d04', d: '\u1d05', e: '\u1d07', f: '\ua730',
+  g: '\u0262', h: '\u029c', i: '\u026a', j: '\u1d0a', k: '\u1d0b', l: '\u029f',
+  m: '\u1d0d', n: '\u0274', o: '\u1d0f', p: '\u1d18', q: 'q', r: '\u0280',
+  s: 's', t: '\u1d1b', u: '\u1d1c', v: '\u1d20', w: '\u1d21', x: 'x',
+  y: '\u028f', z: '\u1d22',
+};
+
+const FONT_MAPS: Partial<Record<UnicodeFontKey, Record<string, string>>> = {
+  bold: BOLD_MAP,
+  italic: ITALIC_MAP,
+  boldItalic: BOLD_ITALIC_MAP,
+  script: SCRIPT_MAP,
+  fraktur: FRAKTUR_MAP,
+  fullWidth: FULLWIDTH_MAP,
+  smallCaps: SMALL_CAPS_MAP,
+  circled: CIRCLED_MAP,
+};
+
+export function toUnicodeFont(text: string, font: UnicodeFontKey): string {
+  if (font === 'None') return text;
+  const map = FONT_MAPS[font];
+  if (!map) return text;
+
+  return Array.from(text)
+    .map(ch => {
+      if (font === 'fullWidth' && ch === ' ') return '\u3000'; // ideographic space
+      return map[ch] ?? ch;
+    })
+    .join('');
+}

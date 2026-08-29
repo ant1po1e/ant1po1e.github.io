@@ -1,0 +1,81 @@
+import { StaffingRecord } from "../types";
+
+export const STAFFING_RECORDS: StaffingRecord[] = [
+    {
+        id: "datenshi-pw-2026",
+        link: "https://www.datenshi.pw/",
+        date: "2026-Present",
+        title: "Datenshi.pw",
+        roles: ["Beatmap Nominator"],
+    },
+    {
+        id: "osu-mania-4k-world-cup-2026",
+        link: "https://osu.ppy.sh/wiki/en/Tournaments/MWC/2026_4K",
+        date: "2026-Present",
+        title: "osu!mania 4K World Cup 2026",
+        roles: ["Mapper"],
+    },
+    {
+        id: "fins-all-mode-event",
+        link: "https://osu.ppy.sh/community/forums/topics/2192013",
+        date: "2026",
+        title: "Fin's All Mode Event",
+        roles: ["Advisor", "Mappooler", "Mapper"],
+    },
+    {
+        id: "gulano-cup-5",
+        link: "https://osu.ppy.sh/wiki/en/Tournaments/GNV/5",
+        date: "2024-2025",
+        title: "Gulano Cup #5",
+        roles: ["Organizer", "Mapper", "Commentator", "Programmer"],
+    },
+    {
+        id: "gulano-cup-4",
+        link: "https://osu.ppy.sh/community/forums/topics/1861503?n=1",
+        date: "2024",
+        title: "Gulano Cup #4",
+        roles: ["Mappooler", "Mapper", "Commentator", "Programmer"],
+    },
+    {
+        id: "quaver-official-4k-tournament-2024",
+        link: "https://tournaments.quavergame.com/tournaments/quaver-official-4k-tournament-2024",
+        date: "2024",
+        title: "Quaver Official 4K Tournament 2024",
+        roles: ["Mapper"],
+    },
+    {
+        id: "quaver-official-4k-tournament-2023",
+        link: "https://tournaments.quavergame.com/tournaments/quaver-official-4k-tournament-2023",
+        date: "2023",
+        title: "Quaver Official 4K Tournament 2023",
+        roles: ["Mapper"],
+    },
+    {
+        id: "akatsuki-gg",
+        link: "https://akatsuki.gg/u/63795?mode=3&rx=0",
+        date: "2023",
+        title: "Akatsuki.gg",
+        roles: ["Beatmap Nominator"],
+    },
+    {
+        id: "osu-mania-4k-indonesia-cup-2022",
+        link: "https://osu.ppy.sh/wiki/en/Tournaments/OMIC/2022_4K",
+        date: "2022",
+        title: "osu!mania 4K Indonesia Cup 2022",
+        roles: ["Organizer", "Mappooler", "Mapper", "Commentator"],
+    },
+    {
+        id: "combro-cup",
+        link: "https://osu.ppy.sh/community/forums/topics/1645546?n=1",
+        date: "2022",
+        title: "Combro Cup",
+        roles: ["Mapper"],
+    },
+    {
+        id: "datenshi-pw-2021",
+        link: "https://www.datenshi.pw/",
+        date: "2021-2022",
+        title: "Datenshi.pw",
+        roles: ["Beatmap Nominator"],
+    },
+];
