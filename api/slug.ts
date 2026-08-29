@@ -1,8 +1,8 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { head } from '@vercel/blob';
 import crypto from 'node:crypto';
-import { verifyAuth } from './lib/auth';
-import { cookieReader } from './lib/cookies';
+import { verifyAuth } from './_lib/auth';
+import { cookieReader } from './_lib/cookies';
 
 const SLUG_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 const MAX_ATTEMPTS = 6;

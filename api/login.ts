@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { checkPassword, buildSessionCookieValue, sessionCookieAttributes, COOKIE_NAME } from './lib/auth';
-import { serializeCookie } from './lib/cookies';
+import { checkPassword, buildSessionCookieValue, sessionCookieAttributes, COOKIE_NAME } from './_lib/auth';
+import { serializeCookie } from './_lib/cookies';
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== 'POST') {

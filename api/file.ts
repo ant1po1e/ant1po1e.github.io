@@ -1,8 +1,8 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { get } from '@vercel/blob';
 import { Readable } from 'node:stream';
-import { verifyAuth } from './lib/auth';
-import { cookieReader } from './lib/cookies';
+import { verifyAuth } from './_lib/auth';
+import { cookieReader } from './_lib/cookies';
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (!verifyAuth(cookieReader(req))) {
