@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { get } from '@vercel/blob';
+import { head } from '@vercel/blob';
 import { Readable } from 'node:stream';
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
@@ -9,13 +9,16 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   try {
-    const result = await get(pathname, { access: 'public' });
-    if (!result) return res.status(404).json({ error: 'File not found.' });
+    const meta = await head(pathname);
+    const upstream = await fetch(meta.url);
+    if (!upstream.ok || !upstream.body) {
+      return res.status(404).json({ error: 'File not found.' });
+    }
 
-    res.setHeader('Content-Type', result.blob.contentType || 'application/octet-stream');
+    res.setHeader('Content-Type', meta.contentType || 'application/octet-stream');
     res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
     res.status(200);
-    Readable.fromWeb(result.stream as never).pipe(res);
+    Readable.fromWeb(upstream.body as never).pipe(res);
   } catch {
     return res.status(404).json({ error: 'File not found.' });
   }
