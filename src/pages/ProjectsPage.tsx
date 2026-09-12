@@ -2,6 +2,8 @@ import React, { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence, PanInfo } from "motion/react";
 import { Link } from "react-router-dom";
 import { PROJECTS_LIST } from "../data/projectsData";
+import { useIsMobile } from "../hooks/useIsMobile";
+import { withMotion } from "../lib/motionUtils";
 import {
     ArrowLeft,
     ArrowRight,
@@ -21,6 +23,7 @@ const ICON_MAP: Record<string, React.ElementType> = {
 };
 
 export const ProjectsPage: React.FC = () => {
+    const isMobile = useIsMobile();
     const [activeIndex, setActiveIndex] = useState<number>(0);
     const [direction, setDirection] = useState<number>(1);
 
@@ -135,10 +138,10 @@ export const ProjectsPage: React.FC = () => {
                                     initial="enter"
                                     animate="center"
                                     exit="exit"
-                                    transition={{
+                                    transition={withMotion(isMobile, {
                                         duration: 0.35,
                                         ease: [0.22, 1, 0.36, 1],
-                                    }}
+                                    })}
                                     drag="x"
                                     dragConstraints={{ left: 0, right: 0 }}
                                     dragElastic={0.15}

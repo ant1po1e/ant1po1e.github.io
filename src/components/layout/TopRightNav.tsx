@@ -2,9 +2,12 @@ import React, { useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X } from 'lucide-react';
+import { useIsMobile } from '../../hooks/useIsMobile';
+import { withMotion } from '../../lib/motionUtils';
 export const TopRightNav: React.FC = () => {
   const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const isMobile = useIsMobile();
 
   const navItems = [
       { label: "HOME", path: "/"},
@@ -45,7 +48,7 @@ export const TopRightNav: React.FC = () => {
                 <motion.div
                   layoutId="activeNavIndicator"
                   className="absolute bottom-0 left-2 right-2 h-[1.5px] bg-white rounded-full"
-                  transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                  transition={withMotion(isMobile, { type: 'spring', stiffness: 400, damping: 30 })}
                 />
               )}
             </NavLink>
@@ -70,7 +73,7 @@ export const TopRightNav: React.FC = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
+            transition={withMotion(isMobile, { duration: 0.3 })}
             className="fixed inset-x-4 top-20 z-50 p-6 rounded-lg bg-[#0A0A0A]/95 border border-white/15 backdrop-blur-xl shadow-2xl lg:hidden flex flex-col gap-4"
           >
             <div className="text-[12px] font-mono tracking-widest text-white/40 uppercase mb-2">

@@ -7,8 +7,11 @@ import {
     Gamepad2,
 } from "lucide-react";
 import { PROFILE_DATA } from "../../data/profileData";
+import { useIsMobile } from "../../hooks/useIsMobile";
+import { withMotion } from "../../lib/motionUtils";
 
 export const TopLeftSocials: React.FC = () => {
+    const isMobile = useIsMobile();
     const socialLinks = [
         {
             id: "github",
@@ -52,7 +55,7 @@ export const TopLeftSocials: React.FC = () => {
                 rel="noopener noreferrer"
                 initial={{ opacity: 0, x: -15 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
+                transition={withMotion(isMobile, { duration: 0.5 })}
 
                 className="flex items-center gap-2 group py-1 pr-2">
                 <div className="w-10 h-10 rounded-sm border border-white/20 bg-white/5 flex items-center justify-center text-white/80 group-hover:border-white/80 group-hover:text-white transition-all duration-300">
@@ -86,7 +89,7 @@ export const TopLeftSocials: React.FC = () => {
                         title={link.name}
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.3 }}
+                        transition={withMotion(isMobile, { duration: 0.3 })}
 
                         className="p-1.5 rounded-full text-white/40 hover:text-white hover:bg-white/10 transition-all duration-300">
                         {link.icon}

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
-import { AnimatePresence, motion } from 'motion/react';
+import { AnimatePresence, motion, MotionConfig } from 'motion/react';
 import { TopLeftSocials } from './components/layout/TopLeftSocials';
 import { TopRightNav } from './components/layout/TopRightNav';
 import { LoadingScreen } from './components/ui/LoadingScreen';
@@ -13,8 +13,10 @@ import { HowToMapPage } from './pages/HowToMapPage';
 import { ToolsPage } from './pages/ToolsPage';
 import { ContactPage } from './pages/ContactPage';
 import { VaultPage } from './pages/VaultPage';
+import { useIsMobile } from './hooks/useIsMobile';
+import { withMotion } from './lib/motionUtils';
 
-const AnimatedRoutes: React.FC = () => {
+const AnimatedRoutes: React.FC<{ isMobile: boolean }> = ({ isMobile }) => {
   const location = useLocation();
 
   return (
@@ -24,7 +26,7 @@ const AnimatedRoutes: React.FC = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+        transition={withMotion(isMobile, { duration: 0.35, ease: [0.22, 1, 0.36, 1] })}
         className="w-full min-h-screen"
       >
         <Routes location={location}>
@@ -48,8 +50,13 @@ const AnimatedRoutes: React.FC = () => {
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
+  const isMobile = useIsMobile();
 
   return (
+    <MotionConfig
+      reducedMotion={isMobile ? 'always' : 'never'}
+      transition={isMobile ? { duration: 0 } : undefined}
+    >
       <BrowserRouter>
           <div className="relative min-h-screen w-full text-[#F5F5F5] selection:bg-white selection:text-black">
               {/* Fixed dim overlay over the background image — stays constant through
@@ -68,7 +75,7 @@ export default function App() {
                       <TopRightNav />
 
                       {/* Main View Router with Fluid Transitions */}
-                      <AnimatedRoutes />
+                      <AnimatedRoutes isMobile={isMobile} />
                   </>
               )}
               <div className="absolute top-2 left-2 w-4 h-4 border-t border-l border-white/30" />
@@ -77,5 +84,6 @@ export default function App() {
               <div className="absolute bottom-2 right-2 w-4 h-4 border-b border-r border-white/30" />
           </div>
       </BrowserRouter>
+    </MotionConfig>
   );
 }

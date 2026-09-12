@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { motion } from "motion/react";
 import { PageItem } from "../../types";
 import { Sparkles } from "lucide-react";
+import { useIsMobile } from "../../hooks/useIsMobile";
+import { withMotion } from "../../lib/motionUtils";
 
 interface PageNavCardProps {
     page: PageItem;
@@ -21,6 +23,7 @@ export const PageNavCard: React.FC<PageNavCardProps> = ({
 }) => {
     const [imageError, setImageError] = useState(false);
     const [isHovered, setIsHovered] = useState(false);
+    const isMobile = useIsMobile();
 
     const diff = index - currentIndex;
     const isActive = diff === 0;
@@ -77,10 +80,10 @@ export const PageNavCard: React.FC<PageNavCardProps> = ({
                 filter: style.filter,
                 rotateY: style.rotateY,
             }}
-            transition={{
+            transition={withMotion(isMobile, {
                 duration: 0.6,
                 ease: [0.22, 1, 0.36, 1],
-            }}
+            })}
             onClick={handleCardClick}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
@@ -98,7 +101,7 @@ export const PageNavCard: React.FC<PageNavCardProps> = ({
                                 : "rgba(255,255,255,0.3)"
                             : "rgba(255,255,255,0.1)",
                     }}
-                    transition={{ duration: 0.35 }}
+                    transition={withMotion(isMobile, { duration: 0.35 })}
                     className="relative w-52.5 h-52.5 sm:w-62.5 sm:h-62.5 md:w-72.5 md:h-72.5 lg:w-[320px] lg:h-80 max-h-[38vh] aspect-square border overflow-hidden rounded-xs bg-[#0a0a0a]">
                     {!imageError ? (
                         <img

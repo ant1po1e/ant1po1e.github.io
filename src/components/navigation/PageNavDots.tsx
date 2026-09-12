@@ -1,6 +1,8 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { PageItem } from '../../types';
+import { useIsMobile } from '../../hooks/useIsMobile';
+import { withMotion } from '../../lib/motionUtils';
 interface PageNavDotsProps {
   pages: PageItem[];
   currentIndex: number;
@@ -12,6 +14,7 @@ export const PageNavDots: React.FC<PageNavDotsProps> = ({
   currentIndex,
   onSelect,
 }) => {
+  const isMobile = useIsMobile();
   return (
     <div
       id="page-nav-dots-container"
@@ -36,7 +39,7 @@ export const PageNavDots: React.FC<PageNavDotsProps> = ({
                   width: isActive ? 22 : 5,
                   backgroundColor: isActive ? '#FFFFFF' : 'rgba(255, 255, 255, 0.25)',
                 }}
-                transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                transition={withMotion(isMobile, { duration: 0.3, ease: [0.22, 1, 0.36, 1] })}
                 className="h-1.5 rounded-full transition-colors group-hover:bg-white/70"
               />
               <span className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 px-2 py-0.5 rounded text-[9px] font-mono tracking-widest uppercase bg-neutral-900 border border-white/20 text-white opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-150 whitespace-nowrap z-50">

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { NAV_PAGES } from "../../data/pagesData";
+import { useIsMobile } from "../../hooks/useIsMobile";
+import { withMotion } from "../../lib/motionUtils";
 
 interface LoadingScreenProps {
     onComplete: () => void;
@@ -9,6 +11,7 @@ interface LoadingScreenProps {
 export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
     const [progress, setProgress] = useState(0);
     const [isDone, setIsDone] = useState(false);
+    const isMobile = useIsMobile();
 
     useEffect(() => {
         let loadedCount = 0;
@@ -54,7 +57,7 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
                     id="loading-screen"
                     initial={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                    transition={withMotion(isMobile, { duration: 0.8, ease: [0.22, 1, 0.36, 1] })}
                     className="fixed inset-0 z-10000 bg-[#050505] flex flex-col items-center justify-center cursor-wait">
                     {/* Subtle background ambient pulse */}
                     <div className="absolute inset-0 bg-radial from-white/3 to-transparent pointer-events-none" />
@@ -63,7 +66,7 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
                         <motion.span
                             initial={{ opacity: 0, y: -8 }}
                             animate={{ opacity: 0.5, y: 0 }}
-                            transition={{ duration: 0.8, delay: 0.1 }}
+                            transition={withMotion(isMobile, { duration: 0.8, delay: 0.1 })}
                             className="text-[12px] font-japanese tracking-[0.6em] text-white/50 mb-3"></motion.span>
 
                         {/* Central Brand */}
@@ -78,10 +81,10 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
                                 letterSpacing: "0.4em",
                                 scale: 1,
                             }}
-                            transition={{
+                            transition={withMotion(isMobile, {
                                 duration: 1.2,
                                 ease: [0.16, 1, 0.3, 1],
-                            }}
+                            })}
                             className="text-2xl md:text-4xl font-display font-light text-[#F5F5F5] uppercase text-center pl-2">
                             a n t i p o l e
                         </motion.h1>
@@ -92,7 +95,7 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
                                 className="absolute inset-y-0 left-0 bg-white/80"
                                 initial={{ width: "0%" }}
                                 animate={{ width: `${progress}%` }}
-                                transition={{ ease: "easeOut", duration: 0.3 }}
+                                transition={withMotion(isMobile, { ease: "easeOut", duration: 0.3 })}
                             />
                         </div>
 
@@ -100,7 +103,7 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
                         <motion.span
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 0.4 }}
-                            transition={{ duration: 0.5, delay: 0.3 }}
+                            transition={withMotion(isMobile, { duration: 0.5, delay: 0.3 })}
                             className="text-[9px] uppercase tracking-[0.3em] text-white/50 mt-3 font-mono">
                             CALIBRATING SYSTEM // {progress}%
                         </motion.span>

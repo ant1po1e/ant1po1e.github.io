@@ -5,6 +5,8 @@ import { PageItem } from '../../types';
 import { PageNavCard } from './PageNavCard';
 import { PageNavDots } from './PageNavDots';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { useIsMobile } from '../../hooks/useIsMobile';
+import { withMotion } from '../../lib/motionUtils';
 
 interface PageNavCarouselProps {
   pages: PageItem[];
@@ -18,6 +20,7 @@ export const PageNavCarousel: React.FC<PageNavCarouselProps> = ({
   onIndexChange,
 }) => {
   const navigate = useNavigate();
+  const isMobile = useIsMobile();
   const initialIndex = initialSlug
     ? Math.max(0, pages.findIndex(p => p.slug === initialSlug))
     : 0;
@@ -142,7 +145,7 @@ export const PageNavCarousel: React.FC<PageNavCarouselProps> = ({
                       initial={{ opacity: 0, y: 6, letterSpacing: "0.2em" }}
                       animate={{ opacity: 1, y: 0, letterSpacing: "0.3em" }}
                       exit={{ opacity: 0, y: -6 }}
-                      transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                      transition={withMotion(isMobile, { duration: 0.4, ease: [0.22, 1, 0.36, 1] })}
                       className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-display font-light uppercase pl-2 text-center text-[#F5F5F5] drop-shadow-[0_4px_24px_rgba(0,0,0,0.8)]">
                       {currentPage.title}
                   </motion.h1>

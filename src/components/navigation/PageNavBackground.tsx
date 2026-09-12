@@ -1,6 +1,8 @@
 import React from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { PageItem } from "../../types";
+import { useIsMobile } from "../../hooks/useIsMobile";
+import { withMotion } from "../../lib/motionUtils";
 
 interface PageNavBackgroundProps {
     currentPage: PageItem;
@@ -9,6 +11,7 @@ interface PageNavBackgroundProps {
 export const PageNavBackground: React.FC<PageNavBackgroundProps> = ({
     currentPage,
 }) => {
+    const isMobile = useIsMobile();
     return (
         <div
             id="page-nav-background"
@@ -19,7 +22,7 @@ export const PageNavBackground: React.FC<PageNavBackgroundProps> = ({
                 animate={{
                     background: `radial-gradient(circle at 50% 45%, ${currentPage.accentColor}25 0%, ${currentPage.secondaryAccent || "#0a0a0a"}15 45%, #050505 85%)`,
                 }}
-                transition={{ duration: 1.2, ease: "easeInOut" }}
+                transition={withMotion(isMobile, { duration: 1.2, ease: "easeInOut" })}
                 className="absolute inset-0 w-full h-full"
             />
 
@@ -30,7 +33,7 @@ export const PageNavBackground: React.FC<PageNavBackgroundProps> = ({
                     initial={{ opacity: 0, scale: 1.05 }}
                     animate={{ opacity: 0.18, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.98 }}
-                    transition={{ duration: 1.0, ease: [0.22, 1, 0.36, 1] }}
+                    transition={withMotion(isMobile, { duration: 1.0, ease: [0.22, 1, 0.36, 1] })}
                     className="absolute inset-0 w-full h-full">
                     <img
                         src={currentPage.heroImage || currentPage.cover}

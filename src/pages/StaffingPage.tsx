@@ -2,6 +2,8 @@ import React, { useState, useEffect, useMemo } from "react";
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
 import { STAFFING_RECORDS } from "../data/staffingData";
+import { useIsMobile } from "../hooks/useIsMobile";
+import { withMotion } from "../lib/motionUtils";
 import {
     ArrowLeft,
     ArrowRight,
@@ -10,6 +12,7 @@ import {
 } from "lucide-react";
 
 export const StaffingPage: React.FC = () => {
+    const isMobile = useIsMobile();
     const [selectedRole, setSelectedRole] = useState<string>("ALL");
 
     useEffect(() => {
@@ -95,10 +98,10 @@ export const StaffingPage: React.FC = () => {
                                 key={record.id}
                                 initial={{ opacity: 0, y: 15 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                transition={{
+                                transition={withMotion(isMobile, {
                                     duration: 0.4,
                                     delay: idx * 0.05,
-                                }}
+                                })}
                                 className="p-5 sm:p-6 rounded-lg border border-white/10 bg-white/2 hover:bg-white/4 backdrop-blur-md transition-all duration-300 hover:border-white/20 text-left">
                                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3 pb-3 border-b border-white/10">
                                     <div>

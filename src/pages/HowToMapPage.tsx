@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Link } from "react-router-dom";
 import { MAPPING_GUIDE_SECTIONS } from "../data/howToMapData";
+import { useIsMobile } from "../hooks/useIsMobile";
+import { withMotion } from "../lib/motionUtils";
 import {
     ArrowLeft,
     ArrowRight,
@@ -14,6 +16,7 @@ import {
 } from "lucide-react";
 
 export const HowToMapPage: React.FC = () => {
+    const isMobile = useIsMobile();
     const [expandedId, setExpandedId] = useState<string>(
         MAPPING_GUIDE_SECTIONS[0].id,
     );
@@ -118,10 +121,10 @@ export const HowToMapPage: React.FC = () => {
                                     key={section.id}
                                     initial={{ opacity: 0, y: 15 }}
                                     animate={{ opacity: 1, y: 0 }}
-                                    transition={{
+                                    transition={withMotion(isMobile, {
                                         duration: 0.4,
                                         delay: idx * 0.05,
-                                    }}
+                                    })}
                                     className={`rounded-lg border transition-all duration-300 overflow-hidden ${
                                         isExpanded
                                             ? "border-[#52B788]/40 bg-[#0B1510]/80 shadow-xl"
@@ -168,7 +171,7 @@ export const HowToMapPage: React.FC = () => {
                                                     opacity: 1,
                                                 }}
                                                 exit={{ height: 0, opacity: 0 }}
-                                                transition={{ duration: 0.3 }}
+                                                transition={withMotion(isMobile, { duration: 0.3 })}
                                                 className="px-5 pb-6 pt-2 border-t border-white/10 space-y-4">
                                                 {/* Summary Banner */}
                                                 <div className="p-3 rounded bg-[#52B788]/10 border border-[#52B788]/20 text-xs font-mono text-white/90">
