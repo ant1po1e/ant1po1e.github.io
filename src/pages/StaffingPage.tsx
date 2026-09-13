@@ -40,7 +40,7 @@ export const StaffingPage: React.FC = () => {
     return (
         <main
             id="staffing-page-view"
-            className="relative h-screen w-full bg-transparent text-[#F5F5F5] overflow-hidden pt-16 sm:pt-20 pb-3 sm:pb-4 px-3 sm:px-6 md:px-8 flex flex-col items-center selection:bg-white selection:text-black">
+            className="relative h-dvh w-full bg-transparent text-[#F5F5F5] overflow-hidden pt-16 sm:pt-20 pb-3 sm:pb-4 px-3 sm:px-6 md:px-8 flex flex-col items-center selection:bg-white selection:text-black">
             {/* Background Ambient Glow */}
             <div className="fixed inset-0 pointer-events-none z-0">
                 <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-175 h-175 rounded-full bg-radial from-[#E0A96D]/10 via-[#382312]/5 to-transparent blur-3xl" />

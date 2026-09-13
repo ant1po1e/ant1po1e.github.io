@@ -23,7 +23,7 @@ export const HomePage: React.FC = () => {
   }, [currentPage]);
 
   return (
-    <div id="home-navigation-page" className="relative w-full h-screen overflow-hidden bg-transparent">
+    <div id="home-navigation-page" className="relative w-full h-dvh overflow-hidden bg-transparent">
       {/* Immersive Dynamic Backdrop */}
       <PageNavBackground currentPage={currentPage} />
 

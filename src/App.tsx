@@ -27,7 +27,7 @@ const AnimatedRoutes: React.FC<{ isMobile: boolean }> = ({ isMobile }) => {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={withMotion(isMobile, { duration: 0.35, ease: [0.22, 1, 0.36, 1] })}
-        className="w-full min-h-screen"
+        className="w-full min-h-dvh"
       >
         <Routes location={location}>
           <Route path="/" element={<HomePage />} />
@@ -58,7 +58,7 @@ export default function App() {
       transition={isMobile ? { duration: 0 } : undefined}
     >
       <BrowserRouter>
-          <div className="relative min-h-screen w-full text-[#F5F5F5] selection:bg-white selection:text-black">
+          <div className="relative min-h-dvh w-full text-[#F5F5F5] selection:bg-white selection:text-black">
               {/* Fixed dim overlay over the background image — stays constant through
             loading and page transitions so the image never flashes at full brightness */}
               <div className="fixed inset-0 z-0 bg-[#050505]/75 pointer-events-none" />

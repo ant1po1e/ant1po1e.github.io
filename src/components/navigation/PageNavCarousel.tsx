@@ -128,7 +128,7 @@ export const PageNavCarousel: React.FC<PageNavCarouselProps> = ({
       <main
           id="page-navigation-carousel"
           onWheel={handleWheel}
-          className="relative w-full h-screen flex flex-col justify-between items-center overflow-hidden select-none pt-16 sm:pt-20 pb-4 px-4 touch-pan-y">
+          className="relative w-full h-dvh flex flex-col justify-between items-center overflow-hidden select-none pt-16 sm:pt-20 pb-4 px-4 touch-pan-y">
           {/* Top Header Index & Section Heading */}
           <div className="shrink-0 z-20 flex flex-col items-center text-center pointer-events-none mt-1 sm:mt-2">
               <div className="flex items-center gap-2 sm:gap-2.5 text-[12px] sm:text-[11px] font-mono tracking-[0.25em] uppercase text-white/60 mb-1">
