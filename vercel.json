@@ -1,7 +1,11 @@
 {
   "framework": "vite",
   "rewrites": [
+    { "source": "/api/me", "destination": "/api/auth?action=me" },
+    { "source": "/api/login", "destination": "/api/auth?action=login" },
+    { "source": "/api/logout", "destination": "/api/auth?action=logout" },
     { "source": "/i/:path*", "destination": "/api/i?path=:path*" },
+    { "source": "/s/:slug", "destination": "/api/shortlinks?redirect=:slug" },
     { "source": "/((?!api/).*)", "destination": "/index.html" }
   ]
 }
