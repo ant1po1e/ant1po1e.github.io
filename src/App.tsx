@@ -39,7 +39,7 @@ const AnimatedRoutes: React.FC<{ isMobile: boolean }> = ({ isMobile }) => {
           {/* <Route path="/how-to-map" element={<HowToMapPage />} /> */}
           <Route path="/tools" element={<ToolsPage />} />
           <Route path="/contact" element={<ContactPage />} />
-          <Route path="/vault" element={<VaultPage />} />
+          <Route path="/str" element={<VaultPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
           
         </Routes>

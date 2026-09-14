@@ -13,10 +13,11 @@ import { UploadZone } from "../components/vault/UploadZone";
 import { FileListModal } from "../components/vault/FileListModal";
 import { FileLightbox } from "../components/vault/FileLightbox";
 import { MessagesSection } from "../components/vault/MessagesSection";
+import { LinkShortener } from "../components/vault/LinkShortener";
 import { ArrowLeft, RefreshCw, LogOut, Images, Shield } from "lucide-react";
 
 type AuthState = "checking" | "out" | "in";
-type VaultTab = "files" | "messages";
+type VaultTab = "files" | "messages" | "links";
 
 export const VaultPage: React.FC = () => {
     const [authState, setAuthState] = useState<AuthState>("checking");
@@ -175,6 +176,17 @@ export const VaultPage: React.FC = () => {
                                             }`}>
                                             Messages
                                         </button>
+                                        <button
+                                            onClick={() =>
+                                                setActiveTab("links")
+                                            }
+                                            className={`font-mono text-[12px] uppercase tracking-wide px-3 py-1.5 rounded transition-colors duration-300 ${
+                                                activeTab === "links"
+                                                    ? "bg-white text-black font-semibold"
+                                                    : "text-white/50 hover:text-white"
+                                            }`}>
+                                            Links
+                                        </button>
                                     </div>
 
                                     <button
@@ -203,8 +215,10 @@ export const VaultPage: React.FC = () => {
                                             View files ({images.length})
                                         </button>
                                     </>
-                                ) : (
+                                ) : activeTab === "messages" ? (
                                     <MessagesSection />
+                                ) : (
+                                    <LinkShortener />
                                 )}
                             </>
                         )}

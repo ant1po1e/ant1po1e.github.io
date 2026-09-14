@@ -3,8 +3,8 @@ import { toJpeg } from 'html-to-image';
 import { fetchMessages, type AnonMessage } from '../../lib/vaultApi';
 import { RefreshCw, MessageSquare, Quote, Clock, Download } from 'lucide-react';
 
-const EXPORT_WIDTH = 1080;
-const EXPORT_SCALE = 1.7;
+const EXPORT_WIDTH = 640;
+const EXPORT_SCALE = 1.1;
 
 function formatDate(iso: string | null) {
   if (!iso) return 'Unknown date';
@@ -29,7 +29,7 @@ const CardFace: React.FC<{ message: AnonMessage; scale?: number }> = ({ message,
       <Quote className="absolute text-white/10" style={{ top: px(20), right: px(20), width: px(26), height: px(26) }} />
 
       <div className="flex items-center gap-2" style={{ marginBottom: px(14), paddingRight: px(44) }}>
-        <span className="font-display uppercase tracking-wide text-white truncate" style={{ fontSize: px(17) }}>
+        <span className="font-display uppercase tracking-wide text-white whitespace-nowrap" style={{ fontSize: px(17) }}>
           ASK ME SOMETHING!
         </span>
       </div>
@@ -87,7 +87,7 @@ const MessageCard: React.FC<{ message: AnonMessage }> = ({ message }) => {
           ref={exportRef}
           style={{
             width: `${EXPORT_WIDTH}px`,
-            padding: '90px 80px',
+            padding: '56px 40px',
             boxSizing: 'border-box',
             background:
               'radial-gradient(circle at 15% 15%, rgba(123,104,238,0.35), transparent 55%), radial-gradient(circle at 85% 90%, rgba(139,133,119,0.25), transparent 55%), linear-gradient(150deg, #050505, #16132b 65%, #050505)',

@@ -138,3 +138,34 @@ export function toShareUrl(pathname: string) {
   const origin = window.location.origin.replace(/^(https?:\/\/)www\./, '$1');
   return `${origin}/i/${pathname}`;
 }
+
+export interface ShortLink {
+  slug: string;
+  url: string;
+  createdAt: string;
+  clicks: number;
+}
+
+export function fetchShortLinks() {
+  return jsonFetch<{ links: ShortLink[] }>('/api/shortlinks');
+}
+
+export function createShortLink(url: string) {
+  return jsonFetch<{ link: ShortLink }>('/api/shortlinks', {
+    method: 'POST',
+    body: JSON.stringify({ url }),
+  });
+}
+
+export function deleteShortLink(slug: string) {
+  return jsonFetch<{ ok: true }>('/api/shortlinks', {
+    method: 'DELETE',
+    body: JSON.stringify({ slug }),
+  });
+}
+
+// The public-facing short URL (e.g. https://yourdomain.com/s/AbC123).
+export function toShortUrl(slug: string) {
+  const origin = window.location.origin.replace(/^(https?:\/\/)www\./, '$1');
+  return `${origin}/s/${slug}`;
+}
