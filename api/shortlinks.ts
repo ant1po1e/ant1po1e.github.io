@@ -49,7 +49,13 @@ function toShortLink(row: ShortLinkRow) {
 }
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
-  const supabase = getSupabaseAdmin();
+  let supabase;
+  try {
+    supabase = getSupabaseAdmin();
+  } catch (err) {
+    console.error('shortlinks handler: Supabase client init failed:', err);
+    return res.status(500).json({ error: err instanceof Error ? err.message : 'Supabase is not configured.' });
+  }
 
   // Public redirect: /s/:slug is rewritten (see vercel.json) to
   // /api/shortlinks?redirect=:slug — no auth required for this branch.

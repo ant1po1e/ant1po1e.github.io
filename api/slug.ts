@@ -25,7 +25,13 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(400).json({ error: 'Invalid extension.' });
   }
 
-  const supabase = getSupabaseAdmin();
+  let supabase;
+  try {
+    supabase = getSupabaseAdmin();
+  } catch (err) {
+    console.error('slug handler: Supabase client init failed:', err);
+    return res.status(500).json({ error: err instanceof Error ? err.message : 'Supabase is not configured.' });
+  }
 
   for (let attempt = 0; attempt < MAX_ATTEMPTS; attempt++) {
     const name = `${randomSlug()}.${ext}`;

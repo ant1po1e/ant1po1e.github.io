@@ -19,7 +19,15 @@ function parseBody(req: VercelRequest): Record<string, unknown> {
 }
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
-  const supabase = getSupabaseAdmin();
+  let supabase;
+  try {
+    supabase = getSupabaseAdmin();
+  } catch (err) {
+    // Most likely cause: SUPABASE_URL / SUPABASE_SERVICE_ROLE_KEY isn't set
+    // (or isn't enabled for this environment) in Vercel project settings.
+    console.error('messages handler: Supabase client init failed:', err);
+    return res.status(500).json({ error: err instanceof Error ? err.message : 'Supabase is not configured.' });
+  }
 
   if (req.method === 'POST') {
     // Public contact-form submission — replaces the old direct-from-browser
