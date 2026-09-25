@@ -30,7 +30,7 @@ export function useContributedBeatmaps() {
       const { data, error: fetchError } = await supabase
         .from('beatmaps')
         .select('link, title, artist, badges')
-        .order('created_at', { ascending: false });
+        .order('last_updated', { ascending: false });
 
       if (fetchError) throw fetchError;
 
