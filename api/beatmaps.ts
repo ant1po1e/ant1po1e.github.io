@@ -56,7 +56,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       .from('beatmaps')
       .select('id, link, title, artist, badges, last_updated')
       .order('last_updated', { ascending: false });
-    if (error) return res.status(500).json({ error: error.message });
+    if (error) {
+      console.error('beatmaps GET error:', error);
+      return res.status(500).json({ error: error.message });
+    }
 
     return res.status(200).json({ beatmaps: (data || []).map(toBeatmap) });
   }
@@ -80,7 +83,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       .select('id, link, title, artist, badges, last_updated')
       .single();
 
-    if (error) return res.status(500).json({ error: error.message });
+    if (error) {
+      console.error('beatmaps POST error:', error);
+      return res.status(500).json({ error: error.message });
+    }
     return res.status(200).json({ beatmap: toBeatmap(data) });
   }
 
@@ -90,7 +96,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     if (!id) return res.status(400).json({ error: 'Missing id.' });
 
     const { error } = await supabase.from('beatmaps').delete().eq('id', id);
-    if (error) return res.status(500).json({ error: error.message });
+    if (error) {
+      console.error('beatmaps DELETE error:', error);
+      return res.status(500).json({ error: error.message });
+    }
     return res.status(200).json({ ok: true });
   }
 
