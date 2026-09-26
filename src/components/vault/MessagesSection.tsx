@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { toJpeg } from 'html-to-image';
 import { fetchMessages, type AnonMessage } from '../../lib/vaultApi';
-import { RefreshCw, MessageSquare, Quote, Clock, Download } from 'lucide-react';
+import { RefreshCw, MessageSquare, Quote, Clock, Download, LayoutGrid, List } from 'lucide-react';
 
 const EXPORT_WIDTH = 640;
 const EXPORT_SCALE = 1.1;
@@ -115,6 +115,7 @@ export const MessagesSection: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [query, setQuery] = useState('');
+  const [viewMode, setViewMode] = useState<'cards' | 'table'>('cards');
 
   const load = async () => {
     setLoading(true);
@@ -156,6 +157,27 @@ export const MessagesSection: React.FC = () => {
         >
           <RefreshCw className={`w-3.5 h-3.5 ${loading ? 'animate-spin' : ''}`} />
         </button>
+
+        <div className="flex items-center gap-1 border border-white/15 rounded p-1 shrink-0">
+          <button
+            onClick={() => setViewMode('cards')}
+            title="Card view"
+            className={`w-7 h-7 flex items-center justify-center rounded transition-colors duration-300 ${
+              viewMode === 'cards' ? 'bg-white text-black' : 'text-white/40 hover:text-white'
+            }`}
+          >
+            <LayoutGrid className="w-3.5 h-3.5" />
+          </button>
+          <button
+            onClick={() => setViewMode('table')}
+            title="Table view"
+            className={`w-7 h-7 flex items-center justify-center rounded transition-colors duration-300 ${
+              viewMode === 'table' ? 'bg-white text-black' : 'text-white/40 hover:text-white'
+            }`}
+          >
+            <List className="w-3.5 h-3.5" />
+          </button>
+        </div>
       </div>
 
       {error && <p className="font-mono text-xs text-red-400 mb-4">{error}</p>}
@@ -168,6 +190,33 @@ export const MessagesSection: React.FC = () => {
         <div className="text-center py-16 text-white/30">
           <MessageSquare className="w-7 h-7 mx-auto" />
           <p className="mt-2 text-xs font-mono">{messages.length === 0 ? 'No messages yet' : 'No messages match your search'}</p>
+        </div>
+      ) : viewMode === 'table' ? (
+        <div className="border-t border-white/10 pt-3 max-h-[42vh] overflow-y-auto custom-scrollbar pr-1">
+          <table className="w-full text-left border-collapse">
+            <thead>
+              <tr className="font-mono text-[10px] uppercase tracking-widest text-white/30">
+                <th className="pb-2 font-normal">Name</th>
+                <th className="pb-2 font-normal">Message</th>
+                <th className="pb-2 font-normal whitespace-nowrap">Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              {filtered.map(message => (
+                <tr key={message.id} className="border-t border-white/5 align-top">
+                  <td className="py-2 pr-3 font-mono text-[12px] text-white/70 whitespace-nowrap">
+                    {message.name}
+                  </td>
+                  <td className="py-2 pr-3 font-mono text-[12px] text-white/50 max-w-[320px]">
+                    <p className="line-clamp-2">{message.message}</p>
+                  </td>
+                  <td className="py-2 font-mono text-[11px] text-white/30 whitespace-nowrap">
+                    {formatDate(message.timestamp)}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-[42vh] overflow-y-auto custom-scrollbar pr-1 border-t border-white/10 pt-3">

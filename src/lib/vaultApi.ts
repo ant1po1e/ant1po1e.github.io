@@ -196,3 +196,40 @@ export function toShortUrl(slug: string) {
   const origin = window.location.origin.replace(/^(https?:\/\/)www\./, '$1');
   return `${origin}/s/${slug}`;
 }
+
+export interface AdminBeatmap {
+  id: string;
+  link: string;
+  title: string;
+  artist: string;
+  badges: string[];
+  lastUpdated: string;
+}
+
+export function fetchAdminBeatmaps() {
+  return jsonFetch<{ beatmaps: AdminBeatmap[] }>('/api/beatmaps');
+}
+
+export function createBeatmap(payload: { link: string; title: string; artist: string; badges: string[] }) {
+  return jsonFetch<{ beatmap: AdminBeatmap }>('/api/beatmaps', {
+    method: 'POST',
+    body: JSON.stringify(payload),
+  });
+}
+
+export function deleteBeatmap(id: string) {
+  return jsonFetch<{ ok: true }>('/api/beatmaps', {
+    method: 'DELETE',
+    body: JSON.stringify({ id }),
+  });
+}
+
+export interface BeatmapMeta {
+  title: string;
+  artist: string;
+}
+
+// Looks up title/artist from an osu! beatmapset link via /api/beatmap-meta.
+export function fetchBeatmapMeta(link: string) {
+  return jsonFetch<BeatmapMeta>(`/api/beatmap-meta?link=${encodeURIComponent(link)}`);
+}

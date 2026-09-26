@@ -14,10 +14,11 @@ import { FileListModal } from "../components/vault/FileListModal";
 import { FileLightbox } from "../components/vault/FileLightbox";
 import { MessagesSection } from "../components/vault/MessagesSection";
 import { LinkShortener } from "../components/vault/LinkShortener";
+import { BeatmapsManager } from "../components/vault/BeatmapsManager";
 import { ArrowLeft, RefreshCw, LogOut, Images, Shield } from "lucide-react";
 
 type AuthState = "checking" | "out" | "in";
-type VaultTab = "files" | "messages" | "links";
+type VaultTab = "files" | "messages" | "links" | "beatmaps";
 
 export const VaultPage: React.FC = () => {
     const [authState, setAuthState] = useState<AuthState>("checking");
@@ -187,6 +188,17 @@ export const VaultPage: React.FC = () => {
                                             }`}>
                                             Links
                                         </button>
+                                        <button
+                                            onClick={() =>
+                                                setActiveTab("beatmaps")
+                                            }
+                                            className={`font-mono text-[12px] uppercase tracking-wide px-3 py-1.5 rounded transition-colors duration-300 ${
+                                                activeTab === "beatmaps"
+                                                    ? "bg-white text-black font-semibold"
+                                                    : "text-white/50 hover:text-white"
+                                            }`}>
+                                            Beatmaps
+                                        </button>
                                     </div>
 
                                     <button
@@ -217,8 +229,10 @@ export const VaultPage: React.FC = () => {
                                     </>
                                 ) : activeTab === "messages" ? (
                                     <MessagesSection />
-                                ) : (
+                                ) : activeTab === "links" ? (
                                     <LinkShortener />
+                                ) : (
+                                    <BeatmapsManager />
                                 )}
                             </>
                         )}
