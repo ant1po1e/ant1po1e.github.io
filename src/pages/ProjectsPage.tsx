@@ -97,6 +97,7 @@ export const ProjectsPage: React.FC = () => {
                 type: "x",
                 bounds: { minX: 0, maxX: 0 },
                 edgeResistance: 0.85,
+                zIndexBoost: false,
                 onPress(this: Draggable) {
                     pressX = this.pointerX;
                 },
