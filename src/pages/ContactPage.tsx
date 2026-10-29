@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { motion } from "motion/react";
+import { Reveal } from "../components/ui/Reveal";
 import { Link } from "react-router-dom";
 import { PROFILE_DATA } from "../data/profileData";
 import {
@@ -249,9 +249,9 @@ export const ContactPage: React.FC = () => {
                                 </div>
 
                                 {isSubmitted ? (
-                                    <motion.div
-                                        initial={{ opacity: 0, scale: 0.95 }}
-                                        animate={{ opacity: 1, scale: 1 }}
+                                    <Reveal
+                                        scale={0.95}
+                                        duration={0.3}
                                         className="py-14 flex flex-col items-center justify-center text-center">
                                         <div className="w-14 h-14 rounded-full border border-emerald-500/40 bg-emerald-500/10 flex items-center justify-center text-emerald-400 mb-3">
                                             <CheckCircle2 className="w-7 h-7" />
@@ -263,7 +263,7 @@ export const ContactPage: React.FC = () => {
                                             Thank you. Your message has been
                                             logged into Antipole's queue.
                                         </p>
-                                    </motion.div>
+                                    </Reveal>
                                 ) : (
                                     <div className="space-y-4">
                                         <div>

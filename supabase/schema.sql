@@ -41,6 +41,7 @@ create table if not exists public.beatmaps (
   title text not null,
   artist text not null,
   badges text[] not null default '{}',
+  last_updated timestamptz not null default now(),
   created_at timestamptz not null default now()
 );
 

@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useCallback } from "react";
-import { motion, AnimatePresence, PanInfo } from "motion/react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import { Link } from "react-router-dom";
 import { PROJECTS_LIST } from "../data/projectsData";
 import { useIsMobile } from "../hooks/useIsMobile";
-import { withMotion } from "../lib/motionUtils";
+import { useSwap } from "../hooks/useSwap";
+import { Draggable, EASE, gsap, useGSAP, withMotion } from "../lib/motionUtils";
 import {
     ArrowLeft,
     ArrowRight,
@@ -54,14 +54,74 @@ export const ProjectsPage: React.FC = () => {
         goToIndex(activeIndex - 1);
     }, [activeIndex, goToIndex]);
 
-    const handleDragEnd = (_e: unknown, info: PanInfo) => {
-        const threshold = 60;
-        if (info.offset.x < -threshold) {
-            handleNext();
-        } else if (info.offset.x > threshold) {
-            handlePrev();
-        }
-    };
+    // Slide animation: the old card leaves in the direction of travel, then
+    // the new one enters from the opposite side (the GSAP version of
+    // AnimatePresence mode="wait" with `custom={direction}`). Options are read
+    // when each animation starts, so they always use the latest direction.
+    const slideRef = useRef<HTMLDivElement>(null);
+    const shownProject = useSwap(currentProject, currentProject.id, slideRef, {
+        exit: withMotion(isMobile, {
+            x: direction > 0 ? -60 : 60,
+            opacity: 0,
+            duration: 0.35,
+            ease: EASE.soft,
+        }),
+        enterFrom: { x: direction > 0 ? 60 : -60, opacity: 0 },
+        enterTo: withMotion(isMobile, {
+            x: 0,
+            opacity: 1,
+            duration: 0.35,
+            ease: EASE.soft,
+        }),
+    });
+
+    // Swipe: GSAP Draggable on a wrapper around the card (a separate element
+    // from the one the slide animation moves, so the two never fight over the
+    // same transform). Pulling past the threshold changes project; the card
+    // always springs back to rest.
+    const dragRef = useRef<HTMLDivElement>(null);
+    const swipeHandlersRef = useRef({ next: handleNext, prev: handlePrev });
+    swipeHandlersRef.current = { next: handleNext, prev: handlePrev };
+    const isMobileRef = useRef(isMobile);
+    isMobileRef.current = isMobile;
+
+    useGSAP(
+        () => {
+            const el = dragRef.current;
+            if (!el) return;
+
+            const threshold = 60;
+            let pressX = 0;
+
+            const [draggable] = Draggable.create(el, {
+                type: "x",
+                bounds: { minX: 0, maxX: 0 },
+                edgeResistance: 0.85,
+                onPress(this: Draggable) {
+                    pressX = this.pointerX;
+                },
+                onDragEnd(this: Draggable) {
+                    const offset = this.pointerX - pressX;
+                    if (offset < -threshold) {
+                        swipeHandlersRef.current.next();
+                    } else if (offset > threshold) {
+                        swipeHandlersRef.current.prev();
+                    }
+                    gsap.to(el, {
+                        x: 0,
+                        overwrite: true,
+                        ...withMotion(isMobileRef.current, {
+                            duration: 0.45,
+                            ease: EASE.soft,
+                        }),
+                    });
+                },
+            });
+
+            return () => draggable.kill();
+        },
+        { scope: dragRef },
+    );
 
     useEffect(() => {
         const onKeyDown = (e: KeyboardEvent) => {
@@ -72,13 +132,7 @@ export const ProjectsPage: React.FC = () => {
         return () => window.removeEventListener("keydown", onKeyDown);
     }, [handleNext, handlePrev]);
 
-    const slideVariants = {
-        enter: (dir: number) => ({ x: dir > 0 ? 60 : -60, opacity: 0 }),
-        center: { x: 0, opacity: 1 },
-        exit: (dir: number) => ({ x: dir > 0 ? -60 : 60, opacity: 0 }),
-    };
-
-    const CurrentIcon = ICON_MAP[currentProject.icon] || LinkIcon;
+    const CurrentIcon = ICON_MAP[shownProject.icon] || LinkIcon;
 
     return (
         <main
@@ -130,28 +184,17 @@ export const ProjectsPage: React.FC = () => {
 
                         {/* Card Viewport */}
                         <div className="relative flex-1 h-full max-w-2xl overflow-hidden">
-                            <AnimatePresence mode="wait" custom={direction}>
-                                <motion.div
-                                    key={currentProject.id}
-                                    custom={direction}
-                                    variants={slideVariants}
-                                    initial="enter"
-                                    animate="center"
-                                    exit="exit"
-                                    transition={withMotion(isMobile, {
-                                        duration: 0.35,
-                                        ease: [0.22, 1, 0.36, 1],
-                                    })}
-                                    drag="x"
-                                    dragConstraints={{ left: 0, right: 0 }}
-                                    dragElastic={0.15}
-                                    onDragEnd={handleDragEnd}
-                                    className="group relative h-full w-full rounded-lg border border-white/10 bg-white/2 hover:bg-white/4 backdrop-blur-md overflow-hidden transition-colors duration-300 hover:border-white/25 flex flex-col cursor-grab active:cursor-grabbing">
+                            <div
+                                ref={dragRef}
+                                className="h-full w-full cursor-grab active:cursor-grabbing">
+                                <div
+                                    ref={slideRef}
+                                    className="group relative h-full w-full rounded-lg border border-white/10 bg-white/2 hover:bg-white/4 backdrop-blur-md overflow-hidden transition-colors duration-300 hover:border-white/25 flex flex-col">
                                     {/* Project Image */}
                                     <div className="relative w-full flex-1 min-h-0 overflow-hidden bg-black/40">
                                         <img
-                                            src={currentProject.image}
-                                            alt={currentProject.alt}
+                                            src={shownProject.image}
+                                            alt={shownProject.alt}
                                             referrerPolicy="no-referrer"
                                             draggable={false}
                                             className="w-full h-full object-cover pointer-events-none select-none"
@@ -161,17 +204,19 @@ export const ProjectsPage: React.FC = () => {
                                             <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6">
                                                 <div className="flex items-center gap-2 text-[12px] font-mono text-white/80 mb-2">
                                                     <span>
-                                                        {activeIndex + 1} /{" "}
-                                                        {PROJECTS_LIST.length}
+                                                        {PROJECTS_LIST.indexOf(
+                                                            shownProject,
+                                                        ) + 1}{" "}
+                                                        / {PROJECTS_LIST.length}
                                                     </span>
                                                 </div>
 
                                                 <h3 className="text-lg sm:text-2xl font-display uppercase tracking-wider text-white group-hover:text-[#7B68EE] transition-colors mb-2">
-                                                    {currentProject.title}
+                                                    {shownProject.title}
                                                 </h3>
 
                                                 <div className="flex flex-wrap gap-1.5 mb-4">
-                                                    {currentProject.stack.map(
+                                                    {shownProject.stack.map(
                                                         (s) => (
                                                             <span
                                                                 key={s}
@@ -182,18 +227,16 @@ export const ProjectsPage: React.FC = () => {
                                                     )}
                                                 </div>
 
-                                                {currentProject.link ? (
+                                                {shownProject.link ? (
                                                     <a
-                                                        href={
-                                                            currentProject.link
-                                                        }
+                                                        href={shownProject.link}
                                                         target="_blank"
                                                         rel="noopener noreferrer"
                                                         className="inline-flex items-center gap-2 px-4 py-2 rounded bg-white hover:bg-white/90 text-black text-xs font-mono font-semibold tracking-wider transition-colors">
                                                         <CurrentIcon className="w-3.5 h-3.5" />
                                                         <span>
                                                             {
-                                                                currentProject.linkText
+                                                                shownProject.linkText
                                                             }
                                                         </span>
                                                     </a>
@@ -202,7 +245,7 @@ export const ProjectsPage: React.FC = () => {
                                                         <CurrentIcon className="w-3.5 h-3.5" />
                                                         <span>
                                                             {
-                                                                currentProject.linkText
+                                                                shownProject.linkText
                                                             }
                                                         </span>
                                                     </span>
@@ -210,8 +253,8 @@ export const ProjectsPage: React.FC = () => {
                                             </div>
                                         </div>
                                     </div>
-                                </motion.div>
-                            </AnimatePresence>
+                                </div>
+                            </div>
                         </div>
 
                         {/* Next Arrow */}

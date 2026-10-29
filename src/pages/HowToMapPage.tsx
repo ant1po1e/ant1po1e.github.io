@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "motion/react";
 import { Link } from "react-router-dom";
 import { MAPPING_GUIDE_SECTIONS } from "../data/howToMapData";
-import { useIsMobile } from "../hooks/useIsMobile";
-import { withMotion } from "../lib/motionUtils";
+import { Reveal } from "../components/ui/Reveal";
+import { Collapse } from "../components/ui/Collapse";
 import {
     ArrowLeft,
     ArrowRight,
@@ -16,7 +15,6 @@ import {
 } from "lucide-react";
 
 export const HowToMapPage: React.FC = () => {
-    const isMobile = useIsMobile();
     const [expandedId, setExpandedId] = useState<string>(
         MAPPING_GUIDE_SECTIONS[0].id,
     );
@@ -117,15 +115,12 @@ export const HowToMapPage: React.FC = () => {
                         {filteredSections.map((section, idx) => {
                             const isExpanded = expandedId === section.id;
                             return (
-                                <motion.div
+                                <Reveal
                                     key={section.id}
-                                    initial={{ opacity: 0, y: 15 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={withMotion(isMobile, {
-                                        duration: 0.4,
-                                        delay: idx * 0.05,
-                                    })}
-                                    className={`rounded-lg border transition-all duration-300 overflow-hidden ${
+                                    y={15}
+                                    duration={0.4}
+                                    delay={idx * 0.05}
+                                    className={`rounded-lg border transition-[background-color,border-color,box-shadow] duration-300 overflow-hidden ${
                                         isExpanded
                                             ? "border-[#52B788]/40 bg-[#0B1510]/80 shadow-xl"
                                             : "border-white/10 bg-white/2 hover:bg-white/4"
@@ -159,20 +154,10 @@ export const HowToMapPage: React.FC = () => {
                                     </button>
 
                                     {/* Expanded Content Area */}
-                                    <AnimatePresence>
-                                        {isExpanded && (
-                                            <motion.div
-                                                initial={{
-                                                    height: 0,
-                                                    opacity: 0,
-                                                }}
-                                                animate={{
-                                                    height: "auto",
-                                                    opacity: 1,
-                                                }}
-                                                exit={{ height: 0, opacity: 0 }}
-                                                transition={withMotion(isMobile, { duration: 0.3 })}
-                                                className="px-5 pb-6 pt-2 border-t border-white/10 space-y-4">
+                                    <Collapse
+                                        open={isExpanded}
+                                        duration={0.3}
+                                        className="px-5 pb-6 pt-2 border-t border-white/10 space-y-4">
                                                 {/* Summary Banner */}
                                                 <div className="p-3 rounded bg-[#52B788]/10 border border-[#52B788]/20 text-xs font-mono text-white/90">
                                                     <strong>SYNOPSIS:</strong>{" "}
@@ -210,10 +195,8 @@ export const HowToMapPage: React.FC = () => {
                                                         )}
                                                     </ul>
                                                 </div>
-                                            </motion.div>
-                                        )}
-                                    </AnimatePresence>
-                                </motion.div>
+                                    </Collapse>
+                                </Reveal>
                             );
                         })}
                     </div>

@@ -51,7 +51,20 @@ pnpm install
 pnpm dev
 ```
 
-## Apa yang berubah di kode
+## 6. Migrasi data lama (opsional, sekali jalan)
+
+Kalau kamu sudah punya data lama (file di Vercel Blob, `shortlinks/index.json`, pesan di Google Sheet), pakai `scripts/migrate-to-supabase.mjs`:
+
+```bash
+npm install @vercel/blob --no-save   # sementara, cuma buat script ini
+cp scripts/.env.migrate.example scripts/.env.migrate
+# isi scripts/.env.migrate: OLD_BLOB_READ_WRITE_TOKEN, OLD_CONTACT_MESSAGES_FEED_URL,
+# SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY
+node --env-file=scripts/.env.migrate scripts/migrate-to-supabase.mjs
+```
+
+Script ini mindahin tiga hal sekaligus: file vault, index shortlinks, dan pesan kontak. Aman dijalankan berkali-kali (tidak akan duplikat). Setelah selesai dan sudah dicek datanya muncul di Supabase, boleh `npm uninstall @vercel/blob` lagi.
+
 
 | Fitur | Sebelum | Sesudah |
 |---|---|---|

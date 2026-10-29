@@ -1,9 +1,16 @@
-import React, { useState } from "react";
-import { motion } from "motion/react";
+import React, { useRef, useState } from "react";
 import { PageItem } from "../../types";
 import { Sparkles } from "lucide-react";
 import { useIsMobile } from "../../hooks/useIsMobile";
-import { withMotion } from "../../lib/motionUtils";
+import { useFirstRun } from "../../hooks/useFirstRun";
+import {
+    EASE,
+    gsap,
+    hexToRgb,
+    rgba,
+    useGSAP,
+    withMotion,
+} from "../../lib/motionUtils";
 
 interface PageNavCardProps {
     page: PageItem;
@@ -24,6 +31,8 @@ export const PageNavCard: React.FC<PageNavCardProps> = ({
     const [imageError, setImageError] = useState(false);
     const [isHovered, setIsHovered] = useState(false);
     const isMobile = useIsMobile();
+    const cardRef = useRef<HTMLDivElement>(null);
+    const artworkRef = useRef<HTMLDivElement>(null);
 
     const diff = index - currentIndex;
     const isActive = diff === 0;
@@ -59,6 +68,70 @@ export const PageNavCard: React.FC<PageNavCardProps> = ({
 
     const style = getCardStyle();
 
+    // Slide / scale / fade / blur / tilt the card to its slot in the stack.
+    // The first run snaps into place (the old `initial={false}`); later runs
+    // tween. zIndex isn't tweened: it must be an integer, so it's applied
+    // immediately, which also puts the incoming card on top from the start.
+    const isFirstPlacement = useFirstRun();
+    useGSAP(
+        () => {
+            const el = cardRef.current;
+            if (!el) return;
+            const target = {
+                x: style.x,
+                scale: style.scale,
+                opacity: style.opacity,
+                filter: style.filter,
+                rotationY: style.rotateY,
+            };
+            gsap.set(el, { zIndex: style.zIndex });
+
+            if (isFirstPlacement()) {
+                gsap.set(el, target);
+                return;
+            }
+            gsap.to(el, {
+                ...target,
+                overwrite: "auto",
+                ...withMotion(isMobile, { duration: 0.6, ease: EASE.soft }),
+            });
+        },
+        { dependencies: [currentIndex] },
+    );
+
+    // Artwork frame: glow + border react to active / hover state. Both
+    // shadows are always present (the inactive one is just fully transparent
+    // on the second layer) so GSAP can interpolate them smoothly.
+    const isFirstArtworkStyle = useFirstRun();
+    useGSAP(
+        () => {
+            const el = artworkRef.current;
+            if (!el) return;
+            const accent = hexToRgb(page.accentColor);
+            const target = {
+                boxShadow: isActive
+                    ? `0 20px 50px -10px ${rgba(accent, 0.3137)}, 0 10px 25px rgba(0, 0, 0, 0.9)`
+                    : `0 8px 18px rgba(0, 0, 0, 0.7), 0 0px 0px rgba(0, 0, 0, 0)`,
+                borderColor: isActive
+                    ? isHovered
+                        ? "rgba(255, 255, 255, 0.85)"
+                        : "rgba(255, 255, 255, 0.3)"
+                    : "rgba(255, 255, 255, 0.1)",
+            };
+
+            if (isFirstArtworkStyle()) {
+                gsap.set(el, target);
+                return;
+            }
+            gsap.to(el, {
+                ...target,
+                overwrite: "auto",
+                ...withMotion(isMobile, { duration: 0.35 }),
+            });
+        },
+        { dependencies: [isActive, isHovered, page.accentColor] },
+    );
+
     const handleCardClick = (e: React.MouseEvent) => {
         e.stopPropagation();
         if (isActive) {
@@ -69,39 +142,17 @@ export const PageNavCard: React.FC<PageNavCardProps> = ({
     };
 
     return (
-        <motion.div
+        <div
+            ref={cardRef}
             id={`page-nav-card-${page.slug}`}
-            initial={false}
-            animate={{
-                x: style.x,
-                scale: style.scale,
-                opacity: style.opacity,
-                zIndex: style.zIndex,
-                filter: style.filter,
-                rotateY: style.rotateY,
-            }}
-            transition={withMotion(isMobile, {
-                duration: 0.6,
-                ease: [0.22, 1, 0.36, 1],
-            })}
             onClick={handleCardClick}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
             className="absolute cursor-pointer select-none perspective-1000 origin-center flex flex-col items-center justify-center">
             {/* Artwork Container */}
             <div className="relative group">
-                <motion.div
-                    animate={{
-                        boxShadow: isActive
-                            ? `0 20px 50px -10px ${page.accentColor}50, 0 10px 25px rgba(0,0,0,0.9)`
-                            : "0 8px 18px rgba(0,0,0,0.7)",
-                        borderColor: isActive
-                            ? isHovered
-                                ? "rgba(255,255,255,0.85)"
-                                : "rgba(255,255,255,0.3)"
-                            : "rgba(255,255,255,0.1)",
-                    }}
-                    transition={withMotion(isMobile, { duration: 0.35 })}
+                <div
+                    ref={artworkRef}
                     className="relative w-52.5 h-52.5 sm:w-62.5 sm:h-62.5 md:w-72.5 md:h-72.5 lg:w-[320px] lg:h-80 max-h-[38vh] aspect-square border overflow-hidden rounded-xs bg-[#0a0a0a]">
                     {!imageError ? (
                         <img
@@ -109,7 +160,7 @@ export const PageNavCard: React.FC<PageNavCardProps> = ({
                             alt={`visual artwork`}
                             referrerPolicy="no-referrer"
                             onError={() => setImageError(true)}
-                            className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                            className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-120"
                         />
                     ) : (
                         <div
@@ -130,7 +181,7 @@ export const PageNavCard: React.FC<PageNavCardProps> = ({
                     <div className="absolute top-2 right-2 w-2 h-2 border-t border-r border-white/40 pointer-events-none" />
                     <div className="absolute bottom-2 left-2 w-2 h-2 border-b border-l border-white/40 pointer-events-none" />
                     <div className="absolute bottom-2 right-2 w-2 h-2 border-b border-r border-white/40 pointer-events-none" />
-                </motion.div>
+                </div>
                 <a
                     href={page.source}
                     target="_blank"
@@ -139,6 +190,6 @@ export const PageNavCard: React.FC<PageNavCardProps> = ({
                     Artwork Credit
                 </a>
             </div>
-        </motion.div>
+        </div>
     );
 };

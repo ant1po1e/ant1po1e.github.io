@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
-import { AnimatePresence, motion, MotionConfig } from 'motion/react';
 import { TopLeftSocials } from './components/layout/TopLeftSocials';
 import { TopRightNav } from './components/layout/TopRightNav';
 import { LoadingScreen } from './components/ui/LoadingScreen';
@@ -14,37 +13,39 @@ import { ToolsPage } from './pages/ToolsPage';
 import { ContactPage } from './pages/ContactPage';
 import { VaultPage } from './pages/VaultPage';
 import { useIsMobile } from './hooks/useIsMobile';
-import { withMotion } from './lib/motionUtils';
+import { useSwap } from './hooks/useSwap';
+import { EASE, withMotion } from './lib/motionUtils';
 
 const AnimatedRoutes: React.FC<{ isMobile: boolean }> = ({ isMobile }) => {
   const location = useLocation();
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Fade the current page out, swap routes, fade the new page in (the GSAP
+  // version of <AnimatePresence mode="wait"> keyed on the pathname). The old
+  // page stays rendered through its exit because Routes receives the
+  // *displayed* location, not the live one.
+  const shownLocation = useSwap(location, location.pathname, containerRef, {
+    exit: withMotion(isMobile, { opacity: 0, duration: 0.35, ease: EASE.soft }),
+    enterFrom: { opacity: 0 },
+    enterTo: withMotion(isMobile, { opacity: 1, duration: 0.35, ease: EASE.soft }),
+  });
 
   return (
-    <AnimatePresence mode="wait">
-      <motion.div
-        key={location.pathname}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={withMotion(isMobile, { duration: 0.35, ease: [0.22, 1, 0.36, 1] })}
-        className="w-full min-h-dvh"
-      >
-        <Routes location={location}>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/navigate" element={<HomePage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/projects" element={<ProjectsPage />} />
-          <Route path="/beatmaps" element={<BeatmapsPage />} />
-          <Route path="/staffing" element={<StaffingPage />} />
-          {/* <Route path="/how-to-map" element={<HowToMapPage />} /> */}
-          <Route path="/tools" element={<ToolsPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/str" element={<VaultPage />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
-          
-        </Routes>
-      </motion.div>
-    </AnimatePresence>
+    <div ref={containerRef} className="w-full min-h-dvh">
+      <Routes location={shownLocation}>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/navigate" element={<HomePage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/projects" element={<ProjectsPage />} />
+        <Route path="/beatmaps" element={<BeatmapsPage />} />
+        <Route path="/staffing" element={<StaffingPage />} />
+        {/* <Route path="/how-to-map" element={<HowToMapPage />} /> */}
+        <Route path="/tools" element={<ToolsPage />} />
+        <Route path="/contact" element={<ContactPage />} />
+        <Route path="/str" element={<VaultPage />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </div>
   );
 };
 
@@ -53,11 +54,7 @@ export default function App() {
   const isMobile = useIsMobile();
 
   return (
-    <MotionConfig
-      reducedMotion={isMobile ? 'always' : 'never'}
-      transition={isMobile ? { duration: 0 } : undefined}
-    >
-      <BrowserRouter>
+    <BrowserRouter>
           <div className="relative min-h-dvh w-full text-[#F5F5F5] selection:bg-white selection:text-black">
               {/* Fixed dim overlay over the background image — stays constant through
             loading and page transitions so the image never flashes at full brightness */}
@@ -83,7 +80,6 @@ export default function App() {
               <div className="absolute bottom-2 left-2 w-4 h-4 border-b border-l border-white/30" />
               <div className="absolute bottom-2 right-2 w-4 h-4 border-b border-r border-white/30" />
           </div>
-      </BrowserRouter>
-    </MotionConfig>
+    </BrowserRouter>
   );
 }

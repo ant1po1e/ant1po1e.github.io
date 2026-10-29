@@ -1,12 +1,12 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
-import { motion, AnimatePresence, PanInfo } from 'motion/react';
 import { useNavigate } from 'react-router-dom';
 import { PageItem } from '../../types';
 import { PageNavCard } from './PageNavCard';
 import { PageNavDots } from './PageNavDots';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useIsMobile } from '../../hooks/useIsMobile';
-import { withMotion } from '../../lib/motionUtils';
+import { useSwap } from '../../hooks/useSwap';
+import { Draggable, EASE, gsap, useGSAP, withMotion } from '../../lib/motionUtils';
 
 interface PageNavCarouselProps {
   pages: PageItem[];
@@ -28,8 +28,28 @@ export const PageNavCarousel: React.FC<PageNavCarouselProps> = ({
   const [currentIndex, setCurrentIndex] = useState<number>(initialIndex >= 0 ? initialIndex : 0);
   const wheelTimeoutRef = useRef<number | null>(null);
   const accumulatedDeltaRef = useRef<number>(0);
+  const rootRef = useRef<HTMLElement>(null);
+  const stageRef = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  // True while a pointer gesture has actually dragged the stage, so the click
+  // that follows the release can be swallowed instead of selecting a card.
+  const didDragRef = useRef(false);
 
   const currentPage = pages[currentIndex] || pages[0];
+
+  // Page title: old title leaves, then the new one settles in (the GSAP
+  // version of <AnimatePresence mode="wait"> keyed on the page id).
+  const shownPage = useSwap(currentPage, currentPage.id, titleRef, {
+    exit: withMotion(isMobile, { opacity: 0, y: -6, duration: 0.4, ease: EASE.soft }),
+    enterFrom: { opacity: 0, y: 6, letterSpacing: '0.2em' },
+    enterTo: withMotion(isMobile, {
+      opacity: 1,
+      y: 0,
+      letterSpacing: '0.3em',
+      duration: 0.4,
+      ease: EASE.soft,
+    }),
+  });
 
   const goToIndex = useCallback(
     (index: number) => {
@@ -108,17 +128,68 @@ export const PageNavCarousel: React.FC<PageNavCarouselProps> = ({
     }, 150);
   };
 
-  // Drag Gesture Handlers
-  const handleDragEnd = (_: unknown, info: PanInfo) => {
-    const swipeThreshold = 35;
-    const velocityThreshold = 180;
+  // Drag (swipe) gesture — GSAP Draggable on the card stage. The stage can be
+  // pulled sideways with heavy resistance, then springs back; a long enough
+  // pull or a fast enough flick changes page. Handlers are read through a ref
+  // so the single Draggable instance always calls the latest ones.
+  const swipeHandlersRef = useRef({ next: handleNext, prev: handlePrev });
+  swipeHandlersRef.current = { next: handleNext, prev: handlePrev };
+  const isMobileRef = useRef(isMobile);
+  isMobileRef.current = isMobile;
 
-    if (info.offset.x < -swipeThreshold || info.velocity.x < -velocityThreshold) {
-      handleNext();
-    } else if (info.offset.x > swipeThreshold || info.velocity.x > velocityThreshold) {
-      handlePrev();
-    }
-  };
+  useGSAP(
+    () => {
+      const stage = stageRef.current;
+      if (!stage) return;
+
+      const swipeThreshold = 35;
+      const velocityThreshold = 180; // px per second
+      const track = { pressX: 0, lastX: 0, lastT: 0, velocity: 0 };
+
+      const [draggable] = Draggable.create(stage, {
+        type: 'x',
+        bounds: { minX: 0, maxX: 0 },
+        edgeResistance: 0.8,
+        onPress(this: Draggable) {
+          track.pressX = this.pointerX;
+          track.lastX = this.pointerX;
+          track.lastT = performance.now();
+          track.velocity = 0;
+          didDragRef.current = false;
+        },
+        onDrag(this: Draggable) {
+          const now = performance.now();
+          const dt = now - track.lastT;
+          if (dt > 0) track.velocity = ((this.pointerX - track.lastX) / dt) * 1000;
+          track.lastX = this.pointerX;
+          track.lastT = now;
+          if (Math.abs(this.pointerX - track.pressX) > 4) didDragRef.current = true;
+        },
+        onDragEnd(this: Draggable) {
+          const offset = this.pointerX - track.pressX;
+
+          if (offset < -swipeThreshold || track.velocity < -velocityThreshold) {
+            swipeHandlersRef.current.next();
+          } else if (offset > swipeThreshold || track.velocity > velocityThreshold) {
+            swipeHandlersRef.current.prev();
+          }
+
+          gsap.to(stage, {
+            x: 0,
+            overwrite: true,
+            ...withMotion(isMobileRef.current, { duration: 0.5, ease: EASE.soft }),
+          });
+          // The click that follows a drag fires before this timeout runs.
+          window.setTimeout(() => {
+            didDragRef.current = false;
+          }, 0);
+        },
+      });
+
+      return () => draggable.kill();
+    },
+    { scope: rootRef },
+  );
 
   const handleOpenPage = (path: string) => {
     navigate(path);
@@ -126,6 +197,7 @@ export const PageNavCarousel: React.FC<PageNavCarouselProps> = ({
 
   return (
       <main
+          ref={rootRef}
           id="page-navigation-carousel"
           onWheel={handleWheel}
           className="relative w-full h-dvh flex flex-col justify-between items-center overflow-hidden select-none pt-16 sm:pt-20 pb-4 px-4 touch-pan-y">
@@ -139,27 +211,24 @@ export const PageNavCarousel: React.FC<PageNavCarouselProps> = ({
                   <span className="w-1 h-1 rounded-full bg-white/30" />
               </div>
 
-              <AnimatePresence mode="wait">
-                  <motion.h1
-                      key={currentPage.id}
-                      initial={{ opacity: 0, y: 6, letterSpacing: "0.2em" }}
-                      animate={{ opacity: 1, y: 0, letterSpacing: "0.3em" }}
-                      exit={{ opacity: 0, y: -6 }}
-                      transition={withMotion(isMobile, { duration: 0.4, ease: [0.22, 1, 0.36, 1] })}
-                      className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-display font-light uppercase pl-2 text-center text-[#F5F5F5] drop-shadow-[0_4px_24px_rgba(0,0,0,0.8)]">
-                      {currentPage.title}
-                  </motion.h1>
-              </AnimatePresence>
+              <h1
+                  ref={titleRef}
+                  className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-display font-light uppercase pl-2 text-center text-[#F5F5F5] drop-shadow-[0_4px_24px_rgba(0,0,0,0.8)]">
+                  {shownPage.title}
+              </h1>
           </div>
 
           {/* Main 3D Card Stage Area */}
           <div className="flex-1 min-h-0 w-full max-w-6xl flex items-center justify-center relative my-auto">
-              <motion.div
+              <div
+                  ref={stageRef}
                   id="carousel-touch-stage"
-                  drag="x"
-                  dragConstraints={{ left: 0, right: 0 }}
-                  dragElastic={0.2}
-                  onDragEnd={handleDragEnd}
+                  onClickCapture={(e) => {
+                      if (didDragRef.current) {
+                          e.stopPropagation();
+                          e.preventDefault();
+                      }
+                  }}
                   className="relative w-full h-full flex items-center justify-center z-10"
                   style={{ perspective: 1200 }}>
                   {pages.map((page, index) => (
@@ -173,7 +242,7 @@ export const PageNavCarousel: React.FC<PageNavCarouselProps> = ({
                           onOpenPage={handleOpenPage}
                       />
                   ))}
-              </motion.div>
+              </div>
 
               {/* Left / Right Floating Arrow Controls */}
               {currentIndex > 0 && (

@@ -1,5 +1,4 @@
-import React from "react";
-import { motion } from "motion/react";
+import React, { useRef } from "react";
 import {
     Github,
     Twitter,
@@ -8,10 +7,28 @@ import {
 } from "lucide-react";
 import { PROFILE_DATA } from "../../data/profileData";
 import { useIsMobile } from "../../hooks/useIsMobile";
-import { withMotion } from "../../lib/motionUtils";
+import { gsap, useGSAP, withMotion } from "../../lib/motionUtils";
 
 export const TopLeftSocials: React.FC = () => {
     const isMobile = useIsMobile();
+    const rootRef = useRef<HTMLDivElement>(null);
+
+    // Entrance: the brand logo slides in from the left, the social icons pop in.
+    useGSAP(
+        () => {
+            gsap.from("#brand-logo-ant1po1e", {
+                opacity: 0,
+                x: -15,
+                ...withMotion(isMobile, { duration: 0.5 }),
+            });
+            gsap.from("[id^='social-link-']", {
+                opacity: 0,
+                scale: 0.8,
+                ...withMotion(isMobile, { duration: 0.3 }),
+            });
+        },
+        { scope: rootRef },
+    );
     const socialLinks = [
         {
             id: "github",
@@ -45,18 +62,15 @@ export const TopLeftSocials: React.FC = () => {
 
     return (
         <div
+            ref={rootRef}
             id="top-left-brand-socials"
             className="fixed top-2 left-5 md:top-3 md:left-8 z-50 flex items-center gap-3 md:gap-4">
-            <motion.a
+            <a
                 id="brand-logo-ant1po1e"
                 href="https://osu.ppy.sh/users/Antipole"
                 aria-label="Visit Antipole's osu! profile"
                 target="_blank"
                 rel="noopener noreferrer"
-                initial={{ opacity: 0, x: -15 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={withMotion(isMobile, { duration: 0.5 })}
-
                 className="flex items-center gap-2 group py-1 pr-2">
                 <div className="w-10 h-10 rounded-sm border border-white/20 bg-white/5 flex items-center justify-center text-white/80 group-hover:border-white/80 group-hover:text-white transition-all duration-300">
                     <img
@@ -73,13 +87,13 @@ export const TopLeftSocials: React.FC = () => {
                         {PROFILE_DATA.handle}
                     </span>
                 </div>
-            </motion.a>
+            </a>
 
             <div className="hidden sm:block h-4 w-px bg-white/10" />
 
             <div className="hidden sm:flex items-center gap-2">
                 {socialLinks.map((link) => (
-                    <motion.a
+                    <a
                         key={link.id}
                         id={`social-link-${link.id}`}
                         href={link.url}
@@ -87,13 +101,9 @@ export const TopLeftSocials: React.FC = () => {
                         rel="noopener noreferrer"
                         aria-label={link.ariaLabel}
                         title={link.name}
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={withMotion(isMobile, { duration: 0.3 })}
-
-                        className="p-1.5 rounded-full text-white/40 hover:text-white hover:bg-white/10 transition-all duration-300">
+                        className="p-1.5 rounded-full text-white/40 hover:text-white hover:bg-white/10 transition-colors duration-300">
                         {link.icon}
-                    </motion.a>
+                    </a>
                 ))}
             </div>
         </div>

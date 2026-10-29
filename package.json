@@ -13,12 +13,13 @@
     "lint": "tsc --noEmit"
   },
   "dependencies": {
+    "@gsap/react": "^2.1.2",
     "@supabase/supabase-js": "^2.117.1",
     "@tailwindcss/vite": "^4.1.14",
     "@vitejs/plugin-react": "^5.0.4",
+    "gsap": "^3.15.0",
     "html-to-image": "^1.11.11",
     "lucide-react": "^0.546.0",
-    "motion": "^12.23.24",
     "react": "^19.0.1",
     "react-dom": "^19.0.1",
     "react-router-dom": "^7.18.2",
@@ -26,6 +27,7 @@
   },
   "devDependencies": {
     "@types/node": "^22.14.0",
+    "@types/react": "^19.3.0",
     "@vercel/node": "^3.2.29",
     "esbuild": "^0.25.0",
     "tailwindcss": "^4.1.14",

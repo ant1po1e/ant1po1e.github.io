@@ -77,7 +77,7 @@ export const NAV_PAGES: PageItem[] = [
         id: "03",
         slug: "staffing",
         path: "/staffing",
-        title: "STAFFING HISTORY",
+        title: "STAFFING",
         catalogueNumber: "AP-003",
         cover: "/cards/staffing.webp",
         source: "https://x.com/donburi_kotti15/status/2073476528781115815?s=20",

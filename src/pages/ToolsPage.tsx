@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { motion } from "motion/react";
 import { Link } from "react-router-dom";
 import { SnapCalculator } from "../components/tools/SnapCalculator";
 import { BBCodeColorizer } from "../components/tools/BBCodeColorizer";
 import { SkillRadarCard } from "../components/tools/SkillRadarCard";
-import { useIsMobile } from "../hooks/useIsMobile";
-import { withMotion } from "../lib/motionUtils";
+import { Reveal } from "../components/ui/Reveal";
 import {
     ArrowLeft,
     ArrowRight,
@@ -24,7 +22,6 @@ const TOOL_TABS: { key: ToolKey; label: string; icon: React.ElementType }[] = [
 ];
 
 export const ToolsPage: React.FC = () => {
-    const isMobile = useIsMobile();
     const [activeTool, setActiveTool] = useState<ToolKey>("snap");
 
     useEffect(() => {
@@ -90,15 +87,11 @@ export const ToolsPage: React.FC = () => {
                     </div>
 
                     {/* Active Tool Panel */}
-                    <motion.div
-                        key={activeTool}
-                        initial={{ opacity: 0, scale: 0.98 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={withMotion(isMobile, { duration: 0.3 })}>
+                    <Reveal key={activeTool} scale={0.98} duration={0.3}>
                         {activeTool === "snap" && <SnapCalculator />}
                         {activeTool === "bbcode" && <BBCodeColorizer />}
                         {activeTool === "skillcard" && <SkillRadarCard />}
-                    </motion.div>
+                    </Reveal>
 
                     {/* External Tool — Barline Scope */}
                     <a
