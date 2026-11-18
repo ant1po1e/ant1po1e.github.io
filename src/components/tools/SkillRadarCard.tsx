@@ -255,8 +255,8 @@ export const SkillRadarCard: React.FC = () => {
     );
 
     return (
-        <div className="p-6 sm:p-8 rounded-lg border border-white/15 bg-white/[0.02] backdrop-blur-md">
-            <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#4E82B8] mb-6 pb-4 border-b border-white/10">
+        <div className="p-6 sm:p-8 rounded-lg border border-ink/15 bg-ink/[0.02] backdrop-blur-md">
+            <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-olive-deep mb-6 pb-4 border-b border-ink/10">
                 <UserSquare2 className="w-3.5 h-3.5" />
                 <span>OSU!MANIA SKILL CARD GENERATOR</span>
             </div>
@@ -267,7 +267,7 @@ export const SkillRadarCard: React.FC = () => {
                     <select
                         value={theme}
                         onChange={(e) => handleThemeChange(e.target.value)}
-                        className="w-full bg-black/60 border border-white/15 text-white text-xs font-mono px-3 py-2 rounded focus:outline-none focus:border-[#4E82B8] transition-colors">
+                        className="w-full bg-white/70 border border-ink/15 text-ink text-xs font-mono px-3 py-2 rounded focus:outline-none focus:border-olive transition-colors">
                         {Object.entries(THEMES).map(([key, value]) => (
                             <option key={key} value={key}>
                                 {value.name}
@@ -281,7 +281,7 @@ export const SkillRadarCard: React.FC = () => {
                     <button
                         onClick={downloadCard}
                         type="button"
-                        className="inline-flex items-center gap-1.5 px-6 py-2.5 rounded bg-white hover:bg-white/90 text-black text-xs font-mono font-semibold uppercase tracking-wider transition-colors">
+                        className="inline-flex items-center gap-1.5 px-6 py-2.5 rounded bg-ink hover:bg-ink/90 text-paper text-xs font-mono font-semibold uppercase tracking-wider transition-colors">
                         <Download className="w-3.5 h-3.5" />
                         <span>Download PNG</span>
                     </button>

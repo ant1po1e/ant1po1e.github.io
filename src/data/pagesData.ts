@@ -9,8 +9,8 @@ export const NAV_PAGES: PageItem[] = [
         catalogueNumber: "AP-000",
         cover: "/cards/about.webp",
         source: "https://x.com/rytoua318/status/2070533263291285866?s=20",
-        accentColor: "#F2C14E",
-        secondaryAccent: "#3A2F0D",
+        accentColor: "#98BDA0",
+        secondaryAccent: "#F6D5DB",
         metaLabels: [
             { label: "ROLE", value: "Web & Game Developer, osu!mania Mapper" },
             { label: "LOCATION", value: "Indonesia / Global Remote" },
@@ -32,8 +32,8 @@ export const NAV_PAGES: PageItem[] = [
         catalogueNumber: "AP-001",
         cover: "/cards/projects.webp",
         source: "https://x.com/BoneUnluck/status/2072025084097593593?s=20",
-        accentColor: "#7B68EE",
-        secondaryAccent: "#1A153B",
+        accentColor: "#E8909F",
+        secondaryAccent: "#FBE6D6",
         metaLabels: [
             { label: "GAMES", value: "Wave Walker 1-3, Dodge the Thing" },
             {
@@ -58,8 +58,8 @@ export const NAV_PAGES: PageItem[] = [
         catalogueNumber: "AP-002",
         cover: "/cards/beatmaps.webp",
         source: "https://x.com/LeeDaru1/status/2074752718586159279?s=20",
-        accentColor: "#C95767",
-        secondaryAccent: "#3B1119",
+        accentColor: "#7FC3C4",
+        secondaryAccent: "#F7D9DE",
         metaLabels: [
             { label: "KEYMODES", value: "4K / 7K osu!mania" },
             { label: "FOCUS", value: "Chordjack, Streams, Tech, LN, SV" },
@@ -81,8 +81,8 @@ export const NAV_PAGES: PageItem[] = [
         catalogueNumber: "AP-003",
         cover: "/cards/staffing.webp",
         source: "https://x.com/donburi_kotti15/status/2073476528781115815?s=20",
-        accentColor: "#E0A96D",
-        secondaryAccent: "#382312",
+        accentColor: "#EAAE92",
+        secondaryAccent: "#F9DDE3",
         metaLabels: [
             { label: "ROLES", value: "Head Referee, Pooler, Mapper, Streamer" },
             { label: "EVENTS", value: "15+ Competitive Tournaments" },
@@ -127,8 +127,8 @@ export const NAV_PAGES: PageItem[] = [
         catalogueNumber: "AP-005",
         cover: "/cards/tools.webp",
         source: "https://x.com/amedamahitotubu/status/2074116396322369661?s=20",
-        accentColor: "#4E82B8",
-        secondaryAccent: "#0D223A",
+        accentColor: "#B9C77F",
+        secondaryAccent: "#F6DCE0",
         metaLabels: [
             {
                 label: "TOOLS INCLUDED",
@@ -153,8 +153,8 @@ export const NAV_PAGES: PageItem[] = [
         catalogueNumber: "AP-006",
         cover: "/cards/contact.webp",
         source: "https://x.com/Edgar_Syu/status/2065026384221864361?s=20",
-        accentColor: "#E0A96D",
-        secondaryAccent: "#382312",
+        accentColor: "#F3D286",
+        secondaryAccent: "#FBE0DF",
         metaLabels: [
             { label: "DISCORD", value: "Antipole / ant1po1e" },
             { label: "YOUTUBE", value: "youtube.com/@ant1po1e" },

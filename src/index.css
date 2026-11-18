@@ -1,12 +1,37 @@
 @import "tailwindcss";
 
+/*
+ * Pastel theme — palette sampled from the carousel artwork
+ * (pink hair, sage jackets, mint-teal backdrop, peach/terracotta skirt,
+ * olive cardigan, butter sparkles). Use these tokens instead of raw
+ * white/black so the whole site can be re-tinted from one place.
+ */
+@theme {
+    --color-paper: #fff9f6; /* warm cream — page + panels */
+    --color-wash: #fbe9ec; /* pink wash — headers, pills, inset areas */
+    --color-ink: #4a3540; /* deep plum — text, lines, solid buttons */
+
+    --color-rose: #e8909f;
+    --color-rose-deep: #b4546a;
+    --color-sage: #98bda0;
+    --color-sage-deep: #4d7b5c;
+    --color-teal: #7fc3c4;
+    --color-teal-deep: #327f82;
+    --color-peach: #eaae92;
+    --color-peach-deep: #a45f3e;
+    --color-olive: #b9c77f;
+    --color-olive-deep: #66762f;
+    --color-butter: #f3d286;
+    --color-butter-deep: #8d6c14;
+}
+
 @layer base {
     :root {
-        --bg-primary: #050505;
-        --bg-secondary: #0a0a0a;
-        --text-primary: #f5f5f5;
-        --text-secondary: #8a8a8a;
-        --border-subtle: rgba(255, 255, 255, 0.15);
+        --bg-primary: #fff9f6;
+        --bg-secondary: #fbe9ec;
+        --text-primary: #4a3540;
+        --text-secondary: #8c7882;
+        --border-subtle: rgba(74, 53, 64, 0.15);
     }
 
     html,
@@ -17,7 +42,7 @@
         overflow: hidden;
         margin: 0;
         padding: 0;
-        color: #f5f5f5;
+        color: #4a3540;
         font-family: "Plus Jakarta Sans", sans-serif;
         user-select: none;
         -webkit-user-select: none;
@@ -27,7 +52,7 @@
 
     html,
     body {
-        background-color: #050505;
+        background-color: #fff9f6;
         background-image: url(/bg.webp);
         -webkit-background-size: cover;
         background-size: 150%;
@@ -60,7 +85,7 @@
 /* Custom Film Grain */
 .noise-overlay {
     background-image: radial-gradient(
-        rgba(255, 255, 255, 0.04) 1px,
+        rgba(74, 53, 64, 0.06) 1px,
         transparent 0
     );
     background-size: 24px 24px;
@@ -75,25 +100,25 @@
     scrollbar-width: none;
 }
 
-/* Sleek Cyber Dark Scrollbar for Inner Containers */
+/* Pastel Scrollbar for Inner Containers */
 .custom-scrollbar::-webkit-scrollbar {
     width: 5px;
     height: 5px;
 }
 .custom-scrollbar::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.02);
+    background: rgba(74, 53, 64, 0.04);
     border-radius: 4px;
 }
 .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.18);
+    background: rgba(232, 144, 159, 0.55);
     border-radius: 4px;
 }
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.38);
+    background: rgba(232, 144, 159, 0.9);
 }
 .custom-scrollbar {
     scrollbar-width: thin;
-    scrollbar-color: rgba(255, 255, 255, 0.18) rgba(255, 255, 255, 0.02);
+    scrollbar-color: rgba(232, 144, 159, 0.55) rgba(74, 53, 64, 0.04);
 }
 
 /* Custom animations */

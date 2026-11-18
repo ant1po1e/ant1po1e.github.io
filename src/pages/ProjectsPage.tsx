@@ -138,27 +138,27 @@ export const ProjectsPage: React.FC = () => {
     return (
         <main
             id="projects-page-view"
-            className="relative h-dvh w-full bg-transparent text-[#F5F5F5] overflow-hidden pt-16 sm:pt-20 pb-3 sm:pb-4 px-3 sm:px-6 md:px-8 flex flex-col items-center selection:bg-white selection:text-black">
+            className="relative h-dvh w-full bg-transparent text-ink overflow-hidden pt-16 sm:pt-20 pb-3 sm:pb-4 px-3 sm:px-6 md:px-8 flex flex-col items-center selection:bg-ink selection:text-paper">
             {/* Background Ambient Glow */}
             <div className="fixed inset-0 pointer-events-none z-0">
-                <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-175 h-175 rounded-full bg-radial from-[#7B68EE]/10 via-[#1A153B]/5 to-transparent blur-3xl" />
+                <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-175 h-175 rounded-full bg-radial from-rose/10 via-rose/15 to-transparent blur-3xl" />
                 <div className="absolute inset-0 noise-overlay opacity-30" />
             </div>
 
             {/* Main Framed Container */}
-            <div className="relative z-10 w-full max-w-6xl flex-1 min-h-0 bg-[#0A0A0A]/90 border border-white/10 rounded-lg backdrop-blur-xl flex flex-col overflow-hidden shadow-2xl">
+            <div className="relative z-10 w-full max-w-6xl flex-1 min-h-0 bg-paper/85 border border-ink/10 rounded-lg backdrop-blur-xl flex flex-col overflow-hidden shadow-2xl">
                 {/* Container Top Header Bar */}
-                <header className="shrink-0 flex flex-wrap items-center justify-between gap-3 px-4 sm:px-6 py-3 border-b border-white/10 bg-black/40">
+                <header className="shrink-0 flex flex-wrap items-center justify-between gap-3 px-4 sm:px-6 py-3 border-b border-ink/10 bg-wash/60">
                     <div className="flex items-center gap-3">
                         <Link
                             to="/?p=projects"
-                            className="group flex items-center gap-1.5 text-xs font-mono tracking-[0.2em] text-white/50 hover:text-white transition-colors">
+                            className="group flex items-center gap-1.5 text-xs font-mono tracking-[0.2em] text-ink/60 hover:text-ink transition-colors">
                             <ArrowLeft className="w-3.5 h-3.5 transition-transform group-hover:-translate-x-0.5" />
                         </Link>
-                        <span className="text-white/20 hidden sm:inline">
+                        <span className="text-ink/35 hidden sm:inline">
                             |
                         </span>
-                        <span className="text-[12px] font-japanese tracking-[0.3em] text-white/40 uppercase hidden sm:inline">
+                        <span className="text-[12px] font-japanese tracking-[0.3em] text-ink/55 uppercase hidden sm:inline">
                             PROJECTS
                         </span>
                     </div>
@@ -168,7 +168,7 @@ export const ProjectsPage: React.FC = () => {
                 <div className="flex-1 min-h-0 flex flex-col p-4 sm:p-6 md:p-8 gap-4 overflow-hidden">
                     {/* Section Hero Banner */}
                     <div className="text-center max-w-2xl mx-auto shrink-0">
-                        <h1 className="text-xl sm:text-3xl font-display font-light uppercase tracking-[0.25em] text-white mb-1">
+                        <h1 className="text-xl sm:text-3xl font-display font-light uppercase tracking-[0.25em] text-ink mb-1">
                             PROJECTS
                         </h1>
                     </div>
@@ -179,7 +179,7 @@ export const ProjectsPage: React.FC = () => {
                         <button
                             onClick={handlePrev}
                             aria-label="Previous project"
-                            className="shrink-0 z-10 p-2 sm:p-2.5 rounded-full border border-white/10 bg-white/10 hover:bg-white/20 text-white/60 hover:text-white backdrop-blur-md transition-colors cursor-pointer">
+                            className="shrink-0 z-10 p-2 sm:p-2.5 rounded-full border border-ink/10 bg-ink/10 hover:bg-ink/20 text-ink/68 hover:text-ink backdrop-blur-md transition-colors cursor-pointer">
                             <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
                         </button>
 
@@ -190,9 +190,9 @@ export const ProjectsPage: React.FC = () => {
                                 className="h-full w-full cursor-grab active:cursor-grabbing">
                                 <div
                                     ref={slideRef}
-                                    className="group relative h-full w-full rounded-lg border border-white/10 bg-white/2 hover:bg-white/4 backdrop-blur-md overflow-hidden transition-colors duration-300 hover:border-white/25 flex flex-col">
+                                    className="group relative h-full w-full rounded-lg border border-ink/10 bg-ink/2 hover:bg-ink/4 backdrop-blur-md overflow-hidden transition-colors duration-300 hover:border-ink/25 flex flex-col">
                                     {/* Project Image */}
-                                    <div className="relative w-full flex-1 min-h-0 overflow-hidden bg-black/40">
+                                    <div className="relative w-full flex-1 min-h-0 overflow-hidden bg-wash/60">
                                         <img
                                             src={shownProject.image}
                                             alt={shownProject.alt}
@@ -201,9 +201,9 @@ export const ProjectsPage: React.FC = () => {
                                             className="w-full h-full object-cover pointer-events-none select-none"
                                         />
 
-                                        <div className="absolute inset-0 bg-linear-to-t from-black via-black/25 to-transparent opacity-100 hover:from-black hover:via-black/50 hover:to-black/25 transition-colors duration-300">
+                                        <div className="absolute inset-0 bg-linear-to-t from-paper via-paper/75 to-transparent opacity-100 hover:from-paper hover:via-paper/85 hover:to-paper/30 transition-colors duration-300">
                                             <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6">
-                                                <div className="flex items-center gap-2 text-[12px] font-mono text-white/80 mb-2">
+                                                <div className="flex items-center gap-2 text-[12px] font-mono text-ink/82 mb-2">
                                                     <span>
                                                         {PROJECTS_LIST.indexOf(
                                                             shownProject,
@@ -212,7 +212,7 @@ export const ProjectsPage: React.FC = () => {
                                                     </span>
                                                 </div>
 
-                                                <h3 className="text-lg sm:text-2xl font-display uppercase tracking-wider text-white group-hover:text-[#7B68EE] transition-colors mb-2">
+                                                <h3 className="text-lg sm:text-2xl font-display uppercase tracking-wider text-ink group-hover:text-rose-deep transition-colors mb-2">
                                                     {shownProject.title}
                                                 </h3>
 
@@ -221,7 +221,7 @@ export const ProjectsPage: React.FC = () => {
                                                         (s) => (
                                                             <span
                                                                 key={s}
-                                                                className="px-2 py-0.5 rounded bg-white/10 text-[12px] font-mono uppercase text-white/70 border border-white/10">
+                                                                className="px-2 py-0.5 rounded bg-ink/10 text-[12px] font-mono uppercase text-ink/75 border border-ink/10">
                                                                 {s}
                                                             </span>
                                                         ),
@@ -233,7 +233,7 @@ export const ProjectsPage: React.FC = () => {
                                                         href={shownProject.link}
                                                         target="_blank"
                                                         rel="noopener noreferrer"
-                                                        className="inline-flex items-center gap-2 px-4 py-2 rounded bg-white hover:bg-white/90 text-black text-xs font-mono font-semibold tracking-wider transition-colors">
+                                                        className="inline-flex items-center gap-2 px-4 py-2 rounded bg-ink hover:bg-ink/90 text-paper text-xs font-mono font-semibold tracking-wider transition-colors">
                                                         <CurrentIcon className="w-3.5 h-3.5" />
                                                         <span>
                                                             {
@@ -242,7 +242,7 @@ export const ProjectsPage: React.FC = () => {
                                                         </span>
                                                     </a>
                                                 ) : (
-                                                    <span className="inline-flex items-center gap-2 px-4 py-2 rounded bg-white/10 text-white/50 text-xs font-mono font-semibold tracking-wider border border-white/10">
+                                                    <span className="inline-flex items-center gap-2 px-4 py-2 rounded bg-ink/10 text-ink/60 text-xs font-mono font-semibold tracking-wider border border-ink/10">
                                                         <CurrentIcon className="w-3.5 h-3.5" />
                                                         <span>
                                                             {
@@ -262,7 +262,7 @@ export const ProjectsPage: React.FC = () => {
                         <button
                             onClick={handleNext}
                             aria-label="Next project"
-                            className="shrink-0 z-10 p-2 sm:p-2.5 rounded-full border border-white/10 bg-white/10 hover:bg-white/20 text-white/60 hover:text-white backdrop-blur-md transition-colors cursor-pointer">
+                            className="shrink-0 z-10 p-2 sm:p-2.5 rounded-full border border-ink/10 bg-ink/10 hover:bg-ink/20 text-ink/68 hover:text-ink backdrop-blur-md transition-colors cursor-pointer">
                             <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
                         </button>
                     </div>
@@ -276,8 +276,8 @@ export const ProjectsPage: React.FC = () => {
                                 aria-label={`Go to ${p.title}`}
                                 className={`h-1.5 rounded-full transition-all duration-300 ${
                                     idx === activeIndex
-                                        ? "w-6 bg-white"
-                                        : "w-1.5 bg-white/25 hover:bg-white/50"
+                                        ? "w-6 bg-ink"
+                                        : "w-1.5 bg-ink/25 hover:bg-ink/50"
                                 }`}
                             />
                         ))}
@@ -285,7 +285,7 @@ export const ProjectsPage: React.FC = () => {
                 </div>
 
                 {/* Container Bottom Status Footer */}
-                <footer className="shrink-0 flex items-center justify-between px-4 sm:px-6 py-2.5 border-t border-white/10 bg-black/40 text-[12px] sm:text-[11px] font-mono text-white/40">
+                <footer className="shrink-0 flex items-center justify-between px-4 sm:px-6 py-2.5 border-t border-ink/10 bg-wash/60 text-[12px] sm:text-[11px] font-mono text-ink/55">
                     <div className="flex items-center gap-3">
                         <span>
                             VIEWING {activeIndex + 1} OF {PROJECTS_LIST.length}{" "}
@@ -296,7 +296,7 @@ export const ProjectsPage: React.FC = () => {
                     <div className="flex items-center gap-4">
                         <Link
                             to="/beatmaps"
-                            className="flex items-center gap-1.5 text-white hover:text-[#7B68EE] font-medium transition-colors">
+                            className="flex items-center gap-1.5 text-ink hover:text-rose-deep font-medium transition-colors">
                             <span>BEATMAPS</span>
                             <ArrowRight className="w-3.5 h-3.5" />
                         </Link>

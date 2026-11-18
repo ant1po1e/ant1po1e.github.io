@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Copy, Check, Calculator } from "lucide-react";
 
 const inputClass =
-    "w-full px-3 py-2 rounded bg-black/60 border border-white/15 text-xs font-mono text-white focus:outline-none focus:border-[#4E82B8] transition-colors";
+    "w-full px-3 py-2 rounded bg-white/70 border border-ink/15 text-xs font-mono text-ink focus:outline-none focus:border-olive transition-colors";
 
 export const SnapCalculator: React.FC = () => {
     const [desiredSnap, setDesiredSnap] = useState("");
@@ -37,8 +37,8 @@ export const SnapCalculator: React.FC = () => {
     };
 
     return (
-        <div className="p-6 sm:p-8 rounded-lg border border-white/15 bg-white/[0.02] backdrop-blur-md text-left">
-            <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#4E82B8] mb-6 pb-4 border-b border-white/10">
+        <div className="p-6 sm:p-8 rounded-lg border border-ink/15 bg-ink/[0.02] backdrop-blur-md text-left">
+            <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-olive-deep mb-6 pb-4 border-b border-ink/10">
                 <Calculator className="w-3.5 h-3.5" />
                 <span>SNAP-TO-BPM TIMING CONVERTER</span>
             </div>
@@ -47,7 +47,7 @@ export const SnapCalculator: React.FC = () => {
                 <div>
                     <label
                         htmlFor="desired-snap"
-                        className="block text-[12px] font-mono text-white/50 uppercase mb-1">
+                        className="block text-[12px] font-mono text-ink/60 uppercase mb-1">
                         Desired Snap (1/x)
                     </label>
                     <input
@@ -63,7 +63,7 @@ export const SnapCalculator: React.FC = () => {
                 <div>
                     <label
                         htmlFor="base-snap"
-                        className="block text-[12px] font-mono text-white/50 uppercase mb-1">
+                        className="block text-[12px] font-mono text-ink/60 uppercase mb-1">
                         Base Snap
                     </label>
                     <select
@@ -94,7 +94,7 @@ export const SnapCalculator: React.FC = () => {
                 <div>
                     <label
                         htmlFor="bpm"
-                        className="block text-[12px] font-mono text-white/50 uppercase mb-1">
+                        className="block text-[12px] font-mono text-ink/60 uppercase mb-1">
                         BPM
                     </label>
                     <input
@@ -115,20 +115,20 @@ export const SnapCalculator: React.FC = () => {
             <div className="flex justify-center mb-6">
                 <button
                     onClick={calculate}
-                    className="px-6 py-2.5 rounded bg-white hover:bg-white/90 text-black text-xs font-mono font-semibold uppercase tracking-wider transition-colors">
+                    className="px-6 py-2.5 rounded bg-ink hover:bg-ink/90 text-paper text-xs font-mono font-semibold uppercase tracking-wider transition-colors">
                     Calculate
                 </button>
             </div>
 
-            <div className="p-6 rounded bg-black/60 border border-white/10 text-center">
-                <div className="text-[12px] font-mono text-white/40 uppercase mb-1">
+            <div className="p-6 rounded bg-white/70 border border-ink/10 text-center">
+                <div className="text-[12px] font-mono text-ink/55 uppercase mb-1">
                     Result
                 </div>
                 <div className="flex items-center justify-center gap-2">
-                    <span className="text-4xl sm:text-5xl font-display font-light text-white">
+                    <span className="text-4xl sm:text-5xl font-display font-light text-ink">
                         {result || "—"}
                     </span>
-                    <span className="text-sm font-mono text-[#4E82B8] mb-1">
+                    <span className="text-sm font-mono text-olive-deep mb-1">
                         BPM
                     </span>
                 </div>
@@ -142,7 +142,7 @@ export const SnapCalculator: React.FC = () => {
                             ? `Copy result ${result} BPM`
                             : "No result to copy"
                     }
-                    className="mt-3 inline-flex items-center gap-1.5 text-xs font-mono text-white/50 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-colors">
+                    className="mt-3 inline-flex items-center gap-1.5 text-xs font-mono text-ink/60 hover:text-ink disabled:opacity-30 disabled:cursor-not-allowed transition-colors">
                     {copied ? (
                         <Check className="w-3.5 h-3.5 text-emerald-400" />
                     ) : (

@@ -40,8 +40,8 @@ const CopyButton: React.FC<{ text: string }> = ({ text }) => {
     <button
       onClick={copy}
       title="Copy short link"
-      className={`shrink-0 w-7 h-7 flex items-center justify-center rounded border border-white/10 transition-colors duration-300 ${
-        copied ? 'text-[#52B788] border-[#52B788]/40' : 'text-white/40 hover:text-[#7B68EE] hover:border-[#7B68EE]/40'
+      className={`shrink-0 w-7 h-7 flex items-center justify-center rounded border border-ink/10 transition-colors duration-300 ${
+        copied ? 'text-sage-deep border-sage/40' : 'text-ink/55 hover:text-rose-deep hover:border-rose/40'
       }`}
     >
       {copied ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
@@ -111,13 +111,13 @@ export const LinkShortener: React.FC = () => {
           onChange={e => setLongUrl(e.target.value)}
           placeholder="https://example.com/a-very-long-link..."
           required
-          className="flex-1 min-w-0 bg-black/60 border border-white/15 text-white text-xs font-mono px-3.5 py-2 rounded focus:outline-none focus:border-[#7B68EE] placeholder:text-white/20 transition-colors"
+          className="flex-1 min-w-0 bg-white/70 border border-ink/15 text-ink text-xs font-mono px-3.5 py-2 rounded focus:outline-none focus:border-rose placeholder:text-ink/35 transition-colors"
         />
         <button
           type="submit"
           disabled={submitting || !longUrl.trim()}
           title="Shorten"
-          className="shrink-0 flex items-center gap-1.5 px-3.5 h-9 rounded border border-white/15 font-mono text-[12px] uppercase tracking-wide text-white/70 hover:text-[#7B68EE] hover:border-[#7B68EE]/40 transition-colors duration-300 disabled:opacity-40 disabled:pointer-events-none"
+          className="shrink-0 flex items-center gap-1.5 px-3.5 h-9 rounded border border-ink/15 font-mono text-[12px] uppercase tracking-wide text-ink/75 hover:text-rose-deep hover:border-rose/40 transition-colors duration-300 disabled:opacity-40 disabled:pointer-events-none"
         >
           {submitting ? <RefreshCw className="w-3.5 h-3.5 animate-spin" /> : <Link2 className="w-3.5 h-3.5" />}
           <span className="hidden sm:inline">Shorten</span>
@@ -126,7 +126,7 @@ export const LinkShortener: React.FC = () => {
           type="button"
           onClick={load}
           title="Refresh"
-          className="shrink-0 w-9 h-9 flex items-center justify-center rounded border border-white/15 text-white/40 hover:text-[#7B68EE] hover:border-[#7B68EE]/40 transition-colors duration-300"
+          className="shrink-0 w-9 h-9 flex items-center justify-center rounded border border-ink/15 text-ink/55 hover:text-rose-deep hover:border-rose/40 transition-colors duration-300"
         >
           <RefreshCw className={`w-3.5 h-3.5 ${loading ? 'animate-spin' : ''}`} />
         </button>
@@ -136,28 +136,28 @@ export const LinkShortener: React.FC = () => {
 
       {loading ? (
         <div className="flex justify-center py-16">
-          <RefreshCw className="w-6 h-6 text-white/30 animate-spin" />
+          <RefreshCw className="w-6 h-6 text-ink/45 animate-spin" />
         </div>
       ) : links.length === 0 ? (
-        <div className="text-center py-16 text-white/30">
+        <div className="text-center py-16 text-ink/45">
           <Link2 className="w-7 h-7 mx-auto" />
           <p className="mt-2 text-xs font-mono">No short links yet</p>
         </div>
       ) : (
-        <div className="border-t border-white/10 pt-3 max-h-[42vh] overflow-y-auto custom-scrollbar pr-1 space-y-2">
+        <div className="border-t border-ink/10 pt-3 max-h-[42vh] overflow-y-auto custom-scrollbar pr-1 space-y-2">
           {links.map(link => {
             const shortUrl = toShortUrl(link.slug);
             return (
               <div
                 key={link.slug}
-                className="rounded-lg border border-white/10 bg-white/[0.02] p-3 flex flex-col gap-1.5"
+                className="rounded-lg border border-ink/10 bg-ink/[0.02] p-3 flex flex-col gap-1.5"
               >
                 <div className="flex items-center gap-2">
                   <a
                     href={shortUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-1.5 font-mono text-[13px] text-[#7B68EE] hover:underline truncate"
+                    className="flex items-center gap-1.5 font-mono text-[13px] text-rose-deep hover:underline truncate"
                   >
                     {shortUrl.replace(/^https?:\/\//, '')}
                     <ExternalLink className="w-3 h-3 shrink-0" />
@@ -168,7 +168,7 @@ export const LinkShortener: React.FC = () => {
                       onClick={() => handleDelete(link.slug)}
                       disabled={deletingSlug === link.slug}
                       title="Delete"
-                      className="w-7 h-7 flex items-center justify-center rounded border border-white/10 text-white/40 hover:text-red-400 hover:border-red-400/40 transition-colors duration-300 disabled:opacity-40"
+                      className="w-7 h-7 flex items-center justify-center rounded border border-ink/10 text-ink/55 hover:text-red-400 hover:border-red-400/40 transition-colors duration-300 disabled:opacity-40"
                     >
                       {deletingSlug === link.slug ? (
                         <RefreshCw className="w-3.5 h-3.5 animate-spin" />
@@ -179,9 +179,9 @@ export const LinkShortener: React.FC = () => {
                   </div>
                 </div>
 
-                <p className="font-mono text-[11px] text-white/40 truncate">{link.url}</p>
+                <p className="font-mono text-[11px] text-ink/55 truncate">{link.url}</p>
 
-                <div className="flex items-center gap-3 font-mono text-[10px] text-white/30 pt-1">
+                <div className="flex items-center gap-3 font-mono text-[10px] text-ink/45 pt-1">
                   <span>{formatDate(link.createdAt)}</span>
                   <span>&middot;</span>
                   <span>{link.clicks} {link.clicks === 1 ? 'click' : 'clicks'}</span>

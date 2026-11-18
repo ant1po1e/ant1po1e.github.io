@@ -109,27 +109,27 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
         <div
             ref={rootRef}
             id="loading-screen"
-            className="fixed inset-0 z-10000 bg-[#050505] flex flex-col items-center justify-center cursor-wait">
+            className="fixed inset-0 z-10000 bg-paper flex flex-col items-center justify-center cursor-wait">
             {/* Subtle background ambient pulse */}
-            <div className="absolute inset-0 bg-radial from-white/3 to-transparent pointer-events-none" />
+            <div className="absolute inset-0 bg-radial from-rose/3 to-transparent pointer-events-none" />
 
             <div className="relative flex flex-col items-center">
                 <span
                     ref={eyebrowRef}
-                    className="text-[12px] font-japanese tracking-[0.6em] text-white/50 mb-3"></span>
+                    className="text-[12px] font-japanese tracking-[0.6em] text-ink/60 mb-3"></span>
 
                 {/* Central Brand */}
                 <h1
                     ref={titleRef}
-                    className="text-2xl md:text-4xl font-display font-light text-[#F5F5F5] uppercase text-center pl-2">
+                    className="text-2xl md:text-4xl font-display font-light text-ink uppercase text-center pl-2">
                     a n t i p o l e
                 </h1>
 
                 {/* Minimalist Progress Line */}
-                <div className="w-28 md:w-36 h-px bg-white/10 mt-6 relative overflow-hidden">
+                <div className="w-28 md:w-36 h-px bg-ink/10 mt-6 relative overflow-hidden">
                     <div
                         ref={barRef}
-                        className="absolute inset-y-0 left-0 bg-white/80"
+                        className="absolute inset-y-0 left-0 bg-ink/80"
                         style={{ width: "0%" }}
                     />
                 </div>
@@ -137,7 +137,7 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
                 {/* Small status indicator */}
                 <span
                     ref={statusRef}
-                    className="text-[9px] uppercase tracking-[0.3em] text-white/50 mt-3 font-mono">
+                    className="text-[9px] uppercase tracking-[0.3em] text-ink/60 mt-3 font-mono">
                     CALIBRATING SYSTEM // {progress}%
                 </span>
             </div>

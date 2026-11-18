@@ -44,7 +44,7 @@ export const PageNavCard: React.FC<PageNavCardProps> = ({
                 scale: 1,
                 opacity: 1,
                 zIndex: 30,
-                filter: "brightness(1) blur(0px)",
+                filter: "saturate(1) blur(0px)",
                 rotateY: 0,
             };
         }
@@ -61,7 +61,7 @@ export const PageNavCard: React.FC<PageNavCardProps> = ({
             scale: Math.max(0.7, 1 - clampedDiff * 0.15),
             opacity: Math.max(0.2, 0.45 - clampedDiff * 0.1),
             zIndex: 20 - clampedDiff,
-            filter: `brightness(0.6) blur(${Math.min(3, clampedDiff * 1.2)}px)`,
+            filter: `saturate(0.55) blur(${Math.min(3, clampedDiff * 1.2)}px)`,
             rotateY: diff > 0 ? -12 : 12,
         };
     };
@@ -110,13 +110,13 @@ export const PageNavCard: React.FC<PageNavCardProps> = ({
             const accent = hexToRgb(page.accentColor);
             const target = {
                 boxShadow: isActive
-                    ? `0 20px 50px -10px ${rgba(accent, 0.3137)}, 0 10px 25px rgba(0, 0, 0, 0.9)`
-                    : `0 8px 18px rgba(0, 0, 0, 0.7), 0 0px 0px rgba(0, 0, 0, 0)`,
+                    ? `0 22px 50px -12px ${rgba(accent, 0.65)}, 0 10px 25px rgba(74, 53, 64, 0.16)`
+                    : `0 8px 18px rgba(74, 53, 64, 0.1), 0 0px 0px rgba(74, 53, 64, 0)`,
                 borderColor: isActive
                     ? isHovered
-                        ? "rgba(255, 255, 255, 0.85)"
-                        : "rgba(255, 255, 255, 0.3)"
-                    : "rgba(255, 255, 255, 0.1)",
+                        ? "rgba(74, 53, 64, 0.5)"
+                        : "rgba(255, 255, 255, 0.95)"
+                    : "rgba(255, 255, 255, 0.55)",
             };
 
             if (isFirstArtworkStyle()) {
@@ -153,7 +153,7 @@ export const PageNavCard: React.FC<PageNavCardProps> = ({
             <div className="relative group">
                 <div
                     ref={artworkRef}
-                    className="relative w-52.5 h-52.5 sm:w-62.5 sm:h-62.5 md:w-72.5 md:h-72.5 lg:w-[320px] lg:h-80 max-h-[38vh] aspect-square border overflow-hidden rounded-xs bg-[#0a0a0a]">
+                    className="relative border-2 w-52.5 h-52.5 sm:w-62.5 sm:h-62.5 md:w-72.5 md:h-72.5 lg:w-[320px] lg:h-80 max-h-[38vh] aspect-square overflow-hidden rounded-xs bg-paper">
                     {!imageError ? (
                         <img
                             src={page.cover}
@@ -166,27 +166,27 @@ export const PageNavCard: React.FC<PageNavCardProps> = ({
                         <div
                             className="w-full h-full flex flex-col items-center justify-center p-6 text-center"
                             style={{
-                                background: `linear-gradient(135deg, ${page.secondaryAccent || "#111111"} 0%, #050505 100%)`,
+                                background: `linear-gradient(135deg, ${page.secondaryAccent || "#FBE9EC"} 0%, #FFF9F6 100%)`,
                             }}>
                             <div
-                                className="w-16 h-16 rounded-full border border-white/20 flex items-center justify-center mb-3"
+                                className="w-16 h-16 rounded-full border border-ink/20 flex items-center justify-center mb-3"
                                 style={{ borderColor: page.accentColor }}>
-                                <Sparkles className="w-6 h-6 text-white/60" />
+                                <Sparkles className="w-6 h-6 text-ink/68" />
                             </div>
                         </div>
                     )}
 
                     {/* Subtle Corner Accents */}
-                    <div className="absolute top-2 left-2 w-2 h-2 border-t border-l border-white/40 pointer-events-none" />
-                    <div className="absolute top-2 right-2 w-2 h-2 border-t border-r border-white/40 pointer-events-none" />
-                    <div className="absolute bottom-2 left-2 w-2 h-2 border-b border-l border-white/40 pointer-events-none" />
-                    <div className="absolute bottom-2 right-2 w-2 h-2 border-b border-r border-white/40 pointer-events-none" />
+                    <div className="absolute top-2 left-2 w-2 h-2 border-t border-l border-ink/40 pointer-events-none" />
+                    <div className="absolute top-2 right-2 w-2 h-2 border-t border-r border-ink/40 pointer-events-none" />
+                    <div className="absolute bottom-2 left-2 w-2 h-2 border-b border-l border-ink/40 pointer-events-none" />
+                    <div className="absolute bottom-2 right-2 w-2 h-2 border-b border-r border-ink/40 pointer-events-none" />
                 </div>
                 <a
                     href={page.source}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm text-white/80 text-center font-light line-clamp-2 mt-4 hover:text-white transition-all duration-300">
+                    className="text-sm text-ink/82 text-center font-light line-clamp-2 mt-4 hover:text-ink transition-all duration-300">
                     Artwork Credit
                 </a>
             </div>

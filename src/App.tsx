@@ -55,10 +55,10 @@ export default function App() {
 
   return (
     <BrowserRouter>
-          <div className="relative min-h-dvh w-full text-[#F5F5F5] selection:bg-white selection:text-black">
+          <div className="relative min-h-dvh w-full text-ink selection:bg-ink selection:text-paper">
               {/* Fixed dim overlay over the background image — stays constant through
             loading and page transitions so the image never flashes at full brightness */}
-              <div className="fixed inset-0 z-0 bg-[#050505]/75 pointer-events-none" />
+              <div className="fixed inset-0 z-0 bg-paper/96 pointer-events-none" />
 
               {/* Cinematic Intro Loader */}
               {isLoading ? (
@@ -75,10 +75,10 @@ export default function App() {
                       <AnimatedRoutes isMobile={isMobile} />
                   </>
               )}
-              <div className="absolute top-2 left-2 w-4 h-4 border-t border-l border-white/30" />
-              <div className="absolute top-2 right-2 w-4 h-4 border-t border-r border-white/30" />
-              <div className="absolute bottom-2 left-2 w-4 h-4 border-b border-l border-white/30" />
-              <div className="absolute bottom-2 right-2 w-4 h-4 border-b border-r border-white/30" />
+              <div className="absolute top-2 left-2 w-4 h-4 border-t border-l border-ink/30" />
+              <div className="absolute top-2 right-2 w-4 h-4 border-t border-r border-ink/30" />
+              <div className="absolute bottom-2 left-2 w-4 h-4 border-b border-l border-ink/30" />
+              <div className="absolute bottom-2 right-2 w-4 h-4 border-b border-r border-ink/30" />
           </div>
     </BrowserRouter>
   );

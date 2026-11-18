@@ -80,14 +80,14 @@ export const UploadZone: React.FC<{
                 onClick={() => inputRef.current?.click()}
                 className={`cursor-pointer rounded-lg border-2 border-dashed px-6 py-8 text-center transition-colors duration-300 ${
                     dragging
-                        ? "border-[#7B68EE] bg-[#7B68EE]/5"
-                        : "border-white/15 hover:border-white/30"
+                        ? "border-rose bg-rose/5"
+                        : "border-ink/15 hover:border-ink/30"
                 }`}>
-                <UploadCloud className="w-6 h-6 text-white/40 mx-auto" />
-                <p className="font-medium text-white text-sm mt-2">
+                <UploadCloud className="w-6 h-6 text-ink/55 mx-auto" />
+                <p className="font-medium text-ink text-sm mt-2">
                     Drop files here
                 </p>
-                <p className="font-mono text-[12px] text-white/40 mt-1">
+                <p className="font-mono text-[12px] text-ink/55 mt-1">
                     or click to choose files · images are auto-converted to WebP
                 </p>
                 <input
@@ -107,8 +107,8 @@ export const UploadZone: React.FC<{
                     {queue.map((item) => (
                         <div
                             key={item.name}
-                            className="flex items-center gap-3 bg-black/40 border border-white/10 rounded px-3 py-2 text-xs font-mono">
-                            <span className="truncate flex-1 text-white/50">
+                            className="flex items-center gap-3 bg-wash/60 border border-ink/10 rounded px-3 py-2 text-xs font-mono">
+                            <span className="truncate flex-1 text-ink/60">
                                 {item.name}
                             </span>
                             {item.error ? (
@@ -116,9 +116,9 @@ export const UploadZone: React.FC<{
                                     {item.error}
                                 </span>
                             ) : (
-                                <div className="w-24 h-1.5 bg-white/10 rounded-full overflow-hidden">
+                                <div className="w-24 h-1.5 bg-ink/10 rounded-full overflow-hidden">
                                     <div
-                                        className="h-full bg-[#7B68EE] transition-all"
+                                        className="h-full bg-rose transition-all"
                                         style={{ width: `${item.progress}%` }}
                                     />
                                 </div>

@@ -74,8 +74,8 @@ const MessageCard: React.FC<{ message: AnonMessage }> = ({ message }) => {
         onClick={downloadCard}
         disabled={downloading}
         title="Download as JPG"
-        className={`absolute top-3.5 right-3.5 w-7 h-7 flex items-center justify-center rounded-full bg-black/70 backdrop-blur-sm border border-white/10 transition-colors duration-300 hover:text-[#7B68EE] hover:border-[#7B68EE]/40 disabled:opacity-50 ${
-          downloading ? 'text-[#7B68EE]' : 'text-white/40'
+        className={`absolute top-3.5 right-3.5 w-7 h-7 flex items-center justify-center rounded-full bg-white/80 backdrop-blur-sm border border-ink/10 transition-colors duration-300 hover:text-rose-deep hover:border-rose/40 disabled:opacity-50 ${
+          downloading ? 'text-rose-deep' : 'text-ink/55'
         }`}
       >
         {downloading ? <RefreshCw className="w-3.5 h-3.5 animate-spin" /> : <Download className="w-3.5 h-3.5" />}
@@ -147,23 +147,23 @@ export const MessagesSection: React.FC = () => {
           value={query}
           onChange={e => setQuery(e.target.value)}
           placeholder="Search messages..."
-          className="flex-1 bg-black/60 border border-white/15 text-white text-xs font-mono px-3.5 py-2 rounded focus:outline-none focus:border-[#7B68EE] placeholder:text-white/20 transition-colors"
+          className="flex-1 bg-white/70 border border-ink/15 text-ink text-xs font-mono px-3.5 py-2 rounded focus:outline-none focus:border-rose placeholder:text-ink/35 transition-colors"
         />
         <button
           onClick={load}
           title="Refresh"
 
-          className="shrink-0 w-9 h-9 flex items-center justify-center rounded border border-white/15 text-white/40 hover:text-[#7B68EE] hover:border-[#7B68EE]/40 transition-colors duration-300"
+          className="shrink-0 w-9 h-9 flex items-center justify-center rounded border border-ink/15 text-ink/55 hover:text-rose-deep hover:border-rose/40 transition-colors duration-300"
         >
           <RefreshCw className={`w-3.5 h-3.5 ${loading ? 'animate-spin' : ''}`} />
         </button>
 
-        <div className="flex items-center gap-1 border border-white/15 rounded p-1 shrink-0">
+        <div className="flex items-center gap-1 border border-ink/15 rounded p-1 shrink-0">
           <button
             onClick={() => setViewMode('cards')}
             title="Card view"
             className={`w-7 h-7 flex items-center justify-center rounded transition-colors duration-300 ${
-              viewMode === 'cards' ? 'bg-white text-black' : 'text-white/40 hover:text-white'
+              viewMode === 'cards' ? 'bg-ink text-paper' : 'text-ink/55 hover:text-ink'
             }`}
           >
             <LayoutGrid className="w-3.5 h-3.5" />
@@ -172,7 +172,7 @@ export const MessagesSection: React.FC = () => {
             onClick={() => setViewMode('table')}
             title="Table view"
             className={`w-7 h-7 flex items-center justify-center rounded transition-colors duration-300 ${
-              viewMode === 'table' ? 'bg-white text-black' : 'text-white/40 hover:text-white'
+              viewMode === 'table' ? 'bg-ink text-paper' : 'text-ink/55 hover:text-ink'
             }`}
           >
             <List className="w-3.5 h-3.5" />
@@ -184,18 +184,18 @@ export const MessagesSection: React.FC = () => {
 
       {loading ? (
         <div className="flex justify-center py-16">
-          <RefreshCw className="w-6 h-6 text-white/30 animate-spin" />
+          <RefreshCw className="w-6 h-6 text-ink/45 animate-spin" />
         </div>
       ) : filtered.length === 0 ? (
-        <div className="text-center py-16 text-white/30">
+        <div className="text-center py-16 text-ink/45">
           <MessageSquare className="w-7 h-7 mx-auto" />
           <p className="mt-2 text-xs font-mono">{messages.length === 0 ? 'No messages yet' : 'No messages match your search'}</p>
         </div>
       ) : viewMode === 'table' ? (
-        <div className="border-t border-white/10 pt-3 max-h-[42vh] overflow-y-auto custom-scrollbar pr-1">
+        <div className="border-t border-ink/10 pt-3 max-h-[42vh] overflow-y-auto custom-scrollbar pr-1">
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="font-mono text-[10px] uppercase tracking-widest text-white/30">
+              <tr className="font-mono text-[10px] uppercase tracking-widest text-ink/45">
                 <th className="pb-2 font-normal">Name</th>
                 <th className="pb-2 font-normal">Message</th>
                 <th className="pb-2 font-normal whitespace-nowrap">Date</th>
@@ -203,14 +203,14 @@ export const MessagesSection: React.FC = () => {
             </thead>
             <tbody>
               {filtered.map(message => (
-                <tr key={message.id} className="border-t border-white/5 align-top">
-                  <td className="py-2 pr-3 font-mono text-[12px] text-white/70 whitespace-nowrap">
+                <tr key={message.id} className="border-t border-ink/5 align-top">
+                  <td className="py-2 pr-3 font-mono text-[12px] text-ink/75 whitespace-nowrap">
                     {message.name}
                   </td>
-                  <td className="py-2 pr-3 font-mono text-[12px] text-white/50 max-w-[320px]">
+                  <td className="py-2 pr-3 font-mono text-[12px] text-ink/60 max-w-[320px]">
                     <p className="line-clamp-2">{message.message}</p>
                   </td>
-                  <td className="py-2 font-mono text-[11px] text-white/30 whitespace-nowrap">
+                  <td className="py-2 font-mono text-[11px] text-ink/45 whitespace-nowrap">
                     {formatDate(message.timestamp)}
                   </td>
                 </tr>
@@ -219,7 +219,7 @@ export const MessagesSection: React.FC = () => {
           </table>
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-[42vh] overflow-y-auto custom-scrollbar pr-1 border-t border-white/10 pt-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-[42vh] overflow-y-auto custom-scrollbar pr-1 border-t border-ink/10 pt-3">
           {filtered.map(message => (
             <MessageCard key={message.id} message={message} />
           ))}

@@ -10,7 +10,7 @@ interface PageNavDotProps {
 }
 
 // One pagination dot: the active dot stretches into a pill and turns solid
-// white, inactive dots shrink back to a faint 5px circle.
+// ink, inactive dots shrink back to a faint 5px circle.
 const NavDotShape: React.FC<PageNavDotProps> = ({ isActive, isMobile }) => {
   const ref = useRef<HTMLDivElement>(null);
   const isFirstRun = useFirstRun();
@@ -19,7 +19,7 @@ const NavDotShape: React.FC<PageNavDotProps> = ({ isActive, isMobile }) => {
     () => {
       const target = {
         width: isActive ? 22 : 5,
-        backgroundColor: isActive ? '#FFFFFF' : 'rgba(255, 255, 255, 0.25)',
+        backgroundColor: isActive ? '#4A3540' : 'rgba(74, 53, 64, 0.25)',
       };
       if (isFirstRun()) {
         gsap.set(ref.current, target);
@@ -37,7 +37,7 @@ const NavDotShape: React.FC<PageNavDotProps> = ({ isActive, isMobile }) => {
   // No CSS `transition` class here on purpose: GSAP writes the width and
   // background every frame, and a CSS transition on the same properties
   // would lag behind it.
-  return <div ref={ref} className="h-1.5 rounded-full group-hover:bg-white/70" />;
+  return <div ref={ref} className="h-1.5 rounded-full group-hover:bg-ink/70" />;
 };
 
 interface PageNavDotsProps {
@@ -58,7 +58,7 @@ export const PageNavDots: React.FC<PageNavDotsProps> = ({
       aria-label="Carousel pagination"
       className="flex flex-col items-center gap-1.5"
     >
-      <div className="flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-black/50 backdrop-blur-md">
+      <div className="flex items-center gap-2 px-3 py-1 rounded-full border border-ink/10 bg-wash/60 backdrop-blur-md">
         {pages.map((page, index) => {
           const isActive = index === currentIndex;
           return (
@@ -72,7 +72,7 @@ export const PageNavDots: React.FC<PageNavDotsProps> = ({
             >
               {/* Dot Shape */}
               <NavDotShape isActive={isActive} isMobile={isMobile} />
-              <span className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 px-2 py-0.5 rounded text-[9px] font-mono tracking-widest uppercase bg-neutral-900 border border-white/20 text-white opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-150 whitespace-nowrap z-50">
+              <span className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 px-2 py-0.5 rounded text-[9px] font-mono tracking-widest uppercase bg-paper border border-ink/20 text-ink opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-150 whitespace-nowrap z-50">
                 0{index + 1} • {page.title}
               </span>
             </button>
@@ -81,7 +81,7 @@ export const PageNavDots: React.FC<PageNavDotsProps> = ({
       </div>
 
       {/* Subtle Bottom Controls Hint */}
-      <span className="text-[9px] font-mono tracking-[0.25em] text-white/30 uppercase hidden md:inline-block">
+      <span className="text-[9px] font-mono tracking-[0.25em] text-ink/45 uppercase hidden md:inline-block">
         [ ARROWS / SWIPE / SCROLL TO BROWSE ]
       </span>
     </div>

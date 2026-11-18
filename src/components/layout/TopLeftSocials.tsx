@@ -72,7 +72,7 @@ export const TopLeftSocials: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 group py-1 pr-2">
-                <div className="w-10 h-10 rounded-sm border border-white/20 bg-white/5 flex items-center justify-center text-white/80 group-hover:border-white/80 group-hover:text-white transition-all duration-300">
+                <div className="w-10 h-10 rounded-sm border border-ink/20 bg-ink/5 flex items-center justify-center text-ink/82 group-hover:border-ink/60 group-hover:text-ink transition-all duration-300">
                     <img
                         src="https://a.ppy.sh/17258072"
                         alt="Antipole's osu! avatar"
@@ -83,13 +83,13 @@ export const TopLeftSocials: React.FC = () => {
                     />
                 </div>
                 <div className="flex flex-col text-left">
-                    <span className="text-xs font-display tracking-[0.25em] font-medium text-white/90 group-hover:text-white transition-colors uppercase">
+                    <span className="text-xs font-display tracking-[0.25em] font-medium text-ink/90 group-hover:text-ink transition-colors uppercase">
                         {PROFILE_DATA.handle}
                     </span>
                 </div>
             </a>
 
-            <div className="hidden sm:block h-4 w-px bg-white/10" />
+            <div className="hidden sm:block h-4 w-px bg-ink/10" />
 
             <div className="hidden sm:flex items-center gap-2">
                 {socialLinks.map((link) => (
@@ -101,7 +101,7 @@ export const TopLeftSocials: React.FC = () => {
                         rel="noopener noreferrer"
                         aria-label={link.ariaLabel}
                         title={link.name}
-                        className="p-1.5 rounded-full text-white/40 hover:text-white hover:bg-white/10 transition-colors duration-300">
+                        className="p-1.5 rounded-full text-ink/55 hover:text-ink hover:bg-ink/10 transition-colors duration-300">
                         {link.icon}
                     </a>
                 ))}

@@ -8,7 +8,7 @@ import type { UnicodeFontKey } from "../../lib/unicodeFonts";
 import { Copy, Check, Palette } from "lucide-react";
 
 const fieldClass =
-    "w-full bg-black/60 border border-white/15 text-white text-xs font-mono px-3 py-2 rounded focus:outline-none focus:border-[#4E82B8] transition-colors";
+    "w-full bg-white/70 border border-ink/15 text-ink text-xs font-mono px-3 py-2 rounded focus:outline-none focus:border-olive transition-colors";
 
 export const BBCodeColorizer: React.FC = () => {
     const [text, setText] = useState("Hello World!");
@@ -65,8 +65,8 @@ export const BBCodeColorizer: React.FC = () => {
     };
 
     return (
-        <div className="p-6 sm:p-8 rounded-lg border border-white/15 bg-white/[0.02] backdrop-blur-md text-left">
-            <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#4E82B8] mb-6 pb-4 border-b border-white/10">
+        <div className="p-6 sm:p-8 rounded-lg border border-ink/15 bg-ink/[0.02] backdrop-blur-md text-left">
+            <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-olive-deep mb-6 pb-4 border-b border-ink/10">
                 <Palette className="w-3.5 h-3.5" />
                 <span>OSU! FORUM BBCODE TEXT COLORIZER</span>
             </div>
@@ -75,7 +75,7 @@ export const BBCodeColorizer: React.FC = () => {
                 {/* Controls */}
                 <div className="space-y-3">
                     <div>
-                        <label className="block text-[12px] font-mono text-white/50 uppercase mb-1">
+                        <label className="block text-[12px] font-mono text-ink/60 uppercase mb-1">
                             Text
                         </label>
                         <input
@@ -88,7 +88,7 @@ export const BBCodeColorizer: React.FC = () => {
                     </div>
 
                     <div>
-                        <label className="block text-[12px] font-mono text-white/50 uppercase mb-1">
+                        <label className="block text-[12px] font-mono text-ink/60 uppercase mb-1">
                             Effect
                         </label>
                         <select
@@ -108,15 +108,15 @@ export const BBCodeColorizer: React.FC = () => {
                     </div>
 
                     <div>
-                        <label className="block text-[12px] font-mono text-white/50 uppercase mb-1">
+                        <label className="block text-[12px] font-mono text-ink/60 uppercase mb-1">
                             Colors
                         </label>
-                        <div className="flex border border-white/15 rounded overflow-hidden divide-x divide-white/15">
+                        <div className="flex border border-ink/15 rounded overflow-hidden divide-x divide-ink/15">
                             <input
                                 type="color"
                                 value={startColor}
                                 onChange={(e) => setStartColor(e.target.value)}
-                                className="w-full bg-black/60 h-10 px-2 cursor-pointer"
+                                className="w-full bg-white/70 h-10 px-2 cursor-pointer"
                             />
                             {effect === "three-color" && (
                                 <input
@@ -125,7 +125,7 @@ export const BBCodeColorizer: React.FC = () => {
                                     onChange={(e) =>
                                         setMiddleColor(e.target.value)
                                     }
-                                    className="w-full bg-black/60 h-10 px-2 cursor-pointer"
+                                    className="w-full bg-white/70 h-10 px-2 cursor-pointer"
                                 />
                             )}
                             {effect !== "solid" && (
@@ -135,14 +135,14 @@ export const BBCodeColorizer: React.FC = () => {
                                     onChange={(e) =>
                                         setEndColor(e.target.value)
                                     }
-                                    className="w-full bg-black/60 h-10 px-2 cursor-pointer"
+                                    className="w-full bg-white/70 h-10 px-2 cursor-pointer"
                                 />
                             )}
                         </div>
                     </div>
 
                     <div>
-                        <label className="block text-[12px] font-mono text-white/50 uppercase mb-1">
+                        <label className="block text-[12px] font-mono text-ink/60 uppercase mb-1">
                             Font
                         </label>
                         <select
@@ -164,7 +164,7 @@ export const BBCodeColorizer: React.FC = () => {
                     </div>
 
                     <div>
-                        <label className="block text-[12px] font-mono text-white/50 uppercase mb-1">
+                        <label className="block text-[12px] font-mono text-ink/60 uppercase mb-1">
                             Size
                         </label>
                         <select
@@ -179,7 +179,7 @@ export const BBCodeColorizer: React.FC = () => {
                         </select>
                     </div>
 
-                    <div className="flex border border-white/15 rounded divide-x divide-white/15 font-mono text-xs text-white">
+                    <div className="flex border border-ink/15 rounded divide-x divide-ink/15 font-mono text-xs text-ink">
                         <label
                             htmlFor="bold"
                             className="flex items-center gap-2 w-full px-4 py-2.5 cursor-pointer">
@@ -188,7 +188,7 @@ export const BBCodeColorizer: React.FC = () => {
                                 type="checkbox"
                                 checked={bold}
                                 onChange={(e) => setBold(e.target.checked)}
-                                className="w-3.5 h-3.5 accent-[#4E82B8]"
+                                className="w-3.5 h-3.5 accent-olive"
                             />
                             Bold
                         </label>
@@ -200,7 +200,7 @@ export const BBCodeColorizer: React.FC = () => {
                                 type="checkbox"
                                 checked={italic}
                                 onChange={(e) => setItalic(e.target.checked)}
-                                className="w-3.5 h-3.5 accent-[#4E82B8]"
+                                className="w-3.5 h-3.5 accent-olive"
                             />
                             Italic
                         </label>
@@ -210,10 +210,10 @@ export const BBCodeColorizer: React.FC = () => {
                 {/* Preview + Output */}
                 <div className="space-y-3">
                     <div>
-                        <label className="block text-[12px] font-mono text-white/50 uppercase mb-1">
+                        <label className="block text-[12px] font-mono text-ink/60 uppercase mb-1">
                             Preview
                         </label>
-                        <div className="min-h-[44px] flex items-center px-3 py-2 rounded bg-black/60 border border-white/15">
+                        <div className="min-h-[44px] flex items-center px-3 py-2 rounded bg-white/70 border border-ink/15">
                             <span
                                 className="text-base break-all"
                                 dangerouslySetInnerHTML={{
@@ -225,13 +225,13 @@ export const BBCodeColorizer: React.FC = () => {
 
                     <div>
                         <div className="flex items-center justify-between mb-1">
-                            <label className="block text-[12px] font-mono text-white/50 uppercase">
+                            <label className="block text-[12px] font-mono text-ink/60 uppercase">
                                 BBCode Output
                             </label>
                             <button
                                 onClick={handleCopy}
                                 disabled={!bbcode}
-                                className="flex items-center gap-1 text-[12px] font-mono text-[#4E82B8] hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-colors">
+                                className="flex items-center gap-1 text-[12px] font-mono text-olive-deep hover:text-ink disabled:opacity-30 disabled:cursor-not-allowed transition-colors">
                                 {copied ? (
                                     <Check className="w-3 h-3 text-emerald-400" />
                                 ) : (
@@ -244,7 +244,7 @@ export const BBCodeColorizer: React.FC = () => {
                             rows={8}
                             value={bbcode}
                             readOnly
-                            className="w-full bg-black/80 font-mono text-white/80 text-[12px] px-3 py-2.5 rounded border border-white/10 resize-none"
+                            className="w-full bg-white/80 font-mono text-ink/82 text-[12px] px-3 py-2.5 rounded border border-ink/10 resize-none"
                         />
                     </div>
                 </div>

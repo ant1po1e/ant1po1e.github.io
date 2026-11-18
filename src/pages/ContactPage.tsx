@@ -98,32 +98,32 @@ export const ContactPage: React.FC = () => {
     return (
         <main
             id="contact-page-view"
-            className="relative h-dvh w-full bg-transparent text-[#F5F5F5] overflow-hidden pt-16 sm:pt-20 pb-3 sm:pb-4 px-3 sm:px-6 md:px-8 flex flex-col items-center selection:bg-white selection:text-black">
+            className="relative h-dvh w-full bg-transparent text-ink overflow-hidden pt-16 sm:pt-20 pb-3 sm:pb-4 px-3 sm:px-6 md:px-8 flex flex-col items-center selection:bg-ink selection:text-paper">
             {/* Background Ambient Glow */}
             <div className="fixed inset-0 pointer-events-none z-0">
-                <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-175 h-175 rounded-full bg-radial from-[#E0A96D]/10 via-[#382312]/5 to-transparent blur-3xl" />
+                <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-175 h-175 rounded-full bg-radial from-butter/10 via-butter/15 to-transparent blur-3xl" />
                 <div className="absolute inset-0 noise-overlay opacity-30" />
             </div>
 
             {/* Main Framed Container with Inner Scroll */}
-            <div className="relative z-10 w-full max-w-5xl flex-1 min-h-0 bg-[#0A0A0A]/90 border border-white/10 rounded-lg backdrop-blur-xl flex flex-col overflow-hidden shadow-2xl">
+            <div className="relative z-10 w-full max-w-5xl flex-1 min-h-0 bg-paper/85 border border-ink/10 rounded-lg backdrop-blur-xl flex flex-col overflow-hidden shadow-2xl">
                 {/* Container Top Header Bar */}
-                <header className="shrink-0 flex flex-wrap items-center justify-between gap-3 px-4 sm:px-6 py-3 border-b border-white/10 bg-black/40">
+                <header className="shrink-0 flex flex-wrap items-center justify-between gap-3 px-4 sm:px-6 py-3 border-b border-ink/10 bg-wash/60">
                     <div className="flex items-center gap-3">
                         <Link
                             to="/?p=contact"
-                            className="group flex items-center gap-1.5 text-xs font-mono tracking-[0.2em] text-white/50 hover:text-white transition-colors">
+                            className="group flex items-center gap-1.5 text-xs font-mono tracking-[0.2em] text-ink/60 hover:text-ink transition-colors">
                             <ArrowLeft className="w-3.5 h-3.5 transition-transform group-hover:-translate-x-0.5" />
                         </Link>
-                        <span className="text-white/20 hidden sm:inline">
+                        <span className="text-ink/35 hidden sm:inline">
                             |
                         </span>
-                        <span className="text-[12px] font-japanese tracking-[0.3em] text-white/40 uppercase hidden sm:inline">
+                        <span className="text-[12px] font-japanese tracking-[0.3em] text-ink/55 uppercase hidden sm:inline">
                             CONTACT
                         </span>
                     </div>
 
-                    <div className="flex items-center gap-2 text-[12px] font-mono text-white/50">
+                    <div className="flex items-center gap-2 text-[12px] font-mono text-ink/60">
                         <Radio className="w-3 h-3 text-emerald-400 animate-pulse" />
                         <span className="text-emerald-400 font-semibold">
                             ONLINE
@@ -135,7 +135,7 @@ export const ContactPage: React.FC = () => {
                 <div className="flex-1 min-h-0 overflow-y-auto custom-scrollbar p-5 sm:p-6 md:p-8 space-y-6">
                     {/* Section Hero Banner */}
                     <div className="text-center max-w-2xl mx-auto pt-2 pb-2">
-                        <h1 className="text-2xl sm:text-4xl font-display font-light uppercase tracking-[0.25em] text-white mb-2">
+                        <h1 className="text-2xl sm:text-4xl font-display font-light uppercase tracking-[0.25em] text-ink mb-2">
                             CONTACT
                         </h1>
                     </div>
@@ -143,22 +143,22 @@ export const ContactPage: React.FC = () => {
                     <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
                         {/* Left Column: Direct Info & Social Channels */}
                         <div className="md:col-span-1 space-y-4">
-                            <div className="p-5 rounded-md border border-white/10 bg-white/2 backdrop-blur-md">
-                                <div className="flex items-center gap-2 text-xs font-mono tracking-widest text-[#E0A96D] uppercase mb-3">
+                            <div className="p-5 rounded-md border border-ink/10 bg-ink/2 backdrop-blur-md">
+                                <div className="flex items-center gap-2 text-xs font-mono tracking-widest text-butter-deep uppercase mb-3">
                                     <Radio className="w-3.5 h-3.5 animate-pulse" />
                                     <span>AVAILABILITY STATUS</span>
                                 </div>
-                                <p className="text-xs text-white/70 font-light leading-relaxed mb-3">
+                                <p className="text-xs text-ink/75 font-light leading-relaxed mb-3">
                                     Open for website and mapping commisions.
                                 </p>
-                                <div className="text-[11px] font-mono text-white/40 space-y-1 pt-2.5 border-t border-white/10">
+                                <div className="text-[11px] font-mono text-ink/55 space-y-1 pt-2.5 border-t border-ink/10">
                                     <div>RESPONSE: ~24 Hours</div>
                                 </div>
                             </div>
 
                             {/* Social Links Box */}
-                            <div className="p-5 rounded-md border border-white/10 bg-white/2 space-y-2.5">
-                                <span className="text-[12px] font-mono tracking-widest text-white/40 uppercase block mb-1">
+                            <div className="p-5 rounded-md border border-ink/10 bg-ink/2 space-y-2.5">
+                                <span className="text-[12px] font-mono tracking-widest text-ink/55 uppercase block mb-1">
                                     Socials
                                 </span>
                                 <div className="space-y-2">
@@ -166,12 +166,12 @@ export const ContactPage: React.FC = () => {
                                         href={PROFILE_DATA.socials.itchio}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="flex items-center justify-between text-xs font-mono text-white/80 hover:text-white group p-2 rounded bg-black/40 border border-white/5 transition-colors">
+                                        className="flex items-center justify-between text-xs font-mono text-ink/82 hover:text-ink group p-2 rounded bg-wash/60 border border-ink/5 transition-colors">
                                         <span className="flex items-center gap-2">
-                                            <Gamepad2 className="w-3.5 h-3.5 text-[#E0A96D]" />
+                                            <Gamepad2 className="w-3.5 h-3.5 text-butter-deep" />
                                             <span>itch.io</span>
                                         </span>
-                                        <span className="text-white/30 group-hover:translate-x-0.5 transition-transform">
+                                        <span className="text-ink/45 group-hover:translate-x-0.5 transition-transform">
                                             →
                                         </span>
                                     </a>
@@ -180,12 +180,12 @@ export const ContactPage: React.FC = () => {
                                         href={PROFILE_DATA.socials.youtube}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="flex items-center justify-between text-xs font-mono text-white/80 hover:text-white group p-2 rounded bg-black/40 border border-white/5 transition-colors">
+                                        className="flex items-center justify-between text-xs font-mono text-ink/82 hover:text-ink group p-2 rounded bg-wash/60 border border-ink/5 transition-colors">
                                         <span className="flex items-center gap-2">
                                             <Youtube className="w-3.5 h-3.5 text-red-400" />
                                             <span>YouTube</span>
                                         </span>
-                                        <span className="text-white/30 group-hover:translate-x-0.5 transition-transform">
+                                        <span className="text-ink/45 group-hover:translate-x-0.5 transition-transform">
                                             →
                                         </span>
                                     </a>
@@ -194,14 +194,14 @@ export const ContactPage: React.FC = () => {
                                         href={PROFILE_DATA.socials.osu}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="flex items-center justify-between text-xs font-mono text-white/80 hover:text-white group p-2 rounded bg-black/40 border border-white/5 transition-colors">
+                                        className="flex items-center justify-between text-xs font-mono text-ink/82 hover:text-ink group p-2 rounded bg-wash/60 border border-ink/5 transition-colors">
                                         <span className="flex items-center gap-2">
-                                            <span className="w-3.5 h-3.5 rounded-full bg-pink-500/80 flex items-center justify-center text-[8px] font-bold text-white">
+                                            <span className="w-3.5 h-3.5 rounded-full bg-pink-500/80 flex items-center justify-center text-[8px] font-bold text-ink">
                                                 o
                                             </span>
                                             <span>osu! Profile</span>
                                         </span>
-                                        <span className="text-white/30 group-hover:translate-x-0.5 transition-transform">
+                                        <span className="text-ink/45 group-hover:translate-x-0.5 transition-transform">
                                             →
                                         </span>
                                     </a>
@@ -210,12 +210,12 @@ export const ContactPage: React.FC = () => {
                                         href={PROFILE_DATA.socials.github}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="flex items-center justify-between text-xs font-mono text-white/80 hover:text-white group p-2 rounded bg-black/40 border border-white/5 transition-colors">
+                                        className="flex items-center justify-between text-xs font-mono text-ink/82 hover:text-ink group p-2 rounded bg-wash/60 border border-ink/5 transition-colors">
                                         <span className="flex items-center gap-2">
                                             <Github className="w-3.5 h-3.5" />
                                             <span>GitHub</span>
                                         </span>
-                                        <span className="text-white/30 group-hover:translate-x-0.5 transition-transform">
+                                        <span className="text-ink/45 group-hover:translate-x-0.5 transition-transform">
                                             →
                                         </span>
                                     </a>
@@ -224,12 +224,12 @@ export const ContactPage: React.FC = () => {
                                         href={PROFILE_DATA.socials.x}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="flex items-center justify-between text-xs font-mono text-white/80 hover:text-white group p-2 rounded bg-black/40 border border-white/5 transition-colors">
+                                        className="flex items-center justify-between text-xs font-mono text-ink/82 hover:text-ink group p-2 rounded bg-wash/60 border border-ink/5 transition-colors">
                                         <span className="flex items-center gap-2">
                                             <Twitter className="w-3.5 h-3.5" />
                                             <span>@apolantipole</span>
                                         </span>
-                                        <span className="text-white/30 group-hover:translate-x-0.5 transition-transform">
+                                        <span className="text-ink/45 group-hover:translate-x-0.5 transition-transform">
                                             →
                                         </span>
                                     </a>
@@ -241,9 +241,9 @@ export const ContactPage: React.FC = () => {
                         <div className="md:col-span-2">
                             <form
                                 onSubmit={handleSubmit}
-                                className="relative p-6 sm:p-7 rounded-md border border-white/15 bg-white/2 backdrop-blur-md text-left">
-                                <div className="flex items-center justify-between mb-5 pb-3 border-b border-white/10">
-                                    <span className="text-xs font-mono tracking-widest uppercase text-[#E0A96D]">
+                                className="relative p-6 sm:p-7 rounded-md border border-ink/15 bg-ink/2 backdrop-blur-md text-left">
+                                <div className="flex items-center justify-between mb-5 pb-3 border-b border-ink/10">
+                                    <span className="text-xs font-mono tracking-widest uppercase text-butter-deep">
                                         Contact Form
                                     </span>
                                 </div>
@@ -256,10 +256,10 @@ export const ContactPage: React.FC = () => {
                                         <div className="w-14 h-14 rounded-full border border-emerald-500/40 bg-emerald-500/10 flex items-center justify-center text-emerald-400 mb-3">
                                             <CheckCircle2 className="w-7 h-7" />
                                         </div>
-                                        <h3 className="text-lg font-display text-white uppercase tracking-wider mb-1">
+                                        <h3 className="text-lg font-display text-ink uppercase tracking-wider mb-1">
                                             Message Sent!
                                         </h3>
-                                        <p className="text-xs font-mono text-white/60 max-w-sm">
+                                        <p className="text-xs font-mono text-ink/68 max-w-sm">
                                             Thank you. Your message has been
                                             logged into Antipole's queue.
                                         </p>
@@ -267,7 +267,7 @@ export const ContactPage: React.FC = () => {
                                 ) : (
                                     <div className="space-y-4">
                                         <div>
-                                            <label className="block text-[12px] font-mono tracking-widest text-white/50 uppercase mb-1.5">
+                                            <label className="block text-[12px] font-mono tracking-widest text-ink/60 uppercase mb-1.5">
                                                 NAME
                                             </label>
                                             <input
@@ -281,12 +281,12 @@ export const ContactPage: React.FC = () => {
                                                     })
                                                 }
                                                 placeholder="Your callsign or name..."
-                                                className="w-full px-3.5 py-2 rounded bg-black/60 border border-white/15 focus:border-[#E0A96D] focus:outline-none text-xs font-mono text-white placeholder:text-white/20 transition-colors"
+                                                className="w-full px-3.5 py-2 rounded bg-white/70 border border-ink/15 focus:border-butter focus:outline-none text-xs font-mono text-ink placeholder:text-ink/35 transition-colors"
                                             />
                                         </div>
 
                                         <div>
-                                            <label className="block text-[12px] font-mono tracking-widest text-white/50 uppercase mb-1.5">
+                                            <label className="block text-[12px] font-mono tracking-widest text-ink/60 uppercase mb-1.5">
                                                 EMAIL
                                             </label>
                                             <div className="relative">
@@ -304,20 +304,20 @@ export const ContactPage: React.FC = () => {
                                                     }
                                                     placeholder="contact@yourdomain.com"
                                                     aria-readonly={isAnonymous}
-                                                    className={`w-full px-3.5 py-2 rounded bg-black/60 border border-white/15 focus:border-[#E0A96D] focus:outline-none text-xs font-mono text-white placeholder:text-white/20 transition-colors ${
+                                                    className={`w-full px-3.5 py-2 rounded bg-white/70 border border-ink/15 focus:border-butter focus:outline-none text-xs font-mono text-ink placeholder:text-ink/35 transition-colors ${
                                                         isAnonymous
-                                                            ? "text-white/40 cursor-not-allowed pr-9"
+                                                            ? "text-ink/55 cursor-not-allowed pr-9"
                                                             : ""
                                                     }`}
                                                 />
                                                 {isAnonymous && (
-                                                    <Lock className="w-3.5 h-3.5 text-white/30 absolute right-3 top-1/2 -translate-y-1/2" />
+                                                    <Lock className="w-3.5 h-3.5 text-ink/45 absolute right-3 top-1/2 -translate-y-1/2" />
                                                 )}
                                             </div>
 
                                             <label
                                                 htmlFor="anonymous-toggle"
-                                                className="mt-2 flex items-center gap-2 font-mono text-[12px] uppercase tracking-wide text-white/40 hover:text-white/60 cursor-pointer w-fit transition-colors">
+                                                className="mt-2 flex items-center gap-2 font-mono text-[12px] uppercase tracking-wide text-ink/55 hover:text-ink/68 cursor-pointer w-fit transition-colors">
                                                 <input
                                                     id="anonymous-toggle"
                                                     type="checkbox"
@@ -327,14 +327,14 @@ export const ContactPage: React.FC = () => {
                                                             e.target.checked,
                                                         )
                                                     }
-                                                    className="w-3.5 h-3.5 accent-[#E0A96D]"
+                                                    className="w-3.5 h-3.5 accent-butter"
                                                 />
                                                 Send anonymously
                                             </label>
                                         </div>
 
                                         <div>
-                                            <label className="block text-[12px] font-mono tracking-widest text-white/50 uppercase mb-1.5">
+                                            <label className="block text-[12px] font-mono tracking-widest text-ink/60 uppercase mb-1.5">
                                                 Messages
                                             </label>
                                             <textarea
@@ -348,7 +348,7 @@ export const ContactPage: React.FC = () => {
                                                     })
                                                 }
                                                 placeholder="Detail your inquiry, project scope, tournament schedule, or message..."
-                                                className="w-full px-3.5 py-2 rounded bg-black/60 border border-white/15 focus:border-[#E0A96D] focus:outline-none text-xs font-mono text-white placeholder:text-white/20 resize-none transition-colors"
+                                                className="w-full px-3.5 py-2 rounded bg-white/70 border border-ink/15 focus:border-butter focus:outline-none text-xs font-mono text-ink placeholder:text-ink/35 resize-none transition-colors"
                                             />
                                         </div>
 
@@ -362,7 +362,7 @@ export const ContactPage: React.FC = () => {
                                         <button
                                             type="submit"
                                             disabled={isSubmitting}
-                                            className="w-full py-2.5 rounded-md bg-white hover:bg-white/90 text-black text-xs font-mono tracking-[0.2em] font-semibold uppercase flex items-center justify-center gap-2 transition-all duration-300 shadow-lg disabled:opacity-50">
+                                            className="w-full py-2.5 rounded-md bg-ink hover:bg-ink/90 text-paper text-xs font-mono tracking-[0.2em] font-semibold uppercase flex items-center justify-center gap-2 transition-all duration-300 shadow-lg disabled:opacity-50">
                                             {isSubmitting ? (
                                                 <span>
                                                     TRANSMITTING PACKETS...
@@ -384,7 +384,7 @@ export const ContactPage: React.FC = () => {
                 </div>
 
                 {/* Container Bottom Status Footer */}
-                <footer className="shrink-0 flex items-center justify-between px-4 sm:px-6 py-2.5 border-t border-white/10 bg-black/40 text-[12px] sm:text-[11px] font-mono text-white/40">
+                <footer className="shrink-0 flex items-center justify-between px-4 sm:px-6 py-2.5 border-t border-ink/10 bg-wash/60 text-[12px] sm:text-[11px] font-mono text-ink/55">
                     <div className="flex items-center gap-3">
                         <span>DIRECT CONTACT</span>
                     </div>
@@ -392,7 +392,7 @@ export const ContactPage: React.FC = () => {
                     <div className="flex items-center gap-4">
                         <Link
                             to="/about"
-                            className="flex items-center gap-1.5 text-white hover:text-[#E0A96D] font-medium transition-colors">
+                            className="flex items-center gap-1.5 text-ink hover:text-butter-deep font-medium transition-colors">
                             <span>ABOUT</span>
                             <ArrowRight className="w-3.5 h-3.5" />
                         </Link>

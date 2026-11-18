@@ -19,15 +19,15 @@ interface PageNavBackgroundProps {
 
 // Same stops as the original framer-motion gradient: accent at 25/255 alpha,
 // secondary at 15/255 alpha (the old `${hex}25` / `${hex}15` suffixes).
-const ACCENT_ALPHA = 0x25 / 255;
-const SECONDARY_ALPHA = 0x15 / 255;
+const ACCENT_ALPHA = 0.65;
+const SECONDARY_ALPHA = 0.3;
 
 const buildGradient = (accent: RGB, secondary: RGB) =>
-    `radial-gradient(circle at 50% 45%, ${rgba(accent, ACCENT_ALPHA)} 0%, ${rgba(secondary, SECONDARY_ALPHA)} 45%, #050505 85%)`;
+    `radial-gradient(circle at 50% 45%, ${rgba(accent, ACCENT_ALPHA)} 0%, ${rgba(secondary, SECONDARY_ALPHA)} 45%, #FFF9F6 85%)`;
 
 const colorsFor = (page: PageItem): { accent: RGB; secondary: RGB } => ({
     accent: hexToRgb(page.accentColor),
-    secondary: hexToRgb(page.secondaryAccent || "#0a0a0a"),
+    secondary: hexToRgb(page.secondaryAccent || "#FBE9EC"),
 });
 
 export const PageNavBackground: React.FC<PageNavBackgroundProps> = ({
@@ -76,7 +76,7 @@ export const PageNavBackground: React.FC<PageNavBackgroundProps> = ({
     const shownPage = useSwap(currentPage, currentPage.id, imageRef, {
         exit: withMotion(isMobile, { opacity: 0, scale: 0.98, duration: 1.0, ease: EASE.soft }),
         enterFrom: { opacity: 0, scale: 1.05 },
-        enterTo: withMotion(isMobile, { opacity: 0.18, scale: 1, duration: 1.0, ease: EASE.soft }),
+        enterTo: withMotion(isMobile, { opacity: 0.32, scale: 1, duration: 1.0, ease: EASE.soft }),
     });
 
     return (
@@ -106,8 +106,8 @@ export const PageNavBackground: React.FC<PageNavBackgroundProps> = ({
                 />
             </div>
 
-            <div className="absolute inset-0 flex items-center justify-center px-8 md:px-16 pointer-events-none opacity-[0.03] select-none">
-                <span className="font-mono text-8xl md:text-[14rem] font-bold text-white tracking-tighter">
+            <div className="absolute inset-0 flex items-center justify-center px-8 md:px-16 pointer-events-none opacity-[0.04] select-none">
+                <span className="font-mono text-8xl md:text-[14rem] font-bold text-ink tracking-tighter">
                     Antipole
                 </span>
             </div>
@@ -116,7 +116,7 @@ export const PageNavBackground: React.FC<PageNavBackgroundProps> = ({
             <div className="absolute inset-0 noise-overlay opacity-35" />
 
             {/* Vignette Overlay */}
-            <div className="absolute inset-0 bg-radial from-transparent via-black/40 to-black/90 pointer-events-none" />
+            <div className="absolute inset-0 bg-radial from-transparent via-paper/40 to-paper/85 pointer-events-none" />
         </div>
     );
 };

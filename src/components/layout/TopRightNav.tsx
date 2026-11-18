@@ -112,7 +112,7 @@ export const TopRightNav: React.FC = () => {
       {/* Desktop Navigation Links */}
       <nav
         ref={navRef}
-        className="relative hidden lg:flex items-center gap-4 bg-black/50 border border-white/10 px-4 py-1.5 rounded-full backdrop-blur-md">
+        className="relative hidden lg:flex items-center gap-4 bg-wash/60 border border-ink/10 px-4 py-1.5 rounded-full backdrop-blur-md">
         {navItems.map((item) => {
           const isActive = isItemActive(item.path);
 
@@ -125,7 +125,7 @@ export const TopRightNav: React.FC = () => {
               }}
 
               className={`relative py-1 px-2 text-[11px] font-mono uppercase tracking-[0.2em] transition-colors duration-300 ${
-                isActive ? 'text-white font-medium' : 'text-white/50 hover:text-white'
+                isActive ? 'text-ink font-medium' : 'text-ink/60 hover:text-ink'
               }`}
             >
               {item.label}
@@ -137,7 +137,7 @@ export const TopRightNav: React.FC = () => {
         <div
           ref={indicatorRef}
           aria-hidden="true"
-          className="absolute top-0 left-0 h-[1.5px] bg-white rounded-full pointer-events-none"
+          className="absolute top-0 left-0 h-[1.5px] bg-ink rounded-full pointer-events-none"
           style={{ opacity: 0, visibility: 'hidden' }}
         />
       </nav>
@@ -147,7 +147,7 @@ export const TopRightNav: React.FC = () => {
         id="mobile-nav-toggle"
         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         aria-label="Toggle navigation menu"
-        className="lg:hidden p-2 rounded-full border border-white/10 bg-black/50 backdrop-blur-md text-white/70 hover:text-white transition-colors"
+        className="lg:hidden p-2 rounded-full border border-ink/10 bg-wash/60 backdrop-blur-md text-ink/75 hover:text-ink transition-colors"
       >
         {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
       </button>
@@ -156,9 +156,9 @@ export const TopRightNav: React.FC = () => {
       {drawer.present && (
           <div
             ref={drawer.ref}
-            className="fixed inset-x-4 top-20 z-50 p-6 rounded-lg bg-[#0A0A0A]/95 border border-white/15 backdrop-blur-xl shadow-2xl lg:hidden flex flex-col gap-4"
+            className="fixed inset-x-4 top-20 z-50 p-6 rounded-lg bg-paper/95 border border-ink/15 backdrop-blur-xl shadow-2xl lg:hidden flex flex-col gap-4"
           >
-            <div className="text-[12px] font-mono tracking-widest text-white/40 uppercase mb-2">
+            <div className="text-[12px] font-mono tracking-widest text-ink/55 uppercase mb-2">
               INDEX // ANTIPOLE
             </div>
             {navItems.map((item) => (
@@ -167,8 +167,8 @@ export const TopRightNav: React.FC = () => {
                 to={item.path}
                 onClick={() => setMobileMenuOpen(false)}
                 className={({ isActive }) =>
-                  `flex items-center justify-between text-sm font-mono tracking-widest uppercase py-2 border-b border-white/5 ${
-                    isActive ? 'text-white font-bold' : 'text-white/60'
+                  `flex items-center justify-between text-sm font-mono tracking-widest uppercase py-2 border-b border-ink/5 ${
+                    isActive ? 'text-ink font-bold' : 'text-ink/68'
                   }`
                 }
               >

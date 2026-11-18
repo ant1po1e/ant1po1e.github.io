@@ -95,25 +95,25 @@ export const VaultPage: React.FC = () => {
     return (
         <main
             id="vault-page-view"
-            className="relative h-dvh w-full bg-transparent text-[#F5F5F5] overflow-hidden pt-16 sm:pt-20 pb-3 sm:pb-4 px-3 sm:px-6 md:px-8 flex flex-col items-center selection:bg-white selection:text-black">
+            className="relative h-dvh w-full bg-transparent text-ink overflow-hidden pt-16 sm:pt-20 pb-3 sm:pb-4 px-3 sm:px-6 md:px-8 flex flex-col items-center selection:bg-ink selection:text-paper">
             {/* Background Ambient Glow */}
             <div className="fixed inset-0 pointer-events-none z-0">
-                <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-radial from-[#7B68EE]/10 via-[#1A153B]/5 to-transparent blur-3xl" />
+                <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-radial from-rose/10 via-rose/15 to-transparent blur-3xl" />
                 <div className="absolute inset-0 noise-overlay opacity-30" />
             </div>
 
             {/* Main Framed Container */}
-            <div className="relative z-10 w-full max-w-xl flex-1 min-h-0 bg-[#0A0A0A]/90 border border-white/10 rounded-lg backdrop-blur-xl flex flex-col overflow-hidden shadow-2xl">
+            <div className="relative z-10 w-full max-w-xl flex-1 min-h-0 bg-paper/85 border border-ink/10 rounded-lg backdrop-blur-xl flex flex-col overflow-hidden shadow-2xl">
                 {/* Header */}
-                <header className="shrink-0 flex items-center justify-between gap-3 px-4 sm:px-6 py-3 border-b border-white/10 bg-black/40">
+                <header className="shrink-0 flex items-center justify-between gap-3 px-4 sm:px-6 py-3 border-b border-ink/10 bg-wash/60">
                     <Link
                         to="/"
-                        className="group flex items-center gap-1.5 text-xs font-mono tracking-[0.2em] text-white/50 hover:text-white transition-colors">
+                        className="group flex items-center gap-1.5 text-xs font-mono tracking-[0.2em] text-ink/60 hover:text-ink transition-colors">
                         <ArrowLeft className="w-3.5 h-3.5 transition-transform group-hover:-translate-x-0.5" />
                         <span>HOME</span>
                     </Link>
 
-                    <div className="flex items-center gap-1.5 text-[12px] font-mono tracking-widest text-white/30 uppercase">
+                    <div className="flex items-center gap-1.5 text-[12px] font-mono tracking-widest text-ink/45 uppercase">
                         <Shield className="w-3 h-3" />
                         <span>PRIVATE</span>
                     </div>
@@ -124,21 +124,21 @@ export const VaultPage: React.FC = () => {
                     ref={bodyRef}
                     className="flex-1 min-h-0 overflow-y-auto custom-scrollbar p-5 sm:p-6 md:p-8">
                     <div className="flex items-center justify-center gap-3 mb-2">
-                        <h1 className="font-display uppercase tracking-[0.25em] text-white text-2xl sm:text-3xl">
+                        <h1 className="font-display uppercase tracking-[0.25em] text-ink text-2xl sm:text-3xl">
                             Vault
                         </h1>
                         {authState === "in" && activeTab === "files" && (
-                            <span className="font-mono text-white/40 text-xs">
+                            <span className="font-mono text-ink/55 text-xs">
                                 {images.length}{" "}
                                 {images.length === 1 ? "file" : "files"}
                             </span>
                         )}
                     </div>
 
-                    <div className="mt-5 pt-5 border-t border-white/10">
+                    <div className="mt-5 pt-5 border-t border-ink/10">
                         {authState === "checking" && (
                             <div className="flex justify-center py-16">
-                                <RefreshCw className="w-6 h-6 text-white/30 animate-spin" />
+                                <RefreshCw className="w-6 h-6 text-ink/45 animate-spin" />
                             </div>
                         )}
 
@@ -154,15 +154,15 @@ export const VaultPage: React.FC = () => {
                         {authState === "in" && (
                             <>
                                 <div className="flex items-center justify-between mb-4 gap-3">
-                                    <div className="flex items-center gap-1 border border-white/10 rounded p-1">
+                                    <div className="flex items-center gap-1 border border-ink/10 rounded p-1">
                                         <button
                                             onClick={() =>
                                                 setActiveTab("files")
                                             }
                                             className={`font-mono text-[12px] uppercase tracking-wide px-3 py-1.5 rounded transition-colors duration-300 ${
                                                 activeTab === "files"
-                                                    ? "bg-white text-black font-semibold"
-                                                    : "text-white/50 hover:text-white"
+                                                    ? "bg-ink text-paper font-semibold"
+                                                    : "text-ink/60 hover:text-ink"
                                             }`}>
                                             Files
                                         </button>
@@ -172,8 +172,8 @@ export const VaultPage: React.FC = () => {
                                             }
                                             className={`font-mono text-[12px] uppercase tracking-wide px-3 py-1.5 rounded transition-colors duration-300 ${
                                                 activeTab === "messages"
-                                                    ? "bg-white text-black font-semibold"
-                                                    : "text-white/50 hover:text-white"
+                                                    ? "bg-ink text-paper font-semibold"
+                                                    : "text-ink/60 hover:text-ink"
                                             }`}>
                                             Messages
                                         </button>
@@ -183,8 +183,8 @@ export const VaultPage: React.FC = () => {
                                             }
                                             className={`font-mono text-[12px] uppercase tracking-wide px-3 py-1.5 rounded transition-colors duration-300 ${
                                                 activeTab === "links"
-                                                    ? "bg-white text-black font-semibold"
-                                                    : "text-white/50 hover:text-white"
+                                                    ? "bg-ink text-paper font-semibold"
+                                                    : "text-ink/60 hover:text-ink"
                                             }`}>
                                             Links
                                         </button>
@@ -194,8 +194,8 @@ export const VaultPage: React.FC = () => {
                                             }
                                             className={`font-mono text-[12px] uppercase tracking-wide px-3 py-1.5 rounded transition-colors duration-300 ${
                                                 activeTab === "beatmaps"
-                                                    ? "bg-white text-black font-semibold"
-                                                    : "text-white/50 hover:text-white"
+                                                    ? "bg-ink text-paper font-semibold"
+                                                    : "text-ink/60 hover:text-ink"
                                             }`}>
                                             Beatmaps
                                         </button>
@@ -203,7 +203,7 @@ export const VaultPage: React.FC = () => {
 
                                     <button
                                         onClick={handleLogout}
-                                        className="font-mono text-[12px] uppercase tracking-wide text-white/40 hover:text-red-400 transition-colors duration-300 flex items-center gap-1 shrink-0">
+                                        className="font-mono text-[12px] uppercase tracking-wide text-ink/55 hover:text-red-400 transition-colors duration-300 flex items-center gap-1 shrink-0">
                                         <LogOut className="w-3 h-3" /> Log out
                                     </button>
                                 </div>
@@ -222,7 +222,7 @@ export const VaultPage: React.FC = () => {
 
                                         <button
                                             onClick={() => setListOpen(true)}
-                                            className="w-full flex items-center justify-center gap-2 bg-white/[0.02] hover:border-[#7B68EE]/40 hover:text-[#7B68EE] border border-white/10 rounded py-3 font-mono text-[12px] uppercase tracking-wide text-white transition-colors duration-300">
+                                            className="w-full flex items-center justify-center gap-2 bg-ink/[0.02] hover:border-rose/40 hover:text-rose-deep border border-ink/10 rounded py-3 font-mono text-[12px] uppercase tracking-wide text-ink transition-colors duration-300">
                                             <Images className="w-3.5 h-3.5" />
                                             View files ({images.length})
                                         </button>

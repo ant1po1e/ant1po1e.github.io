@@ -248,17 +248,17 @@ export const PageNavCarousel: React.FC<PageNavCarouselProps> = ({
             className="relative w-full h-dvh flex flex-col justify-between items-center overflow-hidden select-none pt-16 sm:pt-20 pb-4 px-4 touch-pan-y">
             {/* Top Header Index & Section Heading */}
             <div className="shrink-0 z-20 flex flex-col items-center text-center pointer-events-none mt-1 sm:mt-2">
-                <div className="flex items-center gap-2 sm:gap-2.5 text-[12px] sm:text-[11px] font-mono tracking-[0.25em] uppercase text-white/60 mb-1">
-                    <span className="w-1 h-1 rounded-full bg-white/30" />
-                    <span className="text-white/40">
+                <div className="flex items-center gap-2 sm:gap-2.5 text-[12px] sm:text-[11px] font-mono tracking-[0.25em] uppercase text-ink/68 mb-1">
+                    <span className="w-1 h-1 rounded-full bg-ink/30" />
+                    <span className="text-ink/55">
                         PAGE 0{currentIndex + 1}
                     </span>
-                    <span className="w-1 h-1 rounded-full bg-white/30" />
+                    <span className="w-1 h-1 rounded-full bg-ink/30" />
                 </div>
 
                 <h1
                     ref={titleRef}
-                    className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-display font-light uppercase pl-2 text-center text-[#F5F5F5] drop-shadow-[0_4px_24px_rgba(0,0,0,0.8)]">
+                    className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-display font-light uppercase pl-2 text-center text-ink drop-shadow-[0_2px_18px_rgba(255,255,255,0.9)]">
                     {shownPage.title}
                 </h1>
             </div>
@@ -295,7 +295,7 @@ export const PageNavCarousel: React.FC<PageNavCarouselProps> = ({
                         id="prev-page-arrow-btn"
                         onClick={handlePrev}
                         aria-label="Previous Page"
-                        className="hidden md:flex absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 z-40 w-10 h-10 rounded-full border border-white/20 bg-black/50 hover:bg-white/10 hover:border-white/80 backdrop-blur-md items-center justify-center text-white/70 hover:text-white transition-all duration-300 shadow-lg">
+                        className="hidden md:flex absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 z-40 w-10 h-10 rounded-full border border-ink/20 bg-wash/60 hover:bg-ink/10 hover:border-ink/60 backdrop-blur-md items-center justify-center text-ink/75 hover:text-ink transition-all duration-300 shadow-lg">
                         <ChevronLeft className="w-5 h-5" />
                     </button>
                 )}
@@ -305,7 +305,7 @@ export const PageNavCarousel: React.FC<PageNavCarouselProps> = ({
                         id="next-page-arrow-btn"
                         onClick={handleNext}
                         aria-label="Next Page"
-                        className="hidden md:flex absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 z-40 w-10 h-10 rounded-full border border-white/20 bg-black/50 hover:bg-white/10 hover:border-white/80 backdrop-blur-md items-center justify-center text-white/70 hover:text-white transition-all duration-300 shadow-lg">
+                        className="hidden md:flex absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 z-40 w-10 h-10 rounded-full border border-ink/20 bg-wash/60 hover:bg-ink/10 hover:border-ink/60 backdrop-blur-md items-center justify-center text-ink/75 hover:text-ink transition-all duration-300 shadow-lg">
                         <ChevronRight className="w-5 h-5" />
                     </button>
                 )}

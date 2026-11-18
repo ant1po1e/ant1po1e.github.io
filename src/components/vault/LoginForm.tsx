@@ -23,8 +23,8 @@ export const LoginForm: React.FC<{ onSuccess: () => void }> = ({ onSuccess }) =>
 
   return (
     <div className="max-w-sm mx-auto py-14 text-center">
-      <Lock className="w-8 h-8 text-white/30 mx-auto mb-3" />
-      <p className="text-white/50 text-xs font-mono mb-6 leading-relaxed">
+      <Lock className="w-8 h-8 text-ink/45 mx-auto mb-3" />
+      <p className="text-ink/60 text-xs font-mono mb-6 leading-relaxed">
         This vault is private. Enter the password to continue.
       </p>
       <form onSubmit={handleSubmit} className="space-y-3">
@@ -34,14 +34,14 @@ export const LoginForm: React.FC<{ onSuccess: () => void }> = ({ onSuccess }) =>
           value={password}
           onChange={e => setPassword(e.target.value)}
           placeholder="Password"
-          className="w-full text-center bg-black/60 border border-white/15 text-white text-sm px-4 py-2.5 rounded focus:outline-none focus:border-[#7B68EE] placeholder:text-white/20 transition-colors font-mono"
+          className="w-full text-center bg-white/70 border border-ink/15 text-ink text-sm px-4 py-2.5 rounded focus:outline-none focus:border-rose placeholder:text-ink/35 transition-colors font-mono"
         />
         {error && <p className="font-mono text-xs text-red-400">{error}</p>}
         <button
           type="submit"
           disabled={loading}
 
-          className="px-6 py-2.5 rounded bg-white hover:bg-white/90 text-black text-xs font-mono font-semibold uppercase tracking-wider transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+          className="px-6 py-2.5 rounded bg-ink hover:bg-ink/90 text-paper text-xs font-mono font-semibold uppercase tracking-wider transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
         >
           {loading ? 'Checking…' : 'Unlock'}
         </button>
